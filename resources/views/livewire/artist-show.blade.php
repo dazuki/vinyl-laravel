@@ -3,7 +3,7 @@
         {{ $artist->name }}      
     </h1>
     @foreach ($artist->records as $record)
-        <p class="text-center">
+        <p class="text-center font-medium">
             {{ $record->record_name }}
         </p>
     @endforeach
