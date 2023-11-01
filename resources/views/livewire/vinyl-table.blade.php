@@ -1,7 +1,7 @@
 <div class="mx-auto max-w-screen-xl text-left">
     <div class="px-2">
         <input wire:model.live.debounce.500ms="search" type="text"
-            class="p-2 mt-2 mb-2 w-full rounded-lg sm:w-1/4 border-2 border-slate-300 outline-none" placeholder="Sök artist..."
+            class="p-2 mt-2 mb-2 w-full rounded-lg sm:w-2/6 border-2 border-slate-300 outline-none" placeholder="Sök artist..."
             autocomplete="off" required="">
         <div wire:loading class="items-center">
 
@@ -34,9 +34,10 @@
                 </tr>
             </thead>
             <tbody>
+            @if ($artists->count() >= 1)
                 @foreach ($artists->get() as $artist)
                     <tr wire:key="{{ $artist->id }}" class="bg-white border-b">
-                        <td class="px-2 sm:px-6 py-4 align-top font-semibold text-base sm:text-base text-gray-900">
+                        <td class="px-2 sm:px-6 py-4 align-top font-semibold text-base sm:text-lg text-gray-900">
                             <a href="/artist/{{ $artist->id }}" class="hover:text-blue-500">
                                 {{ $artist->name }}
                             </a> <span class="text-green-600 font-medium">({{ $artist->records->count() }})</span>
@@ -45,21 +46,35 @@
                             @php
                                 $recordCount = 1;
                             @endphp
-                            @foreach ($artist->records as $record)
-                                <p class="uppercase text-gray-900">
-                                    <span class="font-semibold pr-1">{{ $recordCount }}.</span>
-                                    {{ $record->record_name }}
-                                </p>
-                                @php
-                                    $recordCount++;
-                                @endphp
-                            @endforeach
+                            @if ($artist->records->count() >= 1)
+                                @foreach ($artist->records as $record)
+                                    <p class="uppercase text-gray-900 sm:text-sm">
+                                        <span class="font-semibold pr-1">{{ $recordCount }}.</span>
+                                        {{ $record->record_name }}
+                                    </p>
+                                    @php
+                                        $recordCount++;
+                                    @endphp
+                                @endforeach
+                            @else
+                                <p class="uppercase text-gray-600 italic">(Tomt)</p>
+                            @endif
                             @php
                                 $recordCount = 1;
                             @endphp
                         </td>
                     </tr>
                 @endforeach
+            @else
+                <tr class="bg-white border-b">
+                    <td class="px-2 sm:px-6 py-4 align-top italic text-base sm:text-lg text-gray-900">
+                        Här var det tomt...
+                    </td>
+                    <td class="px-2 sm:px-6 py-4 text-xs align-top">
+                        <p class="uppercase text-gray-600 italic">...</p>
+                    </td>
+                </tr>
+            @endif
             </tbody>
         </table>
     </div>

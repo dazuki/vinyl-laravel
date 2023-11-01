@@ -22,15 +22,15 @@
       </button>
       <div class="hidden lg:flex">
         <ul class="lg:flex space-x-4">
-          <li><a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2" href="#">Ny Vinyl</a></li>
-          <li><a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2" href="#">Ny Artist</a></li>
+          <li><a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2" href="/create/vinyl">Ny Vinyl</a></li>
+          <li><a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2" href="/create/artist">Ny Artist</a></li>
         </ul>
       </div>
     </div>
     <div x-show="open" class="lg:hidden">
       <ul class="bg-white p-4">
-        <li><a class="text-gray-900 hover:text-green-700" href="#">Ny Vinyl</a></li>
-        <li><a class="text-gray-900 hover:text-green-700" href="#">Ny Artist</a></li>
+        <li><a class="block text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg" href="/create/vinyl">Ny Vinyl</a></li>
+        <li><a class="block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg" href="/create/artist">Ny Artist</a></li>
       </ul>
     </div>
   </div>

@@ -8,6 +8,9 @@
         </button>
     </h1>
     <h2 class="mb-4 text-lg text-center font-semibold">{{ $artist->records->count() }} Vinyler</h2>
+    @if (session('status'))
+        <p class="mb-4 px-2 pt-1 text-lg font-semibold text-green-600 text-center">{{ session('status') }}</p>
+    @endif
     <form wire:submit="save">
         <input
             wire:model="name"
@@ -18,15 +21,20 @@
             autocomplete="off">
         <button
             type="submit" id="subBtn"
-            class="p-2 mb-2 w-full border-2 border-t-0 border-slate-300 outline-none hover:bg-slate-300 hidden">
+            class="p-2 w-full border-2 border-t-0 border-slate-300 outline-none hover:bg-slate-300 hidden">
             Uppdatera Namn
         </button>
     </form>
+    <button
+        id="cancelBtn"
+        class="p-2 mb-2 w-full items-center border-2 border-t-0 border-slate-300 outline-none hover:bg-slate-300 hidden">        
+        Avbryt
+    </button>
     @php
         $count = 1;
     @endphp
     @foreach ($artist->records as $record)
-        <p class="px-2 py-1 text-left font-medium uppercase border-b">
+        <p wire:key="{{ $record->id }}" class="px-2 py-1 text-left font-medium uppercase border-b">
             <span class="font-bold text-slate-500">{{ $count }}.</span> {{ $record->record_name }}
         </p>
         @php
@@ -34,7 +42,7 @@
         @endphp
     @endforeach
         <p class="mt-6 mb-6 text-center">
-            <a href="javascript:history.back()" class="rounded-lg border-2 border-slate-300 px-2 py-2 hover:bg-slate-300">
+            <a href="/" class="rounded-lg border-2 border-slate-300 px-2 py-2 hover:bg-slate-300">
                 « Tillbaka
             </a>
         </p>
@@ -42,11 +50,20 @@
         const editBtn = document.querySelector("#btnEdit");
         const editField = document.querySelector("#artist_edit");
         const subBtn = document.querySelector("#subBtn");
+        const cancelBtn = document.querySelector("#cancelBtn");
 
         editBtn.addEventListener("click", () => {
             editField.classList.toggle("hidden");
             editBtn.classList.toggle("hidden");
             subBtn.classList.toggle("hidden");
+            cancelBtn.classList.toggle("hidden");
+        });
+
+        cancelBtn.addEventListener("click", () => {
+            editField.classList.toggle("hidden");
+            editBtn.classList.toggle("hidden");
+            subBtn.classList.toggle("hidden");
+            cancelBtn.classList.toggle("hidden");
         });
     </script>
 </div>
