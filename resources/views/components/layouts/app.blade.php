@@ -9,7 +9,7 @@
     </head>
     <body class="bg-slate-200">
         <x-header />
-        <div class="flex justify-center mx-auto w-full bg-white lg:mt-4 mb-4 lg:ml-4 lg:mr-4 lg:border-t-2 border-b-2 lg:border-r-2 lg:border-l-2 border-slate-300">
+        <div class="flex justify-center mx-auto w-full bg-white lg:mt-4 lg:border-t-2 border-b-2 border-slate-300">
             <main>
                 {{ $slot }}
             </main>

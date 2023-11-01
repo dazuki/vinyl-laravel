@@ -22,8 +22,8 @@
       </button>
       <div class="hidden lg:flex">
         <ul class="lg:flex space-x-4">
-          <li><a class="text-gray-900 hover:text-green-700 border p-2" href="#">Ny Vinyl</a></li>
-          <li><a class="text-gray-900 hover:text-green-700 border p-2" href="#">Ny Artist</a></li>
+          <li><a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2" href="#">Ny Vinyl</a></li>
+          <li><a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2" href="#">Ny Artist</a></li>
         </ul>
       </div>
     </div>

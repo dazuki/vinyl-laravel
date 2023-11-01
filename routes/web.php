@@ -1,7 +1,9 @@
 <?php
 
+use App\Livewire\ArtistEdit;
 use App\Livewire\ArtistShow;
 use App\Livewire\VinylTable;
+use Illuminate\Routing\Events\Routing;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +20,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', VinylTable::class);
 
 Route::get('/artist/{art_id}', ArtistShow::class);
+
+Route::get('/edit/artist/{art_id}', ArtistEdit::class);
