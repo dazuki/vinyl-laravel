@@ -1,5 +1,5 @@
 <div class="mx-auto max-w-screen-xl text-left">
-    <p class="text-lg font-semibold text-green-600 text-center">
+    <p class="pt-4 text-lg font-semibold text-green-600 text-center">
         Du är inloggad!
     </p>
     <p class="mt-6 mb-6 text-center">

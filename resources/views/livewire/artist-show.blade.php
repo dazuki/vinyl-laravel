@@ -1,4 +1,4 @@
-<div class="mx-auto max-w-screen-xl text-left pb-2">
+<div class="mx-auto px-2 max-w-screen-xl text-left pb-2">
     <h1 class="text-2xl mt-2 text-center font-bold text-gray-900 sm:text-3xl">
         {{ $artist->name }}
         @auth
@@ -33,13 +33,13 @@
             autocomplete="off">
         <button
             type="submit" id="subBtn"
-            class="p-2 w-full border-2 border-t-0 border-slate-300 outline-none hover:bg-slate-300 hidden">
+            class="p-4 mt-2 mb-2 rounded-lg bg-slate-100 font-semibold w-full border-2 border-slate-300 outline-none hover:bg-slate-300 hidden">
             Uppdatera Namn
         </button>
     </form>
     <button
         id="cancelBtn"
-        class="p-2 mb-2 w-full items-center border-2 border-t-0 border-slate-300 outline-none hover:bg-slate-300 hidden">        
+        class="p-2 mb-2 rounded-lg w-full items-center border-2 border-red-300 outline-none hover:bg-slate-300 hidden">        
         Avbryt
     </button>
     @endauth
@@ -52,7 +52,7 @@
                 @auth
                 <button
                     onclick="confirm('Vill du ta bort vinylen {{$record->record_name}}?') || event.stopImmediatePropagation()" wire:click="recordDelete({{$record->id}})"
-                    class="rounded-lg border-2 text-red-500 px-2 py-1 hover:bg-red-300">X</button>
+                    class="border-0 text-red-500 px-2 py-1 hover:bg-red-300">X</button>
                 @endauth
                 </span> {{ $record->record_name }}
         </p>

@@ -26,7 +26,7 @@
     </div>
     <div class="relative overflow-x-auto">
         <table class="w-full mb-1 text-sm text-left text-gray-500">
-            <thead class="text-xs text-gray-700 uppercase bg-slate-100">
+            <thead class="drop-shadow-lg border-b-2 border-t-2 border-slate-300 text-xs text-slate-900 uppercase bg-slate-100">
                 <tr>
                     <th scope="col" class="px-2 sm:px-6 py-2 text-base whitespace-nowrap">
                         Artister: <span class="font-medium">{{ $art_count }}</span>
@@ -39,7 +39,7 @@
             <tbody>
             @if ($artists->count() >= 1)
                 @foreach ($artists->get() as $artist)
-                    <tr wire:key="{{ $artist->id }}" class="bg-white border-b">
+                    <tr wire:key="{{ $artist->id }}" class="bg-white border-b border-slate-300">
                         <td class="px-2 sm:px-6 py-4 align-top font-semibold text-base sm:text-lg text-gray-900">
                             <a href="/artist/{{ $artist->id }}" class="hover:text-blue-500">
                                 {{ $artist->name }}

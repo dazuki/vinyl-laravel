@@ -35,7 +35,7 @@
             @enderror
         <button
             type="submit" id="subBtn"
-            class="p-4 mt-2 w-full sm:w-2/6 border-2 border-slate-300 outline-none rounded-lg bg-slate-100 hover:bg-slate-300">
+            class="p-4 mt-2 font-semibold w-full sm:w-2/6 border-2 border-slate-300 outline-none rounded-lg bg-slate-100 hover:bg-slate-300">
             Lägg till Vinyl
         </button>
         <p class="mt-6 mb-6 text-center">
