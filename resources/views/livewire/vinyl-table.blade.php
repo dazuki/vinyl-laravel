@@ -26,7 +26,7 @@
     </div>
     <div class="relative overflow-x-auto">
         <table class="w-full mb-1 text-sm text-left text-gray-500">
-            <thead class="drop-shadow-lg border-b-2 border-t-2 border-slate-300 text-xs text-slate-900 uppercase bg-slate-100">
+            <thead class="drop-shadow-lg border-b-2 border-t-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-xs text-slate-900 uppercase bg-slate-100">
                 <tr>
                     <th scope="col" class="px-2 sm:px-6 py-2 text-base whitespace-nowrap">
                         Artister: <span class="font-medium">{{ $art_count }}</span>
