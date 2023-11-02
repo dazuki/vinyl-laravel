@@ -34,10 +34,10 @@
     <div x-show="open" class="lg:hidden">
       <ul class="bg-white p-4">
         @auth
-        <li><a class="block text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg" href="/create/vinyl">Ny Vinyl</a></li>
-        <li><a class="block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg" href="/create/artist">Ny Artist</a></li>
+        <li><a class="lg:hidden block text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg" href="/create/vinyl">Ny Vinyl</a></li>
+        <li><a class="lg:hidden block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg" href="/create/artist">Ny Artist</a></li>
         @else
-        <li><a class="block text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg" href="/login">Logga In</a></li>
+        <li><a class="lg:hidden block text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg" href="/login">Logga In</a></li>
         @endauth
       </ul>
     </div>
