@@ -1,13 +1,14 @@
 <?php
 
+use App\Livewire\Login;
 use App\Livewire\ArtistEdit;
 use App\Livewire\ArtistShow;
-use App\Livewire\CreateArtist;
-use App\Livewire\CreateVinyl;
-use App\Livewire\Login;
 use App\Livewire\VinylTable;
-use Illuminate\Routing\Events\Routing;
+use Illuminate\Http\Request;
+use App\Livewire\CreateVinyl;
+use App\Livewire\CreateArtist;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\Events\Routing;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,12 @@ Route::get('/create/vinyl', CreateVinyl::class)->middleware('auth.basic');
 Route::get('/create/artist', CreateArtist::class)->middleware('auth.basic');
 
 Route::get('/login', Login::class)->middleware('auth.basic');
+
+Route::get('/logout', function (Request $request) {
+    auth()->logout();
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect('/');
+})->middleware('auth.basic');
