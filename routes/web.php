@@ -35,9 +35,7 @@ Route::get('/login', Login::class)->middleware('auth.basic');
 
 Route::get('/logout', function (Request $request) {
     auth()->logout();
-
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-
     return redirect('/');
 })->middleware('auth.basic');
