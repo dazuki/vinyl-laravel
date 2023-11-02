@@ -26,6 +26,7 @@ class CreateArtist extends Component
 
     public function render()
     {
+        // Hash::make()
         return view('livewire.create-artist');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Artist;
 use App\Models\Record;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class CreateVinyl extends Component
@@ -12,9 +13,10 @@ class CreateVinyl extends Component
 
     public $record_name = '';
 
+    public $password;
+
     public function save()
     {
-        //dd($this->artist_id);
         $this->record_name = strtoupper($this->record_name);
 
         if ($this->artist_id == 0) {
@@ -35,6 +37,7 @@ class CreateVinyl extends Component
 
     public function render()
     {
+        // Hash::make()
         return view('livewire.create-vinyl', [
             'artists' => Artist::all()->sortBy('name')
         ]);
