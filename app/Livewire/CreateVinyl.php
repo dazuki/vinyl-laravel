@@ -4,11 +4,14 @@ namespace App\Livewire;
 
 use App\Models\Artist;
 use App\Models\Record;
-use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Illuminate\Http\Request;
+use Livewire\Attributes\Url;
+use Illuminate\Support\Facades\Hash;
 
 class CreateVinyl extends Component
 {
+    #[Url(history: true)]
     public $artist_id;
 
     public $record_name = '';

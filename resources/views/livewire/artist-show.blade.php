@@ -63,6 +63,11 @@
             $count++;
         @endphp
     @endforeach
+    @auth
+    <div class="mt-4 flex justify-center w-full">
+        <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 w-full text-center" href="/create/vinyl?artist_id={{ $artist->id }}">Ny Vinyl</a>
+    </div>
+    @endauth
         <p class="mt-6 mb-6 text-center">
             <a href="/" class="rounded-lg border-2 border-slate-300 px-2 py-2 hover:bg-slate-300">
                 « Tillbaka
@@ -73,12 +78,14 @@
         const editField = document.querySelector("#artist_edit");
         const subBtn = document.querySelector("#subBtn");
         const cancelBtn = document.querySelector("#cancelBtn");
+        const btnDel = document.querySelector("#btnDel");
 
         editBtn.addEventListener("click", () => {
             editField.classList.toggle("hidden");
             editBtn.classList.toggle("hidden");
             subBtn.classList.toggle("hidden");
             cancelBtn.classList.toggle("hidden");
+            btnDel.classList.toggle("hidden");
         });
 
         cancelBtn.addEventListener("click", () => {
@@ -86,6 +93,7 @@
             editBtn.classList.toggle("hidden");
             subBtn.classList.toggle("hidden");
             cancelBtn.classList.toggle("hidden");
+            btnDel.classList.toggle("hidden");
         });
     </script>
 </div>
