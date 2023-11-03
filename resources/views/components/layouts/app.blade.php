@@ -19,7 +19,7 @@
                 {{ $slot }}
             </main>
         </div>
-        <div id="copyright" class="my-2" align="center">&copy; 2023 - 2023 bokbindaregatan.se</div>
+        <div id="copyright" class="my-2 text-xs" align="center">&copy; 2023 - 2023 bokbindaregatan.se</div>
             <script>
                 (function(){
 	                let cpr = document.getElementById("copyright");
