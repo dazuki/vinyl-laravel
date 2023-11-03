@@ -22,6 +22,9 @@
     @if (session('status'))
         <p class="mb-4 px-2 pt-1 text-lg font-semibold text-center">{{ session('status') }}</p>
     @endif
+    @error('name')
+        <p class="mb-4 px-2 pt-1 text-lg font-semibold text-center text-red-500">Namn kan inte vara tomt...</p>
+    @enderror
     @auth
     <form wire:submit="save">
         <input
@@ -33,13 +36,13 @@
             autocomplete="off">
         <button
             type="submit" id="subBtn"
-            class="p-4 mt-2 mb-2 rounded-lg bg-slate-100 font-semibold w-full border-2 border-slate-300 outline-none hover:bg-slate-300 hidden">
+            class="p-4 mt-2 mb-2 shadow-md rounded-lg bg-slate-100 font-semibold w-full border-2 border-slate-300 outline-none hover:bg-slate-300 hidden">
             Uppdatera Namn
         </button>
     </form>
     <button
         id="cancelBtn"
-        class="p-2 mb-2 rounded-lg w-full items-center border-2 border-red-300 outline-none hover:bg-slate-300 hidden">        
+        class="p-2 mb-2 rounded-lg w-full items-center border-2 bg-red-100 border-red-300 outline-none hover:bg-red-300 hidden">        
         Avbryt
     </button>
     @endauth

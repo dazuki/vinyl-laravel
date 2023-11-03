@@ -14,6 +14,10 @@ class ArtistShow extends Component
 
     public function save()
     {
+        $formFields = $this->validate([
+            'name' => 'required|min:1'
+        ]);
+
         Artist::where('id', $this->art_id)->update([
             'name' => strtoupper($this->name)
         ]);
