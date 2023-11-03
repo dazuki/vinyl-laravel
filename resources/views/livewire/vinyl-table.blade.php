@@ -4,7 +4,7 @@
             <p class="mb-4 px-2 pt-1 text-lg font-semibold text-red-600 text-center">{{ session('status') }}</p>
         @endif
         <input wire:model.live.debounce.500ms="search" type="text"
-            class="p-2 mt-2 mb-2 w-full rounded-lg sm:w-2/6 border-2 border-slate-300 outline-none" placeholder="Sök artist..."
+            class="p-2 mt-2 w-full rounded-t-lg sm:w-2/6 border-l-2 border-r-2 border-t-2 border-slate-300 outline-none" placeholder="Sök artist..."
             autocomplete="off" required="">
         <div wire:loading class="items-center">
 
