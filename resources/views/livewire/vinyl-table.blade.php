@@ -39,11 +39,11 @@
             <tbody>
             @if ($artists->count() >= 1)
                 @foreach ($artists->get() as $artist)
-                    <tr wire:key="{{ $artist->id }}" class="bg-white border-b border-slate-300">
-                        <td class="px-2 sm:px-6 py-4 align-top font-semibold text-base sm:text-lg text-gray-900">
-                            <a href="/artist/{{ $artist->id }}" class="hover:text-blue-500">
+                    <tr wire:key="{{ $artist->id }}" class="bg-white border-b border-slate-300 hover:bg-slate-100">
+                        <td class="px-2 sm:px-6 py-4 align-top font-semibold text-base sm:text-xl text-gray-900">
+                            <a href="/artist/{{ $artist->id }}" class="hover:text-blue-800">
                                 {{ $artist->name }}
-                            </a> <span class="text-green-600 font-medium">({{ $artist->records->count() }})</span>
+                            </a> <span class="text-blue-800">({{ $artist->records->count() }})</span>
                         </td>
                         <td class="px-2 sm:px-6 py-4 text-xs align-top">
                             @php
