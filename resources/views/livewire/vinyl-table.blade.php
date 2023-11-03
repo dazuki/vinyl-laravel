@@ -70,8 +70,14 @@
                 @endforeach
             @else
                 <tr class="bg-white border-b">
-                    <td class="px-2 sm:px-6 py-4 align-top italic text-base sm:text-lg text-gray-900">
-                        Här var det tomt...
+                    <td class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900">
+                        <p>Här var det tomt...</p>
+                        @auth
+                        <div class="mt-4 flex justify-center w-full">
+                            <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 w-full text-center" href="/create/artist?name={{ strtoupper($search) }}">
+                                <p><span class="text-green-700">Ny Artist</span></p><p>{{ strtoupper($search) }}</p></a>
+                        </div>
+                        @endauth
                     </td>
                     <td class="px-2 sm:px-6 py-4 text-xs align-top">
                         <p class="uppercase text-gray-600 italic">...</p>

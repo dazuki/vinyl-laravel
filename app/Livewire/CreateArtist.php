@@ -4,9 +4,11 @@ namespace App\Livewire;
 
 use App\Models\Artist;
 use Livewire\Component;
+use Livewire\Attributes\Url;
 
 class CreateArtist extends Component
 {
+    #[Url(history: true)]
     public $name = '';
 
     public function save()
