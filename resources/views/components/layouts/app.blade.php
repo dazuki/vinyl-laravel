@@ -9,7 +9,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('static/images/favicon-16x16.png') }}">
         <link rel="manifest" href="{{ asset('static/images/site.webmanifest') }}">
 
-        <title>{{ $title ?? 'Vinyler' }}</title>
+        <title>@yield('page-title') - Vinylskivor Förteckning</title>
         @vite('resources/css/app.css')
     </head>
     <body class="bg-slate-200">

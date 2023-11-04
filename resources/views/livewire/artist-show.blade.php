@@ -1,3 +1,6 @@
+@section('page-title')
+    {{ $artist->name }}
+@endsection
 <div class="mx-auto max-w-screen-xl text-left pb-2">
 <div class="bg-white border-b-2 border-t-0 border-r-0 border-l-0 lg:border-t-2 lg:border-r-2 lg:border-l-2 border-slate-300 px-4 pt-4">
     <h1 class="text-2xl text-center font-bold text-gray-900 sm:text-3xl">

@@ -1,3 +1,6 @@
+@section('page-title')
+    Samling
+@endsection
 <div wire:init="init" class="mx-auto max-w-screen-xl text-left">
     <div class="px-2">
         @if ($removed)
