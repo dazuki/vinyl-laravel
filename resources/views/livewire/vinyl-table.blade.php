@@ -40,7 +40,7 @@
             @if ($artists->count() >= 1 && $loadData == true)
                 @foreach ($artists->get() as $artist)
                     <tr wire:key="{{ $artist->id }}" class="bg-white border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-slate-50">
-                        <td class="px-2 sm:px-6 py-4 pb-0 align-top font-semibold text-base sm:text-xl text-gray-900">
+                        <td class="px-2 sm:px-6 py-4 pb-0 align-top font-semibold text-base sm:text-xl lg:text-2xl text-gray-900">
                             <a href="/artist/{{ $artist->id }}" class="hover:text-blue-800">
                                 {{ $artist->name }}
                             </a>
