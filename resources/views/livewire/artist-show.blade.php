@@ -57,26 +57,30 @@
         $count = 1;
     @endphp
     @foreach ($artist->records as $record)
-        <p wire:key="{{ $record->id }}" class="px-2 py-1 text-left font-medium uppercase border-b">
-            <span class="font-bold text-slate-500 lg:text-2xl">{{ $count }}.
+        <p wire:key="{{ $record->id }}"
+                class="flex items-center px-2 py-2 text-left font-medium uppercase border-b hover:bg-slate-50">
+                <span class="font-bold text-slate-500 lg:text-2xl w-6 sm:w-8">{{ $count }}.</span>
+                <span class="lg:text-2xl">
+                    <a href="https://www.discogs.com/search/?q={{ urlencode($record->record_name) }}&type=release&format_exact=Vinyl"
+                        target="_BLANK"
+                        class="hover:text-green-700">{{ $record->record_name }}</a>
+                </span>
                 @auth
                 <button
                     onclick="confirm('Vill du ta bort vinylen {{$record->record_name}}?') || event.stopImmediatePropagation()" wire:click="recordDelete({{$record->id}})"
-                    class="border-0 text-red-500 px-2 py-1 hover:bg-red-300">X</button>
+                    class="inline-block rounded border border-red-500 text-red-500 text-xl lg:text-2xl px-2 ml-4 hover:bg-red-300">
+                    X
+                </button>
                 @endauth
-                </span>
-                <span class="lg:text-2xl">
-                    {{ $record->record_name }}
-                </span>
         </p>
         @php
             $count++;
         @endphp
     @endforeach
     @auth
-    <div class="mt-4 flex justify-center w-full sm:w-1/6">
+    <p class="mt-4 flex text-center w-full sm:w-1/6">
         <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 w-full text-center" href="/create/vinyl?artist_id={{ $artist->id }}">Ny Vinyl</a>
-    </div>
+    </p>
     @endauth
         <p class="mt-6 mb-6 text-center">
             <a href="/" class="rounded-lg border-2 border-slate-300 bg-slate-100 shadow-md px-2 py-2 hover:bg-slate-300">

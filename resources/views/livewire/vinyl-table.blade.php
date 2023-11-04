@@ -31,7 +31,7 @@
                     <th scope="col" class="px-2 sm:px-6 py-2 text-base whitespace-nowrap">
                         Artister: <span class="font-medium">{{ $art_count }}</span>
                     </th>
-                    <th scope="col" class="px-2 sm:px-6 py-2 text-base whitespace-nowrap">
+                    <th scope="col" class="px-2 pl-0 sm:px-6 py-2 text-base whitespace-nowrap">
                         Vinyler: <span class="font-medium">{{ $records }}</span>
                     </th>
                 </tr>
@@ -40,19 +40,31 @@
             @if ($artists->count() >= 1 && $loadData == true)
                 @foreach ($artists->get() as $artist)
                     <tr wire:key="{{ $artist->id }}" class="bg-white border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-slate-50">
-                        <td class="px-2 sm:px-6 py-4 align-top font-semibold text-base sm:text-xl text-gray-900">
+                        <td class="px-2 sm:px-6 py-4 pb-0 align-top font-semibold text-base sm:text-xl text-gray-900">
                             <a href="/artist/{{ $artist->id }}" class="hover:text-blue-800">
                                 {{ $artist->name }}
-                            </a> <span class="text-blue-800">({{ $artist->records->count() }})</span>
+                            </a>
+                            <p class="flex justify-start">
+                                <a href="https://www.discogs.com/search/?q={{ urlencode($artist->name) }}&type=artist"
+                                class="opacity-25 pt-4 hover:opacity-100"
+                                target="_BLANK">
+                                    <img src="{{ asset('static/images/Discogs-01.svg') }}"
+                                    class="h-12 sm:h-14"
+                                    alt="DG">
+                                </a>                                 
+                            </p>
                         </td>
-                        <td class="px-2 sm:px-6 py-4 text-xs align-top">
+                        <td class="sm:px-6 py-4 text-xs align-top">
                             @php
                                 $recordCount = 1;
+                                $vinyler = $artist->records->count();
                             @endphp
-                            @if ($artist->records->count() >= 1)
+                            <p class="pb-2 underline">
+                                <span class="text-slate-700 text-sm sm:text-base font-semibold">{{ $vinyler }} Vinyl{{ $vinyler == 1 ? '' : 'er' }}</span>
+                            </p>
+                            @if ($vinyler >= 1)
                                 @foreach ($artist->records as $record)
                                     <p class="pb-1 uppercase text-gray-900 sm:text-sm">
-                                        <span class="font-semibold pr-1">{{ $recordCount }}.</span>
                                         {{ $record->record_name }}
                                     </p>
                                     @php
