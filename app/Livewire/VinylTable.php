@@ -12,6 +12,13 @@ class VinylTable extends Component
     #[Url(history: true)]
     public $search = '';
 
+    public bool $loadData = false;
+
+    public function init()
+    {
+        $this->loadData = true;
+    }
+
     public function render()
     {
         return view('livewire.vinyl-table', [

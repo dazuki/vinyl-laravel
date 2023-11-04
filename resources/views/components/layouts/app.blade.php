@@ -15,7 +15,7 @@
     <body class="bg-slate-200">
         <x-header />
         <div class="flex justify-center mx-auto w-full bg-white lg:mt-4 lg:border-t-2 border-b-2 shadow-lg pb-4 border-slate-300">
-            <main>
+            <main class="w-full">
                 {{ $slot }}
             </main>
         </div>

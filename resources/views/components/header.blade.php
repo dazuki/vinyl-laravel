@@ -1,7 +1,7 @@
 <header class="bg-white lg:border-b-2 lg:border-slate-300">
   <div x-data="{ open: false }" class="bg-white">
     <div class="container mx-auto flex justify-between items-center p-4 max-w-6xl">
-      <div class="text-gray-900 font-bold text-2xl">
+      <div class="text-gray-900 font-bold text-xl">
         <a href="/">Vinylskivor Förteckning
           @auth
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 inline-block text-green-700">

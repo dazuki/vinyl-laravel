@@ -1,12 +1,12 @@
-<div class="mx-auto max-w-screen-xl text-left">
+<div wire:init="init" class="mx-auto max-w-screen-xl text-left">
     <div class="px-2">
         @if (session('status'))
             <p class="mb-4 px-2 pt-1 text-lg font-semibold text-red-600 text-center">{{ session('status') }}</p>
         @endif
         <input wire:model.live.debounce.500ms="search" type="text"
-            class="p-2 mt-2 w-full drop-shadow-lg rounded-t-lg sm:w-2/6 border-l-2 border-r-2 border-t-2 border-slate-300 outline-none" placeholder="Sök artist..."
+            class="p-2 mt-2 mb-2 sm:mb-0 w-full drop-shadow-lg sm:w-2/6 border-l-2 border-r-2 border-t-2 border-b-2 sm:border-b-0 border-slate-300 outline-none" placeholder="Sök artist..."
             autocomplete="off" required="">
-        <div wire:loading class="items-center">
+        <div wire:loading class="items-center px-2">
 
             <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <rect x="1" y="4" width="6" height="14" opacity="1">
@@ -37,7 +37,7 @@
                 </tr>
             </thead>
             <tbody>
-            @if ($artists->count() >= 1)
+            @if ($artists->count() >= 1 && $loadData == true)
                 @foreach ($artists->get() as $artist)
                     <tr wire:key="{{ $artist->id }}" class="bg-white border-b border-slate-300 hover:bg-slate-100">
                         <td class="px-2 sm:px-6 py-4 align-top font-semibold text-base sm:text-xl text-gray-900">
@@ -71,17 +71,19 @@
             @else
                 <tr class="bg-white border-b">
                     <td class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900">
-                        <p>Här var det tomt...</p>
-                        @auth
-                        <div class="mt-4 flex justify-center w-full">
-                            <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 w-full text-center" href="/create/artist?name={{ strtoupper($search) }}">
+                        @if ($loadData == false)
+                            <p>Laddar listan...</p>
+                        @else
+                            <p>Här var det tomt...</p>
+                            @auth
+                            <div class="mt-4 flex justify-center w-full">
+                                <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 w-full text-center" href="/create/artist?name={{ strtoupper($search) }}">
                                 <p><span class="text-green-700">Ny Artist</span></p><p>{{ strtoupper($search) }}</p></a>
-                        </div>
-                        @endauth
+                            </div>
+                            @endauth
+                        @endif
                     </td>
-                    <td class="px-2 sm:px-6 py-4 text-xs align-top">
-                        <p class="uppercase text-gray-600 italic">...</p>
-                    </td>
+                    <td class="px-2 sm:px-6 py-4 text-xs align-top"></td>
                 </tr>
             @endif
             </tbody>
