@@ -1,5 +1,6 @@
-<div class="mx-auto px-2 max-w-screen-xl text-left pb-2">
-    <h1 class="text-2xl mt-2 text-center font-bold text-gray-900 sm:text-3xl">
+<div class="mx-auto max-w-screen-xl text-left pb-2">
+<div class="bg-white border-b-2 border-t-0 border-r-0 border-l-0 lg:border-t-2 lg:border-r-2 lg:border-l-2 border-slate-300 px-4 pt-4">
+    <h1 class="text-2xl text-center font-bold text-gray-900 sm:text-3xl">
         {{ $artist->name }}
         @auth
         <p>
@@ -27,44 +28,53 @@
     @enderror
     @auth
     <form wire:submit="save">
+        <p class="text-center">
         <input
             wire:model="name"
             type="text"
             id="artist_edit"
-            class="p-2 mt-2 w-full border-2 border-slate-300 outline-none hidden"
+            class="p-2 mt-2 w-full sm:w-2/6 border-2 border-slate-300 outline-none hidden"
             placeholder="Skriv nytt namn här..."
             autocomplete="off">
+        </p>
+        <p class="text-center">
         <button
             type="submit" id="subBtn"
-            class="p-4 mt-2 mb-2 shadow-md rounded-lg bg-slate-100 font-semibold w-full border-2 border-slate-300 outline-none hover:bg-slate-300 hidden">
+            class="p-4 mt-2 mb-2 shadow-md rounded-lg bg-slate-100 font-semibold w-full sm:w-2/6 border-2 border-slate-300 outline-none hover:bg-slate-300 hidden">
             Uppdatera Namn
         </button>
+        </p>
     </form>
+    <p class="text-center">
     <button
         id="cancelBtn"
-        class="p-2 mb-2 rounded-lg w-full items-center border-2 bg-red-100 border-red-300 outline-none hover:bg-red-300 hidden">        
+        class="p-2 mb-2 rounded-lg w-full sm:w-2/6 items-center border-2 bg-red-100 border-red-300 outline-none hover:bg-red-300 hidden">        
         Avbryt
     </button>
+    </p>
     @endauth
     @php
         $count = 1;
     @endphp
     @foreach ($artist->records as $record)
         <p wire:key="{{ $record->id }}" class="px-2 py-1 text-left font-medium uppercase border-b">
-            <span class="font-bold text-slate-500">{{ $count }}.
+            <span class="font-bold text-slate-500 lg:text-2xl">{{ $count }}.
                 @auth
                 <button
                     onclick="confirm('Vill du ta bort vinylen {{$record->record_name}}?') || event.stopImmediatePropagation()" wire:click="recordDelete({{$record->id}})"
                     class="border-0 text-red-500 px-2 py-1 hover:bg-red-300">X</button>
                 @endauth
-                </span> {{ $record->record_name }}
+                </span>
+                <span class="lg:text-2xl">
+                    {{ $record->record_name }}
+                </span>
         </p>
         @php
             $count++;
         @endphp
     @endforeach
     @auth
-    <div class="mt-4 flex justify-center w-full">
+    <div class="mt-4 flex justify-center w-full sm:w-1/6">
         <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 w-full text-center" href="/create/vinyl?artist_id={{ $artist->id }}">Ny Vinyl</a>
     </div>
     @endauth
@@ -96,4 +106,5 @@
             btnDel.classList.toggle("hidden");
         });
     </script>
+    </div>
 </div>

@@ -1,7 +1,7 @@
-<header class="bg-white lg:border-b-2 lg:border-slate-300">
+<header class="bg-white border-b-2 border-slate-300">
   <div x-data="{ open: false }" class="bg-white">
     <div class="container mx-auto flex justify-between items-center p-4 max-w-6xl">
-      <div class="text-gray-900 font-bold text-xl">
+      <div class="text-gray-900 font-bold text-xl sm:text-2xl lg:text-3xl">
         <a href="/">Vinylskivor Förteckning
           @auth
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 inline-block text-green-700">
@@ -39,13 +39,13 @@
       </div>
     </div>
     <div x-show="open" class="lg:hidden">
-      <ul class="bg-white p-4">
+      <ul id="burgerMenu" class="bg-white px-4">
         @auth
-        <li><a class="lg:hidden text-center block text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100" href="/create/vinyl">Ny Vinyl</a></li>
+        {{-- <li><a class="lg:hidden text-center block text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100" href="/create/vinyl">Ny Vinyl</a></li>
         <li><a class="lg:hidden text-center block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100" href="/create/artist">Ny Artist</a></li>
-        <li><a class="lg:hidden text-center block mt-2 text-gray-900 hover:text-red-700 bg-red-100 shadow-md rounded-lg border-2 border-red-300 p-2 text-lg" href="/logout">Logga Ut</a></li>
+        <li><a class="lg:hidden text-center block mt-2 text-gray-900 hover:text-red-700 bg-red-100 shadow-md rounded-lg border-2 border-red-300 p-2 text-lg" href="/logout">Logga Ut</a></li> --}}
         @else
-        <li><a class="lg:hidden text-center block font-semibold text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg shadow-md bg-slate-100" href="/login">Logga In</a></li>
+        {{-- <li><a class="lg:hidden text-center block font-semibold text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg shadow-md bg-slate-100" href="/login">Logga In</a></li> --}}
         @endauth
       </ul>
     </div>

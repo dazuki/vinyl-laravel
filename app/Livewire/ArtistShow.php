@@ -27,9 +27,7 @@ class ArtistShow extends Component
     {
         $artist->delete();
 
-        session()->flash('status', 'Artist är borttagen!');
-
-        $this->redirect('/');
+        $this->redirect('/?removed=1');
     }
 
     public function recordDelete(Record $record)

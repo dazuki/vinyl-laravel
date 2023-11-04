@@ -12,7 +12,15 @@ class VinylTable extends Component
     #[Url(history: true)]
     public $search = '';
 
+    #[Url(history: true)]
+    public $removed = 0;
+
     public bool $loadData = false;
+
+    public function resetRemoved()
+    {
+        $this->removed = 0;
+    }
 
     public function init()
     {

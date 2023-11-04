@@ -14,17 +14,28 @@
     </head>
     <body class="bg-slate-200">
         <x-header />
-        <div class="flex justify-center mx-auto w-full bg-white lg:mt-4 lg:border-t-2 border-b-2 shadow-lg pb-4 border-slate-300">
+        <div class="flex justify-center mx-auto w-full lg:mt-4 pb-2">
             <main class="w-full">
                 {{ $slot }}
             </main>
         </div>
         <div id="copyright" class="my-2 text-xs" align="center">&copy; 2023 - 2023 bokbindaregatan.se</div>
-            <script>
-                (function(){
-	                let cpr = document.getElementById("copyright");
-	                cpr.innerHTML = "&copy; 2023 - "+new Date().getFullYear()+" bokbindaregatan.se - All Rights Reserved.";
-                })();
-            </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                let burgerMenu = document.getElementById('burgerMenu');
+
+                @auth
+                    burgerMenu.innerHTML += '<li><a class=\"lg:hidden text-center block text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100\" href=\"/create/vinyl\">Ny Vinyl</a></li>';
+                    burgerMenu.innerHTML += '<li><a class=\"lg:hidden text-center block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100\" href=\"/create/artist\">Ny Artist</a></li>';
+                    burgerMenu.innerHTML += '<li class=\"mb-2\""><a class=\"lg:hidden text-center block mt-2 text-gray-900 hover:text-red-700 bg-red-100 shadow-md rounded-lg border-2 border-red-300 p-2 text-lg\" href=\"/logout\">Logga Ut</a></li>';
+                @else
+                    burgerMenu.innerHTML += '<li class=\"mb-2\""><a class=\"lg:hidden text-center block font-semibold text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg shadow-md bg-slate-100\" href=\"/login\">Logga In</a></li>'
+                @endauth
+            });
+            (function(){
+	            let cpr = document.getElementById("copyright");
+	            cpr.innerHTML = "&copy; 2023 - "+new Date().getFullYear()+" bokbindaregatan.se - All Rights Reserved.";
+            })();
+        </script>
     </body>
 </html>
