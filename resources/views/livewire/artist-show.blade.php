@@ -22,7 +22,7 @@
         </p>
         @endauth
     </h1>
-    <h2 class="mb-4 text-lg text-center font-semibold">{{ $artist->records->count() }} Vinyler</h2>
+    <h2 class="mb-4 text-lg text-center font-semibold">{{ $artist->records->count() }} Vinyl{{ $artist->records->count() == 1 ? '' : 'er' }}</h2>
     @if (session('status'))
         <p class="mb-4 px-2 pt-1 text-lg font-semibold text-center">{{ session('status') }}</p>
     @endif
@@ -64,7 +64,7 @@
                 class="flex items-center px-2 py-2 text-left font-medium uppercase border-b hover:bg-slate-50">
                 <span class="font-bold text-slate-500 lg:text-2xl w-6 sm:w-8">{{ $count }}.</span>
                 <span class="lg:text-2xl">
-                    <a href="https://www.discogs.com/search/?q={{ urlencode($record->record_name) }}&type=release&format_exact=Vinyl"
+                    <a href="https://www.discogs.com/search/?q={{ urlencode($artist->name . " " .$record->record_name) }}&type=release&format_exact=Vinyl"
                         target="_BLANK"
                         class="hover:text-green-700">{{ $record->record_name }}</a>
                 </span>

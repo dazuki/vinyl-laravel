@@ -12,6 +12,11 @@ class ArtistShow extends Component
 
     public $name = '';
 
+    public function mount()
+    {
+        $this->name = Artist::find($this->art_id)->name;
+    }
+
     public function save()
     {
         $formFields = $this->validate([
