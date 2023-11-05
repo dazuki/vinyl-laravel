@@ -7,7 +7,7 @@
             <p class="mb-4 px-2 pt-1 text-lg font-semibold text-red-600 text-center">Artist är borttagen!</p>
         @endif
         <input wire:model.live.debounce.500ms="search" wire:keydown="resetRemoved" type="text"
-            class="p-2 mt-2 mb-2 sm:mb-0 w-full sm:drop-shadow-lg sm:w-2/6 border-l-2 border-r-2 border-t-2 border-b-2 sm:border-b-0 border-slate-300 outline-none" placeholder="Sök artist..."
+            class="p-2 mt-2 mb-2 sm:mb-0 w-full shadow-lg sm:w-2/6 border-l-2 border-r-2 border-t-2 border-b-2 sm:border-b-0 border-slate-300 outline-none" placeholder="Sök artist..."
             autocomplete="off" required="">
         <div wire:loading wire:target="search" class="items-center px-2">
 
@@ -29,7 +29,7 @@
     </div>
     <div class="relative overflow-x-auto shadow-lg">
         <table class="w-full text-sm text-left text-gray-500">
-            <thead class="border-b-2 border-t-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-xs text-slate-900 uppercase bg-slate-100">
+            <thead class="border-b-2 border-t-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-xs text-slate-900 bg-slate-100">
                 <tr>
                     <th scope="col" class="px-2 sm:px-6 py-2 text-base whitespace-nowrap">
                         Artister: <span class="font-medium">{{ $art_count }}</span>
@@ -43,7 +43,7 @@
             @if ($artists->count() >= 1 && $loadData == true)
                 @foreach ($artists->get() as $artist)
                     <tr wire:key="{{ $artist->id }}" class="bg-white border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-slate-50">
-                        <td class="px-2 sm:px-6 py-4 pb-0 align-top font-semibold text-base sm:text-xl lg:text-2xl text-gray-900">
+                        <td class="px-2 sm:px-6 py-4 pb-0 align-top font-semibold text-lg sm:text-xl lg:text-2xl text-gray-900">
                             <a href="/artist/{{ $artist->id }}" class="hover:text-blue-800">
                                 {{ $artist->name }}
                             </a>
@@ -62,8 +62,8 @@
                                 $recordCount = 1;
                                 $vinyler = $artist->records->count();
                             @endphp
-                            <p class="pb-2 underline">
-                                <span class="text-slate-700 text-sm sm:text-base font-semibold">{{ $vinyler }} Vinyl{{ $vinyler == 1 ? '' : 'er' }}</span>
+                            <p class="pb-2">
+                                <span class="text-slate-700 text-base sm:text-lg font-semibold">{{ $vinyler }} Vinyl{{ $vinyler == 1 ? '' : 'er' }}</span>
                             </p>
                             @if ($vinyler >= 1)
                                 @foreach ($artist->records as $record)
