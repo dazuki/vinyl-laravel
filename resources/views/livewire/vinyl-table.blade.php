@@ -2,23 +2,28 @@
     Samling
 @endsection
 <div wire:init="init" class="mx-auto max-w-screen-xl text-left">
-    <div class="px-2">
+    <div class="relative px-2">
         @if ($removed)
             <p class="mb-4 px-2 pt-1 text-lg font-semibold text-red-600 text-center">Artist är borttagen!</p>
         @endif
+        <div class="absolute inset-y-0 left-0 flex items-center pl-4 pt-2.5 pointer-events-none text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>              
+        </div>
         <input wire:model.live.debounce.500ms="search" type="text"
-            class="p-2 mt-2 mb-2 sm:mb-0 w-full sm:w-2/6 border-l-2 border-r-2 border-t-2 border-b-2 sm:border-b-0 border-slate-300 outline-none"
+            class="p-2 pl-10 mt-2 mb-0 w-full sm:w-2/6 border-l-2 border-r-2 border-t-2 border-b-0 border-slate-300 outline-none rounded-t-lg shadow-md"
             placeholder="Sök artist..." autocomplete="off" required="">
     </div>
     <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left border-2 border-slate-300 text-gray-500">
+        <table class="w-full text-sm text-left border-t-2 border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-gray-500">
             <thead
-                class="border-b-2 border-t-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-xs text-slate-900 bg-slate-100">
+                class="border-b-2 border-t-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-xs text-slate-900 gradient-2">
                 <tr>
-                    <th scope="col" class="px-2 sm:px-6 py-2 text-base whitespace-nowrap">
+                    <th scope="col" class="px-2 sm:px-6 py-2 text-base whitespace-nowrap antialiased w-1/2">
                         Artister: <span class="font-medium">{{ $art_count }}</span>
                     </th>
-                    <th scope="col" class="px-2 pl-0 sm:px-6 py-2 text-base whitespace-nowrap">
+                    <th scope="col" class="px-2 pl-0 sm:px-6 py-2 text-base whitespace-nowrap antialiased w-1/2">
                         Vinyler: <span class="font-medium">{{ $records }}</span>
                     </th>
                 </tr>
@@ -43,10 +48,10 @@
                 @if ($artists->count() >= 1 && $loadData == true)
                     @foreach ($artists as $artist)
                         <tr wire:key="{{ $artist->id }}"
-                            class="bg-white border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-slate-50">
+                            class="bg-white border-b lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-slate-50">
                             <td
-                                class="px-2 sm:px-6 py-4 pb-0 align-top font-semibold text-lg sm:text-xl lg:text-2xl text-gray-900">
-                                <a href="/artist/{{ $artist->id }}" class="hover:text-blue-800">
+                                class="px-2 sm:px-6 py-2 pb-0 align-top font-bold text-lg sm:text-xl lg:text-2xl text-gray-900">
+                                <a href="/artist/{{ $artist->id }}" class="antialiased hover:text-blue-800">
                                     {{ $artist->name }}
                                 </a>
                                 <p class="flex justify-start">
@@ -57,18 +62,18 @@
                                     </a>
                                 </p>
                             </td>
-                            <td class="sm:px-6 py-4 text-xs align-top">
+                            <td class="sm:px-6 py-2 text-xs align-top">
                                 @php
                                     $recordCount = 1;
                                     $vinyler = $artist->records->count();
                                 @endphp
                                 <p class="pb-2">
-                                    <span class="text-slate-700 text-sm sm:text-base font-semibold">» {{ $vinyler }}
+                                    <span class="text-slate-700 text-sm sm:text-base font-semibold underline underline-offset-4 antialiased">{{ $vinyler }}
                                         Vinyl{{ $vinyler == 1 ? '' : 'er' }}</span>
                                 </p>
                                 @if ($vinyler >= 1)
                                     @foreach ($artist->records as $record)
-                                        <p class="pb-1 uppercase text-gray-900 sm:text-sm">
+                                        <p class="pb-1 uppercase text-gray-900 sm:text-sm antialiased">
                                             {{ $record->record_name }}
                                         </p>
                                         @php
