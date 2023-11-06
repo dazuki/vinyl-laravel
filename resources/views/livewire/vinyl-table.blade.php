@@ -7,23 +7,26 @@
             <p class="mb-4 px-2 pt-1 text-lg font-semibold text-red-600 text-center">Artist är borttagen!</p>
         @endif
         <div class="absolute inset-y-0 left-0 flex items-center pl-4 pt-2.5 pointer-events-none text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>              
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
         </div>
         <input wire:model.live.debounce.500ms="search" type="text"
             class="p-2 pl-10 mt-2 mb-0 w-full sm:w-2/6 border-l-2 border-r-2 border-t-2 border-b-0 border-slate-300 outline-none rounded-t-lg shadow-md"
             placeholder="Sök artist..." autocomplete="off" required="">
     </div>
     <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left border-t-2 border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-gray-500">
+        <table
+            class="w-full text-sm text-left border-t-2 border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-gray-500">
             <thead
                 class="border-b-2 border-t-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-xs text-slate-900 gradient-2">
                 <tr>
-                    <th scope="col" class="px-2 sm:px-6 py-2 text-base whitespace-nowrap antialiased w-1/2">
+                    <th scope="col" class="px-2 sm:px-6 py-2 text-base sm:text-xl whitespace-nowrap antialiased w-1/2">
                         Artister: <span class="font-medium">{{ $art_count }}</span>
                     </th>
-                    <th scope="col" class="px-2 pl-0 sm:px-6 py-2 text-base whitespace-nowrap antialiased w-1/2">
+                    <th scope="col" class="px-2 pl-0 sm:px-6 py-2 text-base sm:text-xl whitespace-nowrap antialiased w-1/2">
                         Vinyler: <span class="font-medium">{{ $records }}</span>
                     </th>
                 </tr>
@@ -68,7 +71,8 @@
                                     $vinyler = $artist->records->count();
                                 @endphp
                                 <p class="pb-2">
-                                    <span class="text-slate-700 text-sm sm:text-base font-semibold underline underline-offset-4 antialiased">{{ $vinyler }}
+                                    <span
+                                        class="text-slate-700 text-sm sm:text-base font-semibold underline underline-offset-4 antialiased">{{ $vinyler }}
                                         Vinyl{{ $vinyler == 1 ? '' : 'er' }}</span>
                                 </p>
                                 @if ($vinyler >= 1)
@@ -91,27 +95,28 @@
                     @endforeach
                 @else
                     @if ($artists->count() <= 0)
-                    <tr class="bg-white border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300">
-                        <td colspan="2"
-                            class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900 text-center">
-                            <p>Här var det tomt...</p>
-                            @auth
-                                <div class="mt-4 flex justify-center w-full">
-                                    <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 w-full text-center"
-                                        href="/create/artist?name={{ strtoupper($search) }}">
-                                        <p><span class="text-green-700">Ny Artist</span></p>
-                                        <p>{{ strtoupper($search) }}</p>
-                                    </a>
-                                </div>
-                            @endauth
-                        </td>
-                    </tr>
+                        <tr class="bg-white border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300">
+                            <td colspan="2"
+                                class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900 text-center">
+                                <p>Här var det tomt...</p>
+                                @auth
+                                    <div class="mt-4 flex justify-center w-full">
+                                        <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 w-full text-center"
+                                            href="/create/artist?name={{ strtoupper($search) }}">
+                                            <p><span class="text-green-700">Ny Artist</span></p>
+                                            <p>{{ strtoupper($search) }}</p>
+                                        </a>
+                                    </div>
+                                @endauth
+                            </td>
+                        </tr>
                     @endif
                 @endif
                 @if ($loadData == true)
-                <tr>
-                    <td colspan="2" class="px-2 py-2 m-0 border-t-0 bg-white">{{ $artists->onEachSide(2)->links() }}</td>
-                </tr>
+                    <tr>
+                        <td colspan="2" class="px-2 py-2 m-0 border-t-0 bg-white">
+                            {{ $artists->onEachSide(2)->links() }}</td>
+                    </tr>
                 @endif
             </tbody>
         </table>
