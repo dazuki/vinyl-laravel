@@ -51,7 +51,7 @@
                                 </a>
                                 <p class="flex justify-start">
                                     <a href="https://www.discogs.com/search/?q={{ urlencode($artist->name) }}&type=artist"
-                                        class="opacity-25 pt-4 hover:opacity-100" target="_BLANK">
+                                        class="opacity-20 pt-4 hover:opacity-100" target="_BLANK">
                                         <img src="{{ asset('static/images/Discogs-01.svg') }}" class="h-12 sm:h-14"
                                             alt="DG">
                                     </a>
@@ -63,7 +63,7 @@
                                     $vinyler = $artist->records->count();
                                 @endphp
                                 <p class="pb-2">
-                                    <span class="text-slate-700 text-base sm:text-lg font-semibold">{{ $vinyler }}
+                                    <span class="text-slate-700 text-sm sm:text-base font-semibold">» {{ $vinyler }}
                                         Vinyl{{ $vinyler == 1 ? '' : 'er' }}</span>
                                 </p>
                                 @if ($vinyler >= 1)
@@ -105,7 +105,7 @@
                 @endif
                 @if ($loadData == true)
                 <tr>
-                    <td colspan="2" class="px-2 py-2 m-0 bg-white">{{ $artists->onEachSide(2)->links() }}</td>
+                    <td colspan="2" class="px-2 py-2 m-0 border-t-0 bg-white">{{ $artists->onEachSide(2)->links() }}</td>
                 </tr>
                 @endif
             </tbody>
