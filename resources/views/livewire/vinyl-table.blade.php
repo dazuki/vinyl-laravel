@@ -6,12 +6,12 @@
         @if ($removed)
             <p class="mb-4 px-2 pt-1 text-lg font-semibold text-red-600 text-center">Artist är borttagen!</p>
         @endif
-        <input wire:model.live.debounce.500ms="search" wire:keydown="resetRemoved" type="text"
-            class="p-2 mt-2 mb-2 sm:mb-0 w-full shadow-lg sm:w-2/6 border-l-2 border-r-2 border-t-2 border-b-2 sm:border-b-0 border-slate-300 outline-none"
+        <input wire:model.live.debounce.500ms="search" type="text"
+            class="p-2 mt-2 mb-2 sm:mb-0 w-full sm:w-2/6 border-l-2 border-r-2 border-t-2 border-b-2 sm:border-b-0 border-slate-300 outline-none"
             placeholder="Sök artist..." autocomplete="off" required="">
     </div>
-    <div class="relative overflow-x-auto shadow-lg">
-        <table class="w-full text-sm text-left text-gray-500">
+    <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left border-2 border-slate-300 text-gray-500">
             <thead
                 class="border-b-2 border-t-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-xs text-slate-900 bg-slate-100">
                 <tr>
@@ -26,8 +26,8 @@
             <tbody>
                 <tr class="bg-white lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-slate-50">
                     <td colspan="2" class="text-center">
-                        <div wire:loading wire:target="search"
-                        class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900 inline-block">
+                        <div wire:loading
+                            class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900 inline-block">
                             <svg width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
                                     opacity=".25" />
@@ -41,7 +41,7 @@
                     </td>
                 </tr>
                 @if ($artists->count() >= 1 && $loadData == true)
-                    @foreach ($artists->get() as $artist)
+                    @foreach ($artists as $artist)
                         <tr wire:key="{{ $artist->id }}"
                             class="bg-white border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-slate-50">
                             <td
@@ -85,37 +85,28 @@
                         </tr>
                     @endforeach
                 @else
+                    @if ($artists->count() <= 0)
                     <tr class="bg-white border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300">
                         <td colspan="2"
-                        class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900 text-center">
-                            @if ($loadData == false)
-                                <p class="inline-block">
-                                    <svg width="36" height="36" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
-                                            opacity=".25" />
-                                        <path
-                                            d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z">
-                                            <animateTransform attributeName="transform" type="rotate" dur="0.75s"
-                                                values="0 12 12;360 12 12" repeatCount="indefinite" />
-                                        </path>
-                                    </svg>
-                                </p>
-                            @else
-                                <p>Här var det tomt...</p>
-                                @auth
-                                    <div class="mt-4 flex justify-center w-full">
-                                        <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 w-full text-center"
-                                            href="/create/artist?name={{ strtoupper($search) }}">
-                                            <p><span class="text-green-700">Ny Artist</span></p>
-                                            <p>{{ strtoupper($search) }}</p>
-                                        </a>
-                                    </div>
-                                @endauth
-                            @endif
+                            class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900 text-center">
+                            <p>Här var det tomt...</p>
+                            @auth
+                                <div class="mt-4 flex justify-center w-full">
+                                    <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 w-full text-center"
+                                        href="/create/artist?name={{ strtoupper($search) }}">
+                                        <p><span class="text-green-700">Ny Artist</span></p>
+                                        <p>{{ strtoupper($search) }}</p>
+                                    </a>
+                                </div>
+                            @endauth
                         </td>
                     </tr>
+                    @endif
+                @endif
+                @if ($loadData == true)
+                <tr>
+                    <td colspan="2" class="px-2 py-2 m-0 bg-white">{{ $artists->onEachSide(2)->links() }}</td>
+                </tr>
                 @endif
             </tbody>
         </table>
