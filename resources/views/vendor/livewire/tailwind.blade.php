@@ -16,13 +16,13 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
             <div class="sm:hidden">
                 <span>
                     @if ($paginator->onFirstPage())
-                        <span class="relative items-center inline-flex px-8 py-2 text-sm font-medium text-gray-500 bg-gray-300 rounded-lg border-2  border-slate-300 cursor-default leading-5 select-none">
+                        <span class="relative items-center inline-flex px-8 py-2 text-sm font-medium text-gray-500 bg-gray-300 rounded-lg shadow-md border-2 border-slate-300 cursor-default leading-5 select-none">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                             </svg>
                         </span>
                     @else
-                        <button type="button" wire:click="previousPage('{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}" wire:loading.attr="disabled" dusk="previousPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.before" class="relative items-center px-8 py-2 text-sm font-medium text-gray-700 bg-slate-100 rounded-lg border-2  border-slate-300 leading-5 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                        <button type="button" wire:click="previousPage('{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}" wire:loading.attr="disabled" dusk="previousPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.before" class="relative items-center px-8 py-2 text-sm font-medium text-gray-700 bg-slate-100 rounded-lg shadow-md border-2 border-slate-300 leading-5 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                             </svg>
@@ -30,17 +30,17 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                     @endif
                 </span>
 
-                <span class="ml-3 relative inline-flex items-center text-sm bg-white px-2 py-1 border-2 border-slate-300">{{ $paginator->currentPage() }}&nbsp;&nbsp;/&nbsp;&nbsp;{{ $paginator->lastPage() }}</span>
+                <span class="ml-3 relative inline-flex text-sm items-center bg-white rounded-md px-2 py-1 border-2 border-slate-300">Sida&nbsp;&nbsp;<span class="font-semibold">{{ $paginator->currentPage() }}</span>&nbsp;&nbsp;/&nbsp;&nbsp;{{ $paginator->lastPage() }}</span>
 
                 <span>
                     @if ($paginator->hasMorePages())
-                        <button type="button" wire:click="nextPage('{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}" wire:loading.attr="disabled" dusk="nextPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.before" class="relative inline-flex items-center px-8 py-2 ml-3 text-sm font-medium text-gray-700 bg-slate-100 rounded-lg border-2  border-slate-300 leading-5 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                        <button type="button" wire:click="nextPage('{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}" wire:loading.attr="disabled" dusk="nextPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.before" class="relative inline-flex items-center px-8 py-2 ml-3 text-sm font-medium text-gray-700 bg-slate-100 rounded-lg shadow-md border-2 border-slate-300 leading-5 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                             </svg>
                         </button>
                     @else
-                        <span class="relative inline-flex items-center px-8 py-2 ml-3 text-sm font-medium text-gray-500 bg-gray-300 rounded-lg border-2  border-slate-300 cursor-default leading-5 select-none">
+                        <span class="relative inline-flex items-center px-8 py-2 ml-3 text-sm font-medium text-gray-500 bg-gray-300 rounded-lg shadow-md border-2 border-slate-300 cursor-default leading-5 select-none">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                             </svg>
