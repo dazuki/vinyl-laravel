@@ -15,7 +15,7 @@
         </div>
         <input wire:model.live.debounce.500ms="search" type="text"
             class="p-2 pl-10 mt-2 mb-0 w-full sm:w-2/6 border-l-2 border-r-2 border-t-2 border-b-0 border-slate-300 outline-none rounded-t-lg shadow-md"
-            placeholder="Sök artist..." autocomplete="off" required="">
+            placeholder="Sök artister/vinyler..." autocomplete="off" required="">
     </div>
     <div class="relative overflow-x-auto">
         <table
@@ -57,7 +57,14 @@
                             <td
                                 class="px-2 sm:px-6 py-2 pb-0 align-top font-bold text-lg sm:text-xl lg:text-2xl text-gray-900">
                                 <a href="/artist/{{ $artist->id }}" class="antialiased hover:text-blue-800">
-                                    {{ $artist->name }}
+                                    @if (!empty($search))
+                                        @php
+                                            echo str_replace(strtoupper($search), '<span class="text-blue-800 underline underline-offset-4">' . strtoupper($search) . '</span>', $artist->name);
+                                        @endphp
+                                    @else
+                                        {{ $artist->name }}
+                                    @endif
+                                    {{-- $artist->name --}}
                                 </a>
                                 <p class="flex justify-start">
                                     <a href="https://www.discogs.com/search/?q={{ urlencode($artist->name) }}&type=artist"
@@ -79,7 +86,13 @@
                                 @if ($vinyler >= 1)
                                     @foreach ($artist->records as $record)
                                         <p class="pb-1 uppercase text-gray-900 sm:text-sm antialiased">
-                                            {{ $record->record_name }}
+                                            @if (!empty($search))
+                                                @php
+                                                    echo str_replace(strtoupper($search), '<span class="text-blue-800 font-semibold underline underline-offset-4">' . strtoupper($search) . '</span>', strtoupper($record->record_name));
+                                                @endphp
+                                            @else
+                                                {{ $record->record_name }}
+                                            @endif
                                         </p>
                                     @endforeach
                                 @else
