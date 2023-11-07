@@ -24,7 +24,7 @@ class ArtistShow extends Component
         ]);
 
         Artist::where('id', $this->art_id)->update([
-            'name' => strtoupper($this->name)
+            'name' => mb_strtoupper($this->name)
         ]);
     }
 

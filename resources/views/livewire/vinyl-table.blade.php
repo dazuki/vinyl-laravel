@@ -59,7 +59,7 @@
                                 <a href="/artist/{{ $artist->id }}" class="antialiased hover:text-blue-800">
                                     @if (!empty($search))
                                         @php
-                                            echo str_replace(strtoupper($search), '<span class="text-blue-800 underline underline-offset-4">' . strtoupper($search) . '</span>', $artist->name);
+                                            echo str_replace(mb_strtoupper($search), '<span class="text-blue-800 underline underline-offset-4">' . mb_strtoupper($search) . '</span>', $artist->name);
                                         @endphp
                                     @else
                                         {{ $artist->name }}
@@ -88,7 +88,7 @@
                                         <p class="pb-1 uppercase text-gray-900 sm:text-sm antialiased">
                                             @if (!empty($search))
                                                 @php
-                                                    echo str_replace(strtoupper($search), '<span class="text-blue-800 font-semibold underline underline-offset-4">' . strtoupper($search) . '</span>', strtoupper($record->record_name));
+                                                    echo str_replace(mb_strtoupper($search), '<span class="text-blue-800 font-semibold underline underline-offset-4">' . mb_strtoupper($search) . '</span>', mb_strtoupper($record->record_name));
                                                 @endphp
                                             @else
                                                 {{ $record->record_name }}
@@ -110,9 +110,9 @@
                                 @auth
                                     <div class="mt-4 flex justify-center w-full">
                                         <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 w-full text-center"
-                                            href="/create/artist?name={{ strtoupper($search) }}">
+                                            href="/create/artist?name={{ mb_strtoupper($search) }}">
                                             <p><span class="text-green-700">Ny Artist</span></p>
-                                            <p>{{ strtoupper($search) }}</p>
+                                            <p>{{ mb_strtoupper($search) }}</p>
                                         </a>
                                     </div>
                                 @endauth

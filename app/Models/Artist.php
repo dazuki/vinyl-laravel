@@ -16,9 +16,9 @@ class Artist extends Model
 
     public function scopeSearch($query, $value)
     {
-        $query->where('name', 'like', "%{$value}%")
+        $query->whereRAW('name like ? ', '%' . mb_strtoupper($value) . '%')
             ->orWhereHas('records', function ($query) use ($value) {
-                return $query->where('record_name', 'like', "%{$value}%");
+                return $query->whereRaw('record_name like ? COLLATE NOCASE', '%' . mb_strtolower($value) . '%');
             });
     }
 }

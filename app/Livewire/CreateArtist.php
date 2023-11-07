@@ -13,7 +13,7 @@ class CreateArtist extends Component
 
     public function save()
     {
-        $this->name = strtoupper($this->name);
+        $this->name = mb_strtoupper($this->name);
 
         $formFields = $this->validate([
             'name' => 'required|min:1'

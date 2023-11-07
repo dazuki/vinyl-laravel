@@ -20,7 +20,7 @@ class CreateVinyl extends Component
 
     public function save()
     {
-        $this->record_name = strtoupper($this->record_name);
+        $this->record_name = mb_strtolower($this->record_name);
 
         if ($this->artist_id == 0) {
             $this->artist_id = null;
