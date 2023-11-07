@@ -1,10 +1,10 @@
-@section('page-title')
-    Samling
-@endsection
 <div wire:init="init" class="mx-auto max-w-screen-xl text-left">
+    @section('page-title')
+        Samling
+    @endsection
     <div class="relative px-2">
         @if ($removed)
-            <p class="mb-4 px-2 pt-1 text-lg font-semibold text-red-600 text-center">Artist är borttagen!</p>
+            {{-- <p class="alert mb-4 px-2 pt-1 text-lg font-semibold text-red-600 text-center">Artist är borttagen!</p> --}}
         @endif
         <div class="absolute inset-y-0 left-0 flex items-center pl-4 pt-2.5 pointer-events-none text-gray-400">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -23,10 +23,12 @@
             <thead
                 class="border-b-2 border-t-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-xs text-slate-900 gradient-2">
                 <tr>
-                    <th scope="col" class="px-2 sm:px-6 py-2 text-base sm:text-xl whitespace-nowrap antialiased w-1/2">
+                    <th scope="col"
+                        class="px-2 sm:px-6 py-2 text-base sm:text-xl whitespace-nowrap antialiased w-1/2">
                         Artister: <span class="font-medium">{{ $art_count }}</span>
                     </th>
-                    <th scope="col" class="px-2 pl-0 sm:px-6 py-2 text-base sm:text-xl whitespace-nowrap antialiased w-1/2">
+                    <th scope="col"
+                        class="px-2 pl-0 sm:px-6 py-2 text-base sm:text-xl whitespace-nowrap antialiased w-1/2">
                         Vinyler: <span class="font-medium">{{ $records }}</span>
                     </th>
                 </tr>
@@ -67,7 +69,6 @@
                             </td>
                             <td class="sm:px-6 py-2 text-xs align-top">
                                 @php
-                                    $recordCount = 1;
                                     $vinyler = $artist->records->count();
                                 @endphp
                                 <p class="pb-2">
@@ -80,16 +81,10 @@
                                         <p class="pb-1 uppercase text-gray-900 sm:text-sm antialiased">
                                             {{ $record->record_name }}
                                         </p>
-                                        @php
-                                            $recordCount++;
-                                        @endphp
                                     @endforeach
                                 @else
                                     <p class="uppercase text-gray-600 italic">(Tomt)</p>
                                 @endif
-                                @php
-                                    $recordCount = 1;
-                                @endphp
                             </td>
                         </tr>
                     @endforeach
@@ -112,12 +107,11 @@
                         </tr>
                     @endif
                 @endif
-                @if ($loadData == true)
-                    <tr>
-                        <td colspan="2" class="px-2 py-2 m-0 border-t-0 bg-white">
-                            {{ $artists->onEachSide(2)->links() }}</td>
-                    </tr>
-                @endif
             </tbody>
         </table>
+        @if ($loadData == true)
+            <div class="py-2 sm:py-0">
+                {{ $artists->onEachSide(2)->links() }}</td>
+            </div>
+        @endif
     </div>

@@ -34,7 +34,7 @@
             });
             (function(){
 	            let cpr = document.getElementById("copyright");
-	            cpr.innerHTML = "&copy; 2023 - "+new Date().getFullYear()+" bokbindaregatan.se - All Rights Reserved.";
+	            cpr.innerHTML = "&copy; 2023 - "+new Date().getFullYear()+" <a href=\"https://bokbindaregatan.se\" class=\"underline\">bokbindaregatan.se</a> - All Rights Reserved.";
             })();
         </script>
     </body>
