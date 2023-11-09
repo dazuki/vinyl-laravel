@@ -23,4 +23,10 @@ class Artist extends Model
                 return $query->whereRaw('record_name like ? COLLATE NOCASE', '%' . mb_strtolower($valuesVinyl) . '%');
             });
     }
+
+    public static function searchCount($value)
+    {
+        $valuesArtist = str_replace(' ', '%', $value);
+        return Artist::whereRAW('name like ? ', '%' . mb_strtoupper($valuesArtist) . '%');
+    }
 }

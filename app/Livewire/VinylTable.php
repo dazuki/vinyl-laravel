@@ -20,10 +20,6 @@ class VinylTable extends Component
 
     public bool $loadData = false;
 
-    public int $countSearchArtist = 0;
-
-    public int $countSearchVinyl = 0;
-
     public function resetRemoved()
     {
         $this->removed = 0;
@@ -46,7 +42,9 @@ class VinylTable extends Component
                 ->orderBy('name', 'asc')
                 ->paginate(25),
             'records' => Record::all()->count(),
-            'art_count' => Artist::all()->count()
+            'art_count' => Artist::all()->count(),
+            'searchCountArtist' => Artist::searchCount($this->search)->count(),
+            'searchCountRecord' => Record::search($this->search)->count()
         ]);
     }
 }
