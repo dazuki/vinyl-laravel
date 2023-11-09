@@ -22,7 +22,19 @@
         </p>
         @endauth
     </h1>
-    <h2 class="mb-4 text-lg text-center font-semibold">{{ $artist->records->count() }} Vinyl{{ $artist->records->count() == 1 ? '' : 'er' }}</h2>
+    <h2 class="text-lg text-center font-semibold">{{ $artist->records->count() }} Vinyl{{ $artist->records->count() == 1 ? '' : 'er' }}</h2>
+    <p class="flex justify-center items-center">
+        <a href="https://www.discogs.com/search/?q={{ urlencode($artist->name) }}&type=artist"
+            class="opacity-70 mr-4 hover:opacity-100" target="_BLANK">
+            <img src="{{ asset('static/images/Discogs-01.svg') }}" class="h-16 sm:h-20"
+                alt="DG">
+        </a>
+        <a href="spotify:search:{{ urlencode($artist->name) }}"
+            class="opacity-70 hover:opacity-100" target="_BLANK">
+            <img src="{{ asset('static/images/spotify_logo.svg') }}" class="h-8 sm:h-10"
+                alt="SF">
+        </a>
+    </p>
     @if (session('status'))
         <p class="mb-4 px-2 pt-1 text-lg font-semibold text-center">{{ session('status') }}</p>
     @endif

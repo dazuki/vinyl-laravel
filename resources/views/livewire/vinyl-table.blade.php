@@ -51,7 +51,7 @@
                     </td>
                 </tr>
                 @if (!empty($search) && $artists->count() >= 1)
-                    <tr class="bg-slate-100 lg:border-l-2 lg:border-r-2 border-slate-300">
+                    <tr class="bg-slate-100 border-dashed border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300">
                         <td colspan="2" class="text-left px-2 text-gray-900 text-sm sm:text-base sm:px-6 py-2">
                             <p>
                                 Sökord -> "<span class="font-semibold text-red-800">{{ mb_strtoupper($search) }}</span>"
@@ -66,7 +66,8 @@
                 @if ($artists->count() >= 1 && $loadData == true)
                     @foreach ($artists as $artist)
                         <tr wire:key="{{ $artist->id }}"
-                            class="bg-white border-b lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-slate-50">
+                            onclick="window.location.href='/artist/{{ $artist->id }}'"
+                            class="bg-white border-b cursor-pointer lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-sky-50">
                             <td
                                 class="px-2 sm:px-6 py-2 pb-0 align-top font-bold text-lg sm:text-xl lg:text-2xl text-gray-900">
                                 <a href="/artist/{{ $artist->id }}" class="antialiased hover:text-blue-800">
@@ -85,9 +86,9 @@
                                     @endif
                                     {{-- $artist->name --}}
                                 </a>
-                                <p class="flex justify-between sm:justify-start items-center">
+                                {{-- <p class="flex justify-start items-center">
                                     <a href="https://www.discogs.com/search/?q={{ urlencode($artist->name) }}&type=artist"
-                                        class="opacity-20 sm:mr-4 hover:opacity-100" target="_BLANK">
+                                        class="opacity-20 hover:opacity-100" target="_BLANK">
                                         <img src="{{ asset('static/images/Discogs-01.svg') }}" class="h-12 sm:h-14"
                                             alt="DG">
                                     </a>
@@ -96,7 +97,7 @@
                                         <img src="{{ asset('static/images/spotify-icon.svg') }}" class="h-6 sm:h-8"
                                             alt="SF">
                                     </a>
-                                </p>
+                                </p> --}}
                             </td>
                             <td class="sm:px-6 py-2 text-xs align-top">
                                 @php
