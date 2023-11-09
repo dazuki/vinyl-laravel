@@ -20,6 +20,10 @@ class VinylTable extends Component
 
     public bool $loadData = false;
 
+    public int $countSearchArtist = 0;
+
+    public int $countSearchVinyl = 0;
+
     public function resetRemoved()
     {
         $this->removed = 0;

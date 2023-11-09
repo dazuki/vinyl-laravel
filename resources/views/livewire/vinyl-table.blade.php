@@ -2,6 +2,10 @@
     @section('page-title')
         Samling
     @endsection
+    @php
+        $resArtist = 0;
+        $resVinyl = 0;
+    @endphp
     <div class="relative px-2">
         @if ($removed)
             {{-- <p class="alert mb-4 px-2 pt-1 text-lg font-semibold text-red-600 text-center">Artist är borttagen!</p> --}}
@@ -34,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-slate-50">
+                <tr class="bg-slate-100 lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-slate-50">
                     <td colspan="2" class="text-center">
                         <div wire:loading
                             class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900 inline-block">
@@ -50,6 +54,12 @@
                         </div>
                     </td>
                 </tr>
+                @if (!empty($search) && $artists->count() >= 1)
+                    <tr class="bg-slate-100 lg:border-l-2 lg:border-r-2 border-slate-300">
+                        <td colspan="2" class="px-2 sm:px-6 py-1 text-sm sm:text-base text-left text-gray-900">» <span id="resultArtist" class="font-semibold underline underline-offset-2">{{ $artists->count() }}</span>+ Sökresultat hittades...
+                        </td>
+                    </tr>
+                @endif
                 @if ($artists->count() >= 1 && $loadData == true)
                     @foreach ($artists as $artist)
                         <tr wire:key="{{ $artist->id }}"
@@ -62,13 +72,10 @@
                                             $highlightArtist = explode(' ', mb_strtoupper($search));
                                             $replaceArtist = [];
                                             foreach ($highlightArtist as $wordsArtist) {
-                                                $replaceArtist[] = '<span class="text-blue-800 underline underline-offset-4">' . $wordsArtist . '</span>';
+                                                $replaceArtist[] = '<span class="text-red-600 underline underline-offset-4">' . $wordsArtist . '</span>';
                                             }
 
-                                            //dd($highlightVinyl);
-                                            //dd($replaceVinyl);
-
-                                            echo str_replace($highlightArtist, $replaceArtist, $artist->name);
+                                            echo str_replace($highlightArtist, $replaceArtist, $artist->name, $count);
                                         @endphp
                                     @else
                                         {{ $artist->name }}
@@ -100,11 +107,8 @@
                                                     $highlightVinyl = explode(' ', mb_strtoupper($search));
                                                     $replaceVinyl = [];
                                                     foreach ($highlightVinyl as $wordsVinyl) {
-                                                        $replaceVinyl[] = '<span class="text-blue-800 font-semibold underline underline-offset-4">' . $wordsVinyl . '</span>';
+                                                        $replaceVinyl[] = '<span class="text-red-600 font-semibold underline underline-offset-4">' . $wordsVinyl . '</span>';
                                                     }
-
-                                                    //dd($highlightVinyl);
-                                                    //dd($replaceVinyl);
 
                                                     echo str_replace($highlightVinyl, $replaceVinyl, mb_strtoupper($record->record_name));
                                                 @endphp
