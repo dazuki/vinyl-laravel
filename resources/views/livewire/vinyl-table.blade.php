@@ -52,12 +52,15 @@
                 </tr>
                 @if (!empty($search) && $artists->count() >= 1)
                     <tr class="bg-slate-100 lg:border-l-2 lg:border-r-2 border-slate-300">
-                        <td colspan="2" class="text-center px-2 text-gray-900 text-sm sm:text-base sm:px-6 py-2">
-                            <span
-                                class="{{ $searchCountArtist > 0 ? 'font-semibold text-gray-900 underline ' : '' }} underline-offset-2">{{ $searchCountArtist }}</span>
-                            Artist(er) & <span
-                                class="{{ $searchCountRecord > 0 ? 'font-semibold text-gray-900 underline ' : '' }} underline-offset-2">{{ $searchCountRecord }}</span>
-                            Vinyl(er) hittades för <span class="italic">"{{ mb_strtoupper($search) }}"</span></td>
+                        <td colspan="2" class="text-left px-2 text-gray-900 text-sm sm:text-base sm:px-6 py-1">
+                            <p>
+                                Sökord: <span class="font-semibold text-red-600">"{{ mb_strtoupper($search) }}"</span>
+                            </p>
+                            <p>Resultat: <span
+                                class="{{ $searchCountArtist > 0 ? 'font-semibold text-gray-900' : '' }}underline-offset-2">{{ $searchCountArtist }}</span>
+                            Artist{{ $searchCountArtist == 1 ? '' : 'er' }} och <span
+                                class="{{ $searchCountRecord > 0 ? 'font-semibold text-gray-900 ' : '' }}underline-offset-2">{{ $searchCountRecord }}</span>
+                            Vinyl{{ $searchCountRecord == 1 ? '' : 'er' }} ({{ $searchCountArtist + $searchCountRecord }} totalt)</p></td>
                     </tr>
                 @endif
                 @if ($artists->count() >= 1 && $loadData == true)
