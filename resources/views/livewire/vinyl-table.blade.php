@@ -85,11 +85,16 @@
                                     @endif
                                     {{-- $artist->name --}}
                                 </a>
-                                <p class="flex justify-start">
+                                <p class="flex justify-between sm:justify-start items-center">
                                     <a href="https://www.discogs.com/search/?q={{ urlencode($artist->name) }}&type=artist"
-                                        class="opacity-20 pt-4 hover:opacity-100" target="_BLANK">
+                                        class="opacity-20 sm:mr-4 hover:opacity-100" target="_BLANK">
                                         <img src="{{ asset('static/images/Discogs-01.svg') }}" class="h-12 sm:h-14"
                                             alt="DG">
+                                    </a>
+                                    <a href="spotify:search:{{ urlencode($artist->name) }}"
+                                        class="opacity-20 grayscale hover:opacity-100 hover:grayscale-0" target="_BLANK">
+                                        <img src="{{ asset('static/images/spotify-icon.svg') }}" class="h-6 sm:h-8"
+                                            alt="SF">
                                     </a>
                                 </p>
                             </td>
