@@ -59,7 +59,16 @@
                                 <a href="/artist/{{ $artist->id }}" class="antialiased hover:text-blue-800">
                                     @if (!empty($search))
                                         @php
-                                            echo str_replace(mb_strtoupper($search), '<span class="text-blue-800 underline underline-offset-4">' . mb_strtoupper($search) . '</span>', $artist->name);
+                                            $highlightArtist = explode(' ', mb_strtoupper($search));
+                                            $replaceArtist = [];
+                                            foreach ($highlightArtist as $wordsArtist) {
+                                                $replaceArtist[] = '<span class="text-blue-800 underline underline-offset-4">' . $wordsArtist . '</span>';
+                                            }
+
+                                            //dd($highlightVinyl);
+                                            //dd($replaceVinyl);
+
+                                            echo str_replace($highlightArtist, $replaceArtist, $artist->name);
                                         @endphp
                                     @else
                                         {{ $artist->name }}
@@ -88,7 +97,16 @@
                                         <p class="pb-1 uppercase text-gray-900 sm:text-sm antialiased">
                                             @if (!empty($search))
                                                 @php
-                                                    echo str_replace(mb_strtoupper($search), '<span class="text-blue-800 font-semibold underline underline-offset-4">' . mb_strtoupper($search) . '</span>', mb_strtoupper($record->record_name));
+                                                    $highlightVinyl = explode(' ', mb_strtoupper($search));
+                                                    $replaceVinyl = [];
+                                                    foreach ($highlightVinyl as $wordsVinyl) {
+                                                        $replaceVinyl[] = '<span class="text-blue-800 font-semibold underline underline-offset-4">' . $wordsVinyl . '</span>';
+                                                    }
+
+                                                    //dd($highlightVinyl);
+                                                    //dd($replaceVinyl);
+
+                                                    echo str_replace($highlightVinyl, $replaceVinyl, mb_strtoupper($record->record_name));
                                                 @endphp
                                             @else
                                                 {{ $record->record_name }}

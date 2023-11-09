@@ -16,9 +16,11 @@ class Artist extends Model
 
     public function scopeSearch($query, $value)
     {
-        $query->whereRAW('name like ? ', '%' . mb_strtoupper($value) . '%')
+        $valuesArtist = str_replace(' ', '%', $value);
+        $query->whereRAW('name like ? ', '%' . mb_strtoupper($valuesArtist) . '%')
             ->orWhereHas('records', function ($query) use ($value) {
-                return $query->whereRaw('record_name like ? COLLATE NOCASE', '%' . mb_strtolower($value) . '%');
+                $valuesVinyl = str_replace(' ', '%', $value);
+                return $query->whereRaw('record_name like ? COLLATE NOCASE', '%' . mb_strtolower($valuesVinyl) . '%');
             });
     }
 }
