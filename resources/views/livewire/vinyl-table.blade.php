@@ -57,17 +57,18 @@
                                 Sökord -> "<span class="font-semibold text-red-800">{{ mb_strtoupper($search) }}</span>"
                             </p>
                             <p><span
-                                class="{{ $searchCountArtist > 0 ? 'font-semibold text-gray-900 underline ' : '' }}underline-offset-2">{{ $searchCountArtist }}</span>
-                            Artist{{ $searchCountArtist == 1 ? '' : 'er' }} och <span
-                                class="{{ $searchCountRecord > 0 ? 'font-semibold text-gray-900 underline ' : '' }}underline-offset-2">{{ $searchCountRecord }}</span>
-                            Vinyl{{ $searchCountRecord == 1 ? '' : 'er' }} ({{ $searchCountArtist + $searchCountRecord }} totalt)</p></td>
+                                    class="{{ $searchCountArtist > 0 ? 'font-semibold text-gray-900 underline ' : '' }}underline-offset-2">{{ $searchCountArtist }}</span>
+                                Artist{{ $searchCountArtist == 1 ? '' : 'er' }} och <span
+                                    class="{{ $searchCountRecord > 0 ? 'font-semibold text-gray-900 underline ' : '' }}underline-offset-2">{{ $searchCountRecord }}</span>
+                                Vinyl{{ $searchCountRecord == 1 ? '' : 'er' }}
+                                ({{ $searchCountArtist + $searchCountRecord }} totalt)</p>
+                        </td>
                     </tr>
                 @endif
                 @if ($artists->count() >= 1 && $loadData == true)
                     @foreach ($artists as $artist)
                         <tr wire:key="{{ $artist->id }}"
-                            onclick="window.location.href='/artist/{{ $artist->id }}'"
-                            class="bg-white border-b cursor-pointer lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-sky-50">
+                            class="bg-white border-b lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-sky-50">
                             <td
                                 class="px-2 sm:px-6 py-2 pb-0 align-top font-bold text-lg sm:text-xl lg:text-2xl text-gray-900">
                                 <a href="/artist/{{ $artist->id }}" class="antialiased hover:text-blue-800">
