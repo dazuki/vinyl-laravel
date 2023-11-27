@@ -58,55 +58,6 @@
                 '<li><a class=\"lg:hidden text-center block font-semibold text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg shadow-md bg-slate-100\" href=\"/login\" wire:navigate>Logga In</a></li>'
         @endauth
         });
-
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const editBtn = document.querySelector("#btnEdit");
-            const editField = document.querySelector("#artist_edit");
-            const subBtn = document.querySelector("#subBtn");
-            const cancelBtn = document.querySelector("#cancelBtn");
-            const btnDel = document.querySelector("#btnDel");
-
-            editBtn.addEventListener("click", () => {
-                editField.classList.toggle("hidden");
-                editBtn.classList.toggle("hidden");
-                subBtn.classList.toggle("hidden");
-                cancelBtn.classList.toggle("hidden");
-                btnDel.classList.toggle("hidden");
-            });
-
-            cancelBtn.addEventListener("click", () => {
-                editField.classList.toggle("hidden");
-                editBtn.classList.toggle("hidden");
-                subBtn.classList.toggle("hidden");
-                cancelBtn.classList.toggle("hidden");
-                btnDel.classList.toggle("hidden");
-            });
-        });
-
-        document.addEventListener("livewire:navigated", () => {
-            const editBtn = document.querySelector("#btnEdit");
-            const editField = document.querySelector("#artist_edit");
-            const subBtn = document.querySelector("#subBtn");
-            const cancelBtn = document.querySelector("#cancelBtn");
-            const btnDel = document.querySelector("#btnDel");
-
-            editBtn.addEventListener("click", () => {
-                editField.classList.toggle("hidden");
-                editBtn.classList.toggle("hidden");
-                subBtn.classList.toggle("hidden");
-                cancelBtn.classList.toggle("hidden");
-                btnDel.classList.toggle("hidden");
-            });
-
-            cancelBtn.addEventListener("click", () => {
-                editField.classList.toggle("hidden");
-                editBtn.classList.toggle("hidden");
-                subBtn.classList.toggle("hidden");
-                cancelBtn.classList.toggle("hidden");
-                btnDel.classList.toggle("hidden");
-            });
-        });
     </script>
 </body>
 
