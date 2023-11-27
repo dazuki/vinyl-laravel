@@ -60,7 +60,8 @@
                         <p class="text-center">
                             <input wire:model="name" type="text" id="artist_edit"
                                 class="p-2 mt-2 w-full sm:w-2/6 border-2 border-slate-300 outline-none"
-                                placeholder="Skriv nytt namn här..." autocomplete="off">
+                                placeholder="Skriv nytt namn här..." autocomplete="off"
+                                wire:dirty.class="border-orange-300">
                         </p>
                         <p class="text-center">
                             <button type="submit" id="subBtn"
