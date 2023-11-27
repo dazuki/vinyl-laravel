@@ -2,7 +2,7 @@
     <div x-data="{ open: false }" class="gradient">
         <div class="container mx-auto flex justify-between items-center p-2 pl-2 max-w-6xl">
             <div class="flex justify-center text-gray-900 font-bold text-xl sm:text-2xl lg:text-3xl">
-                <a href="/" class="antialiased items-center">
+                <a href="/" class="antialiased items-center" wire:navigate>
                     {{-- <img src="{{ asset('static/images/vinyl-record-svgrepo-com.svg') }}"
             class="inline-block -mt-1 h-6 w-6 lg:w-8 lg:h-8"> --}}
                     <div class="inline-block items-center">

@@ -26,23 +26,87 @@
         document.addEventListener("DOMContentLoaded", () => {
             let burgerMenu = document.getElementById('burgerMenu');
 
+            burgerMenu.innerHTML = '';
+
             @auth
             burgerMenu.innerHTML +=
-                '<li><a class=\"lg:hidden text-center block text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100\" href=\"/create/vinyl\">Ny Vinyl</a></li>';
+                '<li><a class=\"lg:hidden text-center block text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100\" href=\"/create/vinyl\" wire:navigate>Ny Vinyl</a></li>';
             burgerMenu.innerHTML +=
-                '<li><a class=\"lg:hidden text-center block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100\" href=\"/create/artist\">Ny Artist</a></li>';
+                '<li><a class=\"lg:hidden text-center block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100\" href=\"/create/artist\" wire:navigate>Ny Artist</a></li>';
             burgerMenu.innerHTML +=
-                '<li><a class=\"lg:hidden text-center block mt-2 text-gray-900 hover:text-red-700 bg-red-100 shadow-md rounded-lg border-2 border-red-300 p-2 text-lg\" href=\"/logout\">Logga Ut</a></li>';
+                '<li><a class=\"lg:hidden text-center block mt-2 text-gray-900 hover:text-red-700 bg-red-100 shadow-md rounded-lg border-2 border-red-300 p-2 text-lg\" href=\"/logout\" wire:navigate>Logga Ut</a></li>';
         @else
             burgerMenu.innerHTML +=
-                '<li><a class=\"lg:hidden text-center block font-semibold text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg shadow-md bg-slate-100\" href=\"/login\">Logga In</a></li>'
+                '<li><a class=\"lg:hidden text-center block font-semibold text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg shadow-md bg-slate-100\" href=\"/login\" wire:navigate>Logga In</a></li>'
         @endauth
         });
-        (function() {
-            let cpr = document.getElementById("copyright");
-            cpr.innerHTML = "&copy; 2023 - " + new Date().getFullYear() +
-                " <a href=\"https://bokbindaregatan.se\" class=\"underline\">bokbindaregatan.se</a> - All Rights Reserved.";
-        })();
+
+        document.addEventListener("livewire:navigated", () => {
+            let burgerMenu = document.getElementById('burgerMenu');
+
+            burgerMenu.innerHTML = '';
+
+            @auth
+            burgerMenu.innerHTML +=
+                '<li><a class=\"lg:hidden text-center block text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100\" href=\"/create/vinyl\" wire:navigate>Ny Vinyl</a></li>';
+            burgerMenu.innerHTML +=
+                '<li><a class=\"lg:hidden text-center block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100\" href=\"/create/artist\" wire:navigate>Ny Artist</a></li>';
+            burgerMenu.innerHTML +=
+                '<li><a class=\"lg:hidden text-center block mt-2 text-gray-900 hover:text-red-700 bg-red-100 shadow-md rounded-lg border-2 border-red-300 p-2 text-lg\" href=\"/logout\" wire:navigate>Logga Ut</a></li>';
+        @else
+            burgerMenu.innerHTML +=
+                '<li><a class=\"lg:hidden text-center block font-semibold text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg shadow-md bg-slate-100\" href=\"/login\" wire:navigate>Logga In</a></li>'
+        @endauth
+        });
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const editBtn = document.querySelector("#btnEdit");
+            const editField = document.querySelector("#artist_edit");
+            const subBtn = document.querySelector("#subBtn");
+            const cancelBtn = document.querySelector("#cancelBtn");
+            const btnDel = document.querySelector("#btnDel");
+
+            editBtn.addEventListener("click", () => {
+                editField.classList.toggle("hidden");
+                editBtn.classList.toggle("hidden");
+                subBtn.classList.toggle("hidden");
+                cancelBtn.classList.toggle("hidden");
+                btnDel.classList.toggle("hidden");
+            });
+
+            cancelBtn.addEventListener("click", () => {
+                editField.classList.toggle("hidden");
+                editBtn.classList.toggle("hidden");
+                subBtn.classList.toggle("hidden");
+                cancelBtn.classList.toggle("hidden");
+                btnDel.classList.toggle("hidden");
+            });
+        });
+
+        document.addEventListener("livewire:navigated", () => {
+            const editBtn = document.querySelector("#btnEdit");
+            const editField = document.querySelector("#artist_edit");
+            const subBtn = document.querySelector("#subBtn");
+            const cancelBtn = document.querySelector("#cancelBtn");
+            const btnDel = document.querySelector("#btnDel");
+
+            editBtn.addEventListener("click", () => {
+                editField.classList.toggle("hidden");
+                editBtn.classList.toggle("hidden");
+                subBtn.classList.toggle("hidden");
+                cancelBtn.classList.toggle("hidden");
+                btnDel.classList.toggle("hidden");
+            });
+
+            cancelBtn.addEventListener("click", () => {
+                editField.classList.toggle("hidden");
+                editBtn.classList.toggle("hidden");
+                subBtn.classList.toggle("hidden");
+                cancelBtn.classList.toggle("hidden");
+                btnDel.classList.toggle("hidden");
+            });
+        });
     </script>
 </body>
 
