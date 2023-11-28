@@ -5,16 +5,32 @@ namespace App\Livewire;
 use App\Models\Artist;
 use App\Models\Record;
 use Livewire\Component;
+use Illuminate\Http\Request;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ArtistShow extends Component
 {
+    use LivewireAlert;
+
     public $art_id;
 
     public $name = '';
 
-    public function mount()
+    public function mount(Request $request)
     {
         $this->name = Artist::find($this->art_id)->name;
+
+        if ($request->msg == 'artist') {
+            $this->alert('success', 'Artist tillagd!', [
+                'toast' => false,
+                'position' => 'center'
+            ]);
+        } elseif ($request->msg == 'vinyl') {
+            $this->alert('success', 'Vinyl tillagd!', [
+                'toast' => false,
+                'position' => 'center'
+            ]);
+        }
     }
 
     public function save()

@@ -21,9 +21,7 @@ class CreateArtist extends Component
 
         $createRecord = Artist::create($formFields);
 
-        session()->flash('status', 'Artisten är skapad!');
-
-        $this->redirect('/artist/' . $createRecord->id);
+        $this->redirect('/artist/' . $createRecord->id . '?msg=artist');
     }
 
     public function render()

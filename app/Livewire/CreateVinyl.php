@@ -35,7 +35,7 @@ class CreateVinyl extends Component
 
         session()->flash('status', 'Vinylen är tillagd!');
 
-        $this->redirect('/artist/' . $this->artist_id);
+        $this->redirect('/artist/' . $this->artist_id . '?msg=vinyl');
     }
 
     public function render()

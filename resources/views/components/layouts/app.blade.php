@@ -11,7 +11,7 @@
     <link rel="manifest" href="{{ asset('static/images/site.webmanifest') }}">
 
     <title>@yield('page-title') - Vinylskivor Förteckning</title>
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-slate-200">

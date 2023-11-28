@@ -21,9 +21,9 @@ use Illuminate\Routing\Events\Routing;
 |
 */
 
-Route::get('/', VinylTable::class);
+Route::get('/', VinylTable::class)->name('home');
 
-Route::get('/artist/{art_id}', ArtistShow::class);
+Route::get('/artist/{art_id}', ArtistShow::class)->name('artistshow');
 
 Route::get('/edit/artist/{art_id}', ArtistEdit::class);
 
