@@ -34,7 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-slate-100 lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-slate-50">
+                <tr class="bg-white lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-slate-50">
                     <td colspan="2" class="text-center">
                         <div wire:loading
                             class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900 inline-block">
