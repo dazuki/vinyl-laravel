@@ -7,6 +7,7 @@ use App\Livewire\VinylTable;
 use Illuminate\Http\Request;
 use App\Livewire\CreateVinyl;
 use App\Livewire\CreateArtist;
+use App\Livewire\VinylHistory;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\Events\Routing;
 
@@ -22,6 +23,8 @@ use Illuminate\Routing\Events\Routing;
 */
 
 Route::get('/', VinylTable::class)->name('home');
+
+Route::get('/history', VinylHistory::class);
 
 Route::get('/artist/{art_id}', ArtistShow::class)->name('artistshow');
 

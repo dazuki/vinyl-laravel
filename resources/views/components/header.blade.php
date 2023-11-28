@@ -33,6 +33,8 @@
                                 href="/create/vinyl" wire:navigate>Ny Vinyl</a></li>
                         <li><a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100"
                                 href="/create/artist" wire:navigate>Ny Artist</a></li>
+                        <li><a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100"
+                                href="/history" wire:navigate>Historik</a></li>
                         <li><a class="text-gray-900 hover:text-red-700 rounded-lg border-2 border-red-300 p-2 shadow-md bg-red-100"
                                 href="/logout" wire:navigate>Logga Ut</a></li>
                     @else
@@ -49,6 +51,8 @@
                             href="/create/vinyl" wire:navigate>Ny Vinyl</a></li>
                     <li><a class="lg:hidden text-center block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100"
                             href="/create/artist" wire:navigate>Ny Artist</a></li>
+                    <li><a class="lg:hidden text-center block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100"
+                            href="/history" wire:navigate>Historik</a></li>
                     <li><a class="lg:hidden text-center block mt-2 text-gray-900 hover:text-red-700 bg-red-100 shadow-md rounded-lg border-2 border-red-300 p-2 text-lg"
                             href="/logout" wire:navigate>Logga Ut</a></li>
                 @else
