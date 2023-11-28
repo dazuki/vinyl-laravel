@@ -56,7 +56,7 @@
             @enderror
             @auth
                 <div x-cloak x-show="show" x-transition>
-                    <form wire:submit="save">
+                    <form wire:submit="save" id="edit_form">
                         <p class="text-center">
                             <input wire:model="name" type="text" id="artist_edit"
                                 class="p-2 mt-2 w-full sm:w-2/6 border-2 border-slate-300 outline-none"

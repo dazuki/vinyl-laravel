@@ -22,25 +22,6 @@
         </main>
     </div>
     <div id="copyright" class="my-2 text-xs" align="center">&copy; 2023 - 2023 bokbindaregatan.se</div>
-    <script>
-        document.addEventListener("livewire:navigated", () => {
-            let burgerMenu = document.getElementById('burgerMenu');
-
-            burgerMenu.innerHTML = '';
-
-            @auth
-            burgerMenu.innerHTML +=
-                '<li><a class=\"lg:hidden text-center block text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100\" href=\"/create/vinyl\" wire:navigate>Ny Vinyl</a></li>';
-            burgerMenu.innerHTML +=
-                '<li><a class=\"lg:hidden text-center block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100\" href=\"/create/artist\" wire:navigate>Ny Artist</a></li>';
-            burgerMenu.innerHTML +=
-                '<li><a class=\"lg:hidden text-center block mt-2 text-gray-900 hover:text-red-700 bg-red-100 shadow-md rounded-lg border-2 border-red-300 p-2 text-lg\" href=\"/logout\" wire:navigate>Logga Ut</a></li>';
-        @else
-            burgerMenu.innerHTML +=
-                '<li><a class=\"lg:hidden text-center block font-semibold text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg shadow-md bg-slate-100\" href=\"/login\" wire:navigate>Logga In</a></li>'
-        @endauth
-        });
-    </script>
 </body>
 
 </html>

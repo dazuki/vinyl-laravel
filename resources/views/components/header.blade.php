@@ -42,7 +42,19 @@
             </div>
         </div>
         <div x-cloak x-show="open" class="lg:hidden">
-            <ul id="burgerMenu" class="bg-white px-4 py-4"></ul>
+            <ul id="burgerMenu" class="bg-white px-4 py-4">
+                @auth
+                    <li><a class="lg:hidden text-center block text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100"
+                            href="/create/vinyl" wire:navigate>Ny Vinyl</a></li>
+                    <li><a class="lg:hidden text-center block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100"
+                            href="/create/artist" wire:navigate>Ny Artist</a></li>
+                    <li><a class="lg:hidden text-center block mt-2 text-gray-900 hover:text-red-700 bg-red-100 shadow-md rounded-lg border-2 border-red-300 p-2 text-lg"
+                            href="/logout" wire:navigate>Logga Ut</a></li>
+                @else
+                    <li><a class="lg:hidden text-center block font-semibold text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg shadow-md bg-slate-100"
+                            href="/login" wire:navigate>Logga In</a></li>
+                @endauth
+            </ul>
         </div>
     </div>
 </header>

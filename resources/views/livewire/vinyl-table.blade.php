@@ -13,7 +13,7 @@
                     d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>
         </div>
-        <input wire:model.live.debounce.500ms="search" type="text"
+        <input wire:model.live.debounce.500ms="search" name="search" type="text"
             class="p-2 pl-10 mt-2 mb-0 w-full sm:w-2/6 border-l-2 border-r-2 border-t-2 border-b-0 border-slate-300 outline-none rounded-t-lg shadow-md"
             placeholder="Sök artister/vinyler..." autocomplete="off" required="">
     </div>
@@ -88,20 +88,7 @@
                                         @else
                                             {{ $artist->name }}
                                         @endif
-                                        {{-- $artist->name --}}
                                     </a>
-                                    {{-- <p class="flex justify-start items-center">
-                                    <a href="https://www.discogs.com/search/?q={{ urlencode($artist->name) }}&type=artist"
-                                        class="opacity-20 hover:opacity-100" target="_BLANK">
-                                        <img src="{{ asset('static/images/Discogs-01.svg') }}" class="h-12 sm:h-14"
-                                            alt="DG">
-                                    </a>
-                                    <a href="spotify:search:{{ urlencode($artist->name) }}"
-                                        class="opacity-20 grayscale hover:opacity-100 hover:grayscale-0" target="_BLANK">
-                                        <img src="{{ asset('static/images/spotify-icon.svg') }}" class="h-6 sm:h-8"
-                                            alt="SF">
-                                    </a>
-                                </p> --}}
                                 </td>
                                 <td class="sm:px-6 py-2 text-xs align-top">
                                     @php
