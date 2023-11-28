@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+[x-cloak] {
+    display: none !important;
+}
+
 #nprogress .spinner {
     display: block;
     position: fixed;

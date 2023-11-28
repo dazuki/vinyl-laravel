@@ -38,13 +38,13 @@ class VinylTable extends Component
     public function render()
     {
         return view('livewire.vinyl-table', [
-            'artists' => Artist::search($this->search)
+            'artists' => $this->loadData ? Artist::search($this->search)
                 ->orderBy('name', 'asc')
-                ->paginate(25),
-            'records' => Record::all()->count(),
-            'art_count' => Artist::all()->count(),
-            'searchCountArtist' => Artist::searchCount($this->search)->count(),
-            'searchCountRecord' => Record::search($this->search)->count()
+                ->paginate(25) : [],
+            'records' => $this->loadData ? Record::all()->count() : [],
+            'art_count' => $this->loadData ? Artist::all()->count() : [],
+            'searchCountArtist' => $this->loadData ? Artist::searchCount($this->search)->count() : [],
+            'searchCountRecord' => $this->loadData ? Record::search($this->search)->count() : []
         ]);
     }
 }

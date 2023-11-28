@@ -41,7 +41,7 @@
                 </ul>
             </div>
         </div>
-        <div x-show="open" class="lg:hidden">
+        <div x-cloak x-show="open" class="lg:hidden">
             <ul id="burgerMenu" class="bg-white px-4 py-4"></ul>
         </div>
     </div>

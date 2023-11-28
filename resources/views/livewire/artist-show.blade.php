@@ -55,7 +55,7 @@
                 <p class="mb-4 px-2 pt-1 text-lg font-semibold text-center text-red-500">Namn kan inte vara tomt...</p>
             @enderror
             @auth
-                <div x-show="show" x-transition>
+                <div x-cloak x-show="show" x-transition>
                     <form wire:submit="save">
                         <p class="text-center">
                             <input wire:model="name" type="text" id="artist_edit"

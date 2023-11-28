@@ -25,11 +25,11 @@
                 <tr>
                     <th scope="col"
                         class="px-2 sm:px-6 py-2 text-base sm:text-xl whitespace-nowrap antialiased w-1/2">
-                        Artister: <span class="font-medium">{{ $art_count }}</span>
+                        Artister: <span class="font-medium">{{ $loadData ? $art_count : '...' }}</span>
                     </th>
                     <th scope="col"
                         class="px-2 pl-0 sm:px-6 py-2 text-base sm:text-xl whitespace-nowrap antialiased w-1/2">
-                        Vinyler: <span class="font-medium">{{ $records }}</span>
+                        Vinyler: <span class="font-medium">{{ $loadData ? $records : '...' }}</span>
                     </th>
                 </tr>
             </thead>
@@ -50,45 +50,47 @@
                         </div>
                     </td>
                 </tr>
-                @if (!empty($search) && $artists->count() >= 1)
-                    <tr class="bg-slate-100 border-dashed border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300">
-                        <td colspan="2" class="text-left px-2 text-gray-900 text-sm sm:text-base sm:px-6 py-2">
-                            <p>
-                                Sökord -> "<span class="font-semibold text-red-800">{{ mb_strtoupper($search) }}</span>"
-                            </p>
-                            <p><span
-                                    class="{{ $searchCountArtist > 0 ? 'font-semibold text-gray-900 underline ' : '' }}underline-offset-2">{{ $searchCountArtist }}</span>
-                                Artist{{ $searchCountArtist == 1 ? '' : 'er' }} och <span
-                                    class="{{ $searchCountRecord > 0 ? 'font-semibold text-gray-900 underline ' : '' }}underline-offset-2">{{ $searchCountRecord }}</span>
-                                Vinyl{{ $searchCountRecord == 1 ? '' : 'er' }}
-                                ({{ $searchCountArtist + $searchCountRecord }} totalt)</p>
-                        </td>
-                    </tr>
-                @endif
-                @if ($artists->count() >= 1 && $loadData == true)
-                    @foreach ($artists as $artist)
-                        <tr wire:key="{{ $artist->id }}"
-                            class="bg-white border-b lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-sky-50">
-                            <td
-                                class="px-2 sm:px-6 py-2 pb-0 align-top font-bold text-lg sm:text-xl lg:text-2xl text-gray-900">
-                                <a href="/artist/{{ $artist->id }}" class="antialiased hover:text-blue-800"
-                                    wire:navigate>
-                                    @if (!empty($search))
-                                        @php
-                                            $highlightArtist = explode(' ', mb_strtoupper($search));
-                                            $replaceArtist = [];
-                                            foreach ($highlightArtist as $wordsArtist) {
-                                                $replaceArtist[] = '<span class="text-red-600 underline underline-offset-4">' . $wordsArtist . '</span>';
-                                            }
+                @if ($loadData == true)
+                    @if (!empty($search) && $artists->count() >= 1)
+                        <tr class="bg-slate-100 border-dashed border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300">
+                            <td colspan="2" class="text-left px-2 text-gray-900 text-sm sm:text-base sm:px-6 py-2">
+                                <p>
+                                    Sökord -> "<span
+                                        class="font-semibold text-red-800">{{ mb_strtoupper($search) }}</span>"
+                                </p>
+                                <p><span
+                                        class="{{ $searchCountArtist > 0 ? 'font-semibold text-gray-900 underline ' : '' }}underline-offset-2">{{ $searchCountArtist }}</span>
+                                    Artist{{ $searchCountArtist == 1 ? '' : 'er' }} och <span
+                                        class="{{ $searchCountRecord > 0 ? 'font-semibold text-gray-900 underline ' : '' }}underline-offset-2">{{ $searchCountRecord }}</span>
+                                    Vinyl{{ $searchCountRecord == 1 ? '' : 'er' }}
+                                    ({{ $searchCountArtist + $searchCountRecord }} totalt)</p>
+                            </td>
+                        </tr>
+                    @endif
+                    @if ($artists->count() >= 1)
+                        @foreach ($artists as $artist)
+                            <tr wire:key="{{ $artist->id }}"
+                                class="bg-white border-b lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-sky-50">
+                                <td
+                                    class="px-2 sm:px-6 py-2 pb-0 align-top font-bold text-lg sm:text-xl lg:text-2xl text-gray-900">
+                                    <a href="/artist/{{ $artist->id }}" class="antialiased hover:text-blue-800"
+                                        wire:navigate>
+                                        @if (!empty($search))
+                                            @php
+                                                $highlightArtist = explode(' ', mb_strtoupper($search));
+                                                $replaceArtist = [];
+                                                foreach ($highlightArtist as $wordsArtist) {
+                                                    $replaceArtist[] = '<span class="text-red-600 underline underline-offset-4">' . $wordsArtist . '</span>';
+                                                }
 
-                                            echo str_replace($highlightArtist, $replaceArtist, $artist->name, $count);
-                                        @endphp
-                                    @else
-                                        {{ $artist->name }}
-                                    @endif
-                                    {{-- $artist->name --}}
-                                </a>
-                                {{-- <p class="flex justify-start items-center">
+                                                echo str_replace($highlightArtist, $replaceArtist, $artist->name, $count);
+                                            @endphp
+                                        @else
+                                            {{ $artist->name }}
+                                        @endif
+                                        {{-- $artist->name --}}
+                                    </a>
+                                    {{-- <p class="flex justify-start items-center">
                                     <a href="https://www.discogs.com/search/?q={{ urlencode($artist->name) }}&type=artist"
                                         class="opacity-20 hover:opacity-100" target="_BLANK">
                                         <img src="{{ asset('static/images/Discogs-01.svg') }}" class="h-12 sm:h-14"
@@ -100,57 +102,58 @@
                                             alt="SF">
                                     </a>
                                 </p> --}}
-                            </td>
-                            <td class="sm:px-6 py-2 text-xs align-top">
-                                @php
-                                    $vinyler = $artist->records->count();
-                                @endphp
-                                <p class="pb-2">
-                                    <span
-                                        class="text-slate-700 text-sm sm:text-base font-semibold underline underline-offset-4 antialiased">{{ $vinyler }}
-                                        Vinyl{{ $vinyler == 1 ? '' : 'er' }}</span>
-                                </p>
-                                @if ($vinyler >= 1)
-                                    @foreach ($artist->records as $record)
-                                        <p class="pb-1 uppercase text-gray-900 sm:text-sm antialiased">
-                                            @if (!empty($search))
-                                                @php
-                                                    $highlightVinyl = explode(' ', mb_strtoupper($search));
-                                                    $replaceVinyl = [];
-                                                    foreach ($highlightVinyl as $wordsVinyl) {
-                                                        $replaceVinyl[] = '<span class="text-red-600 font-semibold underline underline-offset-4">' . $wordsVinyl . '</span>';
-                                                    }
+                                </td>
+                                <td class="sm:px-6 py-2 text-xs align-top">
+                                    @php
+                                        $vinyler = $artist->records->count();
+                                    @endphp
+                                    <p class="pb-2">
+                                        <span
+                                            class="text-slate-700 text-sm sm:text-base font-semibold underline underline-offset-4 antialiased">{{ $vinyler }}
+                                            Vinyl{{ $vinyler == 1 ? '' : 'er' }}</span>
+                                    </p>
+                                    @if ($vinyler >= 1)
+                                        @foreach ($artist->records as $record)
+                                            <p class="pb-1 uppercase text-gray-900 sm:text-sm antialiased">
+                                                @if (!empty($search))
+                                                    @php
+                                                        $highlightVinyl = explode(' ', mb_strtoupper($search));
+                                                        $replaceVinyl = [];
+                                                        foreach ($highlightVinyl as $wordsVinyl) {
+                                                            $replaceVinyl[] = '<span class="text-red-600 font-semibold underline underline-offset-4">' . $wordsVinyl . '</span>';
+                                                        }
 
-                                                    echo str_replace($highlightVinyl, $replaceVinyl, mb_strtoupper($record->record_name), $count);
-                                                @endphp
-                                            @else
-                                                {{ $record->record_name }}
-                                            @endif
-                                        </p>
-                                    @endforeach
-                                @else
-                                    <p class="uppercase text-gray-600 italic">(Tomt)</p>
-                                @endif
-                            </td>
-                        </tr>
-                    @endforeach
-                @else
-                    @if ($artists->count() <= 0)
-                        <tr class="bg-white border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300">
-                            <td colspan="2"
-                                class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900 text-center">
-                                <p>Här var det tomt...</p>
-                                @auth
-                                    <div class="mt-4 flex justify-center w-full">
-                                        <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 w-full text-center"
-                                            href="/create/artist?name={{ mb_strtoupper($search) }}">
-                                            <p><span class="text-green-700">Ny Artist</span></p>
-                                            <p>{{ mb_strtoupper($search) }}</p>
-                                        </a>
-                                    </div>
-                                @endauth
-                            </td>
-                        </tr>
+                                                        echo str_replace($highlightVinyl, $replaceVinyl, mb_strtoupper($record->record_name), $count);
+                                                    @endphp
+                                                @else
+                                                    {{ $record->record_name }}
+                                                @endif
+                                            </p>
+                                        @endforeach
+                                    @else
+                                        <p class="uppercase text-gray-600 italic">(Tomt)</p>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        @if ($artists->count() <= 0)
+                            <tr class="bg-white border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300">
+                                <td colspan="2"
+                                    class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900 text-center">
+                                    <p>Här var det tomt...</p>
+                                    @auth
+                                        <div class="mt-4 flex justify-center w-full">
+                                            <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 w-full text-center"
+                                                href="/create/artist?name={{ mb_strtoupper($search) }}">
+                                                <p><span class="text-green-700">Ny Artist</span></p>
+                                                <p>{{ mb_strtoupper($search) }}</p>
+                                            </a>
+                                        </div>
+                                    @endauth
+                                </td>
+                            </tr>
+                        @endif
                     @endif
                 @endif
             </tbody>
