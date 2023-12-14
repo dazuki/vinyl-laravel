@@ -88,7 +88,7 @@
                         X
                     </button>
                 @endauth
-                <span class="lg:text-2xl rock-font text-gray-700">
+                <span class="lg:text-2xl inter-font text-gray-700">
                     <a href="https://www.discogs.com/search/?q={{ urlencode($artist->name . ' ' . $record->record_name) }}&type=release&format_exact=Vinyl"
                         target="_BLANK" class="hover:text-green-700">{{ $record->record_name }}</a>
                 </span>

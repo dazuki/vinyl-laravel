@@ -92,7 +92,7 @@
                                     @php
                                         $vinyler = $artist->records->count();
                                     @endphp
-                                    <p class="text-xs lg:text-sm text-gray-500 pb-2 inter-font pl-1 sm:pl-2">->
+                                    <p class="text-xs lg:text-sm text-gray-500 inter-font my-2 pl-1">
                                         {{ $vinyler }}
                                         Vinyl{{ $vinyler == 1 ? '' : 'er' }}
                                     </p>
@@ -100,8 +100,7 @@
                                 <td class="sm:px-6 py-2 text-xs align-top">
                                     @if ($vinyler >= 1)
                                         @foreach ($artist->records as $record)
-                                            <p
-                                                class="{{ $loop->first ? 'pt-1 ' : '' }}pb-1 uppercase text-gray-700 sm:text-sm antialiased rock-font">
+                                            <p class="pb-1 uppercase text-gray-700 sm:text-sm antialiased inter-font">
                                                 @if (!empty($search))
                                                     @php
                                                         $highlightVinyl = explode(' ', mb_strtoupper($search));
