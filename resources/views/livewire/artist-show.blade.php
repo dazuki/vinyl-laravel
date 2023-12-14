@@ -5,7 +5,7 @@
     <div
         class="bg-white border-b-2 border-t-0 border-r-0 border-l-0 lg:border-t-2 lg:border-r-2 lg:border-l-2 border-slate-300 px-4 pt-4">
         <div x-data="{ show: false }">
-            <h1 class="text-2xl text-center font-bold text-gray-900 sm:text-3xl">
+            <h1 class="text-2xl text-center font-bold text-gray-700 sm:text-4xl rock-font">
                 {{ $artist->name }}
                 @auth
 
@@ -88,7 +88,7 @@
                         X
                     </button>
                 @endauth
-                <span class="lg:text-2xl">
+                <span class="lg:text-2xl rock-font text-gray-700">
                     <a href="https://www.discogs.com/search/?q={{ urlencode($artist->name . ' ' . $record->record_name) }}&type=release&format_exact=Vinyl"
                         target="_BLANK" class="hover:text-green-700">{{ $record->record_name }}</a>
                 </span>

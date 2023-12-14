@@ -43,7 +43,7 @@
                         $sameDay = 0;
                     @endphp
                 @endif
-                <p class="text-center text-sm lg:text-lg font-semibold">
+                <p class="text-center text-sm lg:text-lg font-semibold rock-font">
                     <a class="hover:text-blue-800" href="/artist/{{ $vinyl->artist->id }}" wire:navigate>
                         {{ mb_strtoupper($vinyl->record_name) }}
                     </a>

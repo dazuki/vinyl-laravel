@@ -56,7 +56,7 @@
                             <td colspan="2" class="text-left px-2 text-gray-900 text-sm sm:text-base sm:px-6 py-2">
                                 <p>
                                     Sökord -> "<span
-                                        class="font-semibold text-red-800">{{ mb_strtoupper($search) }}</span>"
+                                        class="font-semibold text-red-600">{{ mb_strtoupper($search) }}</span>"
                                 </p>
                                 <p><span
                                         class="{{ $searchCountArtist > 0 ? 'font-semibold text-gray-900 underline ' : '' }}underline-offset-2">{{ $searchCountArtist }}</span>
@@ -72,7 +72,7 @@
                             <tr wire:key="{{ $artist->id }}"
                                 class="bg-white border-b lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-sky-50">
                                 <td
-                                    class="px-2 sm:px-6 py-2 pb-0 align-top font-bold text-lg sm:text-xl lg:text-2xl text-gray-900">
+                                    class="px-2 sm:px-6 py-2 pb-0 align-top font-bold text-lg sm:text-xl lg:text-3xl text-gray-700 rock-font">
                                     <a href="/artist/{{ $artist->id }}" class="antialiased hover:text-blue-800"
                                         wire:navigate>
                                         @if (!empty($search))
@@ -89,19 +89,19 @@
                                             {{ $artist->name }}
                                         @endif
                                     </a>
-                                </td>
-                                <td class="sm:px-6 py-2 text-xs align-top">
                                     @php
                                         $vinyler = $artist->records->count();
                                     @endphp
-                                    <p class="pb-2">
-                                        <span
-                                            class="text-slate-700 text-sm sm:text-base font-semibold underline underline-offset-4 antialiased">{{ $vinyler }}
-                                            Vinyl{{ $vinyler == 1 ? '' : 'er' }}</span>
+                                    <p class="text-xs lg:text-sm text-gray-500 pb-2 inter-font pl-1 sm:pl-2">->
+                                        {{ $vinyler }}
+                                        Vinyl{{ $vinyler == 1 ? '' : 'er' }}
                                     </p>
+                                </td>
+                                <td class="sm:px-6 py-2 text-xs align-top">
                                     @if ($vinyler >= 1)
                                         @foreach ($artist->records as $record)
-                                            <p class="pb-1 uppercase text-gray-900 sm:text-sm antialiased">
+                                            <p
+                                                class="{{ $loop->first ? 'pt-1 ' : '' }}pb-1 uppercase text-gray-700 sm:text-sm antialiased rock-font">
                                                 @if (!empty($search))
                                                     @php
                                                         $highlightVinyl = explode(' ', mb_strtoupper($search));

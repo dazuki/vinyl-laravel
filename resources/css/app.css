@@ -1,10 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&&family=RocknRoll+One&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 [x-cloak] {
     display: none !important;
+}
+
+.rock-font {
+    font-family: "RocknRoll One", sans-serif;
+}
+
+.inter-font {
+    font-family: "Inter", sans-serif;
 }
 
 #nprogress .spinner {
