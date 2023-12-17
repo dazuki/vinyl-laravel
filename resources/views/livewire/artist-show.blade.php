@@ -79,7 +79,7 @@
         @foreach ($artist->records as $record)
             <p wire:key="{{ $record->id }}"
                 class="flex items-center px-2 py-2 text-left font-medium uppercase border-b hover:bg-slate-50">
-                <span class="font-bold text-slate-500 lg:text-2xl w-6 sm:w-8">{{ $count }}.</span>
+                <span class="font-bold text-slate-500 lg:text-2xl w-6 sm:w-8 mr-2">{{ $count }}.</span>
                 @auth
                     <button
                         onclick="confirm('Vill du ta bort vinylen {{ $record->record_name }}?') || event.stopImmediatePropagation()"

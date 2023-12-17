@@ -92,7 +92,7 @@
                                     @php
                                         $vinyler = $artist->records->count();
                                     @endphp
-                                    <p class="text-xs lg:text-sm text-gray-500 inter-font my-2 pl-1">
+                                    <p class="text-sm lg:text-lg text-gray-400 py-2">
                                         {{ $vinyler }}
                                         Vinyl{{ $vinyler == 1 ? '' : 'er' }}
                                     </p>
