@@ -30,6 +30,8 @@ Route::get('/artist/{art_id}', ArtistShow::class)->name('artistshow');
 
 Route::get('/export/artist', [VinylTable::class, 'export']);
 
+Route::get('/export/view', [VinylTable::class, 'view']);
+
 Route::get('/edit/artist/{art_id}', ArtistEdit::class);
 
 Route::get('/create/vinyl', CreateVinyl::class)->middleware('auth.basic');

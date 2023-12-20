@@ -3,15 +3,20 @@
 namespace App\Exports;
 
 use App\Models\Artist;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class ArtistExport implements FromCollection
+class ArtistExport implements FromView, ShouldAutoSize
 {
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function collection()
+    public function view(): View
     {
-        return Artist::all();
+        return view('exports.collection', [
+            'collections' => Artist::all()
+                ->sortBy('name')
+        ]);
     }
 }

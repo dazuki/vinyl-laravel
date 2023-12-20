@@ -52,6 +52,14 @@ class VinylTable extends Component
 
     public function export()
     {
-        return Excel::download(new ArtistExport, 'artist.xls', \Maatwebsite\Excel\Excel::XLS);
+        return Excel::download(new ArtistExport, 'Vinyler Förteckning(' . date('Y-m-d') . ' vid ' . date('H.i') . ').xls', \Maatwebsite\Excel\Excel::XLS);
+    }
+
+    public function view()
+    {
+        return view('exports.collection', [
+            'collections' => Artist::all()
+                ->sortBy('name')
+        ]);
     }
 }

@@ -7,11 +7,11 @@
             class="inline-block -mt-1 h-6 w-6 lg:w-8 lg:h-8"> --}}
                     <div class="inline-block items-center">
                         <img src="{{ asset('static/images/vinyl-laravel_logo.png') }}"
-                            class="h-[24px] lg:h-[49px] md:h-[32px]">
+                            class="h-[24px] lg:h-[32px] md:h-[32px]">
                     </div>
                     @auth
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="inline-block items-center -mt-2 lg:-mt-6 md:-mt-3 w-5 lg:w-8 md:w-6 text-green-700">
+                            class="inline-block items-center -mt-2 lg:-mt-3 md:-mt-3 w-5 lg:w-6 md:w-6 text-green-700">
                             <path fill-rule="evenodd"
                                 d="M15.75 1.5a6.75 6.75 0 00-6.651 7.906c.067.39-.032.717-.221.906l-6.5 6.499a3 3 0 00-.878 2.121v2.818c0 .414.336.75.75.75H6a.75.75 0 00.75-.75v-1.5h1.5A.75.75 0 009 19.5V18h1.5a.75.75 0 00.53-.22l2.658-2.658c.19-.189.517-.288.906-.22A6.75 6.75 0 1015.75 1.5zm0 3a.75.75 0 000 1.5A2.25 2.25 0 0118 8.25a.75.75 0 001.5 0 3.75 3.75 0 00-3.75-3.75z"
                                 clip-rule="evenodd" />
@@ -33,11 +33,27 @@
                                 href="/create/vinyl" wire:navigate>Ny Vinyl</a></li>
                         <li><a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100"
                                 href="/create/artist" wire:navigate>Ny Artist</a></li>
+                        <li><a class="text-green-700 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100"
+                                href="/export/artist"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-slot="icon"
+                                    class="inline-block w-6 h-6 -mt-1">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                                </svg>
+                                Excel</a></li>
                         <li><a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100"
                                 href="/history" wire:navigate>Historik</a></li>
                         <li><a class="text-gray-900 hover:text-red-700 rounded-lg border-2 border-red-300 p-2 shadow-md bg-red-100"
                                 href="/logout" wire:navigate>Logga Ut</a></li>
                     @else
+                        <li><a class="text-green-700 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100"
+                                href="/export/artist">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" data-slot="icon"
+                                    class="inline-block w-6 h-6 -mt-1">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                                </svg>Excel</a></li>
                         <li><a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md bg-slate-100"
                                 href="/history" wire:navigate>Historik</a></li>
                         <li><a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md bg-slate-100"
@@ -53,11 +69,25 @@
                             href="/create/vinyl" wire:navigate>Ny Vinyl</a></li>
                     <li><a class="lg:hidden text-center block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100"
                             href="/create/artist" wire:navigate>Ny Artist</a></li>
+                    <li><a class="lg:hidden text-center block mt-2 text-green-700 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100"
+                            href="/export/artist">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" data-slot="icon" class="inline-block w-6 h-6 -mt-1">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                            </svg>Excel</a></li>
                     <li><a class="lg:hidden text-center block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100"
                             href="/history" wire:navigate>Historik</a></li>
                     <li><a class="lg:hidden text-center block mt-2 text-gray-900 hover:text-red-700 bg-red-100 shadow-md rounded-lg border-2 border-red-300 p-2 text-lg"
                             href="/logout" wire:navigate>Logga Ut</a></li>
                 @else
+                    <li><a class="lg:hidden text-center block mt-2 text-green-700 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100"
+                            href="/export/artist">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" data-slot="icon" class="inline-block w-6 h-6 -mt-1">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                            </svg>Excel</a></li>
                     <li><a class="lg:hidden text-center block mt-2 text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg font-semibold shadow-md bg-slate-100"
                             href="/history" wire:navigate>Historik</a></li>
                     <li><a class="lg:hidden text-center block mt-2 font-semibold text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 text-lg shadow-md bg-slate-100"
