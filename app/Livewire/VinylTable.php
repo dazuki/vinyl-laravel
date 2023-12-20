@@ -2,11 +2,13 @@
 
 namespace App\Livewire;
 
+use App\Exports\ArtistExport;
 use App\Models\Artist;
 use App\Models\Record;
 use Livewire\Component;
 use Livewire\Attributes\Url;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 
 class VinylTable extends Component
 {
@@ -46,5 +48,10 @@ class VinylTable extends Component
             'searchCountArtist' => $this->loadData ? Artist::searchCount($this->search)->count() : [],
             'searchCountRecord' => $this->loadData ? Record::search($this->search)->count() : []
         ]);
+    }
+
+    public function export()
+    {
+        return Excel::download(new ArtistExport, 'artist.xls', \Maatwebsite\Excel\Excel::XLS);
     }
 }
