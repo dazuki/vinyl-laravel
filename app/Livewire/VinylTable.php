@@ -59,7 +59,8 @@ class VinylTable extends Component
     {
         return view('exports.collection', [
             'collections' => Artist::all()
-                ->sortBy('name')
+                ->sortBy('name'),
+            'collections_records' => Record::all()->count()
         ]);
     }
 }

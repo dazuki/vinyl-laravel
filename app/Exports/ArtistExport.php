@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Artist;
+use App\Models\Record;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
@@ -16,7 +17,8 @@ class ArtistExport implements FromView, ShouldAutoSize
     {
         return view('exports.collection', [
             'collections' => Artist::all()
-                ->sortBy('name')
+                ->sortBy('name'),
+            'collections_records' => Record::all()->count()
         ]);
     }
 }

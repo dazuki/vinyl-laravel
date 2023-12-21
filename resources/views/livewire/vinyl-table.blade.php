@@ -2,6 +2,9 @@
     @section('page-title')
         Samling
     @endsection
+    @php
+        $char = '';
+    @endphp
     <div class="relative px-2">
         @if ($removed)
             {{-- <p class="alert mb-4 px-2 pt-1 text-lg font-semibold text-red-600 text-center">Artist är borttagen!</p> --}}
@@ -35,7 +38,7 @@
             </thead>
             <tbody>
                 <tr class="bg-white lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-slate-50">
-                    <td colspan="2" class="text-center">
+                    <td colspan="2" class="text-center bg-sky-50">
                         <div wire:loading
                             class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900 inline-block">
                             <svg width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +55,7 @@
                 </tr>
                 @if ($loadData == true)
                     @if (!empty($search) && $artists->count() >= 1)
-                        <tr class="bg-slate-100 border-dashed border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300">
+                        <tr class="bg-sky-50 border-dashed border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300">
                             <td colspan="2" class="text-left px-2 text-gray-900 text-sm sm:text-base sm:px-6 py-2">
                                 <p>
                                     Sökord -> "<span
@@ -69,7 +72,18 @@
                     @endif
                     @if ($artists->count() >= 1)
                         @foreach ($artists as $artist)
-                            <tr wire:key="{{ $artist->id }}"
+                            @if (empty($char) || $char != mb_substr($artist->name, 0, 1))
+                                <tr wire:key="char-{{ $char }}"
+                                    class="bg-sky-50 border-b lg:border-l-2 lg:border-r-2 border-slate-300">
+                                    <td colspan="2"
+                                        class="text-center p-2 rock-font text-lg sm:text-xl lg:text-xl font-bold">
+                                        {{ mb_substr($artist->name, 0, 1) }}</td>
+                                </tr>
+                            @endif
+                            @php
+                                $char = mb_substr($artist->name, 0, 1);
+                            @endphp
+                            <tr wire:key="artist-{{ $artist->id }}"
                                 class="bg-white border-b lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-sky-50">
                                 <td
                                     class="px-2 sm:px-6 py-2 pb-0 align-top font-bold text-lg sm:text-xl lg:text-3xl text-gray-700 rock-font">
