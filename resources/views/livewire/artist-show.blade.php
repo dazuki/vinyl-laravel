@@ -18,7 +18,7 @@
                             </svg>
                         </button>
                         <button id="btnDel"
-                            onclick="confirm('Vill du ta bort artist {{ $artist->name }}?') || event.stopImmediatePropagation()"
+                            onclick="confirm('Vill du ta bort artist {{ $artist->name }} och ALLA Vinyler till denna artist? (ALLA Vinyler kommer också försvinna från databasen)') || event.stopImmediatePropagation()"
                             wire:click="delete({{ $artist->id }})"
                             class="rounded-lg border-2 border-red-300 px-2 py-1 bg-red-100 hover:bg-red-300">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">

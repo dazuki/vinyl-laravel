@@ -75,7 +75,7 @@
                                 <tr wire:key="char-{{ $char }}"
                                     class="bg-sky-50 border-b lg:border-l-2 lg:border-r-2 border-slate-300">
                                     <td colspan="2"
-                                        class="text-center lg:text-left p-2 px-6 text-lg sm:text-xl lg:text-3xl rock-font font-bold text-slate-800">
+                                        class="text-center lg:text-left p-2 px-6 text-lg sm:text-xl lg:text-3xl rock-font font-bold text-slate-400">
                                         {{ mb_substr($artist->name, 0, 1) }}</td>
                                 </tr>
                             @endif
@@ -105,10 +105,17 @@
                                     @php
                                         $vinyler = $artist->records->count();
                                     @endphp
-                                    <p class="text-sm lg:text-lg text-gray-400 py-2">
-                                        {{ $vinyler }}
-                                        Vinyl{{ $vinyler == 1 ? '' : 'er' }}
-                                    </p>
+                                    @if ($vinyler == 0)
+                                        <p class="text-sm lg:text-lg text-red-400 py-2">
+                                            {{ $vinyler }}
+                                            Vinyl{{ $vinyler == 1 ? '' : 'er' }}
+                                        </p>
+                                    @else
+                                        <p class="text-sm lg:text-lg text-gray-400 py-2">
+                                            {{ $vinyler }}
+                                            Vinyl{{ $vinyler == 1 ? '' : 'er' }}
+                                        </p>
+                                    @endif
                                 </td>
                                 <td class="sm:px-6 py-2 text-xs align-top">
                                     @if ($vinyler >= 1)
@@ -130,7 +137,7 @@
                                             </p>
                                         @endforeach
                                     @else
-                                        <p class="uppercase text-gray-600 italic">(Tomt)</p>
+                                        <p class="uppercase text-gray-600 italic">...</p>
                                     @endif
                                 </td>
                             </tr>
