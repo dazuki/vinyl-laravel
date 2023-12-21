@@ -2,30 +2,24 @@
 
 namespace App\Livewire;
 
-use App\Exports\ArtistExport;
 use App\Models\Artist;
 use App\Models\Record;
 use Livewire\Component;
+use Illuminate\Http\Request;
 use Livewire\Attributes\Url;
 use Livewire\WithPagination;
+use App\Exports\ArtistExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class VinylTable extends Component
 {
-    use WithPagination;
+    use WithPagination, LivewireAlert;
 
     #[Url(history: true)]
     public $search = '';
 
-    #[Url(history: true)]
-    public $removed = 0;
-
     public bool $loadData = false;
-
-    public function resetRemoved()
-    {
-        $this->removed = 0;
-    }
 
     public function updatedSearch()
     {

@@ -23,12 +23,20 @@ class ArtistShow extends Component
         if ($request->msg == 'artist') {
             $this->alert('success', 'Artist tillagd!', [
                 'toast' => false,
-                'position' => 'center'
+                'timer' => 3000,
+                'position' => 'center',
+                'timerProgressBar' => true,
+                'showConfirmButton' => true,
+                'onConfirmed' => ''
             ]);
         } elseif ($request->msg == 'vinyl') {
             $this->alert('success', 'Vinyl tillagd!', [
                 'toast' => false,
-                'position' => 'center'
+                'timer' => 3000,
+                'position' => 'center',
+                'timerProgressBar' => true,
+                'showConfirmButton' => true,
+                'onConfirmed' => ''
             ]);
         }
     }
@@ -48,7 +56,7 @@ class ArtistShow extends Component
     {
         $artist->delete();
 
-        $this->redirect('/?removed=1');
+        $this->redirect('/');
     }
 
     public function recordDelete(Record $record)
