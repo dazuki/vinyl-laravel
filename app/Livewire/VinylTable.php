@@ -34,18 +34,24 @@ class VinylTable extends Component
 
     public function render()
     {
-        $recordsCache = Cache::remember('recordsCache', 60 * 15, function () {
+        $cacheName = 'rCache_' . $this->getPage() . '_' . $this->search;
+
+        $cacheKey = Cache::remember($cacheName, 60 * 60, function () {
+            return Artist::search($this->search)
+                ->orderBy('name', 'asc')
+                ->paginate(25);
+        });
+
+        $recordsCache = Cache::remember('recordsCache', 60 * 60, function () {
             return Record::all()->count();
         });
 
-        $artCountCache = Cache::remember('artCountCache', 60 * 15, function () {
+        $artCountCache = Cache::remember('artCountCache', 60 * 60, function () {
             return Artist::all()->count();
         });
 
         return view('livewire.vinyl-table', [
-            'artists' => $this->loadData ? Artist::search($this->search)
-                ->orderBy('name', 'asc')
-                ->paginate(25) : [],
+            'artists' => $this->loadData ? $cacheKey : [],
             'records' => $this->loadData ? $recordsCache : [],
             'art_count' => $this->loadData ? $artCountCache : [],
             'searchCountArtist' => $this->loadData ? Artist::searchCount($this->search)->count() : [],

@@ -21,7 +21,7 @@
             <div class="flex justify-center items-center">
                 <p
                     class="bg-slate-100 text-center border-r-4 border-l-4 border-red-300 py-1 text-red-800 text-xs lg:text-sm w-full lg:w-1/2">
-                    Vinyler Med Okänt Datum: <span class="font-semibold">{{ $vinyler_old->count() }}</span>
+                    Vinyler Med Okänt Datum: <span class="font-semibold">{{ $vinyler_old }}</span>
                 </p>
             </div>
             @php
@@ -58,7 +58,11 @@
             <a href="/"
                 class="rounded-lg border-2 border-slate-300 bg-slate-100 shadow-md px-2 py-2 hover:bg-slate-300"
                 wire:navigate>
-                « Tillbaka
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="inline-block -mt-2 mr-1 w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                </svg>Startsidan
             </a>
         </p>
     </div>
