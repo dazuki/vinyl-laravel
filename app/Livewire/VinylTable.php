@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Livewire\Attributes\Url;
 use Livewire\WithPagination;
 use App\Exports\ArtistExport;
+use Illuminate\Support\Facades\Cache;
 use Maatwebsite\Excel\Facades\Excel;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
@@ -33,12 +34,20 @@ class VinylTable extends Component
 
     public function render()
     {
+        $recordsCache = Cache::remember('recordsCache', 60 * 15, function () {
+            return Record::all()->count();
+        });
+
+        $artCountCache = Cache::remember('artCountCache', 60 * 15, function () {
+            return Artist::all()->count();
+        });
+
         return view('livewire.vinyl-table', [
             'artists' => $this->loadData ? Artist::search($this->search)
                 ->orderBy('name', 'asc')
                 ->paginate(25) : [],
-            'records' => $this->loadData ? Record::all()->count() : [],
-            'art_count' => $this->loadData ? Artist::all()->count() : [],
+            'records' => $this->loadData ? $recordsCache : [],
+            'art_count' => $this->loadData ? $artCountCache : [],
             'searchCountArtist' => $this->loadData ? Artist::searchCount($this->search)->count() : [],
             'searchCountRecord' => $this->loadData ? Record::search($this->search)->count() : []
         ]);
