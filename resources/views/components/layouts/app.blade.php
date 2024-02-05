@@ -15,13 +15,14 @@
 </head>
 
 <body class="bg-slate-200">
-    <x-header />
+    <livewire:header />
     <div class="flex justify-center mx-auto w-full lg:mt-4 pb-2">
         <main class="w-full">
             {{ $slot }}
         </main>
     </div>
     <div id="copyright" class="my-2 text-xs" align="center">&copy; 2023 - 2024 bokbindaregatan.se</div>
+    @livewire('wire-elements-modal')
 </body>
 
 </html>
