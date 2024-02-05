@@ -22,7 +22,6 @@
         </main>
     </div>
     <div id="copyright" class="my-2 text-xs" align="center">&copy; 2023 - 2024 bokbindaregatan.se</div>
-    @livewire('wire-elements-modal')
 </body>
 
 </html>
