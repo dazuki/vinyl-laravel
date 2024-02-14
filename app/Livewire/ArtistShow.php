@@ -6,6 +6,7 @@ use App\Models\Artist;
 use App\Models\Record;
 use Livewire\Component;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ArtistShow extends Component
@@ -18,7 +19,11 @@ class ArtistShow extends Component
 
     public function mount(Request $request)
     {
-        $this->name = Artist::find($this->art_id)->name;
+        $artNameCache = Cache::rememberForever('artNameCache_' . $this->art_id, function () {
+            return Artist::find($this->art_id)->name;
+        });
+
+        $this->name = $artNameCache;
 
         if ($request->msg == 'artist') {
             $this->alert('success', 'Artist tillagd!', [
@@ -50,11 +55,15 @@ class ArtistShow extends Component
         Artist::where('id', $this->art_id)->update([
             'name' => mb_strtoupper($this->name)
         ]);
+
+        Cache::flush();
     }
 
     public function delete(Artist $artist)
     {
         $artist->delete();
+
+        Cache::flush();
 
         $this->redirect('/');
     }
@@ -63,6 +72,8 @@ class ArtistShow extends Component
     {
         $record->delete();
 
+        Cache::flush();
+
         session()->flash('status', 'Vinylen är borttagen!');
 
         $this->redirect('/artist/' . $this->art_id);
@@ -70,8 +81,12 @@ class ArtistShow extends Component
 
     public function render()
     {
+        $artIdCache = Cache::rememberForever('artIdCache_' . $this->art_id, function () {
+            return Artist::find($this->art_id);
+        });
+
         return view('livewire.artist-show', [
-            'artist' => Artist::find($this->art_id)
+            'artist' => $artIdCache
         ]);
     }
 }

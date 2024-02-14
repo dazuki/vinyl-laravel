@@ -25,11 +25,13 @@
                 <tr>
                     <th scope="col"
                         class="px-2 sm:px-6 py-2 text-base sm:text-xl whitespace-nowrap antialiased w-1/2">
-                        Artister: <span class="font-medium">{{ $loadData ? $art_count : '...' }}</span>
+                        Artister: <span
+                            class="text-base sm:text-xl font-semibold text-blue-800">{{ $loadData ? $art_count : '...' }}</span>
                     </th>
                     <th scope="col"
                         class="px-2 pl-0 sm:px-6 py-2 text-base sm:text-xl whitespace-nowrap antialiased w-1/2">
-                        Vinyler: <span class="font-medium">{{ $loadData ? $records : '...' }}</span>
+                        Vinyler: <span
+                            class="text-base sm:text-xl font-semibold text-blue-800">{{ $loadData ? $records : '...' }}</span>
                     </th>
                 </tr>
             </thead>

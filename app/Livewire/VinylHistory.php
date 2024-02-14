@@ -17,15 +17,15 @@ class VinylHistory extends Component
 
     public function render()
     {
-        $vinylerCache = Cache::remember('vinylerCache', 60 * 60, function () {
-            return Record::selectRAW('*, CAST(STRFTIME("%s", created_at) as INT) as created_time')
+        $vinylerHistoryCache = Cache::rememberForever('vinylerHistoryCache', function () {
+            return Record::with('artist')->selectRAW('*, CAST(STRFTIME("%s", created_at) as INT) as created_time')
                 ->whereRAW('created_time > ' . strtotime('2023-11-01 00:00:00'))
                 ->orderBy('created_time', 'DESC')
                 ->get();
         });
 
         return view('livewire.vinyl-history', [
-            'vinyler' => $this->loadData ? $vinylerCache : [],
+            'vinyler' => $this->loadData ? $vinylerHistoryCache : [],
             'vinyler_old' => $this->loadData ? 827 : [] // 827 vinyler saknar datum
         ]);
     }

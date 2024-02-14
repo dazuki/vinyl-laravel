@@ -34,26 +34,26 @@ class VinylTable extends Component
 
     public function render()
     {
-        $cacheName = 'rCache_' . $this->getPage() . '_' . $this->search;
+        $cacheName = 'tablePageCache_p' . $this->getPage() . '-s_' . $this->search;
 
-        $cacheKey = Cache::remember($cacheName, 60 * 60, function () {
+        $cacheKey = Cache::rememberForever($cacheName, function () {
             return Artist::with('records')->search($this->search)
                 ->orderBy('name', 'asc')
                 ->paginate(25);
         });
 
-        $recordsCache = Cache::remember('recordsCache', 60 * 60, function () {
+        $recordsCountCache = Cache::rememberForever('recordsCountCache', function () {
             return Record::all()->count();
         });
 
-        $artCountCache = Cache::remember('artCountCache', 60 * 60, function () {
+        $artistsCountCache = Cache::rememberForever('artistsCountCache', function () {
             return Artist::all()->count();
         });
 
         return view('livewire.vinyl-table', [
             'artists' => $this->loadData ? $cacheKey : [],
-            'records' => $this->loadData ? $recordsCache : [],
-            'art_count' => $this->loadData ? $artCountCache : [],
+            'records' => $this->loadData ? $recordsCountCache : [],
+            'art_count' => $this->loadData ? $artistsCountCache : [],
             'searchCountArtist' => $this->loadData ? Artist::searchCount($this->search)->count() : [],
             'searchCountRecord' => $this->loadData ? Record::search($this->search)->count() : []
         ]);
@@ -61,7 +61,15 @@ class VinylTable extends Component
 
     public function export()
     {
-        return Excel::download(new ArtistExport, 'Vinyler Förteckning(' . date('Y-m-d') . ' vid ' . date('H.i') . ').xls', \Maatwebsite\Excel\Excel::XLS);
+        $recordsCountCache = Cache::rememberForever('recordsCountCache', function () {
+            return Record::all()->count();
+        });
+
+        $artistsCountCache = Cache::rememberForever('artistsCountCache', function () {
+            return Artist::all()->count();
+        });
+
+        return Excel::download(new ArtistExport, 'Vinyler Förteckning(Artister ' . $recordsCountCache . ' - Vinyler ' . $artistsCountCache . ').xls', \Maatwebsite\Excel\Excel::XLS);
     }
 
     public function view()

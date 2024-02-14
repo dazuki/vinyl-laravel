@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Artist;
 use Livewire\Component;
 use Livewire\Attributes\Url;
+use Illuminate\Support\Facades\Cache;
 
 class CreateArtist extends Component
 {
@@ -20,6 +21,8 @@ class CreateArtist extends Component
         ]);
 
         $createRecord = Artist::create($formFields);
+
+        Cache::flush();
 
         $this->redirect('/artist/' . $createRecord->id . '?msg=artist');
     }

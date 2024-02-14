@@ -8,6 +8,7 @@ use Livewire\Component;
 use Illuminate\Http\Request;
 use Livewire\Attributes\Url;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cache;
 
 class CreateVinyl extends Component
 {
@@ -32,6 +33,8 @@ class CreateVinyl extends Component
         ]);
 
         $createRecord = Record::create($formFields);
+
+        Cache::flush();
 
         session()->flash('status', 'Vinylen är tillagd!');
 
