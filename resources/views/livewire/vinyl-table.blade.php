@@ -19,7 +19,7 @@
     </div>
     <div class="relative overflow-x-auto">
         <table
-            class="w-full text-sm text-left border-t-2 border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-gray-500">
+            class="w-full text-sm text-left border-t-2 border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-gray-500 shadow-lg">
             <thead
                 class="border-b-2 border-t-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-xs text-slate-900 gradient-2">
                 <tr>
@@ -95,10 +95,18 @@
                                                 $highlightArtist = explode(' ', mb_strtoupper($search));
                                                 $replaceArtist = [];
                                                 foreach ($highlightArtist as $wordsArtist) {
-                                                    $replaceArtist[] = '<span class="text-red-600 underline underline-offset-4">' . $wordsArtist . '</span>';
+                                                    $replaceArtist[] =
+                                                        '<span class="text-red-600 underline underline-offset-4">' .
+                                                        $wordsArtist .
+                                                        '</span>';
                                                 }
 
-                                                echo str_replace($highlightArtist, $replaceArtist, $artist->name, $count);
+                                                echo str_replace(
+                                                    $highlightArtist,
+                                                    $replaceArtist,
+                                                    $artist->name,
+                                                    $count,
+                                                );
                                             @endphp
                                         @else
                                             {{ $artist->name }}
@@ -128,10 +136,18 @@
                                                         $highlightVinyl = explode(' ', mb_strtoupper($search));
                                                         $replaceVinyl = [];
                                                         foreach ($highlightVinyl as $wordsVinyl) {
-                                                            $replaceVinyl[] = '<span class="text-red-600 font-semibold underline underline-offset-4">' . $wordsVinyl . '</span>';
+                                                            $replaceVinyl[] =
+                                                                '<span class="text-red-600 font-semibold underline underline-offset-4">' .
+                                                                $wordsVinyl .
+                                                                '</span>';
                                                         }
 
-                                                        echo str_replace($highlightVinyl, $replaceVinyl, mb_strtoupper($record->record_name), $count);
+                                                        echo str_replace(
+                                                            $highlightVinyl,
+                                                            $replaceVinyl,
+                                                            mb_strtoupper($record->record_name),
+                                                            $count,
+                                                        );
                                                     @endphp
                                                 @else
                                                     {{ $record->record_name }}
