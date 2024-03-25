@@ -1,4 +1,4 @@
-<div class="sticky top-0 z-50">
+<div class="sticky top-0 z-50 shadow-box">
     <header class="border-b-2 border-slate-300">
         <div x-data="{ open: false }" class="gradient">
             <div class="container mx-auto flex justify-between items-center p-2 pl-2 max-w-7xl">
