@@ -5,32 +5,38 @@
     @php
         $char = '';
     @endphp
-    <div class="flex justify-center items-center max-sm:px-6 z-1">
+    <div class="relative pt-4 max-sm:px-2 z-10">
+        <svg class="absolute bottom-2 left-4 max-sm:left-6 svg-icon search-icon w-8 max-sm:w-6"
+            aria-labelledby="title desc" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7">
+            <g class="search-path" fill="none" stroke="#959595">
+                <path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4" />
+                <circle cx="8" cy="8" r="7" />
+            </g>
+        </svg>
         <input wire:model.live.debounce.500ms="search" name="search" type="text"
-            class="bg-white p-2 pl-4 mt-2 mb-0 w-full sm:w-3/6 border-l-2 border-r-2 border-t-2 border-b-0 border-slate-300 outline-none rounded-t-lg shadow-box text-xl max-sm:text-base"
-            placeholder="Sök artister/vinyler..." autocomplete="off" required="">
+            class="bg-white p-2 pl-14 max-sm:pl-12 w-full rounded-t-lg border-r-2 border-l-2 border-t-2 border-b border-slate-300 outline-none text-2xl max-sm:text-base z-1"
+            placeholder="Sök Artister/Vinyler..." autocomplete="off" required="">
     </div>
     <div class="relative z-10">
-        <div class="shadow-box">
+        <div class="shadow-xl">
             <table
-                class="w-full text-sm text-left border-t-2 border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-gray-500">
-                <thead
-                    class="border-b-2 border-t-2 lg:border-l-2 lg:border-r-2 border-slate-300 text-xs text-slate-900 gradient-2">
+                class="w-full text-sm text-left border-t border-b-2 border-r-2 border-l-2 border-slate-300 text-gray-500">
+                <thead class="border-t border-b-2 border-slate-300 text-xs text-slate-900 bg-gray-100">
                     <tr>
                         <th scope="col"
                             class="px-2 sm:px-6 py-2 text-base sm:text-xl whitespace-nowrap antialiased w-1/2">
                             Artister: <span
-                                class="text-base sm:text-xl font-semibold text-blue-800">{{ $loadData ? $art_count : '...' }}</span>
+                                class="text-base sm:text-xl font-semibold text-green-800">{{ $loadData ? $art_count : '...' }}</span>
                         </th>
                         <th scope="col"
                             class="px-2 pl-0 sm:px-6 py-2 text-base sm:text-xl whitespace-nowrap antialiased w-1/2">
                             Vinyler: <span
-                                class="text-base sm:text-xl font-semibold text-blue-800">{{ $loadData ? $records : '...' }}</span>
+                                class="text-base sm:text-xl font-semibold text-green-800">{{ $loadData ? $records : '...' }}</span>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-sky-50 lg:border-l-2 lg:border-r-2 border-slate-300 hover:bg-slate-50">
+                    <tr class="bg-sky-50 border-slate-300 hover:bg-slate-50">
                         <td colspan="2" class="text-center bg-sky-50">
                             <div wire:loading
                                 class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900 inline-block">
@@ -50,7 +56,7 @@
                     </tr>
                     @if ($loadData == true)
                         @if (!empty($search) && $artists->count() >= 1)
-                            <tr class="bg-sky-50 border-dashed border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300">
+                            <tr class="bg-sky-50 border-dashed border-b-2 border-slate-300">
                                 <td colspan="2"
                                     class="text-left px-2 text-gray-900 text-sm sm:text-base sm:px-6 py-2">
                                     <p>
@@ -70,7 +76,7 @@
                             @foreach ($artists as $artist)
                                 @if (empty($char) || $char != mb_substr($artist->name, 0, 1))
                                     <tr wire:key="char-{{ $char }}"
-                                        class="bg-sky-50 border-b lg:border-l-2 lg:border-r-2 border-slate-300">
+                                        class="bg-sky-50 border-b border-slate-300">
                                         <td colspan="2"
                                             class="text-center lg:text-left p-2 px-6 text-lg sm:text-xl lg:text-3xl rock-font font-bold text-slate-400">
                                             {{ mb_substr($artist->name, 0, 1) }}</td>
@@ -79,8 +85,7 @@
                                 @php
                                     $char = mb_substr($artist->name, 0, 1);
                                 @endphp
-                                <tr wire:key="artist-{{ $artist->id }}"
-                                    class="bg-white border-b lg:border-l-2 lg:border-r-2 border-slate-300">
+                                <tr wire:key="artist-{{ $artist->id }}" class="bg-white border-b border-slate-300">
                                     <td
                                         class="px-2 sm:px-6 py-2 pb-0 align-top font-bold text-lg sm:text-xl lg:text-3xl text-gray-700 rock-font">
                                         <a href="/artist/{{ $artist->id }}" class="antialiased hover:text-blue-800"
@@ -138,15 +143,25 @@
                                                                     '</span>';
                                                             }
 
-                                                            echo str_replace(
-                                                                $highlightVinyl,
-                                                                $replaceVinyl,
-                                                                mb_strtoupper($record->record_name),
-                                                                $count,
-                                                            );
+                                                            echo "<a href='https://www.discogs.com/search/?q=" .
+                                                                urlencode($artist->name . ' ' . $record->record_name) .
+                                                                "&type=release&format_exact=Vinyl' class='hover:text-blue-800 hover:underline underline-offset-4' target='_BLANK'>" .
+                                                                str_replace(
+                                                                    $highlightVinyl,
+                                                                    $replaceVinyl,
+                                                                    mb_strtoupper($record->record_name),
+                                                                    $count,
+                                                                ) .
+                                                                '</a>';
                                                         @endphp
                                                     @else
-                                                        {{ $record->record_name }}
+                                                        @php
+                                                            echo "<a href='https://www.discogs.com/search/?q=" .
+                                                                urlencode($artist->name . ' ' . $record->record_name) .
+                                                                "&type=release&format_exact=Vinyl' class='hover:text-blue-800 hover:underline underline-offset-4' target='_BLANK'>" .
+                                                                $record->record_name .
+                                                                '</a>';
+                                                        @endphp
                                                     @endif
                                                 </p>
                                             @endforeach

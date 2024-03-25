@@ -16,7 +16,7 @@
 
 <body class="bg-slate-200">
     <livewire:header />
-    <div class="flex justify-center mx-auto w-full lg:mt-4 pb-2">
+    <div class="flex justify-center mx-auto w-full pb-2">
         <main class="w-full">
             {{ $slot }}
         </main>

@@ -1,9 +1,9 @@
 @section('page-title')
     Lägg till Artist
 @endsection
-<div class="mx-auto max-w-screen-xl text-center pb-2">
+<div class="mx-auto max-w-screen-xl text-center pb-2 mt-4">
     <div
-        class="bg-white border-b-2 border-t-0 border-r-0 border-l-0 lg:border-t-2 lg:border-r-2 lg:border-l-2 border-slate-300 px-4 pt-4">
+        class="bg-white rounded-lg shadow-xl border-b-2 border-t-0 border-r-0 border-l-0 lg:border-t-2 lg:border-r-2 lg:border-l-2 border-slate-300 px-4 pt-4">
         <h1 class="text-2xl mt-2 mb-4 text-center font-bold text-gray-900 sm:text-3xl">
             Ny Artist
         </h1>

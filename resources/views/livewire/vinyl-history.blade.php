@@ -1,9 +1,9 @@
 @section('page-title')
     Historik
 @endsection
-<div wire:init="init" class="mx-auto max-w-screen-xl text-left">
+<div wire:init="init" class="mx-auto max-w-screen-xl text-left mt-4">
     <div
-        class="bg-white border-b-2 border-t-0 border-r-0 border-l-0 lg:border-t-2 lg:border-r-2 lg:border-l-2 border-slate-300 px-4 pt-4">
+        class="bg-white rounded-lg shadow-xl border-b-2 border-t-0 border-r-0 border-l-0 lg:border-t-2 lg:border-r-2 lg:border-l-2 border-slate-300 px-4 pt-4">
         <div class="flex justify-center items-center">
             <div wire:loading class="py-8">
                 <svg width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +20,7 @@
         @if ($loadData == true)
             <div class="flex justify-center items-center">
                 <p
-                    class="bg-slate-100 text-center border-r-4 border-l-4 border-red-300 py-1 text-red-800 text-xs lg:text-sm w-full lg:w-1/2">
+                    class="bg-slate-100 text-center rounded-md border-2 border-red-300 py-1 text-red-800 text-xs lg:text-sm w-full lg:w-1/2">
                     Vinyler Med Okänt Datum: <span class="font-semibold">{{ $vinyler_old }}</span>
                 </p>
             </div>
@@ -32,7 +32,7 @@
                 @if ($setDate != date('Y-m-d', strtotime($vinyl->created_at)) || $sameDay == 1)
                     <div class="flex justify-center items-center">
                         <div
-                            class="bg-slate-100 border-l-4 border-r-4 border-slate-300 text-center text-lg lg:text-xl my-4 py-1 lg:py-2 w-full lg:w-1/2">
+                            class="bg-slate-100 rounded-lg border-2 border-slate-300 text-center text-lg lg:text-xl my-4 py-1 lg:py-2 w-full lg:w-1/2">
                             <p class="font-semibold">{{ date('j/n', strtotime($vinyl->created_at)) }}</p>
                             <p class="text-xs lg:text-sm font-semibold text-gray-500">
                                 {{ date('Y', strtotime($vinyl->created_at)) }}</p>

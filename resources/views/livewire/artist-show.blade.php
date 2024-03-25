@@ -1,9 +1,9 @@
 @section('page-title')
     {{ $artist->name }}
 @endsection
-<div class="mx-auto max-w-screen-xl text-left pb-2">
+<div class="mx-auto max-w-screen-xl text-left pb-2 mt-4">
     <div
-        class="bg-white border-b-2 border-t-0 border-r-0 border-l-0 lg:border-t-2 lg:border-r-2 lg:border-l-2 border-slate-300 px-4 pt-4">
+        class="bg-white rounded-lg shadow-xl border-b-2 border-t-0 border-r-0 border-l-0 lg:border-t-2 lg:border-r-2 lg:border-l-2 border-slate-300 px-4 pt-4">
         <div x-data="{ show: false }">
             <h1 class="text-2xl text-center font-bold text-gray-700 sm:text-4xl rock-font">
                 {{ $artist->name }}
