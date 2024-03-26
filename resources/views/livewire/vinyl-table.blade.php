@@ -5,7 +5,7 @@
     @php
         $char = '';
     @endphp
-    <div class="relative pt-4 z-10">
+    <div class="relative pt-4">
         <svg class="absolute bottom-2 left-4 max-sm:left-6 svg-icon search-icon w-8 max-sm:w-6"
             aria-labelledby="title desc" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7">
             <g class="search-path" fill="none" stroke="#959595">
@@ -14,7 +14,7 @@
             </g>
         </svg>
         <input wire:model.live.debounce.500ms="search" name="search" type="text"
-            class="bg-white p-2 pl-14 max-sm:pl-12 w-full rounded-t-lg border-r-2 border-l-2 border-t-2 border-b-2 border-slate-300 outline-none text-2xl max-sm:text-base z-1 inner-shadow-box"
+            class="bg-white p-2 pl-14 max-sm:pl-12 w-full border-r-2 border-l-2 border-t-2 border-b-2 border-slate-300 outline-none text-2xl max-sm:text-base z-1 rounded-t-lg inner-shadow-box"
             placeholder="Sök Artister/Vinyler..." autocomplete="off" required="">
     </div>
     <div class="relative z-10">

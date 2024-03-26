@@ -79,6 +79,10 @@ body {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.drop-shadow-box {
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 15px;
+}
+
 .inner-shadow-box {
     box-shadow: inset rgba(0, 0, 0, 0.13) 0px 0px 8px;
 }

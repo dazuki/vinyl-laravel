@@ -1,15 +1,15 @@
 <div class="sticky top-0 z-50">
-    <header class="w-full mx-auto max-w-7xl">
+    <header class="w-full mx-auto max-w-7xl drop-shadow-box">
         <div x-data="{ open: false }">
             <div
-                class="container mx-auto flex justify-between items-center p-2 pl-2 max-w-7xl bg-white shadow-xl border-r-2 border-l-2 border-b-2 rounded-b-lg border-slate-300 inner-shadow-box">
+                class="container mx-auto flex justify-between items-center p-2 pl-2 max-w-7xl bg-white shadow-xl border-r-2 border-l-2 border-b-2 border-slate-300 inner-shadow-box">
                 <div class="flex justify-center text-gray-900 font-bold text-xl sm:text-2xl lg:text-3xl">
-                    <a href="/" class="antialiased items-center" wire:navigate>
+                    <a href="/" wire:navigate>
                         {{-- <img src="{{ asset('static/images/vinyl-record-svgrepo-com.svg') }}"
                 class="inline-block -mt-1 h-6 w-6 lg:w-8 lg:h-8"> --}}
-                        <div class="inline-block items-center">
-                            <img src="{{ asset('static/images/vinyl-laravel_logo.png') }}"
-                                class="h-[24px] xl:h-[48px] lg:h-[32px] md:h-[32px]">
+                        <div class="inline-block">
+                            <img src="{{ asset('static/images/vinyl-laravel_logo2.png') }}"
+                                class="h-[28px] xl:h-[48px] lg:h-[32px] md:h-[32px]">
                         </div>
                         @auth
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
