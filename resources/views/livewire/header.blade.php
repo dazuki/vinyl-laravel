@@ -2,7 +2,7 @@
     <header class="w-full mx-auto max-w-7xl">
         <div x-data="{ open: false }">
             <div
-                class="container mx-auto flex justify-between items-center p-2 pl-2 max-w-7xl bg-white shadow-xl border-r-2 border-l-2 border-b-2 rounded-b-lg border-slate-300">
+                class="container mx-auto flex justify-between items-center p-2 pl-2 max-w-7xl bg-white shadow-xl border-r-2 border-l-2 border-b-2 rounded-b-lg border-slate-300 inner-shadow-box">
                 <div class="flex justify-center text-gray-900 font-bold text-xl sm:text-2xl lg:text-3xl">
                     <a href="/" class="antialiased items-center" wire:navigate>
                         {{-- <img src="{{ asset('static/images/vinyl-record-svgrepo-com.svg') }}"

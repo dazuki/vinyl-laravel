@@ -5,7 +5,7 @@
     @php
         $char = '';
     @endphp
-    <div class="relative pt-4 max-sm:px-2 z-10">
+    <div class="relative pt-4 z-10">
         <svg class="absolute bottom-2 left-4 max-sm:left-6 svg-icon search-icon w-8 max-sm:w-6"
             aria-labelledby="title desc" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7">
             <g class="search-path" fill="none" stroke="#959595">
@@ -14,14 +14,15 @@
             </g>
         </svg>
         <input wire:model.live.debounce.500ms="search" name="search" type="text"
-            class="bg-white p-2 pl-14 max-sm:pl-12 w-full rounded-t-lg border-r-2 border-l-2 border-t-2 border-b border-slate-300 outline-none text-2xl max-sm:text-base z-1"
+            class="bg-white p-2 pl-14 max-sm:pl-12 w-full rounded-t-lg border-r-2 border-l-2 border-t-2 border-b-2 border-slate-300 outline-none text-2xl max-sm:text-base z-1 inner-shadow-box"
             placeholder="Sök Artister/Vinyler..." autocomplete="off" required="">
     </div>
     <div class="relative z-10">
         <div class="shadow-xl">
             <table
-                class="w-full text-sm text-left border-t border-b-2 border-r-2 border-l-2 border-slate-300 text-gray-500">
-                <thead class="border-t border-b-2 border-slate-300 text-xs text-slate-900 bg-gray-100">
+                class="w-full text-sm text-left border-t-0 border-b-2 border-r-2 border-l-2 border-slate-300 text-gray-500">
+                <thead
+                    class="border-l-0 border-r-0 border-t-0 border-b-, border-slate-300 text-xs text-slate-900 bg-white">
                     <tr>
                         <th scope="col"
                             class="px-2 sm:px-6 py-2 text-base sm:text-xl whitespace-nowrap antialiased w-1/2">
@@ -36,8 +37,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-sky-50 border-slate-300 hover:bg-slate-50">
-                        <td colspan="2" class="text-center bg-sky-50">
+                    <tr class="bg-white border-slate-300 hover:bg-slate-50">
+                        <td colspan="2" class="text-center bg-white">
                             <div wire:loading
                                 class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900 inline-block">
                                 <svg aria-hidden="true"
@@ -58,7 +59,7 @@
                         @if (!empty($search) && $artists->count() >= 1)
                             <tr class="bg-sky-50 border-dashed border-b-2 border-slate-300">
                                 <td colspan="2"
-                                    class="text-left px-2 text-gray-900 text-sm sm:text-base sm:px-6 py-2">
+                                    class="text-left px-2 border-t-2 border-slate-300 text-gray-900 text-sm sm:text-base sm:px-6 py-2">
                                     <p>
                                         Sökord -> "<span
                                             class="font-semibold text-red-600">{{ mb_strtoupper($search) }}</span>"
@@ -76,7 +77,7 @@
                             @foreach ($artists as $artist)
                                 @if (empty($char) || $char != mb_substr($artist->name, 0, 1))
                                     <tr wire:key="char-{{ $char }}"
-                                        class="bg-sky-50 border-b border-slate-300">
+                                        class="bg-sky-50 border-b-2 border-t-2 border-slate-300 inner-shadow-box">
                                         <td colspan="2"
                                             class="text-center lg:text-left p-2 px-6 text-lg sm:text-xl lg:text-3xl rock-font font-bold text-slate-400">
                                             {{ mb_substr($artist->name, 0, 1) }}</td>
@@ -176,13 +177,22 @@
                                 <tr class="bg-white border-b-2 lg:border-l-2 lg:border-r-2 border-slate-300">
                                     <td colspan="2"
                                         class="px-2 sm:px-6 py-4 align-top text-base sm:text-lg text-gray-900 text-center">
-                                        <p>Här var det tomt...</p>
+                                        <p>Sökord gav inga träffar...</p>
                                         @auth
-                                            <div class="mt-4 flex justify-center w-full">
-                                                <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 w-full text-center"
+                                            <div class="flex justify-center items-center mt-4">
+                                                <a class="text-gray-900 hover:text-green-700 rounded-lg border-2 border-slate-300 p-2 shadow-md font-semibold bg-slate-100 max-sm:w-full text-center"
                                                     href="/create/artist?name={{ mb_strtoupper($search) }}">
-                                                    <p><span class="text-green-700">Ny Artist</span></p>
-                                                    <p>{{ mb_strtoupper($search) }}</p>
+                                                    <p>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            class="inline-block w-7 h-7 -mt-1 pr-1 text-cyan-700">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M12 10.5v6m3-3H9m4.06-7.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                                                        </svg>
+                                                        <span class="font-semibild">Ny Artist?
+                                                        </span><span
+                                                            class="font-normal text-green-700">{{ mb_strtoupper($search) }}</span>
+                                                    </p>
                                                 </a>
                                             </div>
                                         @endauth

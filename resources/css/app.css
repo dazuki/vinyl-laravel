@@ -79,6 +79,10 @@ body {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.inner-shadow-box {
+    box-shadow: inset rgba(0, 0, 0, 0.13) 0px 0px 8px;
+}
+
 .svg-icon.search-icon {
     stroke-width: 2px;
 }
