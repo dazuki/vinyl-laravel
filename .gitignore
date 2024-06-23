@@ -19,3 +19,4 @@ yarn-error.log
 /.vscode
 /*.sh
 /*.bat
+/*.vbs
