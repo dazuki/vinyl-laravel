@@ -1,0 +1,4 @@
+Contact: mailto:absolute.dessan@gmail.com
+Expires: 2024-12-31T22:59:00.000Z
+Preferred-Languages: en, sv
+Canonical: https://vinyl.bokbindaregatan.se/.well-known/security.txt
