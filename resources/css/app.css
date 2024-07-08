@@ -8,10 +8,14 @@
 }
 
 .rock-font {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-family: "RocknRoll One", sans-serif;
 }
 
 .inter-font {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-family: "Inter", sans-serif;
 }
 
@@ -89,4 +93,12 @@ body {
 
 .svg-icon.search-icon {
     stroke-width: 2px;
+}
+
+button:disabled {
+    @apply bg-orange-300 border-orange-100;
+}
+
+button:hover[disabled] {
+    @apply bg-orange-300 border-orange-100;
 }
