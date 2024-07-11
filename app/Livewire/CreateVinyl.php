@@ -49,11 +49,18 @@ class CreateVinyl extends Component
             // Create a message class instance
             $message = new Message($server, $auth);
 
+            $extras = [
+                'client::notification' => [
+                    'click' => ['url' => 'https://vinyl.bokbindaregatan.se/artist/' . $artistName->id]
+                ]
+            ];
+
             // Send a message
             $message->create(
                 title: 'Ny Vinyl (Artist: ' . $artistName->name . ')',
                 message: 'Namn: ' . mb_strtoupper($createRecord->record_name),
                 priority: Message::PRIORITY_HIGH,
+                extras: $extras,
             );
         } catch (EndpointException | GotifyException $err) {
         }

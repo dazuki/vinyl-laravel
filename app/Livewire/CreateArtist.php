@@ -38,11 +38,18 @@ class CreateArtist extends Component
             // Create a message class instance
             $message = new Message($server, $auth);
 
+            $extras = [
+                'client::notification' => [
+                    'click' => ['url' => 'https://vinyl.bokbindaregatan.se/artist/' . $createRecord->id]
+                ]
+            ];
+
             // Send a message
             $message->create(
                 title: 'Ny Artist',
                 message: 'Namn: ' . $createRecord->name,
                 priority: Message::PRIORITY_HIGH,
+                extras: $extras,
             );
         } catch (EndpointException | GotifyException $err) {
         }
