@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "337ff183a0378938c56f24b7bfbaff93",
+    "content-hash": "3d06e84807295c9c5de1b687029d2757",
     "packages": [
         {
             "name": "brick/math",
@@ -6579,6 +6579,58 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/v2.2.7"
             },
             "time": "2023-12-08T13:03:43+00:00"
+        },
+        {
+            "name": "verifiedjoseph/gotify-api-php",
+            "version": "v1.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/VerifiedJoseph/gotify-api-php.git",
+                "reference": "712b4ee86350c7f6623b37fa2bc315805df61e24"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/VerifiedJoseph/gotify-api-php/zipball/712b4ee86350c7f6623b37fa2bc315805df61e24",
+                "reference": "712b4ee86350c7f6623b37fa2bc315805df61e24",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.4.5",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.0",
+                "phpunit/phpunit": "^10.5",
+                "squizlabs/php_codesniffer": "^3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gotify\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "VerifiedJoseph",
+                    "homepage": "https://github.com/VerifiedJoseph"
+                }
+            ],
+            "description": "PHP library for interacting with a Gotify server using the Gotify REST-API.",
+            "homepage": "https://github.com/VerifiedJoseph/gotify-api-php",
+            "keywords": [
+                "gotify"
+            ],
+            "support": {
+                "issues": "https://github.com/VerifiedJoseph/gotify-api-php/issues",
+                "source": "https://github.com/VerifiedJoseph/gotify-api-php/tree/v1.8.2"
+            },
+            "time": "2024-06-24T08:17:45+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

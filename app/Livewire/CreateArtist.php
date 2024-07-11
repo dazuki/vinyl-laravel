@@ -6,6 +6,11 @@ use App\Models\Artist;
 use Livewire\Component;
 use Livewire\Attributes\Url;
 use Illuminate\Support\Facades\Cache;
+use Gotify\Server;
+use Gotify\Auth\Token;
+use Gotify\Endpoint\Message;
+use Gotify\Exception\GotifyException;
+use Gotify\Exception\EndpointException;
 
 class CreateArtist extends Component
 {
@@ -23,6 +28,24 @@ class CreateArtist extends Component
         $createRecord = Artist::create($formFields);
 
         Cache::flush();
+
+        try {
+            $server = new Server($_ENV['GOTIFY_SERVER']);
+
+            // Set application token
+            $auth = new Token($_ENV['GOTIFY_TOKEN']);
+
+            // Create a message class instance
+            $message = new Message($server, $auth);
+
+            // Send a message
+            $message->create(
+                title: 'Ny Artist',
+                message: 'Namn: ' . $createRecord->name,
+                priority: Message::PRIORITY_HIGH,
+            );
+        } catch (EndpointException | GotifyException $err) {
+        }
 
         $this->redirect('/artist/' . $createRecord->id . '?msg=artist');
     }
