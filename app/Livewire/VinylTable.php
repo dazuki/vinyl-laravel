@@ -11,11 +11,12 @@ use App\Exports\ArtistExport;
 use Illuminate\Support\Facades\Cache;
 use Maatwebsite\Excel\Facades\Excel;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Gotify\Server;
-use Gotify\Auth\Token;
-use Gotify\Endpoint\Message;
-use Gotify\Exception\GotifyException;
-use Gotify\Exception\EndpointException;
+
+use Ntfy\Client;
+use Ntfy\Server;
+use Ntfy\Message;
+use Ntfy\Exception\NtfyException;
+use Ntfy\Exception\EndpointException;
 
 class VinylTable extends Component
 {
@@ -74,21 +75,27 @@ class VinylTable extends Component
         });
 
         try {
-            $server = new Server($_ENV['GOTIFY_SERVER']);
+            // Set server
+            $server = new Server($_ENV['NTFY_SERVER']);
 
-            // Set application token
-            $auth = new Token($_ENV['GOTIFY_TOKEN']);
+            // Action button
+            //$action = new View();
+            //$action->label('Länk Till Artist');
+            //$action->url('https://vinyl.bokbindaregatan.se/artist/' . $createRecord->id);
 
-            // Create a message class instance
-            $message = new Message($server, $auth);
+            // Create a new message
+            $message = new Message();
+            $message->topic('vinyler');
+            $message->title('Nerladdning .xls');
+            $message->tags(['arrow_down', 'page_with_curl']);
+            $message->body('Vinyler Förteckning(Artister ' . $recordsCountCache . ' - Vinyler ' . $artistsCountCache . ').xls');
 
-            // Send a message
-            $message->create(
-                title: 'Excel Nerladdning',
-                message: 'Vinyler Förteckning(Artister ' . $recordsCountCache . ' - Vinyler ' . $artistsCountCache . ').xls',
-                priority: Message::PRIORITY_HIGH,
-            );
-        } catch (EndpointException | GotifyException $err) {
+            //$message->action($action);
+            //$message->priority(Message::PRIORITY_HIGH);
+
+            $client = new Client($server);
+            $response = $client->send($message);
+        } catch (EndpointException | NtfyException $err) {
         }
 
         return Excel::download(new ArtistExport, 'Vinyler Förteckning(Artister ' . $recordsCountCache . ' - Vinyler ' . $artistsCountCache . ').xls', \Maatwebsite\Excel\Excel::XLS);

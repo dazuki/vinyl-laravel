@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d06e84807295c9c5de1b687029d2757",
+    "content-hash": "4dd63aeb30b018e6c3e017dd6033ad6d",
     "packages": [
         {
             "name": "brick/math",
@@ -6581,23 +6581,23 @@
             "time": "2023-12-08T13:03:43+00:00"
         },
         {
-            "name": "verifiedjoseph/gotify-api-php",
-            "version": "v1.8.2",
+            "name": "verifiedjoseph/ntfy-php-library",
+            "version": "v4.5.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/VerifiedJoseph/gotify-api-php.git",
-                "reference": "712b4ee86350c7f6623b37fa2bc315805df61e24"
+                "url": "https://github.com/VerifiedJoseph/ntfy-php-library.git",
+                "reference": "43a0553f5b3f79768708e75c7189bd8cf3b96be2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VerifiedJoseph/gotify-api-php/zipball/712b4ee86350c7f6623b37fa2bc315805df61e24",
-                "reference": "712b4ee86350c7f6623b37fa2bc315805df61e24",
+                "url": "https://api.github.com/repos/VerifiedJoseph/ntfy-php-library/zipball/43a0553f5b3f79768708e75c7189bd8cf3b96be2",
+                "reference": "43a0553f5b3f79768708e75c7189bd8cf3b96be2",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "ext-json": "*",
-                "guzzlehttp/guzzle": "^7.4.5",
+                "guzzlehttp/guzzle": "^7.4",
                 "php": "^8.1"
             },
             "require-dev": {
@@ -6608,7 +6608,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Gotify\\": "src/"
+                    "Ntfy\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -6621,16 +6621,16 @@
                     "homepage": "https://github.com/VerifiedJoseph"
                 }
             ],
-            "description": "PHP library for interacting with a Gotify server using the Gotify REST-API.",
-            "homepage": "https://github.com/VerifiedJoseph/gotify-api-php",
+            "description": "PHP library for interacting with a Ntfy server",
+            "homepage": "https://github.com/VerifiedJoseph/ntfy-php-library",
             "keywords": [
-                "gotify"
+                "Ntfy"
             ],
             "support": {
-                "issues": "https://github.com/VerifiedJoseph/gotify-api-php/issues",
-                "source": "https://github.com/VerifiedJoseph/gotify-api-php/tree/v1.8.2"
+                "issues": "https://github.com/VerifiedJoseph/ntfy-php-library/issues",
+                "source": "https://github.com/VerifiedJoseph/ntfy-php-library/tree/v4.5.2"
             },
-            "time": "2024-06-24T08:17:45+00:00"
+            "time": "2024-03-25T12:43:02+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

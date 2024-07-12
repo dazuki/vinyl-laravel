@@ -8,11 +8,13 @@ use Livewire\Component;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Gotify\Server;
-use Gotify\Auth\Token;
-use Gotify\Endpoint\Message;
-use Gotify\Exception\GotifyException;
-use Gotify\Exception\EndpointException;
+
+use Ntfy\Client;
+use Ntfy\Server;
+use Ntfy\Message;
+use Ntfy\Action\View;
+use Ntfy\Exception\NtfyException;
+use Ntfy\Exception\EndpointException;
 
 class ArtistShow extends Component
 {
@@ -62,21 +64,27 @@ class ArtistShow extends Component
         ]);
 
         try {
-            $server = new Server($_ENV['GOTIFY_SERVER']);
+            // Set server
+            $server = new Server($_ENV['NTFY_SERVER']);
 
-            // Set application token
-            $auth = new Token($_ENV['GOTIFY_TOKEN']);
+            // Action button
+            $action = new View();
+            $action->label('Länk Till Artist');
+            $action->url('https://vinyl.bokbindaregatan.se/artist/' . $this->art_id);
 
-            // Create a message class instance
-            $message = new Message($server, $auth);
+            // Create a new message
+            $message = new Message();
+            $message->topic('vinyler');
+            $message->title('Redigerad Artist');
+            $message->tags(['yellow_circle', 'singer']);
+            $message->body('Nytt Namn: ' . mb_strtoupper($this->name));
 
-            // Send a message
-            $message->create(
-                title: 'Redigerad Artist',
-                message: 'Nytt Namn: ' . mb_strtoupper($this->name),
-                priority: Message::PRIORITY_HIGH,
-            );
-        } catch (EndpointException | GotifyException $err) {
+            $message->action($action);
+            //$message->priority(Message::PRIORITY_HIGH);
+
+            $client = new Client($server);
+            $response = $client->send($message);
+        } catch (EndpointException | NtfyException $err) {
         }
 
         Cache::flush();
@@ -85,21 +93,27 @@ class ArtistShow extends Component
     public function delete(Artist $artist)
     {
         try {
-            $server = new Server($_ENV['GOTIFY_SERVER']);
+            // Set server
+            $server = new Server($_ENV['NTFY_SERVER']);
 
-            // Set application token
-            $auth = new Token($_ENV['GOTIFY_TOKEN']);
+            // Action button
+            //$action = new View();
+            //$action->label('Länk Till Artist');
+            //$action->url('https://vinyl.bokbindaregatan.se/artist/' . $this->art_id);
 
-            // Create a message class instance
-            $message = new Message($server, $auth);
+            // Create a new message
+            $message = new Message();
+            $message->topic('vinyler');
+            $message->title('Raderad Artist');
+            $message->tags(['red_circle', 'singer']);
+            $message->body('Artist: ' . mb_strtoupper($artist->name));
 
-            // Send a message
-            $message->create(
-                title: 'Raderad Artist',
-                message: 'Namn: ' . mb_strtoupper($artist->name),
-                priority: Message::PRIORITY_HIGH,
-            );
-        } catch (EndpointException | GotifyException $err) {
+            //$message->action($action);
+            //$message->priority(Message::PRIORITY_HIGH);
+
+            $client = new Client($server);
+            $response = $client->send($message);
+        } catch (EndpointException | NtfyException $err) {
         }
 
         $artist->delete();
@@ -114,21 +128,28 @@ class ArtistShow extends Component
         $artistName = Artist::find($record->artist_id);
 
         try {
-            $server = new Server($_ENV['GOTIFY_SERVER']);
+            // Set server
+            $server = new Server($_ENV['NTFY_SERVER']);
 
-            // Set application token
-            $auth = new Token($_ENV['GOTIFY_TOKEN']);
+            // Action button
+            //$action = new View();
+            //$action->label('Länk Till Artist');
+            //$action->url('https://vinyl.bokbindaregatan.se/artist/' . $this->art_id);
 
-            // Create a message class instance
-            $message = new Message($server, $auth);
+            // Create a new message
+            $message = new Message();
+            $message->topic('vinyler');
+            $message->title('Raderad Vinyl');
+            $message->tags(['red_circle', 'cd']);
+            $message->body('Vinyl: ' . mb_strtoupper($record->record_name) . '
+Artist: ' . $artistName->name);
 
-            // Send a message
-            $message->create(
-                title: 'Raderad Vinyl (Artist: ' . $artistName->name . ')',
-                message: 'Namn: ' . mb_strtoupper($record->record_name),
-                priority: Message::PRIORITY_HIGH,
-            );
-        } catch (EndpointException | GotifyException $err) {
+            //$message->action($action);
+            //$message->priority(Message::PRIORITY_HIGH);
+
+            $client = new Client($server);
+            $response = $client->send($message);
+        } catch (EndpointException | NtfyException $err) {
         }
 
         $record->delete();

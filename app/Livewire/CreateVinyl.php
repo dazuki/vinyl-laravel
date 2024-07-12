@@ -7,11 +7,13 @@ use App\Models\Record;
 use Livewire\Component;
 use Livewire\Attributes\Url;
 use Illuminate\Support\Facades\Cache;
-use Gotify\Server;
-use Gotify\Auth\Token;
-use Gotify\Endpoint\Message;
-use Gotify\Exception\GotifyException;
-use Gotify\Exception\EndpointException;
+
+use Ntfy\Client;
+use Ntfy\Server;
+use Ntfy\Message;
+use Ntfy\Action\View;
+use Ntfy\Exception\NtfyException;
+use Ntfy\Exception\EndpointException;
 
 class CreateVinyl extends Component
 {
@@ -41,28 +43,28 @@ class CreateVinyl extends Component
         Cache::flush();
 
         try {
-            $server = new Server($_ENV['GOTIFY_SERVER']);
+            // Set server
+            $server = new Server($_ENV['NTFY_SERVER']);
 
-            // Set application token
-            $auth = new Token($_ENV['GOTIFY_TOKEN']);
+            // Action button
+            $action = new View();
+            $action->label('Länk Till Artist');
+            $action->url('https://vinyl.bokbindaregatan.se/artist/' . $artistName->id);
 
-            // Create a message class instance
-            $message = new Message($server, $auth);
+            // Create a new message
+            $message = new Message();
+            $message->topic('vinyler');
+            $message->title('Ny Vinyl');
+            $message->tags(['green_circle', 'cd']);
+            $message->body('Vinyl: ' . mb_strtoupper($createRecord->record_name) . '
+Artist: ' . $artistName->name);
 
-            $extras = [
-                'client::notification' => [
-                    'click' => ['url' => 'https://vinyl.bokbindaregatan.se/artist/' . $artistName->id]
-                ]
-            ];
+            $message->action($action);
+            //$message->priority(Message::PRIORITY_HIGH);
 
-            // Send a message
-            $message->create(
-                title: 'Ny Vinyl (Artist: ' . $artistName->name . ')',
-                message: 'Namn: ' . mb_strtoupper($createRecord->record_name),
-                priority: Message::PRIORITY_HIGH,
-                extras: $extras,
-            );
-        } catch (EndpointException | GotifyException $err) {
+            $client = new Client($server);
+            $response = $client->send($message);
+        } catch (EndpointException | NtfyException $err) {
         }
 
         session()->flash('status', 'Vinylen är tillagd!');

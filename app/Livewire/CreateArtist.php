@@ -6,11 +6,13 @@ use App\Models\Artist;
 use Livewire\Component;
 use Livewire\Attributes\Url;
 use Illuminate\Support\Facades\Cache;
-use Gotify\Server;
-use Gotify\Auth\Token;
-use Gotify\Endpoint\Message;
-use Gotify\Exception\GotifyException;
-use Gotify\Exception\EndpointException;
+
+use Ntfy\Client;
+use Ntfy\Server;
+use Ntfy\Message;
+use Ntfy\Action\View;
+use Ntfy\Exception\NtfyException;
+use Ntfy\Exception\EndpointException;
 
 class CreateArtist extends Component
 {
@@ -30,28 +32,27 @@ class CreateArtist extends Component
         Cache::flush();
 
         try {
-            $server = new Server($_ENV['GOTIFY_SERVER']);
+            // Set server
+            $server = new Server($_ENV['NTFY_SERVER']);
 
-            // Set application token
-            $auth = new Token($_ENV['GOTIFY_TOKEN']);
+            // Action button
+            $action = new View();
+            $action->label('Länk Till Artist');
+            $action->url('https://vinyl.bokbindaregatan.se/artist/' . $createRecord->id);
 
-            // Create a message class instance
-            $message = new Message($server, $auth);
+            // Create a new message
+            $message = new Message();
+            $message->topic('vinyler');
+            $message->title('Ny Artist');
+            $message->tags(['green_circle', 'singer']);
+            $message->body('Artist: ' . $createRecord->name);
 
-            $extras = [
-                'client::notification' => [
-                    'click' => ['url' => 'https://vinyl.bokbindaregatan.se/artist/' . $createRecord->id]
-                ]
-            ];
+            $message->action($action);
+            //$message->priority(Message::PRIORITY_HIGH);
 
-            // Send a message
-            $message->create(
-                title: 'Ny Artist',
-                message: 'Namn: ' . $createRecord->name,
-                priority: Message::PRIORITY_HIGH,
-                extras: $extras,
-            );
-        } catch (EndpointException | GotifyException $err) {
+            $client = new Client($server);
+            $response = $client->send($message);
+        } catch (EndpointException | NtfyException $err) {
         }
 
         $this->redirect('/artist/' . $createRecord->id . '?msg=artist');
