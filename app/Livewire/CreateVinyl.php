@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Cache;
 use Ntfy\Client;
 use Ntfy\Server;
 use Ntfy\Message;
+use Ntfy\Auth\User;
 use Ntfy\Action\View;
 use Ntfy\Exception\NtfyException;
 use Ntfy\Exception\EndpointException;
@@ -61,8 +62,10 @@ Artist: ' . $artistName->name);
 
             $message->action($action);
             //$message->priority(Message::PRIORITY_HIGH);
+            // Set authentication username and password
+            $auth = new User($_ENV['NTFY_LOGIN'], $_ENV['NTFY_PASS']);
 
-            $client = new Client($server);
+            $client = new Client($server, $auth);
             $response = $client->send($message);
         } catch (EndpointException | NtfyException $err) {
         }
