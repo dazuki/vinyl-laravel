@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Cache;
 use Maatwebsite\Excel\Facades\Excel;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
-use Ntfy\Client;
+/*use Ntfy\Client;
 use Ntfy\Server;
 use Ntfy\Message;
 use Ntfy\Auth\User;
 use Ntfy\Exception\NtfyException;
-use Ntfy\Exception\EndpointException;
+use Ntfy\Exception\EndpointException;*/
 
 class VinylTable extends Component
 {
@@ -75,7 +75,7 @@ class VinylTable extends Component
             return Artist::all()->count();
         });
 
-        try {
+        /*try {
             // Set server
             $server = new Server($_ENV['NTFY_SERVER']);
 
@@ -99,7 +99,7 @@ class VinylTable extends Component
             $client = new Client($server, $auth);
             $response = $client->send($message);
         } catch (EndpointException | NtfyException $err) {
-        }
+        }*/
 
         return Excel::download(new ArtistExport, 'Vinyler Förteckning(Artister ' . $recordsCountCache . ' - Vinyler ' . $artistsCountCache . ').xls', \Maatwebsite\Excel\Excel::XLS);
     }

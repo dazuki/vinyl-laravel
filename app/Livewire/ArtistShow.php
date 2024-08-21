@@ -9,13 +9,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
-use Ntfy\Client;
+/*use Ntfy\Client;
 use Ntfy\Server;
 use Ntfy\Message;
 use Ntfy\Auth\User;
 use Ntfy\Action\View;
 use Ntfy\Exception\NtfyException;
-use Ntfy\Exception\EndpointException;
+use Ntfy\Exception\EndpointException;*/
 
 class ArtistShow extends Component
 {
@@ -64,7 +64,7 @@ class ArtistShow extends Component
             'name' => mb_strtoupper($this->name)
         ]);
 
-        try {
+        /*try {
             // Set server
             $server = new Server($_ENV['NTFY_SERVER']);
 
@@ -88,14 +88,14 @@ class ArtistShow extends Component
             $client = new Client($server, $auth);
             $response = $client->send($message);
         } catch (EndpointException | NtfyException $err) {
-        }
+        }*/
 
         Cache::flush();
     }
 
     public function delete(Artist $artist)
     {
-        try {
+        /*try {
             // Set server
             $server = new Server($_ENV['NTFY_SERVER']);
 
@@ -119,7 +119,7 @@ class ArtistShow extends Component
             $client = new Client($server, $auth);
             $response = $client->send($message);
         } catch (EndpointException | NtfyException $err) {
-        }
+        }*/
 
         $artist->delete();
 
@@ -132,7 +132,7 @@ class ArtistShow extends Component
     {
         $artistName = Artist::find($record->artist_id);
 
-        try {
+        /*try {
             // Set server
             $server = new Server($_ENV['NTFY_SERVER']);
 
@@ -157,7 +157,7 @@ Artist: ' . $artistName->name);
             $client = new Client($server, $auth);
             $response = $client->send($message);
         } catch (EndpointException | NtfyException $err) {
-        }
+        }*/
 
         $record->delete();
 

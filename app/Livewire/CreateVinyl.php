@@ -8,13 +8,13 @@ use Livewire\Component;
 use Livewire\Attributes\Url;
 use Illuminate\Support\Facades\Cache;
 
-use Ntfy\Client;
+/*use Ntfy\Client;
 use Ntfy\Server;
 use Ntfy\Message;
 use Ntfy\Auth\User;
 use Ntfy\Action\View;
 use Ntfy\Exception\NtfyException;
-use Ntfy\Exception\EndpointException;
+use Ntfy\Exception\EndpointException;*/
 
 class CreateVinyl extends Component
 {
@@ -43,7 +43,7 @@ class CreateVinyl extends Component
 
         Cache::flush();
 
-        try {
+        /*try {
             // Set server
             $server = new Server($_ENV['NTFY_SERVER']);
 
@@ -68,7 +68,7 @@ Artist: ' . $artistName->name);
             $client = new Client($server, $auth);
             $response = $client->send($message);
         } catch (EndpointException | NtfyException $err) {
-        }
+        }*/
 
         session()->flash('status', 'Vinylen är tillagd!');
 

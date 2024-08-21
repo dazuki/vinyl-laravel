@@ -7,13 +7,13 @@ use Livewire\Component;
 use Livewire\Attributes\Url;
 use Illuminate\Support\Facades\Cache;
 
-use Ntfy\Client;
+/*use Ntfy\Client;
 use Ntfy\Server;
 use Ntfy\Message;
 use Ntfy\Auth\User;
 use Ntfy\Action\View;
 use Ntfy\Exception\NtfyException;
-use Ntfy\Exception\EndpointException;
+use Ntfy\Exception\EndpointException;*/
 
 class CreateArtist extends Component
 {
@@ -32,7 +32,7 @@ class CreateArtist extends Component
 
         Cache::flush();
 
-        try {
+        /*try {
             // Set server
             $server = new Server($_ENV['NTFY_SERVER']);
 
@@ -57,7 +57,7 @@ class CreateArtist extends Component
             $client = new Client($server, $auth);
             $response = $client->send($message);
         } catch (EndpointException | NtfyException $err) {
-        }
+        }*/
 
         $this->redirect('/artist/' . $createRecord->id . '?msg=artist');
     }
