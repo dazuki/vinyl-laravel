@@ -9,7 +9,6 @@ use App\Livewire\CreateVinyl;
 use App\Livewire\CreateArtist;
 use App\Livewire\VinylHistory;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Routing\Events\Routing;
 
 /*
 |--------------------------------------------------------------------------

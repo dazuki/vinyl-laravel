@@ -17,7 +17,7 @@ class VinylHistory extends Component
 
     public function render()
     {
-        $vinylerHistoryCache = Cache::rememberForever('vinylerHistoryCache', function () {
+        $vinylerHistoryCache = Cache::rememberForever('VinylHistory', function () {
             return Record::with('artist')->selectRAW('*, CAST(STRFTIME("%s", created_at) as INT) as created_time')
                 ->whereRAW('created_time > ' . strtotime('2023-11-01 00:00:00'))
                 ->orderBy('created_time', 'DESC')

@@ -27,7 +27,7 @@ class ArtistShow extends Component
 
     public function mount(Request $request)
     {
-        $artNameCache = Cache::rememberForever('artNameCache_' . $this->art_id, function () {
+        $artNameCache = Cache::rememberForever('ArtistShow_name_' . $this->art_id, function () {
             return Artist::find($this->art_id)->name;
         });
 
@@ -170,7 +170,7 @@ Artist: ' . $artistName->name);
 
     public function render()
     {
-        $artIdCache = Cache::rememberForever('artIdCache_' . $this->art_id, function () {
+        $artIdCache = Cache::rememberForever('ArtistShow_id_' . $this->art_id, function () {
             return Artist::find($this->art_id);
         });
 
