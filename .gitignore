@@ -20,3 +20,4 @@ yarn-error.log
 /*.sh
 /*.bat
 /*.vbs
+/database/*.sqbpro
