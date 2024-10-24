@@ -4,18 +4,10 @@ namespace App\Livewire;
 
 use App\Models\Artist;
 use App\Models\Record;
-use Livewire\Component;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-
-/*use Ntfy\Client;
-use Ntfy\Server;
-use Ntfy\Message;
-use Ntfy\Auth\User;
-use Ntfy\Action\View;
-use Ntfy\Exception\NtfyException;
-use Ntfy\Exception\EndpointException;*/
+use Livewire\Component;
 
 class ArtistShow extends Component
 {
@@ -27,7 +19,7 @@ class ArtistShow extends Component
 
     public function mount(Request $request)
     {
-        $artNameCache = Cache::rememberForever('ArtistShow_name_' . $this->art_id, function () {
+        $artNameCache = Cache::rememberForever('ArtistShow_name_'.$this->art_id, function () {
             return Artist::find($this->art_id)->name;
         });
 
@@ -40,7 +32,7 @@ class ArtistShow extends Component
                 'position' => 'center',
                 'timerProgressBar' => true,
                 // 'showConfirmButton' => true,
-                'onConfirmed' => ''
+                'onConfirmed' => '',
             ]);
         } elseif ($request->msg == 'vinyl') {
             $this->alert('success', 'Vinyl tillagd!', [
@@ -49,7 +41,7 @@ class ArtistShow extends Component
                 'position' => 'center',
                 'timerProgressBar' => true,
                 // 'showConfirmButton' => true,
-                'onConfirmed' => ''
+                'onConfirmed' => '',
             ]);
         }
     }
@@ -57,70 +49,18 @@ class ArtistShow extends Component
     public function save()
     {
         $formFields = $this->validate([
-            'name' => 'required|min:1'
+            'name' => 'required|min:1',
         ]);
 
         Artist::where('id', $this->art_id)->update([
-            'name' => mb_strtoupper($this->name)
+            'name' => mb_strtoupper($this->name),
         ]);
-
-        /*try {
-            // Set server
-            $server = new Server($_ENV['NTFY_SERVER']);
-
-            // Action button
-            $action = new View();
-            $action->label('Länk Till Artist');
-            $action->url('https://vinyl.bokbindaregatan.se/artist/' . $this->art_id);
-
-            // Create a new message
-            $message = new Message();
-            $message->topic('vinyler');
-            $message->title('Redigerad Artist');
-            $message->tags(['yellow_circle', 'singer']);
-            $message->body('Nytt Namn: ' . mb_strtoupper($this->name));
-
-            $message->action($action);
-            //$message->priority(Message::PRIORITY_HIGH);
-            // Set authentication username and password
-            $auth = new User($_ENV['NTFY_LOGIN'], $_ENV['NTFY_PASS']);
-
-            $client = new Client($server, $auth);
-            $response = $client->send($message);
-        } catch (EndpointException | NtfyException $err) {
-        }*/
 
         Cache::flush();
     }
 
     public function delete(Artist $artist)
     {
-        /*try {
-            // Set server
-            $server = new Server($_ENV['NTFY_SERVER']);
-
-            // Action button
-            //$action = new View();
-            //$action->label('Länk Till Artist');
-            //$action->url('https://vinyl.bokbindaregatan.se/artist/' . $this->art_id);
-
-            // Create a new message
-            $message = new Message();
-            $message->topic('vinyler');
-            $message->title('Raderad Artist');
-            $message->tags(['red_circle', 'singer']);
-            $message->body('Artist: ' . mb_strtoupper($artist->name));
-
-            //$message->action($action);
-            //$message->priority(Message::PRIORITY_HIGH);
-            // Set authentication username and password
-            $auth = new User($_ENV['NTFY_LOGIN'], $_ENV['NTFY_PASS']);
-
-            $client = new Client($server, $auth);
-            $response = $client->send($message);
-        } catch (EndpointException | NtfyException $err) {
-        }*/
-
         $artist->delete();
 
         Cache::flush();
@@ -130,52 +70,23 @@ class ArtistShow extends Component
 
     public function recordDelete(Record $record)
     {
-        $artistName = Artist::find($record->artist_id);
-
-        /*try {
-            // Set server
-            $server = new Server($_ENV['NTFY_SERVER']);
-
-            // Action button
-            //$action = new View();
-            //$action->label('Länk Till Artist');
-            //$action->url('https://vinyl.bokbindaregatan.se/artist/' . $this->art_id);
-
-            // Create a new message
-            $message = new Message();
-            $message->topic('vinyler');
-            $message->title('Raderad Vinyl');
-            $message->tags(['red_circle', 'cd']);
-            $message->body('Vinyl: ' . mb_strtoupper($record->record_name) . '
-Artist: ' . $artistName->name);
-
-            //$message->action($action);
-            //$message->priority(Message::PRIORITY_HIGH);
-            // Set authentication username and password
-            $auth = new User($_ENV['NTFY_LOGIN'], $_ENV['NTFY_PASS']);
-
-            $client = new Client($server, $auth);
-            $response = $client->send($message);
-        } catch (EndpointException | NtfyException $err) {
-        }*/
-
         $record->delete();
 
         Cache::flush();
 
         session()->flash('status', 'Vinylen är borttagen!');
 
-        $this->redirect('/artist/' . $this->art_id);
+        $this->redirect('/artist/'.$this->art_id);
     }
 
     public function render()
     {
-        $artIdCache = Cache::rememberForever('ArtistShow_id_' . $this->art_id, function () {
+        $artIdCache = Cache::rememberForever('ArtistShow_id_'.$this->art_id, function () {
             return Artist::find($this->art_id);
         });
 
         return view('livewire.artist-show', [
-            'artist' => $artIdCache
+            'artist' => $artIdCache,
         ]);
     }
 }
