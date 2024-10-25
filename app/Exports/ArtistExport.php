@@ -11,9 +11,6 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
 class ArtistExport implements FromView, ShouldAutoSize
 {
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function view(): View
     {
         $excelCache_ArtistAll = Cache::rememberForever('ArtistExport_artists', function () {
@@ -27,7 +24,7 @@ class ArtistExport implements FromView, ShouldAutoSize
         return view('exports.collection', [
             'collections' => $excelCache_ArtistAll
                 ->sortBy('name'),
-            'collections_records' => $excelCache_RecordAllCount
+            'collections_records' => $excelCache_RecordAllCount,
         ]);
     }
 }

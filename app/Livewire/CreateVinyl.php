@@ -30,8 +30,7 @@ class CreateVinyl extends Component
             'record_name' => 'required|min:1',
         ]);
 
-        $createRecord = Record::create($formFields);
-        $artistName = Artist::find($createRecord->artist_id);
+        Record::create($formFields);
 
         Cache::flush();
 

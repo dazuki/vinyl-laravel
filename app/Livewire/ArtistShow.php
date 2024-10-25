@@ -48,7 +48,7 @@ class ArtistShow extends Component
 
     public function save()
     {
-        $formFields = $this->validate([
+        $this->validate([
             'name' => 'required|min:1',
         ]);
 

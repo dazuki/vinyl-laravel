@@ -37,7 +37,7 @@ class VinylTable extends Component
 
         $cacheKey = Cache::rememberForever($cacheName, function () {
             return Artist::with('records')->search($this->search)
-                ->orderBy('name', 'asc')
+                ->orderBy('name')
                 ->paginate(25);
         });
 
