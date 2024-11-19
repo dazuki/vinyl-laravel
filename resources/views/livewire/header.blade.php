@@ -9,7 +9,7 @@
                 class="inline-block w-6 h-6 -mt-1 lg:w-8 lg:h-8"> --}}
                         <div class="inline-block">
                             <img src="{{ asset('static/images/vinyl-laravel_logo2.png') }}"
-                                class="h-[20px] md:h-[32px] lg:h-[32px] xl:h-[48px]">
+                                class="h-[26px] md:h-[32px] lg:h-[32px] xl:h-[48px]">
                         </div>
                         @auth
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -22,7 +22,7 @@
                     </a>
                 </div>
                 <button @click="open = !open" class="text-slate-700 lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24"
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="square" stroke-linejoin="square" stroke-width="3"
                             d="M4 6h16M4 12h16M4 18h16" />
