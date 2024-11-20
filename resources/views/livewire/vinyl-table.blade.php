@@ -26,13 +26,17 @@
                     <tr>
                         <th scope="col"
                             class="w-1/2 px-2 py-2 text-base antialiased whitespace-nowrap sm:px-6 sm:text-xl">
-                            Artister: <span
-                                class="text-base font-semibold text-green-800 sm:text-xl">{{ $loadData ? $art_count : '...' }}</span>
+                            @if ($loadData == true)
+                                Artister: <span
+                                    class="text-base font-semibold text-green-800 sm:text-xl">{{ $art_count }}</span>
+                            @endif
                         </th>
                         <th scope="col"
                             class="w-1/2 px-2 py-2 pl-0 text-base antialiased whitespace-nowrap sm:px-6 sm:text-xl">
-                            Vinyler: <span
-                                class="text-base font-semibold text-green-800 sm:text-xl">{{ $loadData ? $records : '...' }}</span>
+                            @if ($loadData == true)
+                                Vinyler: <span
+                                    class="text-base font-semibold text-green-800 sm:text-xl">{{ $records }}</span>
+                            @endif
                         </th>
                     </tr>
                 </thead>

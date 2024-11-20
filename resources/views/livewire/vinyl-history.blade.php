@@ -18,43 +18,45 @@
             </div>
         </div>
         @if ($loadData == true)
-            <div class="flex items-center justify-center">
-                <p
-                    class="w-full py-1 text-xs text-center text-red-800 border-2 border-red-300 rounded-md bg-slate-100 lg:text-sm lg:w-1/2">
-                    Vinyler Med Okänt Datum: <span class="font-semibold">{{ $vinyler_old }}</span>
-                </p>
-            </div>
-            @php
-                $setDate = date('Y-m-d');
-                $sameDay = 1;
-            @endphp
-            @foreach ($vinyler as $vinyl)
-                @if ($setDate != date('Y-m-d', strtotime($vinyl->created_at)) || $sameDay == 1)
-                    <div class="flex items-center justify-center">
-                        <div
-                            class="w-full py-1 my-4 text-lg text-center border-2 rounded-lg bg-slate-100 border-slate-300 lg:text-xl lg:py-2 lg:w-1/2">
-                            <p class="font-semibold">{{ date('j/n', strtotime($vinyl->created_at)) }}</p>
-                            <p class="text-xs font-semibold text-gray-500 lg:text-sm">
-                                {{ date('Y', strtotime($vinyl->created_at)) }}</p>
+            <div wire:transition.opacity>
+                <div class="flex items-center justify-center">
+                    <p
+                        class="w-full py-1 text-xs text-center text-red-800 border-2 border-red-300 rounded-md bg-slate-100 lg:text-sm lg:w-1/2">
+                        Vinyler Med Okänt Datum: <span class="font-semibold">{{ $vinyler_old }}</span>
+                    </p>
+                </div>
+                @php
+                    $setDate = date('Y-m-d');
+                    $sameDay = 1;
+                @endphp
+                @foreach ($vinyler as $vinyl)
+                    @if ($setDate != date('Y-m-d', strtotime($vinyl->created_at)) || $sameDay == 1)
+                        <div class="flex items-center justify-center">
+                            <div
+                                class="w-full py-1 my-4 text-lg text-center border-2 rounded-lg bg-slate-100 border-slate-300 lg:text-xl lg:py-2 lg:w-1/2">
+                                <p class="font-semibold">{{ date('j/n', strtotime($vinyl->created_at)) }}</p>
+                                <p class="text-xs font-semibold text-gray-500 lg:text-sm">
+                                    {{ date('Y', strtotime($vinyl->created_at)) }}</p>
+                            </div>
                         </div>
-                    </div>
-                    @php
-                        $setDate = date('Y-m-d', strtotime($vinyl->created_at));
-                        $sameDay = 0;
-                    @endphp
-                @endif
-                <p class="text-sm font-semibold text-center lg:text-lg rock-font">
-                    <a class="hover:text-blue-800" href="/artist/{{ $vinyl->artist->id }}" wire:navigate>
-                        {{ mb_strtoupper($vinyl->record_name) }}
-                    </a>
-                </p>
-                <p class="mb-6 text-xs text-center lg:text-sm text-slate-800">
-                    <span
-                        class="font-semibold text-gray-500">└&nbsp;&nbsp;{{ mb_strtoupper($vinyl->artist->name) }}&nbsp;&nbsp;┘</span>
-                </p>
-            @endforeach
+                        @php
+                            $setDate = date('Y-m-d', strtotime($vinyl->created_at));
+                            $sameDay = 0;
+                        @endphp
+                    @endif
+                    <p class="text-sm font-semibold text-center lg:text-lg rock-font">
+                        <a class="hover:text-blue-800" href="/artist/{{ $vinyl->artist->id }}" wire:navigate>
+                            {{ mb_strtoupper($vinyl->record_name) }}
+                        </a>
+                    </p>
+                    <p class="mb-6 text-xs text-center lg:text-sm text-slate-800">
+                        <span
+                            class="font-semibold text-gray-500">└&nbsp;&nbsp;{{ mb_strtoupper($vinyl->artist->name) }}&nbsp;&nbsp;┘</span>
+                    </p>
+                @endforeach
+            </div>
         @endif
-        <p class="mt-6 mb-6 text-center">
+        {{-- <p class="mt-6 mb-6 text-center">
             <a href="/"
                 class="px-2 py-2 border-2 rounded-lg shadow-md border-slate-300 bg-slate-100 hover:bg-slate-300"
                 wire:navigate>
@@ -64,6 +66,6 @@
                         d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
                 </svg>Startsidan
             </a>
-        </p>
+        </p> --}}
     </div>
 </div>
