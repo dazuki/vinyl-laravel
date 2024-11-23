@@ -14,7 +14,7 @@
             </g>
         </svg>
         <input wire:model.live.debounce.500ms="search" name="search" type="text"
-            class="w-full p-2 text-2xl bg-white border-t-2 border-b-2 border-l-2 border-r-2 outline-none z-1 inner-shadow-box border-slate-300 pl-14 max-sm:pl-12 max-sm:text-base max-xl:border-l-0"
+            class="w-full p-2 text-2xl bg-white border-t-2 border-b-2 border-l-2 border-r-2 outline-none z-1 border-slate-300 pl-14 max-sm:pl-12 max-sm:text-base max-xl:border-l-0"
             placeholder="Sök Artister/Vinyler..." autocomplete="off" required="">
     </div>
     <div class="relative z-10">
@@ -82,7 +82,7 @@
                             @foreach ($artists as $artist)
                                 @if (empty($char) || $char != mb_substr($artist->name, 0, 1))
                                     <tr wire:key="char-{{ $char }}"
-                                        class="border-t-2 border-b-2 inner-shadow-box border-slate-300 bg-sky-50">
+                                        class="border-t-2 border-b-2 border-slate-300 bg-sky-50">
                                         <td colspan="2"
                                             class="p-2 px-6 text-lg font-bold text-center rock-font text-slate-400 sm:text-xl lg:text-left lg:text-3xl">
                                             {{ mb_substr($artist->name, 0, 1) }}</td>

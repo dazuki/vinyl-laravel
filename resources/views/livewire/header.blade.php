@@ -2,7 +2,7 @@
     <header class="w-full mx-auto max-w-7xl">
         <div x-data="{ open: false }">
             <div
-                class="container flex items-center justify-between p-2 pl-2 mx-auto bg-white border-b-2 border-l-2 border-r-2 shadow-xl inner-shadow-box max-w-7xl border-slate-300 max-xl:border-l-0">
+                class="container flex items-center justify-between p-2 pl-2 mx-auto bg-white border-b-2 border-l-2 border-r-2 shadow-xl max-w-7xl border-slate-300 max-xl:border-l-0">
                 <div class="flex justify-center text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl">
                     <a href="/" wire:navigate>
                         {{-- <img src="{{ asset('static/images/vinyl-record-svgrepo-com.svg') }}"

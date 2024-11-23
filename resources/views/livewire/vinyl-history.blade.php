@@ -21,7 +21,7 @@
             <div wire:transition.opacity>
                 <div class="flex items-center justify-center">
                     <p
-                        class="w-full py-1 text-xs text-center text-red-800 border-2 border-red-300 rounded-md bg-slate-100 lg:text-sm lg:w-1/2">
+                        class="w-full py-1 text-xs text-center text-red-800 border-2 border-red-300 bg-slate-100 lg:text-sm lg:w-1/2">
                         Vinyler Med Okänt Datum: <span class="font-semibold">{{ $vinyler_old }}</span>
                     </p>
                 </div>
@@ -33,7 +33,7 @@
                     @if ($setDate != date('Y-m-d', strtotime($vinyl->created_at)) || $sameDay == 1)
                         <div class="flex items-center justify-center">
                             <div
-                                class="w-full py-1 my-4 text-lg text-center border-2 rounded-lg bg-slate-100 border-slate-300 lg:text-xl lg:py-2 lg:w-1/2">
+                                class="w-full py-1 my-4 text-lg text-center border-2 bg-slate-100 border-slate-300 lg:text-xl lg:py-2 lg:w-1/2">
                                 <p class="font-semibold">{{ date('j/n', strtotime($vinyl->created_at)) }}</p>
                                 <p class="text-xs font-semibold text-gray-500 lg:text-sm">
                                     {{ date('Y', strtotime($vinyl->created_at)) }}</p>
