@@ -22,4 +22,3 @@ yarn-error.log
 /*.bat
 /*.vbs
 /database/*.sqbpro
-/database/_backup
