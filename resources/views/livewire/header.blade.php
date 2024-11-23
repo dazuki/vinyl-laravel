@@ -9,7 +9,7 @@
                 class="inline-block w-6 h-6 -mt-1 lg:w-8 lg:h-8"> --}}
                         <div class="inline-block">
                             <img src="{{ asset('static/images/vinyl-laravel_logo2.png') }}"
-                                class="h-[26px] md:h-[32px] lg:h-[32px] xl:h-[48px]">
+                                class="h-[24px] md:h-[32px] lg:h-[32px] xl:h-[48px]">
                         </div>
                         @auth
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
