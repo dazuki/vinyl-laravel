@@ -22,3 +22,4 @@ yarn-error.log
 /*.bat
 /*.vbs
 /database/*.sqbpro
+laradumps.yaml
