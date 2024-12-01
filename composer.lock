@@ -7151,16 +7151,16 @@
         },
         {
             "name": "laradumps/laradumps-core",
-            "version": "v2.3.2",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laradumps/laradumps-core.git",
-                "reference": "de2a62929f339da160d58638b28ebf9f00ab2fdc"
+                "reference": "6d5918bffa39d617f305aa45786472530f57b1fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laradumps/laradumps-core/zipball/de2a62929f339da160d58638b28ebf9f00ab2fdc",
-                "reference": "de2a62929f339da160d58638b28ebf9f00ab2fdc",
+                "url": "https://api.github.com/repos/laradumps/laradumps-core/zipball/6d5918bffa39d617f305aa45786472530f57b1fa",
+                "reference": "6d5918bffa39d617f305aa45786472530f57b1fa",
                 "shasum": ""
             },
             "require": {
@@ -7208,7 +7208,7 @@
             "homepage": "https://github.com/laradumps/laradumps-core",
             "support": {
                 "issues": "https://github.com/laradumps/laradumps-core/issues",
-                "source": "https://github.com/laradumps/laradumps-core/tree/v2.3.2"
+                "source": "https://github.com/laradumps/laradumps-core/tree/v2.4.1"
             },
             "funding": [
                 {
@@ -7216,7 +7216,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-16T14:14:00+00:00"
+            "time": "2024-11-30T19:21:08+00:00"
         },
         {
             "name": "laravel/pail",
