@@ -13,11 +13,11 @@ class ArtistExport implements FromView, ShouldAutoSize
 {
     public function view(): View
     {
-        $excelCache_ArtistAll = Cache::rememberForever('ArtistExport_artists', function () {
+        $excelCache_ArtistAll = Cache::rememberForever('excel_artists', function () {
             return Artist::all();
         });
 
-        $excelCache_RecordAllCount = Cache::rememberForever('ArtistExport_records', function () {
+        $excelCache_RecordAllCount = Cache::rememberForever('excel_records', function () {
             return Record::all()->count();
         });
 

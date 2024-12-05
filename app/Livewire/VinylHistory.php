@@ -2,10 +2,10 @@
 
 namespace App\Livewire;
 
-use Carbon\Carbon;
 use App\Models\Record;
-use Livewire\Component;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
+use Livewire\Component;
 
 class VinylHistory extends Component
 {
@@ -22,27 +22,27 @@ class VinylHistory extends Component
     {
         $this->startDate = Carbon::create(2023, 11, 1);
 
-        $vinylerHistoryCache = Cache::rememberForever('VinylHistory', function () {
+        $vinylerHistoryCache = Cache::rememberForever('history', function () {
             return Record::with('artist')->selectRAW('*, CAST(STRFTIME("%s", created_at) as INT) as created_time')
                 ->whereRAW('created_time > '.strtotime('2023-11-01 00:00:00'))
                 ->orderBy('created_time', 'DESC')
                 ->get();
         });
 
-        $vinylerAvgYearCache = Cache::rememberForever('VinylAverageYear', function () {
+        $vinylerAvgYearCache = Cache::rememberForever('history_avg_year', function () {
             return Record::selectRAW('strftime("%Y", created_at) as year, COUNT(*) as record_count')
-            ->whereRAW('created_at >= "' . $this->startDate . '"')
-            ->groupBy('year')
-            ->pluck('record_count')
-            ->avg();
+                ->whereRAW('created_at >= "'.$this->startDate.'"')
+                ->groupBy('year')
+                ->pluck('record_count')
+                ->avg();
         });
 
-        $vinylerAvgMonthCache = Cache::rememberForever('VinylAverageMonth', function () {
+        $vinylerAvgMonthCache = Cache::rememberForever('history_avg_month', function () {
             return Record::selectRAW('strftime("%Y-%m", created_at) as year_month, COUNT(*) as record_count')
-            ->whereRAW('created_at >= "' . $this->startDate . '"')
-            ->groupBy('year_month')
-            ->pluck('record_count')
-            ->avg();
+                ->whereRAW('created_at >= "'.$this->startDate.'"')
+                ->groupBy('year_month')
+                ->pluck('record_count')
+                ->avg();
         });
 
         return view('livewire.vinyl-history', [

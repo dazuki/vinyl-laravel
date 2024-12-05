@@ -33,7 +33,7 @@ class VinylTable extends Component
 
     public function render()
     {
-        $cacheName = 'VinylTable_page_'.$this->getPage().'_search_'.$this->search;
+        $cacheName = 'page_'.$this->getPage().'_search_'.$this->search;
 
         $cacheKey = Cache::rememberForever($cacheName, function () {
             return Artist::with('records')->search($this->search)
@@ -41,11 +41,11 @@ class VinylTable extends Component
                 ->paginate(25);
         });
 
-        $recordsCountCache = Cache::rememberForever('VinylTable_records_count', function () {
+        $recordsCountCache = Cache::rememberForever('records_count', function () {
             return Record::all()->count();
         });
 
-        $artistsCountCache = Cache::rememberForever('VinylTable_artists_count', function () {
+        $artistsCountCache = Cache::rememberForever('artists_count', function () {
             return Artist::all()->count();
         });
 
@@ -60,11 +60,11 @@ class VinylTable extends Component
 
     public function export()
     {
-        $recordsCountCache = Cache::rememberForever('VinylTable_records_count', function () {
+        $recordsCountCache = Cache::rememberForever('records_count', function () {
             return Record::all()->count();
         });
 
-        $artistsCountCache = Cache::rememberForever('VinylTable_artists_count', function () {
+        $artistsCountCache = Cache::rememberForever('artists_count', function () {
             return Artist::all()->count();
         });
 

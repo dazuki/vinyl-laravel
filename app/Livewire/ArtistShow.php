@@ -19,7 +19,7 @@ class ArtistShow extends Component
 
     public function mount(Request $request)
     {
-        $artNameCache = Cache::rememberForever('ArtistShow_name_'.$this->art_id, function () {
+        $artNameCache = Cache::rememberForever('show_name_'.$this->art_id, function () {
             return Artist::find($this->art_id)->name;
         });
 
@@ -81,7 +81,7 @@ class ArtistShow extends Component
 
     public function render()
     {
-        $artIdCache = Cache::rememberForever('ArtistShow_id_'.$this->art_id, function () {
+        $artIdCache = Cache::rememberForever('show_id_'.$this->art_id, function () {
             return Artist::find($this->art_id);
         });
 
