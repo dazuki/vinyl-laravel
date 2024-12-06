@@ -49,16 +49,26 @@ class VinylTable extends Component
             return Artist::all()->count();
         });
 
+        $searchRecordsCountCache = Cache::rememberForever('count_records'.($this->search ? '.q-'.$this->search : ''), function () {
+            return Record::search($this->search)->count();
+        });
+
+        $searchArtistsCountCache = Cache::rememberForever('count_artists'.($this->search ? '.q-'.$this->search : ''), function () {
+            return Artist::searchCount($this->search)->count();
+        });
+
         $getPageCache = Cache::get($cacheName);
-        $getRecordsCount = Cache::get('records_count');
-        $getArtistsCount = Cache::get('artists_count');
+        $getRecordsCount = Cache::get('count_records');
+        $getArtistsCount = Cache::get('count_artists');
+        $getSearchRecordsCount = Cache::get('count_records'.($this->search ? '.q-'.$this->search : ''));
+        $getSearchArtistsCount = Cache::get('count_artists'.($this->search ? '.q-'.$this->search : ''));
 
         return view('livewire.vinyl-table', [
             'artists' => $this->loadData ? $getPageCache : [],
             'records' => $this->loadData ? $getRecordsCount : [],
             'art_count' => $this->loadData ? $getArtistsCount : [],
-            'searchCountArtist' => $this->loadData ? Artist::searchCount($this->search)->count() : [],
-            'searchCountRecord' => $this->loadData ? Record::search($this->search)->count() : [],
+            'searchCountArtist' => $this->loadData ? $getSearchArtistsCount : [],
+            'searchCountRecord' => $this->loadData ? $getSearchRecordsCount : [],
         ]);
     }
 
