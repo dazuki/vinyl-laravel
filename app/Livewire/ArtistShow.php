@@ -19,7 +19,7 @@ class ArtistShow extends Component
 
     public function mount(Request $request)
     {
-        $artNameCache = Cache::rememberForever('show_name_'.$this->art_id, function () {
+        $artNameCache = Cache::rememberForever('name.'.$this->art_id, function () {
             return Artist::find($this->art_id)->name;
         });
 
@@ -81,12 +81,14 @@ class ArtistShow extends Component
 
     public function render()
     {
-        $artIdCache = Cache::rememberForever('show_id_'.$this->art_id, function () {
-            return Artist::find($this->art_id);
+        $artIdCache = Cache::rememberForever('id.'.$this->art_id, function () {
+            return (string) Artist::with('records')->find($this->art_id);
         });
 
+        $getIdCache = Cache::get('id.'.$this->art_id);
+
         return view('livewire.artist-show', [
-            'artist' => $artIdCache,
+            'artist' => json_decode($getIdCache, true),
         ]);
     }
 }

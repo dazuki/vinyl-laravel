@@ -1,12 +1,12 @@
-@section('page-title')
-    {{ $artist->name }}
+@section("page-title")
+    {{ $artist["name"] }}
 @endsection
 <div class="max-w-screen-xl pb-2 mx-auto mt-4 text-left">
     <div
         class="px-4 pt-4 bg-white border-t-2 border-b-2 border-l-2 border-r-2 border-slate-300 max-xl:border-l-0 max-xl:border-r-0">
         <div x-data="{ show: false }">
             <h1 class="text-2xl font-bold text-center text-gray-700 sm:text-4xl rock-font">
-                {{ $artist->name }}
+                {{ $artist["name"] }}
                 @auth
                     <p>
                         <button x-on:click="show = ! show" id="btnEdit"
@@ -17,8 +17,8 @@
                             </svg>
                         </button>
                         <button id="btnDel"
-                            onclick="confirm('Vill du ta bort artist {{ $artist->name }} och ALLA Vinyler till denna artist? (ALLA Vinyler kommer också försvinna från databasen)') || event.stopImmediatePropagation()"
-                            wire:click="delete({{ $artist->id }})"
+                            onclick="confirm('Vill du ta bort artist {{ $artist["name"] }} och ALLA Vinyler till denna artist? (ALLA Vinyler kommer också försvinna från databasen)') || event.stopImmediatePropagation()"
+                            wire:click="delete({{ $artist["id"] }})"
                             class="px-2 py-1 bg-red-100 border-2 border-red-300 rounded-lg hover:bg-red-300">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                                 <path fill-rule="evenodd"
@@ -29,12 +29,12 @@
                     </p>
                 @endauth
             </h1>
-            {{-- <h2 class="text-lg font-semibold text-center">{{ $artist->records->count() }}
-                Vinyl{{ $artist->records->count() == 1 ? '' : 'er' }}</h2> --}}
+            {{-- <h2 class="text-lg font-semibold text-center">{{ $artist["records"]->count() }}
+                Vinyl{{ $artist["records"]->count() == 1 ? '' : 'er' }}</h2> --}}
             @auth
                 <p class="w-full mx-auto mt-4 mb-2 text-center">
                     <a class="w-full p-2 text-gray-900 border-2 border-green-600 rounded-lg shadow-md bg-slate-100 hover:bg-green-100"
-                        href="/create/vinyl?artist_id={{ $artist->id }}" wire:navigate><svg
+                        href="/create/vinyl?artist_id={{ $artist["id"] }}" wire:navigate><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="inline-block w-6 h-6 mr-1 -mt-1 text-green-700">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -43,19 +43,19 @@
                 </p>
             @endauth
             <p class="flex items-center justify-center">
-                <a href="https://www.discogs.com/search/?q={{ urlencode($artist->name) }}&type=artist"
+                <a href="https://www.discogs.com/search/?q={{ urlencode($artist["name"]) }}&type=artist"
                     class="mr-4 opacity-70 hover:opacity-100" target="_BLANK">
-                    <img src="{{ asset('static/images/Discogs-01.svg') }}" class="h-16 sm:h-20" alt="DG">
+                    <img src="{{ asset("static/images/Discogs-01.svg") }}" class="h-16 sm:h-20" alt="DG">
                 </a>
-                <a href="spotify:search:{{ urlencode($artist->name) }}" class="opacity-70 hover:opacity-100"
+                <a href="spotify:search:{{ urlencode($artist["name"]) }}" class="opacity-70 hover:opacity-100"
                     target="_BLANK">
-                    <img src="{{ asset('static/images/spotify_logo.svg') }}" class="h-8 sm:h-10" alt="SF">
+                    <img src="{{ asset("static/images/spotify_logo.svg") }}" class="h-8 sm:h-10" alt="SF">
                 </a>
             </p>
-            @if (session('status'))
-                <p class="px-2 pt-1 mb-4 text-lg font-semibold text-center">{{ session('status') }}</p>
+            @if (session("status"))
+                <p class="px-2 pt-1 mb-4 text-lg font-semibold text-center">{{ session("status") }}</p>
             @endif
-            @error('name')
+            @error("name")
                 <p class="px-2 pt-1 mb-4 text-lg font-semibold text-center text-red-500">Namn kan inte vara tomt...</p>
             @enderror
             @auth
@@ -84,14 +84,14 @@
         @php
             $count = 1;
         @endphp
-        @foreach ($artist->records as $record)
-            <p wire:key="{{ $record->id }}"
-                class="flex items-center px-2 py-2 text-left font-medium uppercase {{ $loop->last ? '' : 'border-b ' }}hover:bg-slate-50">
+        @foreach ($artist["records"] as $record)
+            <p wire:key="{{ $record["id"] }}"
+                class="flex items-center px-2 py-2 text-left font-medium uppercase {{ $loop->last ? "" : "border-b " }}hover:bg-slate-50">
                 <span class="w-6 mr-2 font-bold text-slate-500 lg:text-2xl sm:w-8">{{ $count }}.</span>
                 @auth
                     <button
-                        onclick="confirm('Vill du ta bort vinylen {{ $record->record_name }}?') || event.stopImmediatePropagation()"
-                        wire:click="recordDelete({{ $record->id }})"
+                        onclick="confirm('Vill du ta bort vinylen {{ $record["record_name"] }}?') || event.stopImmediatePropagation()"
+                        wire:click="recordDelete({{ $record["id"] }})"
                         class="inline-block px-2 mr-2 text-xl text-red-500 lg:text-2xl hover:bg-red-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-8 h-8">
@@ -101,8 +101,8 @@
                     </button>
                 @endauth
                 <span class="text-gray-700 lg:text-2xl rock-font">
-                    <a href="https://www.discogs.com/search/?q={{ urlencode($artist->name . ' ' . $record->record_name) }}&type=release&format_exact=Vinyl"
-                        target="_BLANK" class="hover:text-green-700">{{ $record->record_name }}</a>
+                    <a href="https://www.discogs.com/search/?q={{ urlencode($artist["name"] . " " . $record["record_name"]) }}&type=release&format_exact=Vinyl"
+                        target="_BLANK" class="hover:text-green-700">{{ $record["record_name"] }}</a>
                 </span>
             </p>
             @php

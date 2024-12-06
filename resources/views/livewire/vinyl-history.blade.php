@@ -42,28 +42,28 @@
                     $sameDay = 1;
                 @endphp
                 @foreach ($vinyler as $vinyl)
-                    @if ($setDate != date("Y-m-d", strtotime($vinyl->created_at)) || $sameDay == 1)
+                    @if ($setDate != date("Y-m-d", strtotime($vinyl["created_at"])) || $sameDay == 1)
                         <div class="flex items-center justify-center">
                             <div
                                 class="{{ $loop->first ? "mt-2 mb-4 " : "my-4 " }}w-full py-1 text-lg text-center border-b-2 border-t-2 bg-slate-100 border-slate-300 lg:text-xl lg:py-2 lg:w-1/2 sm:border-r-2 sm:border-l-2">
-                                <p class="font-semibold">{{ date("j/n", strtotime($vinyl->created_at)) }}</p>
+                                <p class="font-semibold">{{ date("j/n", strtotime($vinyl["created_at"])) }}</p>
                                 <p class="text-xs font-semibold text-gray-500 lg:text-sm">
-                                    {{ date("Y", strtotime($vinyl->created_at)) }}</p>
+                                    {{ date("Y", strtotime($vinyl["created_at"])) }}</p>
                             </div>
                         </div>
                         @php
-                            $setDate = date("Y-m-d", strtotime($vinyl->created_at));
+                            $setDate = date("Y-m-d", strtotime($vinyl["created_at"]));
                             $sameDay = 0;
                         @endphp
                     @endif
                     <p class="text-sm font-semibold text-center lg:text-lg rock-font">
-                        <a class="hover:text-blue-800" href="/artist/{{ $vinyl->artist->id }}" wire:navigate>
-                            {{ mb_strtoupper($vinyl->record_name) }}
+                        <a class="hover:text-blue-800" href="/artist/{{ $vinyl["artist"]["id"] }}" wire:navigate>
+                            {{ mb_strtoupper($vinyl["record_name"]) }}
                         </a>
                     </p>
                     <p class="mb-6 text-xs text-center lg:text-sm text-slate-800">
                         <span
-                            class="font-semibold text-gray-500">└&nbsp;&nbsp;{{ mb_strtoupper($vinyl->artist->name) }}&nbsp;&nbsp;┘</span>
+                            class="font-semibold text-gray-500">└&nbsp;&nbsp;{{ mb_strtoupper($vinyl["artist"]["name"]) }}&nbsp;&nbsp;┘</span>
                     </p>
                 @endforeach
             </div>
