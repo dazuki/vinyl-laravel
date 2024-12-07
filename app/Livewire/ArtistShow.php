@@ -17,13 +17,24 @@ class ArtistShow extends Component
 
     public $name = '';
 
+    public $getIdCache;
+
     public function mount(Request $request)
     {
-        $artNameCache = Cache::rememberForever('name.'.$this->art_id, function () {
+        /*$artNameCache = Cache::rememberForever('name.'.$this->art_id, function () {
             return Artist::find($this->art_id)->name;
         });
 
-        $this->name = $artNameCache;
+        $this->name = $artNameCache;*/
+
+        Cache::rememberForever('id.'.$this->art_id, function () {
+            return (string) Artist::with('records')->find($this->art_id);
+        });
+
+        $IdCache = Cache::get('id.'.$this->art_id);
+        $this->getIdCache = json_decode($IdCache, true);
+
+        $this->name = $this->getIdCache['name'];
 
         if ($request->msg == 'artist') {
             $this->alert('success', 'Artist tillagd!', [
@@ -57,6 +68,15 @@ class ArtistShow extends Component
         ]);
 
         Cache::flush();
+
+        Cache::rememberForever('id.'.$this->art_id, function () {
+            return (string) Artist::with('records')->find($this->art_id);
+        });
+
+        $IdCache = Cache::get('id.'.$this->art_id);
+        $this->getIdCache = json_decode($IdCache, true);
+
+        $this->name = $this->getIdCache['name'];
     }
 
     public function delete(Artist $artist)
@@ -81,14 +101,14 @@ class ArtistShow extends Component
 
     public function render()
     {
-        $artIdCache = Cache::rememberForever('id.'.$this->art_id, function () {
+        /*Cache::rememberForever('id.'.$this->art_id, function () {
             return (string) Artist::with('records')->find($this->art_id);
         });
 
-        $getIdCache = Cache::get('id.'.$this->art_id);
+        $getIdCache = Cache::get('id.'.$this->art_id);*/
 
         return view('livewire.artist-show', [
-            'artist' => json_decode($getIdCache, true),
+            'artist' => $this->getIdCache,
         ]);
     }
 }
