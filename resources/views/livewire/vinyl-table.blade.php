@@ -1,9 +1,9 @@
 <div wire:init="init" class="max-w-screen-xl mx-auto text-left">
-    @section('page-title')
+    @section("page-title")
         Samling
     @endsection
     @php
-        $char = '';
+        $char = "";
     @endphp
     <div class="relative pt-4">
         <svg class="absolute w-8 svg-icon search-icon bottom-2 left-4 max-sm:left-4 max-sm:w-6"
@@ -70,10 +70,10 @@
                                             class="font-semibold text-red-600">{{ mb_strtoupper($search) }}</span>"
                                     </p>
                                     <p><span
-                                            class="{{ $searchCountArtist > 0 ? 'font-semibold text-gray-900 underline ' : '' }}underline-offset-2">{{ $searchCountArtist }}</span>
-                                        Artist{{ $searchCountArtist == 1 ? '' : 'er' }} och <span
-                                            class="{{ $searchCountRecord > 0 ? 'font-semibold text-gray-900 underline ' : '' }}underline-offset-2">{{ $searchCountRecord }}</span>
-                                        Vinyl{{ $searchCountRecord == 1 ? '' : 'er' }}
+                                            class="{{ $searchCountArtist > 0 ? "font-semibold text-gray-900 underline " : "" }}underline-offset-2">{{ $searchCountArtist }}</span>
+                                        Artist{{ $searchCountArtist == 1 ? "" : "er" }} och <span
+                                            class="{{ $searchCountRecord > 0 ? "font-semibold text-gray-900 underline " : "" }}underline-offset-2">{{ $searchCountRecord }}</span>
+                                        Vinyl{{ $searchCountRecord == 1 ? "" : "er" }}
                                         ({{ $searchCountArtist + $searchCountRecord }} totalt)</p>
                                 </td>
                             </tr>
@@ -98,13 +98,13 @@
                                             wire:navigate>
                                             @if (!empty($search))
                                                 @php
-                                                    $highlightArtist = explode(' ', mb_strtoupper($search));
+                                                    $highlightArtist = explode(" ", mb_strtoupper($search));
                                                     $replaceArtist = [];
                                                     foreach ($highlightArtist as $wordsArtist) {
                                                         $replaceArtist[] =
                                                             '<span class="text-red-600 underline underline-offset-4">' .
                                                             $wordsArtist .
-                                                            '</span>';
+                                                            "</span>";
                                                     }
 
                                                     echo str_replace(
@@ -124,12 +124,12 @@
                                         @if ($vinyler == 0)
                                             <p class="py-2 text-sm text-red-400 lg:text-lg">
                                                 {{ $vinyler }}
-                                                Vinyl{{ $vinyler == 1 ? '' : 'er' }}
+                                                Vinyl{{ $vinyler == 1 ? "" : "er" }}
                                             </p>
                                         @else
                                             <p class="py-2 text-sm text-gray-400 lg:text-lg">
                                                 {{ $vinyler }}
-                                                Vinyl{{ $vinyler == 1 ? '' : 'er' }}
+                                                Vinyl{{ $vinyler == 1 ? "" : "er" }}
                                             </p>
                                         @endif
                                     </td>
@@ -140,17 +140,17 @@
                                                     class="pb-1 antialiased text-gray-700 uppercase inter-font sm:text-sm">
                                                     @if (!empty($search))
                                                         @php
-                                                            $highlightVinyl = explode(' ', mb_strtoupper($search));
+                                                            $highlightVinyl = explode(" ", mb_strtoupper($search));
                                                             $replaceVinyl = [];
                                                             foreach ($highlightVinyl as $wordsVinyl) {
                                                                 $replaceVinyl[] =
                                                                     '<span class="font-semibold text-red-600 underline underline-offset-4">' .
                                                                     $wordsVinyl .
-                                                                    '</span>';
+                                                                    "</span>";
                                                             }
 
                                                             echo "<a href='https://www.discogs.com/search/?q=" .
-                                                                urlencode($artist->name . ' ' . $record->record_name) .
+                                                                urlencode($artist->name . " " . $record->record_name) .
                                                                 "&type=release&format_exact=Vinyl' class='underline-offset-4 hover:text-blue-800 hover:underline' target='_BLANK'>" .
                                                                 str_replace(
                                                                     $highlightVinyl,
@@ -158,15 +158,15 @@
                                                                     mb_strtoupper($record->record_name),
                                                                     $count,
                                                                 ) .
-                                                                '</a>';
+                                                                "</a>";
                                                         @endphp
                                                     @else
                                                         @php
                                                             echo "<a href='https://www.discogs.com/search/?q=" .
-                                                                urlencode($artist->name . ' ' . $record->record_name) .
+                                                                urlencode($artist->name . " " . $record->record_name) .
                                                                 "&type=release&format_exact=Vinyl' class='underline-offset-4 hover:text-blue-800 hover:underline' target='_BLANK'>" .
                                                                 $record->record_name .
-                                                                '</a>';
+                                                                "</a>";
                                                         @endphp
                                                     @endif
                                                 </p>
