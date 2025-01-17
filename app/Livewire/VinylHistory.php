@@ -47,8 +47,8 @@ class VinylHistory extends Component
         });
 
         $getHistoryCache = Cache::get('history');
-        $getAvgYearCache = Cache::get('history_avg_year');
-        $getAvgMonthCache = Cache::get('history_avg_month');
+        $getAvgYearCache = Cache::get('history.avg_year');
+        $getAvgMonthCache = Cache::get('history.avg_month');
 
         return view('livewire.vinyl-history', [
             'vinyler' => $this->loadData ? json_decode($getHistoryCache, true) : [],

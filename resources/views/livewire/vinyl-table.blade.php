@@ -95,7 +95,7 @@
                                     <td
                                         class="px-2 py-2 pb-0 text-lg font-bold text-gray-700 align-top rock-font sm:px-6 sm:text-xl lg:text-3xl">
                                         <a href="/artist/{{ $artist->id }}" class="antialiased hover:text-blue-800"
-                                            wire:navigate>
+                                            wire:navigate.hover>
                                             @if (!empty($search))
                                                 @php
                                                     $highlightArtist = explode(" ", mb_strtoupper($search));
