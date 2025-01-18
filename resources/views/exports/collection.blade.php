@@ -1,32 +1,24 @@
 @php
-    $char = '';
+    $char = "";
 @endphp
-<table>
+<table style="border-collapse: collapse;">
     <thead>
         <tr>
-            <th style="text-align: left; font-size: 16pt; text-decoration: underline;">ARTISTER</th>
-            <th style="text-align: left; font-size: 16pt; text-decoration: underline;">VINYLER</th>
-            <th style="text-align: left; font-size: 16pt; text-decoration: underline;">VINYLER PER ARTIST</th>
+            <th style="text-align: left; font-size: 16pt;">{{ $collections->count() }} ARTISTER</th>
+            <th style="text-align: left; font-size: 16pt;">{{ $collections_records }} VINYLER</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td style="text-align: left; font-size: 14pt;">{{ $collections->count() }} st</td>
-            <td style="text-align: left; font-size: 14pt;">{{ $collections_records }} st</td>
-            <td style="text-align: left; font-size: 14pt;"></td>
-        </tr>
         @foreach ($collections as $collection)
             @if (empty($char) || $char != mb_substr($collection->name, 0, 1))
                 <tr>
-                    <td style="text-align: left; font-size: 16pt;"></td>
-                    <td style="text-align: left; font-size: 12pt;"></td>
-                    <td style="text-align: left; font-size: 12pt;"></td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <th style="text-align: left; font-size: 28pt; font-weight: bold; text-decoration: underline;">
-                        {{ mb_substr($collection->name, 0, 1) }}</th>
-                    <td></td>
-                    <td></td>
+                    <td style="text-align: left; font-size: 36pt; font-weight: bold; border-bottom: 1px solid #000;">
+                        {{ mb_substr($collection->name, 0, 1) }}</td>
+                    <td style="border-bottom: 1px solid #000;">&nbsp;</td>
                 </tr>
             @endif
             @php
@@ -35,17 +27,33 @@
             @foreach ($collection->records as $record)
                 @if ($loop->first)
                     <tr>
-                        <td style="text-align: left; font-size: 16pt;">{{ $collection->name }}
+                        <td style="text-align: left; font-size: 16pt; font-weight: bold;">{{ trim($collection->name) }}
                         </td>
-                        <td style="text-align: left; font-size: 12pt;">{{ $record->record_name }}</td>
-                        <td style="text-align: left; font-size: 14pt;">{{ $loop->count }} st
+                        <td style="text-align: left; font-size: 12pt; white-space: nowrap;">
+                            {{ trim(mb_strtoupper($record->record_name)) }}
                         </td>
+                    </tr>
+                    @if ($loop->count <= 1)
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    @endif
+                @elseif ($loop->last)
+                    <tr>
+                        <td style="text-align: left; font-size: 16pt;"></td>
+                        <td style="text-align: left; font-size: 12pt;">{{ trim(mb_strtoupper($record->record_name)) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                 @else
                     <tr>
-                        <td style="text-align: left; font-size: 16pt;"></td>
-                        <td style="text-align: left; font-size: 12pt;">{{ $record->record_name }}</td>
-                        <td style="text-align: left; font-size: 12pt;"></td>
+                        <td style="text-align: left; font-size: 16pt;">&nbsp;</td>
+                        <td style="text-align: left; font-size: 12pt;">{{ trim(mb_strtoupper($record->record_name)) }}
+                        </td>
                     </tr>
                 @endif
             @endforeach
