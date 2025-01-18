@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Exports\ArtistExport;
 use App\Models\Artist;
 use App\Models\Record;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Url;
@@ -74,15 +75,17 @@ class VinylTable extends Component
 
     public function export()
     {
-        $recordsCountCache = Cache::rememberForever('records_count', function () {
+        /*$recordsCountCache = Cache::rememberForever('records_count', function () {
             return Record::all()->count();
         });
 
         $artistsCountCache = Cache::rememberForever('artists_count', function () {
             return Artist::all()->count();
-        });
+        });*/
 
-        return Excel::download(new ArtistExport, 'Vinyler Förteckning(Artister '.$recordsCountCache.' - Vinyler '.$artistsCountCache.').xls', \Maatwebsite\Excel\Excel::XLS);
+        $dlDate = Carbon::now()->format('Y-m-d');
+
+        return Excel::download(new ArtistExport, 'Vinylförteckning-'.$dlDate.'.xls', \Maatwebsite\Excel\Excel::XLS);
     }
 
     public function view()
