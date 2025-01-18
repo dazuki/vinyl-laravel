@@ -57,7 +57,7 @@
                         @endphp
                     @endif
                     <p class="text-sm font-semibold text-center lg:text-lg rock-font">
-                        <a class="hover:text-blue-800" href="/artist/{{ $vinyl["artist"]["id"] }}" wire:navigate.hover>
+                        <a class="hover:text-blue-800" href="/artist/{{ $vinyl["artist"]["id"] }}" wire:navigate>
                             {{ mb_strtoupper($vinyl["record_name"]) }}
                         </a>
                     </p>

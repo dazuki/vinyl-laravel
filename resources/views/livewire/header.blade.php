@@ -4,7 +4,7 @@
             <div
                 class="container flex items-center justify-between p-2 pl-2 mx-auto bg-white border-b-2 border-l-2 border-r-2 max-w-7xl border-slate-300 max-xl:border-l-0">
                 <div class="flex justify-center text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl">
-                    <a href="/" wire:navigate.hover>
+                    <a href="/" wire:navigate>
                         {{-- <img src="{{ asset('static/images/vinyl-record-svgrepo-com.svg') }}"
                 class="inline-block w-6 h-6 -mt-1 lg:w-8 lg:h-8"> --}}
                         <div class="inline-block">
@@ -32,7 +32,7 @@
                     <ul class="space-x-1 text-sm rock-font lg:flex">
                         @auth
                             <li><a class="p-2 text-gray-900 border-2 rounded-lg border-slate-300 bg-slate-100 hover:border-green-700 hover:bg-green-50 hover:text-green-700"
-                                    href="/create/vinyl" wire:navigate.hover>
+                                    href="/create/vinyl" wire:navigate>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor"
                                         class="inline-block pr-1 -mt-1 text-green-700 h-7 w-7">
@@ -40,7 +40,7 @@
                                             d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                                     </svg>Ny Vinyl</a></li>
                             <li><a class="p-2 text-gray-900 border-2 rounded-lg border-slate-300 bg-slate-100 hover:border-cyan-700 hover:bg-cyan-50 hover:text-cyan-700"
-                                    href="/create/artist" wire:navigate.hover>
+                                    href="/create/artist" wire:navigate>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor"
                                         class="inline-block pr-1 -mt-1 h-7 w-7 text-cyan-700">
@@ -55,7 +55,7 @@
                                             d="M12 9.75v6.75m0 0-3-3m3 3 3-3m-8.25 6a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
                                     </svg>Excel (.xls)</a></li>
                             <li><a class="p-2 text-gray-900 border-2 rounded-lg border-slate-300 bg-slate-100 hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700"
-                                    href="/history" wire:navigate.hover>
+                                    href="/history" wire:navigate>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor"
                                         class="inline-block pr-1 -mt-1 text-yellow-700 h-7 w-7">
@@ -80,7 +80,7 @@
                                             d="M12 9.75v6.75m0 0-3-3m3 3 3-3m-8.25 6a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
                                     </svg>Excel (.xls)</a></li>
                             <li><a class="p-2 text-gray-900 border-2 rounded-lg border-slate-300 bg-slate-100 hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700"
-                                    href="/history" wire:navigate.hover>
+                                    href="/history" wire:navigate>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor"
                                         class="inline-block pr-1 -mt-1 text-yellow-700 h-7 w-7">
