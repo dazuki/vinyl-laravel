@@ -1336,16 +1336,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v11.38.2",
+            "version": "v11.39.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "9d290aa90fcad44048bedca5219d2b872e98772a"
+                "reference": "3d693dd36e78121bcd51fc02eda4bc137d2a17f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/9d290aa90fcad44048bedca5219d2b872e98772a",
-                "reference": "9d290aa90fcad44048bedca5219d2b872e98772a",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/3d693dd36e78121bcd51fc02eda4bc137d2a17f2",
+                "reference": "3d693dd36e78121bcd51fc02eda4bc137d2a17f2",
                 "shasum": ""
             },
             "require": {
@@ -1546,7 +1546,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-01-15T00:06:46+00:00"
+            "time": "2025-01-22T17:01:46+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -6884,16 +6884,16 @@
         },
         {
             "name": "barryvdh/reflection-docblock",
-            "version": "v2.3.0",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/ReflectionDocBlock.git",
-                "reference": "818be8de6af4d16ef3ad51ea9234b3d37026ee5f"
+                "reference": "b6ff9f93603561f50e53b64310495d20b8dff5d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/ReflectionDocBlock/zipball/818be8de6af4d16ef3ad51ea9234b3d37026ee5f",
-                "reference": "818be8de6af4d16ef3ad51ea9234b3d37026ee5f",
+                "url": "https://api.github.com/repos/barryvdh/ReflectionDocBlock/zipball/b6ff9f93603561f50e53b64310495d20b8dff5d8",
+                "reference": "b6ff9f93603561f50e53b64310495d20b8dff5d8",
                 "shasum": ""
             },
             "require": {
@@ -6930,9 +6930,9 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/barryvdh/ReflectionDocBlock/tree/v2.3.0"
+                "source": "https://github.com/barryvdh/ReflectionDocBlock/tree/v2.3.1"
             },
-            "time": "2024-12-30T10:35:04+00:00"
+            "time": "2025-01-18T19:26:32+00:00"
         },
         {
             "name": "composer/class-map-generator",

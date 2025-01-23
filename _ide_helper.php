@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 11.37.0.
+ * Generated for Laravel 11.39.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -4783,9 +4783,9 @@ namespace Illuminate\Support\Facades {
          *
          * @template TCacheValue
          * @param string $key
-         * @param \Illuminate\Cache\array{  0: \DateTimeInterface|\DateInterval|int, 1: \DateTimeInterface|\DateInterval|int }  $ttl
+         * @param array{ 0: \DateTimeInterface|\DateInterval|int, 1: \DateTimeInterface|\DateInterval|int } $ttl
          * @param (callable(): TCacheValue) $callback
-         * @param \Illuminate\Cache\array{  seconds?: int, owner?: string }|null  $lock
+         * @param array{ seconds?: int, owner?: string }|null $lock
          * @return TCacheValue 
          * @static 
          */
@@ -4866,6 +4866,18 @@ namespace Illuminate\Support\Facades {
         {
             /** @var \Illuminate\Cache\Repository $instance */
             return $instance->tags($names);
+        }
+
+        /**
+         * Get the name of the cache store.
+         *
+         * @return string|null 
+         * @static 
+         */
+        public static function getName()
+        {
+            /** @var \Illuminate\Cache\Repository $instance */
+            return $instance->getName();
         }
 
         /**
@@ -14386,7 +14398,7 @@ namespace Illuminate\Support\Facades {
          * 
          *
          * @internal 
-         * @param \Symfony\Component\HttpFoundation\callable():  SessionInterface $factory
+         * @param callable():  SessionInterface $factory
          * @static 
          */
         public static function setSessionFactory($factory)
@@ -15856,6 +15868,19 @@ namespace Illuminate\Support\Facades {
         {
             /** @var \Illuminate\Http\Request $instance */
             return $instance->enums($key, $enumClass);
+        }
+
+        /**
+         * Retrieve data from the instance as an array.
+         *
+         * @param array|string|null $key
+         * @return array 
+         * @static 
+         */
+        public static function array($key = null)
+        {
+            /** @var \Illuminate\Http\Request $instance */
+            return $instance->array($key);
         }
 
         /**
@@ -22257,7 +22282,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Set the prefetching strategy.
          *
-         * @param \Illuminate\Foundation\'waterfall'|\Illuminate\Foundation\'aggressive'|null $strategy
+         * @param 'waterfall'|'aggressive'|null $strategy
          * @param array $config
          * @return \Illuminate\Foundation\Vite 
          * @static 
@@ -22736,7 +22761,7 @@ namespace Barryvdh\Debugbar\Facades {
         /**
          * Returns an array of all data collectors
          *
-         * @return \DebugBar\array[DataCollectorInterface] 
+         * @return array[DataCollectorInterface] 
          * @static 
          */
         public static function getCollectors()
@@ -25243,6 +25268,23 @@ namespace  {
         }
 
         /**
+         * Create a record matching the attributes, or increment the existing record.
+         *
+         * @param array $attributes
+         * @param string $column
+         * @param int|float $default
+         * @param int|float $step
+         * @param array $extra
+         * @return TModel 
+         * @static 
+         */
+        public static function incrementOrCreate($attributes, $column = 'count', $default = 1, $step = 1, $extra = [])
+        {
+            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+            return $instance->incrementOrCreate($attributes, $column, $default, $step, $extra);
+        }
+
+        /**
          * Execute the query and get the first result or throw an exception.
          *
          * @param array|string $columns
@@ -25819,7 +25861,7 @@ namespace  {
          * Chunk the results of the query.
          *
          * @param int $count
-         * @param \Illuminate\Database\Eloquent\callable(\Illuminate\Support\Collection<int, TValue>, int):  mixed  $callback
+         * @param callable(\Illuminate\Support\Collection<int, TValue>, int):  mixed  $callback
          * @return bool 
          * @static 
          */
@@ -25833,7 +25875,7 @@ namespace  {
          * Run a map over each item while chunking.
          *
          * @template TReturn
-         * @param \Illuminate\Database\Eloquent\callable(TValue):  TReturn  $callback
+         * @param callable(TValue):  TReturn  $callback
          * @param int $count
          * @return \Illuminate\Support\Collection<int, TReturn> 
          * @static 
@@ -25847,7 +25889,7 @@ namespace  {
         /**
          * Execute a callback over each item while chunking.
          *
-         * @param \Illuminate\Database\Eloquent\callable(TValue, int):  mixed  $callback
+         * @param callable(TValue, int):  mixed  $callback
          * @param int $count
          * @return bool 
          * @throws \RuntimeException
@@ -25863,7 +25905,7 @@ namespace  {
          * Chunk the results of a query by comparing IDs.
          *
          * @param int $count
-         * @param \Illuminate\Database\Eloquent\callable(\Illuminate\Support\Collection<int, TValue>, int):  mixed  $callback
+         * @param callable(\Illuminate\Support\Collection<int, TValue>, int):  mixed  $callback
          * @param string|null $column
          * @param string|null $alias
          * @return bool 
@@ -25879,7 +25921,7 @@ namespace  {
          * Chunk the results of a query by comparing IDs in descending order.
          *
          * @param int $count
-         * @param \Illuminate\Database\Eloquent\callable(\Illuminate\Support\Collection<int, TValue>, int):  mixed  $callback
+         * @param callable(\Illuminate\Support\Collection<int, TValue>, int):  mixed  $callback
          * @param string|null $column
          * @param string|null $alias
          * @return bool 
@@ -25895,7 +25937,7 @@ namespace  {
          * Chunk the results of a query by comparing IDs in a given order.
          *
          * @param int $count
-         * @param \Illuminate\Database\Eloquent\callable(\Illuminate\Support\Collection<int, TValue>, int):  mixed  $callback
+         * @param callable(\Illuminate\Support\Collection<int, TValue>, int):  mixed  $callback
          * @param string|null $column
          * @param string|null $alias
          * @param bool $descending
@@ -25912,7 +25954,7 @@ namespace  {
         /**
          * Execute a callback over each item while chunking by ID.
          *
-         * @param \Illuminate\Database\Eloquent\callable(TValue, int):  mixed  $callback
+         * @param callable(TValue, int):  mixed  $callback
          * @param int $count
          * @param string|null $column
          * @param string|null $alias
@@ -26002,7 +26044,7 @@ namespace  {
         /**
          * Pass the query to a given callback.
          *
-         * @param \Illuminate\Database\Eloquent\callable($this):  mixed  $callback
+         * @param callable($this):  mixed  $callback
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
