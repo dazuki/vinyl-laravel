@@ -25,7 +25,7 @@
             {{ $slot }}
         </main>
     </div>
-    <div id="copyright" class="my-2 text-xs" align="center">&copy; 2023 - 2025 bokbindaregatan.se</div>
+    <div id="copyright" class="my-2 text-xs" align="center">&copy; 2023-2025 Bokbindaregatan.se</div>
 </body>
 
 </html>
