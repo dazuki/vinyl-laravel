@@ -24651,18 +24651,6 @@ namespace Illuminate\Support {
         /**
          * 
          *
-         * @see \LaraDumps\LaraDumps\LaraDumpsServiceProvider::registerMacros()
-         * @param string $label
-         * @static 
-         */
-        public static function ds($label = '')
-        {
-            return \Illuminate\Support\Collection::ds($label);
-        }
-
-        /**
-         * 
-         *
          * @see \Maatwebsite\Excel\Mixins\DownloadCollectionMixin::downloadExcel()
          * @param string $fileName
          * @param string|null $writerType
@@ -24688,24 +24676,6 @@ namespace Illuminate\Support {
         public static function storeExcel($filePath, $disk = null, $writerType = null, $withHeadings = false)
         {
             return \Illuminate\Support\Collection::storeExcel($filePath, $disk, $writerType, $withHeadings);
-        }
-
-            }
-    /**
-     * 
-     *
-     */
-    class Stringable {
-        /**
-         * 
-         *
-         * @see \LaraDumps\LaraDumps\LaraDumpsServiceProvider::registerMacros()
-         * @param string $label
-         * @static 
-         */
-        public static function ds($label = '')
-        {
-            return \Illuminate\Support\Stringable::ds($label);
         }
 
             }
@@ -24790,48 +24760,6 @@ namespace Illuminate\Http {
         public static function hasValidRelativeSignatureWhileIgnoring($ignoreQuery = [])
         {
             return \Illuminate\Http\Request::hasValidRelativeSignatureWhileIgnoring($ignoreQuery);
-        }
-
-            }
-    }
-
-namespace Illuminate\Database\Query {
-    /**
-     * 
-     *
-     */
-    class Builder {
-        /**
-         * 
-         *
-         * @see \LaraDumps\LaraDumps\LaraDumpsServiceProvider::registerMacros()
-         * @static 
-         */
-        public static function ds()
-        {
-            return \Illuminate\Database\Query\Builder::ds();
-        }
-
-            }
-    }
-
-namespace Illuminate\Testing {
-    /**
-     * 
-     *
-     * @template TResponse of \Symfony\Component\HttpFoundation\Response
-     * @mixin \Illuminate\Http\Response
-     */
-    class TestResponse {
-        /**
-         * 
-         *
-         * @see \LaraDumps\LaraDumps\LaraDumpsServiceProvider::registerMacros()
-         * @static 
-         */
-        public static function ds()
-        {
-            return \Illuminate\Testing\TestResponse::ds();
         }
 
             }
