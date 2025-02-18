@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 11.42.1.
+ * Generated for Laravel 11.43.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -12017,6 +12017,7 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Process\PendingProcess options(array $options)
      * @method static \Illuminate\Contracts\Process\ProcessResult run(array|string|null $command = null, callable|null $output = null)
      * @method static \Illuminate\Process\InvokedProcess start(array|string|null $command = null, callable|null $output = null)
+     * @method static bool supportsTty()
      * @method static \Illuminate\Process\PendingProcess withFakeHandlers(array $fakeHandlers)
      * @method static \Illuminate\Process\PendingProcess|mixed when(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
      * @method static \Illuminate\Process\PendingProcess|mixed unless(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
@@ -16370,6 +16371,7 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Routing\RouteRegistrar whereUuid(array|string $parameters)
      * @method static \Illuminate\Routing\RouteRegistrar whereIn(array|string $parameters, array $values)
      * @method static \Illuminate\Routing\RouteRegistrar as(string $value)
+     * @method static \Illuminate\Routing\RouteRegistrar can(\UnitEnum|string $ability, array|string $models = [])
      * @method static \Illuminate\Routing\RouteRegistrar controller(string $controller)
      * @method static \Illuminate\Routing\RouteRegistrar domain(\BackedEnum|string $value)
      * @method static \Illuminate\Routing\RouteRegistrar middleware(array|string|null $middleware)
@@ -25162,6 +25164,22 @@ namespace  {
         }
 
         /**
+         * Find a sole model by its primary key.
+         *
+         * @param mixed $id
+         * @param array|string $columns
+         * @return TModel 
+         * @throws \Illuminate\Database\Eloquent\ModelNotFoundException<TModel>
+         * @throws \Illuminate\Database\MultipleRecordsFoundException
+         * @static 
+         */
+        public static function findSole($id, $columns = [])
+        {
+            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+            return $instance->findSole($id, $columns);
+        }
+
+        /**
          * Find multiple models by their primary keys.
          *
          * @param \Illuminate\Contracts\Support\Arrayable|array $ids
@@ -26212,7 +26230,7 @@ namespace  {
         /**
          * Add a relationship count / exists condition to the query with where clauses.
          * 
-         * Also load the relationship with same condition.
+         * Also load the relationship with the same condition.
          *
          * @param string $relation
          * @param (\Closure(\Illuminate\Database\Eloquent\Builder<*>|\Illuminate\Database\Eloquent\Relations\Relation<*, *, *>): mixed)|null $callback
@@ -26363,7 +26381,7 @@ namespace  {
          *
          * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
          * @param \Illuminate\Database\Eloquent\Relations\MorphTo<TRelatedModel, *>|string $relation
-         * @param string|array<int, array> $types
+         * @param string|array<int, string> $types
          * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>, string): mixed)|null $callback
          * @param string $operator
          * @param int $count
@@ -26423,6 +26441,22 @@ namespace  {
         {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
             return $instance->whereRelation($relation, $column, $operator, $value);
+        }
+
+        /**
+         * Add a basic where clause to a relationship query and eager-load the relationship with the same conditions.
+         *
+         * @param \Illuminate\Database\Eloquent\Relations\Relation<*, *, *>|string $relation
+         * @param \Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column
+         * @param mixed $operator
+         * @param mixed $value
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function withWhereRelation($relation, $column, $operator = null, $value = null)
+        {
+            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+            return $instance->withWhereRelation($relation, $column, $operator, $value);
         }
 
         /**
