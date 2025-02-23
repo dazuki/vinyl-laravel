@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string $record_name
  * @property-read \App\Models\Artist $artist
- * @property-read \App\Models\TFactory|null $use_factory
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Record newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Record newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Record query()
