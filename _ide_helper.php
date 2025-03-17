@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 11.44.1.
+ * Generated for Laravel 11.44.2.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -23474,6 +23474,17 @@ namespace Livewire {
          *
          * @static 
          */
+        public static function findSynth($keyOrTarget, $component)
+        {
+            /** @var \Livewire\LivewireManager $instance */
+            return $instance->findSynth($keyOrTarget, $component);
+        }
+
+        /**
+         * 
+         *
+         * @static 
+         */
         public static function update($snapshot, $diff, $calls)
         {
             /** @var \Livewire\LivewireManager $instance */
@@ -25407,7 +25418,7 @@ namespace  {
          * @param string $pageName
          * @param int|null $page
          * @param \Closure|int|null $total
-         * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator 
+         * @return \Illuminate\Pagination\LengthAwarePaginator 
          * @throws \InvalidArgumentException
          * @static 
          */
