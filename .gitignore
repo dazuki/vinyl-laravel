@@ -23,3 +23,5 @@ yarn-error.log
 /*.vbs
 /database/*.sqbpro
 laradumps.yaml
+_ide_helper.php
+.phpstorm.meta.php
