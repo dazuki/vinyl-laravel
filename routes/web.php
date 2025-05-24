@@ -35,11 +35,11 @@ Route::get('/create/vinyl', CreateVinyl::class)->middleware('auth.basic');
 
 Route::get('/create/artist', CreateArtist::class)->middleware('auth.basic');
 
-Route::get('/login', Login::class)->middleware('auth.basic');
+Route::get('/login', Login::class)->name('login')->middleware('auth.basic');
 
 Route::get('/logout', function (Request $request) {
     Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-    return redirect('/');
-})->middleware('auth.basic');
+    return to_route('home');
+})->name('logout')->middleware('auth.basic');
