@@ -51,16 +51,16 @@
 						@else
 							<li><a
 									class="p-2 text-gray-900 border-2 rounded-lg border-slate-300 bg-slate-100 hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700"
-									href="/export/artist"><x-fas-cloud-arrow-down class="inline-block text-blue-700 h-7 w-7 pr-1 -mt-1" />Excel
+									href="/export/artist"><x-fas-cloud-arrow-down class="inline-block text-blue-700 h-6 w-6 pr-1 -mt-1" />Excel
 									(.xls)
 								</a></li>
 							<li><a
 									class="p-2 text-gray-900 border-2 rounded-lg border-slate-300 bg-slate-100 hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700"
-									href="/history" wire:navigate><x-fas-book class="inline-block text-yellow-700 h-7 w-7 pr-1 -mt-1" />Historik</a>
+									href="/history" wire:navigate><x-fas-book class="inline-block text-yellow-700 h-6 w-6 pr-1 -mt-1" />Historik</a>
 							</li>
 							<li><a
 									class="p-2 text-gray-900 border-2 rounded-lg border-slate-300 bg-slate-100 hover:border-green-700 hover:bg-green-50 hover:text-green-700"
-									href="/login"><x-fas-right-to-bracket class="inline-block text-green-700 h-7 w-7 pr-1 -mt-1" />Logga In</a>
+									href="/login"><x-fas-right-to-bracket class="inline-block text-green-700 h-6 w-6 pr-1 -mt-1" />Logga In</a>
 							</li>
 						@endauth
 					</ul>
