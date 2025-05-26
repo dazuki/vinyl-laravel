@@ -60,12 +60,8 @@
 							</li>
 							<li><a
 									class="p-2 text-gray-900 border-2 rounded-lg border-slate-300 bg-slate-100 hover:border-green-700 hover:bg-green-50 hover:text-green-700"
-									href="/login">
-									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-										stroke="currentColor" class="inline-block -mt-1 text-green-700 h-7 w-7">
-										<path stroke-linecap="round" stroke-linejoin="round"
-											d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
-									</svg>Logga In</a></li>
+									href="/login"><x-fas-right-to-bracket class="inline-block text-green-700 h-7 w-7 pr-1 -mt-1" />Logga In</a>
+							</li>
 						@endauth
 					</ul>
 				</div>
