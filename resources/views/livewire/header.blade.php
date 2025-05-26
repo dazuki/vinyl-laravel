@@ -4,7 +4,7 @@
 			<div
 				class="container flex items-center justify-between p-2 pl-2 mx-auto bg-white border-b-2 border-l-2 border-r-2 max-w-7xl border-slate-300 max-xl:border-l-0">
 				<div class="flex justify-center text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl">
-					<a href="/" wire:navigate>
+					<a href="/">
 						{{-- <img src="{{ asset('static/images/vinyl-record-svgrepo-com.svg') }}"
                 class="inline-block w-6 h-6 -mt-1 lg:w-8 lg:h-8"> --}}
 						<div class="inline-block">
@@ -62,7 +62,7 @@
 									</svg>Historik</a></li>
 							<li><a
 									class="p-2 text-gray-900 border-2 rounded-lg border-slate-300 bg-slate-100 hover:border-red-700 hover:bg-red-50 hover:text-red-700"
-									href="/logout" wire:navigate>
+									href="/logout">
 									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
 										stroke="currentColor" class="inline-block pr-1 -mt-1 text-red-700 h-7 w-7">
 										<path stroke-linecap="round" stroke-linejoin="round"
@@ -87,7 +87,7 @@
 									</svg>Historik</a></li>
 							<li><a
 									class="p-2 text-gray-900 border-2 rounded-lg border-slate-300 bg-slate-100 hover:border-green-700 hover:bg-green-50 hover:text-green-700"
-									href="/login" wire:navigate>
+									href="/login">
 									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
 										stroke="currentColor" class="inline-block -mt-1 text-green-700 h-7 w-7">
 										<path stroke-linecap="round" stroke-linejoin="round"

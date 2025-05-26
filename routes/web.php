@@ -10,17 +10,6 @@ use App\Livewire\VinylHistory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', VinylTable::class)->name('home');
 
 Route::get('/history', VinylHistory::class);
@@ -28,15 +17,12 @@ Route::get('/history', VinylHistory::class);
 Route::get('/artist/{art_id}', ArtistShow::class)->name('artistshow');
 
 Route::get('/export/artist', [VinylTable::class, 'export']);
-
 Route::get('/export/view', [VinylTable::class, 'view']);
 
 Route::get('/create/vinyl', CreateVinyl::class)->middleware('auth.basic');
-
 Route::get('/create/artist', CreateArtist::class)->middleware('auth.basic');
 
 Route::get('/login', Login::class)->name('login')->middleware('auth.basic');
-
 Route::get('/logout', function (Request $request) {
     Auth::logout();
     $request->session()->invalidate();
