@@ -1,6 +1,4 @@
-@section("page-title")
-	Ny Artist
-@endsection
+@section("page-title", "Ny Artist")
 <div class="max-w-screen-xl pb-2 mx-auto mt-4 text-center">
 	<div
 		class="rounded-xl custom-shadow px-4 pt-4 bg-white border-t-4 border-b-4 border-l-4 border-r-4 border-slate-300 max-xl:border-l-0 max-xl:border-r-0">

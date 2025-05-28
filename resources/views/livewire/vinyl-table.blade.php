@@ -1,7 +1,5 @@
 <div wire:init="init" class="max-w-screen-xl mx-auto text-left">
-	@section("page-title")
-		Samling
-	@endsection
+	@section("page-title", "Samling")
 	@php
 		$char = "";
 	@endphp

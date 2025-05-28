@@ -1,6 +1,4 @@
-@section("page-title")
-	Historik
-@endsection
+@section("page-title", "Historik")
 <div wire:init="init" class="max-w-screen-xl mx-auto mt-4 text-left">
 	<div
 		class="rounded-xl custom-shadow min-h-screen pt-4 bg-white border-t-4 border-b-4 border-l-4 border-r-4 border-slate-300 max-xl:border-l-0 max-xl:border-r-0 sm:px-4">
