@@ -71,6 +71,15 @@
   );
 }
 
+.gradient-3 {
+  background: #e2e8f0;
+  background: linear-gradient(
+    0deg,
+    rgba(226, 232, 240, 1) 0%,
+    rgba(240, 249, 255, 1) 100%
+  );
+}
+
 body {
   background-color: #e2e8f0;
   background-image: url(/public/static/images/bg_tony_bw2.webp);
@@ -102,3 +111,27 @@ button:disabled {
 button:hover[disabled] {
   @apply bg-orange-300 border-orange-100;
 }
+
+/* Menu Button Styles */
+
+.menu-btn {
+  @apply shadow-md p-2 py-3 text-gray-900 border border-slate-300 bg-slate-50;
+}
+
+.menu-btn-icon {
+  @apply inline-block h-6 w-6 pr-1 -mt-1;
+}
+
+.menu-btn-dropdown {
+  @apply block p-2 text-lg text-left text-gray-900 border shadow-md border-slate-300 bg-slate-50 my-2;
+}
+
+.menu-btn-dropdown-icon {
+  @apply inline-block h-7 w-7 pr-2 -mt-1;
+}
+
+.menu-btn-icon-user {
+  @apply items-center inline-block w-5 -mt-2 text-green-700;
+}
+
+/* */
