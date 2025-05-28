@@ -24,15 +24,22 @@
 						{{-- LG+ Menu --}}
 						@auth
 							<li><a class="menu-btn custom-shadow-2 bg-white hover:border-green-700 hover:bg-green-50 hover:text-green-700"
-									href="/create/vinyl"><x-fas-file-upload class="menu-btn-icon text-green-800" />Ny Vinyl</a></li>
+									href="/create/vinyl" wire:navigate.hover
+									wire:current="underline underline-offset-4 decoration-2"><x-fas-file-upload
+										class="menu-btn-icon text-green-800" />Ny Vinyl</a>
+							</li>
 							<li><a class="menu-btn custom-shadow-2 bg-white hover:border-cyan-700 hover:bg-cyan-50 hover:text-cyan-700"
-									href="/create/artist"><x-fas-folder-plus class="menu-btn-icon text-cyan-800" />Ny Artist</a></li>
+									href="/create/artist" wire:navigate.hover
+									wire:current="underline underline-offset-4 decoration-2"><x-fas-folder-plus
+										class="menu-btn-icon text-cyan-800" />Ny Artist</a>
+							</li>
 							<li><a class="menu-btn custom-shadow-2 bg-white hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700"
 									href="/export/artist"><x-fas-cloud-arrow-down class="menu-btn-icon text-blue-800" />Excel
 									(.xls)
 								</a></li>
 							<li><a class="menu-btn custom-shadow-2 bg-white hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700"
-									href="/history"><x-fas-book class="menu-btn-icon text-yellow-800" />Historik</a>
+									href="/history" wire:navigate.hover wire:current="underline underline-offset-4 decoration-2"><x-fas-book
+										class="menu-btn-icon text-yellow-800" />Historik</a>
 							</li>
 							<li><a class="menu-btn custom-shadow-2 bg-red-50 hover:border-red-700 hover:bg-red-50 hover:text-red-700"
 									href="/logout"><x-fas-right-from-bracket class="menu-btn-icon text-red-800" />Logga Ut</a>
@@ -43,7 +50,8 @@
 									(.xls)
 								</a></li>
 							<li><a class="menu-btn custom-shadow-2 bg-white hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700"
-									href="/history"><x-fas-book class="menu-btn-icon text-yellow-800" />Historik</a>
+									href="/history" wire:navigate.hover wire:current="underline underline-offset-4 decoration-2"><x-fas-book
+										class="menu-btn-icon text-yellow-800" />Historik</a>
 							</li>
 							<li><a class="menu-btn custom-shadow-2 bg-green-50 hover:border-green-700 hover:bg-green-50 hover:text-green-700"
 									href="/login"><x-fas-right-to-bracket class="menu-btn-icon text-green-800" />Logga In</a>
@@ -57,31 +65,34 @@
 					{{-- Dropdown Menu --}}
 					@auth
 						<li><a class="menu-btn-dropdown hover:border-green-700 hover:bg-green-50 hover:text-green-700 lg:hidden"
-								href="/create/vinyl"><x-fas-file-upload class="menu-btn-dropdown-icon text-green-800" />Ny
-								Vinyl</a></li>
+								href="/create/vinyl" wire:navigate wire:current="underline underline-offset-4 decoration-2"><x-fas-file-upload
+									class="menu-btn-dropdown-icon text-green-800" />NY VINYL</a></li>
 						<li><a class="menu-btn-dropdown hover:border-cyan-700 hover:bg-cyan-50 hover:text-green-700 lg:hidden"
-								href="/create/artist"><x-fas-folder-plus class="menu-btn-dropdown-icon text-cyan-800" />Ny
-								Artist</a></li>
+								href="/create/artist" wire:navigate wire:current="underline underline-offset-4 decoration-2"><x-fas-folder-plus
+									class="menu-btn-dropdown-icon text-cyan-800" />NY
+								ARTIST</a></li>
 						<li><a class="menu-btn-dropdown hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700 lg:hidden"
-								href="/export/artist"><x-fas-cloud-arrow-down class="menu-btn-dropdown-icon text-blue-800" />Excel
+								href="/export/artist"><x-fas-cloud-arrow-down class="menu-btn-dropdown-icon text-blue-800" />EXCEL
 								(.xls)
 							</a></li>
 						<li><a class="menu-btn-dropdown hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700 lg:hidden"
-								href="/history"><x-fas-book class="menu-btn-dropdown-icon text-yellow-800" />Historik</a>
+								href="/history" wire:navigate wire:current="underline underline-offset-4 decoration-2"><x-fas-book
+									class="menu-btn-dropdown-icon text-yellow-800" />HISTORIK</a>
 						</li>
 						<li><a class="menu-btn-dropdown bg-red-50 hover:border-red-700 hover:bg-red-50 hover:text-red-700 lg:hidden"
-								href="/logout"><x-fas-right-from-bracket class="menu-btn-dropdown-icon text-red-800" />Logga Ut</a></li>
+								href="/logout"><x-fas-right-from-bracket class="menu-btn-dropdown-icon text-red-800" />LOGGA UT</a></li>
 					@else
 						<li><a class="menu-btn-dropdown hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700 lg:hidden"
-								href="/export/artist"><x-fas-cloud-arrow-down class="menu-btn-dropdown-icon text-blue-800" />Excel
+								href="/export/artist"><x-fas-cloud-arrow-down class="menu-btn-dropdown-icon text-blue-800" />EXCEL
 								(.xls)
 							</a></li>
 						<li><a class="menu-btn-dropdown hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700 lg:hidden"
-								href="/history"><x-fas-book class="menu-btn-dropdown-icon text-yellow-800" />Historik</a>
+								href="/history" wire:navigate wire:current="underline underline-offset-4 decoration-2"><x-fas-book
+									class="menu-btn-dropdown-icon text-yellow-800" />HISTORIK</a>
 						</li>
 						<li><a
 								class="menu-btn-dropdown bg-green-50 hover:border-green-700 hover:bg-green-50 hover:text-green-700 lg:hidden"
-								href="/login"><x-fas-right-to-bracket class="menu-btn-dropdown-icon text-green-800" />Logga In</a>
+								href="/login"><x-fas-right-to-bracket class="menu-btn-dropdown-icon text-green-800" />LOGGA IN</a>
 						</li>
 					@endauth
 				</ul>
