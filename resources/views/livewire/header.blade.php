@@ -2,7 +2,7 @@
 	<header class="w-full mx-auto max-w-7xl">
 		<div x-data="{ open: false }">
 			<div
-				class="container flex items-center justify-between custom-shadow  p-2 pl-2 mx-auto bg-white border-b-4 border-l-4 border-r-4 max-w-7xl border-slate-300 max-xl:border-l-0 xl:rounded-b-xl">
+				class="container flex items-center justify-between custom-shadow  p-2 pl-2 mx-auto gradient-3 border-b-4 border-l-4 border-r-4 max-w-7xl border-slate-300 max-xl:border-l-0 xl:rounded-b-xl">
 				<div class="flex justify-center text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl">
 					<a href="/">
 						<div class="inline-block">
@@ -23,29 +23,29 @@
 					<ul class="space-x-1 text-sm font-bold lg:flex">
 						{{-- LG+ Menu --}}
 						@auth
-							<li><a class="menu-btn hover:border-green-700 hover:bg-green-50 hover:text-green-700"
+							<li><a class="menu-btn custom-shadow-2 hover:border-green-700 hover:bg-green-50 hover:text-green-700"
 									href="/create/vinyl"><x-fas-file-upload class="menu-btn-icon text-green-700" />Ny Vinyl</a></li>
-							<li><a class="menu-btn hover:border-cyan-700 hover:bg-cyan-50 hover:text-cyan-700"
+							<li><a class="menu-btn custom-shadow-2 hover:border-cyan-700 hover:bg-cyan-50 hover:text-cyan-700"
 									href="/create/artist"><x-fas-folder-plus class="menu-btn-icon text-cyan-700" />Ny Artist</a></li>
-							<li><a class="menu-btn hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700"
+							<li><a class="menu-btn custom-shadow-2 hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700"
 									href="/export/artist"><x-fas-cloud-arrow-down class="menu-btn-icon text-blue-700" />Excel
 									(.xls)
 								</a></li>
-							<li><a class="menu-btn hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700"
+							<li><a class="menu-btn custom-shadow-2 hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700"
 									href="/history"><x-fas-book class="menu-btn-icon text-yellow-700" />Historik</a>
 							</li>
-							<li><a class="menu-btn hover:border-red-700 hover:bg-red-50 hover:text-red-700"
+							<li><a class="menu-btn custom-shadow-2 hover:border-red-700 hover:bg-red-50 hover:text-red-700"
 									href="/logout"><x-fas-right-from-bracket class="menu-btn-icon text-red-700" />Logga Ut</a>
 							</li>
 						@else
-							<li><a class="menu-btn hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700"
+							<li><a class="menu-btn custom-shadow-2 hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700"
 									href="/export/artist"><x-fas-cloud-arrow-down class="menu-btn-icon text-blue-700" />Excel
 									(.xls)
 								</a></li>
-							<li><a class="menu-btn hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700"
+							<li><a class="menu-btn custom-shadow-2 hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700"
 									href="/history"><x-fas-book class="menu-btn-icon text-yellow-700" />Historik</a>
 							</li>
-							<li><a class="menu-btn hover:border-green-700 hover:bg-green-50 hover:text-green-700"
+							<li><a class="menu-btn custom-shadow-2 hover:border-green-700 hover:bg-green-50 hover:text-green-700"
 									href="/login"><x-fas-right-to-bracket class="menu-btn-icon text-green-700" />Logga In</a>
 							</li>
 						@endauth

@@ -9,7 +9,7 @@
 		<x-fas-compact-disc class="text-neutral-500 absolute w-8 bottom-2 left-4 max-sm:left-4 max-sm:w-6"
 			aria-labelledby="title desc" />
 		<input wire:model.live.debounce.500ms="search" name="search" type="text"
-			class="w-full p-2 text-2xl bg-neutral-100 border-l-4 border-t-4 border-r-4 rounded-t-xl outline-none z-1 border-slate-300 pl-14 custom-shadow max-sm:pl-12 max-sm:text-base max-xl:border-l-0"
+			class="w-full p-2 text-2xl gradient-3 border-l-4 border-t-4 border-r-4 rounded-t-xl outline-none z-1 border-slate-300 pl-14 custom-shadow max-sm:pl-12 max-sm:text-base max-xl:border-l-0"
 			placeholder="Sök Artister/Vinyler..." autocomplete="off" required="">
 	</div>
 	@if ($loadData == true)
@@ -66,9 +66,10 @@
 						@if ($artists->count() >= 1)
 							@foreach ($artists as $artist)
 								@if (empty($char) || $char != mb_substr($artist->name, 0, 1))
-									<tr wire:key="char-{{ $char }}" class="border-t border-b border-slate-300 bg-slate-100">
+									<tr wire:key="char-{{ $char }}"
+										class="custom-shadow-inset border-t border-b border-slate-300 bg-slate-200">
 										<td colspan="2"
-											class="p-2 px-6 text-lg font-bold text-center rock-font text-slate-400 sm:text-xl lg:text-left lg:text-3xl">
+											class="p-2 py-0 px-6 text-lg font-bold text-center rock-font text-slate-400 sm:text-xl lg:text-left lg:text-xl">
 											{{ mb_substr($artist->name, 0, 1) }}</td>
 									</tr>
 								@endif
@@ -97,18 +98,18 @@
 											$vinyler = $artist->records->count();
 										@endphp
 										@if ($vinyler == 0)
-											<p class="py-2 text-sm text-red-400 lg:text-lg">
+											<p class="py-2 text-sm text-red-400 lg:text-base">
 												{{ $vinyler }}
 												Vinyl{{ $vinyler == 1 ? "" : "er" }}
 											</p>
 										@else
-											<p class="py-2 text-sm text-gray-400 lg:text-lg">
+											<p class="py-2 text-sm text-slate-400 lg:text-base">
 												{{ $vinyler }}
 												Vinyl{{ $vinyler == 1 ? "" : "er" }}
 											</p>
 										@endif
 									</td>
-									<td class="py-2 text-xs align-top sm:px-6">
+									<td class="py-2 pt-3 text-xs align-top sm:px-6">
 										@if ($vinyler >= 1)
 											@foreach ($artist->records as $record)
 												<p class="pb-1 antialiased text-gray-700 uppercase inter-font sm:text-sm">
