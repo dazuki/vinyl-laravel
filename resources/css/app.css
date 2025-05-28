@@ -72,7 +72,7 @@
 }
 
 .gradient-3 {
-  background: #e2e8f0;
+  background: rgb(226, 232, 240);
   background: linear-gradient(
     0deg,
     rgba(226, 232, 240, 1) 0%,
@@ -133,7 +133,7 @@ button:hover[disabled] {
 /* Menu Button Styles */
 
 .menu-btn {
-  @apply p-2 py-3 text-gray-900 border-2 border-slate-300 bg-white;
+  @apply p-2 py-3 text-gray-900 border-2 border-slate-300;
 }
 
 .menu-btn-icon {
@@ -141,7 +141,7 @@ button:hover[disabled] {
 }
 
 .menu-btn-dropdown {
-  @apply block p-2 text-lg text-left text-gray-900 border-2 shadow-md border-slate-300 bg-white my-2;
+  @apply block p-2 text-lg text-left text-gray-900 border-2 shadow-md border-slate-300 my-2;
 }
 
 .menu-btn-dropdown-icon {
@@ -149,7 +149,7 @@ button:hover[disabled] {
 }
 
 .menu-btn-icon-user {
-  @apply items-center inline-block w-5 -mt-2 text-green-700;
+  @apply items-center inline-block ml-2 w-5 -mt-3 text-green-700;
 }
 
 /* */
