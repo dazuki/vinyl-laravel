@@ -23,37 +23,36 @@
 					<ul class="space-x-1 text-sm font-bold lg:flex">
 						{{-- LG+ Menu --}}
 						@auth
-							<li><a class="menu-btn custom-shadow-2 bg-white hover:border-green-700 hover:bg-green-50 hover:text-green-700"
+							<li><a class="menu-btn bg-white hover:border-green-700 hover:bg-green-50 hover:text-green-700"
 									href="/create/vinyl" wire:navigate.hover
 									wire:current="underline underline-offset-4 decoration-2"><x-fas-file-upload
 										class="menu-btn-icon text-green-800" />Ny Vinyl</a>
 							</li>
-							<li><a class="menu-btn custom-shadow-2 bg-white hover:border-cyan-700 hover:bg-cyan-50 hover:text-cyan-700"
-									href="/create/artist" wire:navigate.hover
-									wire:current="underline underline-offset-4 decoration-2"><x-fas-folder-plus
+							<li><a class="menu-btn bg-white hover:border-cyan-700 hover:bg-cyan-50 hover:text-cyan-700" href="/create/artist"
+									wire:navigate.hover wire:current="underline underline-offset-4 decoration-2"><x-fas-folder-plus
 										class="menu-btn-icon text-cyan-800" />Ny Artist</a>
 							</li>
-							<li><a class="menu-btn custom-shadow-2 bg-white hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700"
+							<li><a class="menu-btn bg-white hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700"
 									href="/export/artist"><x-fas-cloud-arrow-down class="menu-btn-icon text-blue-800" />Excel
 									(.xls)
 								</a></li>
-							<li><a class="menu-btn custom-shadow-2 bg-white hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700"
-									href="/history" wire:navigate.hover wire:current="underline underline-offset-4 decoration-2"><x-fas-book
+							<li><a class="menu-btn bg-white hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700" href="/history"
+									wire:navigate.hover wire:current="underline underline-offset-4 decoration-2"><x-fas-book
 										class="menu-btn-icon text-yellow-800" />Historik</a>
 							</li>
-							<li><a class="menu-btn custom-shadow-2 bg-red-50 hover:border-red-700 hover:bg-red-50 hover:text-red-700"
+							<li><a class="menu-btn bg-red-50 hover:border-red-700 hover:bg-red-50 hover:text-red-700"
 									href="/logout"><x-fas-right-from-bracket class="menu-btn-icon text-red-800" />Logga Ut</a>
 							</li>
 						@else
-							<li><a class="menu-btn custom-shadow-2 bg-white hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700"
+							<li><a class="menu-btn bg-white hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700"
 									href="/export/artist"><x-fas-cloud-arrow-down class="menu-btn-icon text-blue-800" />Excel
 									(.xls)
 								</a></li>
-							<li><a class="menu-btn custom-shadow-2 bg-white hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700"
-									href="/history" wire:navigate.hover wire:current="underline underline-offset-4 decoration-2"><x-fas-book
+							<li><a class="menu-btn bg-white hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700" href="/history"
+									wire:navigate.hover wire:current="underline underline-offset-4 decoration-2"><x-fas-book
 										class="menu-btn-icon text-yellow-800" />Historik</a>
 							</li>
-							<li><a class="menu-btn custom-shadow-2 bg-green-50 hover:border-green-700 hover:bg-green-50 hover:text-green-700"
+							<li><a class="menu-btn bg-green-50 hover:border-green-700 hover:bg-green-50 hover:text-green-700"
 									href="/login"><x-fas-right-to-bracket class="menu-btn-icon text-green-800" />Logga In</a>
 							</li>
 						@endauth

@@ -108,7 +108,7 @@ button:hover[disabled] {
 }
 
 .menu-btn-dropdown {
-  @apply block p-2 text-lg text-left text-gray-900 border-2 shadow-md border-slate-300 my-2;
+  @apply block p-2 text-lg text-left text-gray-900 border-2 border-slate-300 my-2;
 }
 
 .menu-btn-dropdown-icon {
