@@ -6,21 +6,16 @@
 		$char = "";
 	@endphp
 	<div class="relative pt-4 z-20">
-		<svg class="absolute w-8 svg-icon search-icon bottom-2 left-4 max-sm:left-4 max-sm:w-6" aria-labelledby="title desc"
-			role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7">
-			<g class="search-path" fill="none" stroke="#959595">
-				<path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4" />
-				<circle cx="8" cy="8" r="7" />
-			</g>
-		</svg>
+		<x-fas-compact-disc class="text-neutral-500 absolute w-8 bottom-2 left-4 max-sm:left-4 max-sm:w-6"
+			aria-labelledby="title desc" />
 		<input wire:model.live.debounce.500ms="search" name="search" type="text"
-			class="w-full p-2 text-2xl bg-white border rounded-t-xl outline-none z-1 border-slate-300 pl-14 custom-shadow max-sm:pl-12 max-sm:text-base max-xl:border-l-0"
+			class="w-full p-2 text-2xl bg-neutral-100 border-l-4 border-t-4 border-r-4 rounded-t-xl outline-none z-1 border-slate-300 pl-14 custom-shadow max-sm:pl-12 max-sm:text-base max-xl:border-l-0"
 			placeholder="Sök Artister/Vinyler..." autocomplete="off" required="">
 	</div>
 	@if ($loadData == true)
 		<div class="relative z-10">
 			<table
-				class="w-full text-sm text-left text-gray-500 custom-shadow border-t-0 border-b border-l border-r border-slate-300 max-xl:border-l-0 max-xl:border-r-0">
+				class="w-full text-sm text-left text-gray-500 custom-shadow border-t-0 border-b-4 border-l-4 border-r-4 border-slate-300 max-xl:border-l-0 max-xl:border-r-0">
 				<thead class="text-xs bg-white border-t-0 border-b-0 border-l-0 border-r-0 border-slate-300 text-slate-900">
 					<tr>
 						<th scope="col" class="w-1/2 px-2 pt-4 pb-2 text-base antialiased whitespace-nowrap sm:px-6 sm:text-xl">
@@ -181,7 +176,7 @@
 				</tbody>
 			</table>
 			@if ($loadData == true)
-				<div class="py-2 sm:py-0">
+				<div class="z-10 py-2 sm:py-0">
 					{{ $artists->onEachSide(2)->links() }}</td>
 				</div>
 			@endif

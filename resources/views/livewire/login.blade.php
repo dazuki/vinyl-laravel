@@ -3,7 +3,7 @@
 @endsection
 <div class="max-w-screen-xl mx-auto mt-4 text-left">
 	<div
-		class="rounded-xl custom-shadow px-4 pt-4 bg-white border-t border-b border-l border-r border-slate-300 max-xl:border-l-0 max-xl:border-r-0">
+		class="rounded-xl custom-shadow px-4 pt-4 bg-white border-t-4 border-b-4 border-l-4 border-r-4 border-slate-300 max-xl:border-l-0 max-xl:border-r-0">
 		<p class="pt-4 text-lg font-semibold text-center text-green-600">
 			Du är inloggad!
 		</p>

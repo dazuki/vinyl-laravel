@@ -3,7 +3,7 @@
 @endsection
 <div wire:init="init" class="max-w-screen-xl mx-auto mt-4 text-left">
 	<div
-		class="rounded-xl custom-shadow min-h-screen pt-4 bg-white border-t border-b border-l border-r border-slate-300 max-xl:border-l-0 max-xl:border-r-0 sm:px-4">
+		class="rounded-xl custom-shadow min-h-screen pt-4 bg-white border-t-4 border-b-4 border-l-4 border-r-4 border-slate-300 max-xl:border-l-0 max-xl:border-r-0 sm:px-4">
 		<div class="flex items-center justify-center">
 			<div wire:loading class="py-8">
 				<svg width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
