@@ -2,15 +2,15 @@
 	<header class="w-full mx-auto max-w-7xl">
 		<div x-data="{ open: false }">
 			<div
-				class="container flex items-center justify-between custom-shadow  p-2 pl-2 mx-auto gradient-3 border-b-4 border-l-4 border-r-4 max-w-7xl border-slate-300 max-xl:border-l-0 xl:rounded-b-xl">
+				class="container flex items-center justify-between custom-shadow pt-4 pb-2 px-2 sm:px-4 mx-auto gradient-3 border-b-4 border-l-4 border-r-4 max-w-7xl border-slate-300 max-xl:border-l-0 xl:rounded-b-xl">
 				<div class="flex justify-center text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl">
 					<a href="/">
 						<div class="inline-block">
 							<img src="{{ asset("static/images/vinyl-laravel_logo2.webp") }}"
-								class="h-[28px] md:h-[32px] lg:h-[32px] xl:h-[48px]">
+								class="h-[32px] md:h-[38px] lg:h-[42px] xl:h-[48px]">
 						</div>
 						@auth
-							<x-fas-key class="menu-btn-icon-user opacity-70 md:-mt-3 md:w-6 lg:-mt-3 lg:w-6 xl:-mt-6 xl:w-8" />
+							<x-fas-key class="menu-btn-icon-user opacity-70 md:-mt-5 md:w-6 lg:-mt-6 lg:w-7 xl:-mt-7 xl:w-8" />
 						@endauth
 					</a>
 				</div>

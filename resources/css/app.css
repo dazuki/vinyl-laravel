@@ -149,7 +149,7 @@ button:hover[disabled] {
 }
 
 .menu-btn-icon-user {
-  @apply items-center inline-block ml-2 w-5 -mt-3 text-green-700;
+  @apply items-center inline-block ml-1 w-6 -mt-5 text-green-700;
 }
 
 /* */
