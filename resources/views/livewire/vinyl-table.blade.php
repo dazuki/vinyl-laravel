@@ -122,19 +122,11 @@
 															        "</span>";
 															}
 
-															echo "<a href='https://www.discogs.com/search/?q=" .
-															    urlencode($artist->name . " " . $record->record_name) .
-															    "&type=release&format_exact=Vinyl' class='underline-offset-4 hover:text-blue-800 hover:underline' target='_BLANK'>" .
-															    str_replace($highlightVinyl, $replaceVinyl, mb_strtoupper($record->record_name), $count) .
-															    "</a>";
+															echo str_replace($highlightVinyl, $replaceVinyl, mb_strtoupper($record->record_name), $count);
 														@endphp
 													@else
 														@php
-															echo "<a href='https://www.discogs.com/search/?q=" .
-															    urlencode($artist->name . " " . $record->record_name) .
-															    "&type=release&format_exact=Vinyl' class='underline-offset-4 hover:text-blue-800 hover:underline' target='_BLANK'>" .
-															    $record->record_name .
-															    "</a>";
+															echo $record->record_name;
 														@endphp
 													@endif
 												</p>
