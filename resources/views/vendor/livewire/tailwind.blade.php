@@ -13,19 +13,15 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
 <div>
     @if ($paginator->hasPages())
         <nav role="navigation" aria-label="Pagination Navigation" class="flex items-center justify-around">
-            <div class="flex justify-between items-center sm:hidden">
+            <div class="flex justify-between items-center w-full mx-2 sm:hidden">
                 <span>
                     @if ($paginator->onFirstPage())
                         <span class="relative items-center inline-flex px-8 py-2 text-sm font-medium text-gray-500 bg-neutral-200 custom-shadow border-4 border-slate-300 cursor-default leading-5 select-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                            </svg>
+                            Föregående
                         </span>
                     @else
                         <button type="button" wire:click="previousPage('{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}" wire:loading.attr="disabled" dusk="previousPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.before" class="relative items-center px-8 py-2 text-sm font-medium text-gray-700 bg-white custom-shadow border-4 border-slate-300 leading-5 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150" aria-label="Next Page">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                            </svg>
+                            Föregående
                         </button>
                     @endif
                 </span>
@@ -35,15 +31,11 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                 <span>
                     @if ($paginator->hasMorePages())
                         <button type="button" wire:click="nextPage('{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}" wire:loading.attr="disabled" dusk="nextPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.before" class="relative inline-flex items-center px-8 py-2 ml-5 text-sm font-medium text-gray-700 bg-white  custom-shadow border-4 border-slate-300 leading-5 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150" aria-label="Previous Page">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
+                            Nästa
                         </button>
                     @else
                         <span class="relative inline-flex items-center px-8 py-2 ml-5 text-sm font-medium text-gray-500 bg-neutral-200  custom-shadow border-4 border-slate-300 cursor-default leading-5 select-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
+                            Nästa
                         </span>
                     @endif
                 </span>
