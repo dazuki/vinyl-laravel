@@ -4,17 +4,17 @@
 			<div
 				class="container flex items-center justify-between custom-shadow pt-4 pb-2 px-2 sm:px-4 mx-auto gradient-3 border-b-4 border-l-4 border-r-4 max-w-7xl border-slate-300 max-xl:border-l-0 xl:rounded-b-xl">
 				<div class="flex justify-center text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl">
-					<a href="/">
+					<a href="/" aria-label="Start Page">
 						<div class="inline-block">
 							<img src="{{ asset("static/images/vinyl-laravel_logo2.webp") }}"
-								class="h-[32px] md:h-[38px] lg:h-[42px] xl:h-[48px]">
+								class="h-[32px] md:h-[38px] lg:h-[42px] xl:h-[48px]" alt="VINYL FÖRTECKNING">
 						</div>
 						@auth
 							<x-fas-key class="menu-btn-icon-user opacity-70 md:-mt-5 md:w-6 lg:-mt-6 lg:w-7 xl:-mt-7 xl:w-8" />
 						@endauth
 					</a>
 				</div>
-				<button @click="open = ! open" class="text-slate-700 lg:hidden">
+				<button @click="open = ! open" class="text-slate-700 lg:hidden" aria-label="Menu">
 					<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path stroke-linecap="square" stroke-linejoin="square" stroke-width="3" d="M4 6h16M4 12h16M4 18h16" />
 					</svg>

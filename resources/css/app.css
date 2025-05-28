@@ -80,6 +80,10 @@
   );
 }
 
+.vinyler-text-color {
+  color: #4b5772;
+}
+
 body {
   background-color: #e2e8f0;
   background-image: url(/public/static/images/bg_tony_bw2.webp);

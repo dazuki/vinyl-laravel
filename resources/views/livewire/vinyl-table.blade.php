@@ -103,7 +103,7 @@
 												Vinyl{{ $vinyler == 1 ? "" : "er" }}
 											</p>
 										@else
-											<p class="py-2 text-sm text-slate-400 lg:text-base">
+											<p class="py-2 text-sm vinyler-text-color lg:text-base">
 												{{ $vinyler }}
 												Vinyl{{ $vinyler == 1 ? "" : "er" }}
 											</p>
