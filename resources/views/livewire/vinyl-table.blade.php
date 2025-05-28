@@ -5,7 +5,7 @@
 	@php
 		$char = "";
 	@endphp
-	<div class="relative pt-4">
+	<div class="relative pt-4 z-20">
 		<svg class="absolute w-8 svg-icon search-icon bottom-2 left-4 max-sm:left-4 max-sm:w-6" aria-labelledby="title desc"
 			role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7">
 			<g class="search-path" fill="none" stroke="#959595">
@@ -14,21 +14,21 @@
 			</g>
 		</svg>
 		<input wire:model.live.debounce.500ms="search" name="search" type="text"
-			class="w-full p-2 text-2xl bg-white border-t-2 border-b-2 border-l-2 border-r-2 outline-none z-1 border-slate-300 pl-14 max-sm:pl-12 max-sm:text-base max-xl:border-l-0"
+			class="w-full p-2 text-2xl bg-white border rounded-t-xl outline-none z-1 border-slate-300 pl-14 custom-shadow max-sm:pl-12 max-sm:text-base max-xl:border-l-0"
 			placeholder="Sök Artister/Vinyler..." autocomplete="off" required="">
 	</div>
 	@if ($loadData == true)
 		<div class="relative z-10">
 			<table
-				class="w-full text-sm text-left text-gray-500 border-t-0 border-b-2 border-l-2 border-r-2 border-slate-300 max-xl:border-l-0 max-xl:border-r-0">
+				class="w-full text-sm text-left text-gray-500 custom-shadow border-t-0 border-b border-l border-r border-slate-300 max-xl:border-l-0 max-xl:border-r-0">
 				<thead class="text-xs bg-white border-t-0 border-b-0 border-l-0 border-r-0 border-slate-300 text-slate-900">
 					<tr>
-						<th scope="col" class="w-1/2 px-2 py-2 text-base antialiased whitespace-nowrap sm:px-6 sm:text-xl">
+						<th scope="col" class="w-1/2 px-2 pt-4 pb-2 text-base antialiased whitespace-nowrap sm:px-6 sm:text-xl">
 							@if ($loadData == true)
 								Artister: <span class="text-base font-semibold text-green-800 sm:text-xl">{{ $art_count }}</span>
 							@endif
 						</th>
-						<th scope="col" class="w-1/2 px-2 py-2 pl-0 text-base antialiased whitespace-nowrap sm:px-6 sm:text-xl">
+						<th scope="col" class="w-1/2 px-2 pt-4 pb-2 pl-0 text-base antialiased whitespace-nowrap sm:px-6 sm:text-xl">
 							@if ($loadData == true)
 								Vinyler: <span class="text-base font-semibold text-green-800 sm:text-xl">{{ $records }}</span>
 							@endif
@@ -53,9 +53,9 @@
 					</tr>
 					@if ($loadData == true)
 						@if (!empty($search) && $artists->count() >= 1)
-							<tr class="border-b-2 border-dashed border-slate-300 bg-sky-50">
+							<tr class="border-b border-dashed border-slate-300 bg-sky-50">
 								<td colspan="2"
-									class="px-2 py-2 text-sm text-left text-gray-900 border-t-2 border-slate-300 sm:px-6 sm:text-base">
+									class="px-2 py-2 text-sm text-left text-gray-900 border-t border-slate-300 sm:px-6 sm:text-base">
 									<p>
 										Sökord -> "<span class="font-semibold text-red-600">{{ mb_strtoupper($search) }}</span>"
 									</p>
@@ -71,7 +71,7 @@
 						@if ($artists->count() >= 1)
 							@foreach ($artists as $artist)
 								@if (empty($char) || $char != mb_substr($artist->name, 0, 1))
-									<tr wire:key="char-{{ $char }}" class="border-t-2 border-b-2 border-slate-300 bg-slate-100">
+									<tr wire:key="char-{{ $char }}" class="border-t border-b border-slate-300 bg-slate-100">
 										<td colspan="2"
 											class="p-2 px-6 text-lg font-bold text-center rock-font text-slate-400 sm:text-xl lg:text-left lg:text-3xl">
 											{{ mb_substr($artist->name, 0, 1) }}</td>
@@ -81,7 +81,7 @@
 									$char = mb_substr($artist->name, 0, 1);
 								@endphp
 								<tr wire:key="artist-{{ $artist->id }}" class="bg-white border-b border-slate-300">
-									<td class="px-2 py-2 pb-0 text-lg font-bold text-gray-700 align-top rock-font sm:px-6 sm:text-xl lg:text-3xl">
+									<td class="px-2 py-2 pb-0 text-lg text-gray-700 align-top rock-font sm:px-6 sm:text-xl lg:text-3xl">
 										<a href="/artist/{{ $artist->id }}" class="antialiased hover:text-blue-800" wire:navigate>
 											@if (!empty($search))
 												@php
@@ -153,7 +153,7 @@
 							@endforeach
 						@else
 							@if ($artists->count() <= 0)
-								<tr class="bg-white border-b-2 border-slate-300 lg:border-l-2 lg:border-r-2">
+								<tr class="bg-white border-b border-slate-300 lg:border-l lg:border-r">
 									<td colspan="2" class="px-2 py-4 text-base text-center text-gray-900 align-top sm:px-6 sm:text-lg">
 										<p>Sökord gav inga träffar...</p>
 										@auth
@@ -188,7 +188,7 @@
 		</div>
 	@else
 		<div
-			class="flex justify-center w-full min-h-screen px-2 py-4 text-base text-gray-900 align-top bg-white border-b-2 border-l-2 border-r-2 items-top border-slate-300 max-xl:border-l-0 max-xl:border-r-0">
+			class="flex justify-center w-full min-h-screen px-2 py-4 text-base text-gray-900 align-top bg-white border-b border-l border-r items-top border-slate-300 max-xl:border-l-0 max-xl:border-r-0">
 			<svg width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 				<path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity=".25" />
 				<path

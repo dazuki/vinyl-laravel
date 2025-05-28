@@ -2,7 +2,7 @@
 	<header class="w-full mx-auto max-w-7xl">
 		<div x-data="{ open: false }">
 			<div
-				class="container flex items-center justify-between p-2 pl-2 mx-auto bg-white border-b-2 border-l-2 border-r-2 max-w-7xl border-slate-300 max-xl:border-l-0">
+				class="container flex items-center justify-between custom-shadow  p-2 pl-2 mx-auto bg-white border-b border-l border-r max-w-7xl border-slate-300 max-xl:border-l-0 xl:rounded-b-xl">
 				<div class="flex justify-center text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl">
 					<a href="/">
 						<div class="inline-block">
@@ -53,7 +53,7 @@
 				</div>
 			</div>
 			<div x-cloak x-show="open" class="lg:hidden">
-				<ul id="burgerMenu" class="px-4 py-4 text-sm bg-white font-bold">
+				<ul id="burgerMenu" class="px-4 py-4 text-sm bg-white font-bold custom-shadow">
 					{{-- Dropdown Menu --}}
 					@auth
 						<li><a class="menu-btn-dropdown hover:border-green-700 hover:bg-green-50 hover:text-green-700 lg:hidden"

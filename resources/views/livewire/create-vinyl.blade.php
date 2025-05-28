@@ -3,7 +3,7 @@
 @endsection
 <div class="max-w-screen-xl pb-2 mx-auto mt-4 text-center">
 	<div
-		class="px-4 pt-4 bg-white border-t-2 border-b-2 border-l-2 border-r-2 border-slate-300 max-xl:border-l-0 max-xl:border-r-0">
+		class="rounded-xl custom-shadow px-4 pt-4 bg-white border-t border-b border-l border-r border-slate-300 max-xl:border-l-0 max-xl:border-r-0">
 		<h1 class="mt-2 mb-4 text-2xl font-bold text-center text-gray-900 sm:text-3xl">
 			Ny Vinyl
 		</h1>
