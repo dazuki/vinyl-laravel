@@ -4,7 +4,7 @@
 			<div
 				class="container flex items-center justify-between custom-shadow pt-4 pb-2 px-2 sm:px-4 mx-auto gradient-3 border-b-4 border-l-4 border-r-4 max-w-7xl border-slate-300 max-xl:border-l-0 xl:rounded-b-xl">
 				<div class="flex justify-center text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl">
-					<a href="/" aria-label="Start Page">
+					<a href="/" aria-label="Start Page" wire:navigate>
 						<div class="inline-block">
 							<img src="{{ asset("static/images/vinyl-laravel_logo2.webp") }}"
 								class="h-[32px] md:h-[38px] lg:h-[42px] xl:h-[48px]" alt="VINYL FÖRTECKNING">
