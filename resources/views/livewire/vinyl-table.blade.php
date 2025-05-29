@@ -61,6 +61,8 @@
 								</td>
 							</tr>
 						@endif
+
+						{{-- <ARTISTER> --}}
 						@if ($artists->count() >= 1)
 							@foreach ($artists as $artist)
 								@if (empty($char) || $char != mb_substr($artist->name, 0, 1))
@@ -108,6 +110,8 @@
 										@endif
 									</td>
 									<td class="py-2 pt-3 text-xs align-top sm:px-6">
+
+										{{-- <VINYLER> --}}
 										@if ($vinyler >= 1)
 											@foreach ($artist->records as $record)
 												<p class="pb-1 antialiased text-gray-700 uppercase inter-font sm:text-sm">
@@ -134,6 +138,8 @@
 										@else
 											<p class="italic text-gray-600 uppercase">...</p>
 										@endif
+										{{-- </VINYLER> --}}
+
 									</td>
 								</tr>
 							@endforeach
@@ -164,6 +170,8 @@
 							@endif
 						@endif
 					@endif
+					{{-- </ARTISTER> --}}
+
 				</tbody>
 			</table>
 			@if ($loadData == true)
