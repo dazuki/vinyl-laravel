@@ -100,7 +100,7 @@ button:hover[disabled] {
 /* Menu Button Styles */
 
 .menu-btn {
-  @apply p-2 py-3 text-gray-900 border-2 border-slate-300;
+  @apply p-2 py-3 text-slate-600 rounded-md border-2 border-slate-300;
 }
 
 .menu-btn-icon {
@@ -108,7 +108,7 @@ button:hover[disabled] {
 }
 
 .menu-btn-dropdown {
-  @apply block p-2 text-lg text-left text-gray-900 border-2 border-slate-300 my-2;
+  @apply block p-2 text-lg text-left rounded-md text-slate-600 border-2 border-slate-300 my-2;
 }
 
 .menu-btn-dropdown-icon {
@@ -116,7 +116,7 @@ button:hover[disabled] {
 }
 
 .menu-btn-icon-user {
-  @apply items-center inline-block ml-1 w-6 -mt-5 text-green-700;
+  @apply items-center inline-block w-6 -mt-5 text-green-700;
 }
 
 /* */
