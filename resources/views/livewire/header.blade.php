@@ -8,12 +8,15 @@
 						aria-label="Start Page"
 						wire:navigate>
 						<div class="inline-block">
+							<span class="rock-font text-neutral-800">VINYL FÖRTECKNING</span>
+							{{--
 							<img src="{{ asset("static/images/vinyl-laravel_logo2.webp") }}"
 								class="h-[32px] md:h-[38px] lg:h-[42px] xl:h-[48px]"
 								alt="VINYL FÖRTECKNING">
+								--}}
 						</div>
 						@auth
-							<x-fas-key class="menu-btn-icon-user opacity-70 md:-mt-5 md:w-6 lg:-mt-6 lg:w-7 xl:-mt-7 xl:w-8" />
+							<x-fas-key class="menu-btn-icon-user h-4 opacity-70 max-sm:-mt-2 sm:-mt-2 sm:h-5" />
 						@endauth
 					</a>
 				</div>
