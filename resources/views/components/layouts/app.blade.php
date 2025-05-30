@@ -17,6 +17,9 @@
 		href="{{ asset("static/images/favicon-16x16.png") }}">
 	<link rel="manifest"
 		href="{{ asset("static/images/site.webmanifest") }}">
+	<link rel="preconnect"
+		href="https://fonts.gstatic.com/"
+		crossorigin>
 
 	<title>@yield("page-title") - Vinyl Förteckning</title>
 	@vite(["resources/css/app.css", "resources/js/app.js"])
