@@ -59,7 +59,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                         <span>
                             {{-- Previous Page Link --}}
                             @if ($paginator->onFirstPage())
-                                <span aria-disabled="true" aria-label="Previous Page">
+                                <span>
                                     <span class="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-slate-300 border-l-4 border-b-4 border-t-0 cursor-default leading-5 rounded-bl-lg" aria-hidden="true">
                                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                             <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
@@ -79,7 +79,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                         @foreach ($elements as $element)
                             {{-- "Three Dots" Separator --}}
                             @if (is_string($element))
-                                <span aria-disabled="true">
+                                <span>
                                     <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-b-4 border-t-0  border-slate-300 cursor-default leading-5 select-none">{{ $element }}</span>
                                 </span>
                             @endif
@@ -111,7 +111,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                                     </svg>
                                 </button>
                             @else
-                                <span aria-disabled="true" aria-label="Next Page">
+                                <span>
                                     <span class="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-r-4 border-b-4 border-t-0 border-slate-300 cursor-default leading-5 rounded-br-lg" aria-hidden="true">
                                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                             <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
