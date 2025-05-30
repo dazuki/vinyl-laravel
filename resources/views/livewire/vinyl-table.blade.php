@@ -94,9 +94,9 @@
 								@endphp
 								<tr wire:key="artist-{{ $artist->id }}"
 									class="border-b border-slate-300 bg-white">
-									<td class="rock-font px-2 py-2 pb-0 align-top text-xl text-gray-700 sm:px-6 sm:text-xl lg:text-3xl">
+									<td class="rock-font px-2 py-2 pb-0 align-top text-2xl text-gray-700 sm:px-6 sm:text-2xl lg:text-3xl">
 										<a href="/artist/{{ $artist->id }}"
-											class="antialiased hover:text-blue-800"
+											class="block border-white py-2 antialiased hover:text-cyan-800"
 											wire:navigate>
 											@if (!empty($search))
 												@php
@@ -117,12 +117,12 @@
 											$vinyler = $artist->records->count();
 										@endphp
 										@if ($vinyler == 0)
-											<p class="py-2 text-sm text-red-400 lg:text-base">
+											<p class="py-2 pb-4 text-sm text-red-400 lg:text-base">
 												{{ $vinyler }}
 												Vinyl{{ $vinyler == 1 ? "" : "er" }}
 											</p>
 										@else
-											<p class="vinyler-text-color py-2 text-sm lg:text-base">
+											<p class="vinyler-text-color py-2 pb-4 text-sm lg:text-base">
 												{{ $vinyler }}
 												Vinyl{{ $vinyler == 1 ? "" : "er" }}
 											</p>
@@ -139,10 +139,10 @@
 													    urlencode($artist["name"] . " " . $record["record_name"]) .
 													    "&type=release&format_exact=Vinyl";
 												@endphp
-												<p class="inter-font uppercase text-gray-700 antialiased sm:text-sm">
+												<p class="inter-font pb-2 uppercase text-gray-700 antialiased sm:text-sm">
 													<a href={{ $discogsURL }}
 														target="_BLANK"
-														class="block border-l border-slate-300 bg-white p-2 hover:border-l-2 hover:border-slate-500 hover:bg-slate-100">
+														class="block border-l border-slate-300 bg-white p-2 hover:border-l-2 hover:border-slate-500 hover:bg-slate-100 hover:font-semibold hover:shadow-md">
 														@if (!empty($search))
 															@php
 																$highlightVinyl = explode(" ", mb_strtoupper($search));
