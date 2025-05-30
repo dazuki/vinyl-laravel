@@ -21,17 +21,11 @@ class ArtistShow extends Component
 
     public function mount(Request $request)
     {
-        /*$artNameCache = Cache::rememberForever('name.'.$this->art_id, function () {
-            return Artist::find($this->art_id)->name;
-        });
-
-        $this->name = $artNameCache;*/
-
-        Cache::rememberForever('id.'.$this->art_id, function () {
+        Cache::rememberForever('id.' . $this->art_id, function () {
             return (string) Artist::with('records')->find($this->art_id);
         });
 
-        $IdCache = Cache::get('id.'.$this->art_id);
+        $IdCache = Cache::get('id.' . $this->art_id);
         $this->getIdCache = json_decode($IdCache, true);
 
         $this->name = $this->getIdCache['name'];
@@ -69,11 +63,11 @@ class ArtistShow extends Component
 
         Cache::flush();
 
-        Cache::rememberForever('id.'.$this->art_id, function () {
+        Cache::rememberForever('id.' . $this->art_id, function () {
             return (string) Artist::with('records')->find($this->art_id);
         });
 
-        $IdCache = Cache::get('id.'.$this->art_id);
+        $IdCache = Cache::get('id.' . $this->art_id);
         $this->getIdCache = json_decode($IdCache, true);
 
         $this->name = $this->getIdCache['name'];
@@ -96,17 +90,11 @@ class ArtistShow extends Component
 
         session()->flash('status', 'Vinylen är borttagen!');
 
-        $this->redirect('/artist/'.$this->art_id);
+        $this->redirect('/artist/' . $this->art_id);
     }
 
     public function render()
     {
-        /*Cache::rememberForever('id.'.$this->art_id, function () {
-            return (string) Artist::with('records')->find($this->art_id);
-        });
-
-        $getIdCache = Cache::get('id.'.$this->art_id);*/
-
         return view('livewire.artist-show', [
             'artist' => $this->getIdCache,
         ]);
