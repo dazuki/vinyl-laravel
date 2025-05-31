@@ -2,7 +2,7 @@
 	class="mx-auto mt-4 max-w-screen-xl text-left">
 	@section("page-title", "Historik")
 	<div
-		class="custom-shadow min-h-screen rounded-xl border-b-4 border-l-4 border-r-4 border-t-4 border-slate-300 bg-white pt-4 max-xl:border-l-0 max-xl:border-r-0 sm:px-4">
+		class="custom-shadow min-h-screen border-b-4 border-l-4 border-r-4 border-t-4 border-slate-300 bg-white pt-4 max-xl:border-l-0 max-xl:border-r-0 sm:px-4 xl:rounded-xl">
 		<div class="flex items-center justify-center">
 			<div wire:loading
 				class="py-8">

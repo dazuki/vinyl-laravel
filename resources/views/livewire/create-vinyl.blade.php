@@ -1,7 +1,7 @@
 <div class="mx-auto mt-4 max-w-screen-xl pb-2 text-center">
 	@section("page-title", "Ny Vinyl")
 	<div
-		class="custom-shadow rounded-xl border-b-4 border-l-4 border-r-4 border-t-4 border-slate-300 bg-white px-4 pt-4 max-xl:border-l-0 max-xl:border-r-0">
+		class="custom-shadow border-b-4 border-l-4 border-r-4 border-t-4 border-slate-300 bg-white px-4 pt-4 max-xl:border-l-0 max-xl:border-r-0 xl:rounded-xl">
 		<h1 class="mb-4 mt-2 text-center text-2xl font-bold text-gray-900 sm:text-3xl">
 			Ny Vinyl
 		</h1>
