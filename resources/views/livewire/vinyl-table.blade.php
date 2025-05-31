@@ -10,7 +10,7 @@
 		<input wire:model.live.debounce.500ms="search"
 			name="search"
 			type="text"
-			class="gradient-3 z-1 custom-shadow w-full rounded-t-xl border-l-4 border-r-4 border-t-4 border-slate-300 p-2 pl-14 text-2xl outline-none max-xl:border-l-0 max-sm:pl-12 max-sm:text-base"
+			class="gradient-3 z-1 custom-shadow w-full border-l-4 border-r-4 border-t-4 border-slate-300 p-2 pl-14 text-2xl outline-none max-xl:border-l-0 max-xl:border-r-0 max-sm:pl-12 max-sm:text-base xl:rounded-t-xl"
 			placeholder="Sök Artister/Vinyler..."
 			autocomplete="off"
 			required="">
@@ -118,12 +118,12 @@
 										@endphp
 										@if ($vinyler == 0)
 											<p class="py-2 pb-4 text-sm text-red-400 lg:text-base">
-												<span class="font-semibold">{{ $vinyler }}</span>
+												<span class="font-semibold">&nbsp;&nbsp;{{ $vinyler }}</span>
 												VINYL{{ $vinyler == 1 ? "" : "ER" }}
 											</p>
 										@else
 											<p class="vinyler-text-color py-2 pb-4 text-sm lg:text-base">
-												<span class="font-semibold">{{ $vinyler }}</span>
+												<span class="font-semibold">&nbsp;&nbsp;{{ $vinyler }}</span>
 												VINYL{{ $vinyler == 1 ? "" : "ER" }}
 											</p>
 										@endif

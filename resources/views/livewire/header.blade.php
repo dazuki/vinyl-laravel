@@ -2,7 +2,7 @@
 	<header class="mx-auto w-full max-w-7xl">
 		<div x-data="{ open: false }">
 			<div
-				class="custom-shadow gradient-3 container mx-auto flex max-w-7xl items-center justify-between border-b-4 border-l-4 border-r-4 border-slate-300 px-2 pb-2 pt-4 max-xl:border-l-0 sm:px-4 xl:rounded-b-xl">
+				class="custom-shadow gradient-3 container mx-auto flex max-w-7xl items-center justify-between border-b-4 border-l-4 border-r-4 border-slate-300 px-2 pb-2 pt-4 max-xl:border-l-0 max-xl:border-r-0 sm:px-4 xl:rounded-b-xl">
 				<div class="justify-left flex text-xl font-bold text-slate-600 sm:text-2xl lg:text-3xl">
 					<a href="/"
 						aria-label="Start Page"
