@@ -142,7 +142,7 @@
 												<p class="inter-font pb-2 uppercase text-gray-700 antialiased sm:text-sm">
 													<a href={{ $discogsURL }}
 														target="_BLANK"
-														class="block border-l border-slate-300 bg-white p-2 hover:border-l-2 hover:border-slate-500 hover:bg-slate-100 hover:font-semibold hover:shadow-md">
+														class="block border-l border-slate-300 bg-white p-2 transition-all duration-100 hover:border-l-2 hover:border-slate-500 hover:bg-slate-100 hover:font-semibold hover:shadow-md">
 														@if (!empty($search))
 															@php
 																$highlightVinyl = explode(" ", mb_strtoupper($search));
