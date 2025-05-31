@@ -83,7 +83,7 @@
 							@foreach ($artists as $artist)
 								@if (empty($char) || $char != mb_substr($artist->name, 0, 1))
 									<tr wire:key="char-{{ $char }}"
-										class="custom-shadow-inset border-b-2 border-t-2 border-slate-300 bg-slate-200">
+										class="border-b-2 border-t-2 border-slate-300 bg-slate-200">
 										<td colspan="2"
 											class="rock-font p-2 py-0 text-left text-lg font-bold text-slate-500 sm:px-6 sm:text-xl lg:text-xl">
 											{{ mb_substr($artist->name, 0, 1) }}</td>
@@ -93,7 +93,7 @@
 									$char = mb_substr($artist->name, 0, 1);
 								@endphp
 								<tr wire:key="artist-{{ $artist->id }}"
-									class="custom-shadow-2 transition-color border-b border-slate-300 bg-slate-50 duration-200 hover:bg-slate-200">
+									class="transition-color border-b border-slate-300 bg-slate-50 duration-200 hover:bg-slate-200">
 									<td class="px-2 py-2 pb-0 align-top text-2xl text-gray-700 sm:px-6 sm:text-2xl lg:text-3xl">
 										<a href="/artist/{{ $artist->id }}"
 											class="rock-font block border-white py-2 antialiased hover:text-cyan-800"
@@ -142,7 +142,7 @@
 												<p class="inter-font uppercase text-gray-700 antialiased sm:text-sm">
 													<a href={{ $discogsURL }}
 														target="_BLANK"
-														class="border-slate-300{{ $loop->odd ? " bg-white" : " bg-slate-100" }} block p-2 transition-all duration-100 hover:border-l-2 hover:bg-slate-200 hover:font-semibold">
+														class="block border-slate-300 p-2 transition-all duration-100 hover:border-l-2 hover:bg-slate-200 hover:font-semibold">
 														@if (!empty($search))
 															@php
 																$highlightVinyl = explode(" ", mb_strtoupper($search));
