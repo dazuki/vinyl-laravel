@@ -83,9 +83,9 @@
 							@foreach ($artists as $artist)
 								@if (empty($char) || $char != mb_substr($artist->name, 0, 1))
 									<tr wire:key="char-{{ $char }}"
-										class="custom-shadow-inset border-b border-t border-slate-300 bg-slate-200">
+										class="custom-shadow-inset border-b-2 border-t-2 border-slate-300 bg-slate-200">
 										<td colspan="2"
-											class="rock-font p-2 py-0 text-left text-lg font-bold text-slate-400 sm:px-6 sm:text-xl lg:text-xl">
+											class="rock-font p-2 py-0 text-left text-lg font-bold text-slate-500 sm:px-6 sm:text-xl lg:text-xl">
 											{{ mb_substr($artist->name, 0, 1) }}</td>
 									</tr>
 								@endif
@@ -93,7 +93,7 @@
 									$char = mb_substr($artist->name, 0, 1);
 								@endphp
 								<tr wire:key="artist-{{ $artist->id }}"
-									class="border-b border-slate-300 bg-white">
+									class="custom-shadow-2 transition-color border-b border-slate-300 bg-white duration-200 hover:bg-gray-100">
 									<td class="rock-font px-2 py-2 pb-0 align-top text-2xl text-gray-700 sm:px-6 sm:text-2xl lg:text-3xl">
 										<a href="/artist/{{ $artist->id }}"
 											class="block border-white py-2 antialiased hover:text-cyan-800"
