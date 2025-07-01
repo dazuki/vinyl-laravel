@@ -4,6 +4,17 @@
 	<div
 		class="custom-shadow min-h-screen border-b-4 border-l-4 border-r-4 border-t-4 border-slate-300 bg-white pt-4 max-xl:border-l-0 max-xl:border-r-0 sm:px-4 xl:rounded-xl">
 		<div class="flex items-center justify-center">
+			<div class="w-full text-center lg:w-1/2">
+				<input wire:model.live.debounce.500ms="qhistory"
+					name="qhistory"
+					type="text"
+					class="w-full border-b-4 border-t-4 border-slate-300 p-2 text-2xl outline-none max-sm:text-base sm:border-l-4 sm:border-r-4"
+					placeholder="Sök Historik..."
+					autocomplete="off"
+					required="">
+			</div>
+		</div>
+		<div class="flex items-center justify-center">
 			<div wire:loading
 				class="py-8">
 				<svg width="36"
@@ -31,11 +42,11 @@
 							<span>Vinyler Med Okänt Datum:</span><span class="font-semibold">{{ $vinyler_old }}</span>
 						</p>
 						<p class="flex w-full justify-between px-2 py-1 text-center text-xs text-emerald-800 lg:w-1/2 lg:text-sm">
-							<span class="text-gray-800"><i>(Genomsnitt)</i> Införskaffade Vinyler Per År:</span><span
+							<span class="text-gray-800">(Genomsnitt) Införskaffade Vinyler Per År:</span><span
 								class="font-semibold">{{ $vinyler_avg_year }}</span>
 						</p>
 						<p class="flex w-full justify-between px-2 py-1 text-center text-xs text-emerald-800 lg:w-1/2 lg:text-sm">
-							<span class="text-gray-800"><i>(Genomsnitt)</i> Införskaffade Vinyler Per Månad:</span><span
+							<span class="text-gray-800">(Genomsnitt) Införskaffade Vinyler Per Månad:</span><span
 								class="font-semibold">{{ $vinyler_avg_month }}</span>
 						</p>
 					</div>
