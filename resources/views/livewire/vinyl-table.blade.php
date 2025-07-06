@@ -5,7 +5,7 @@
 		$char = "";
 	@endphp
 	<div class="relative z-20 pt-4">
-		<x-fas-compact-disc class="absolute bottom-2 left-4 w-8 text-neutral-500 max-sm:left-4 max-sm:w-6"
+		<x-fas-compact-disc class="absolute bottom-2 left-4 w-8 text-slate-500 max-sm:left-4 max-sm:w-6"
 			aria-labelledby="title desc" />
 		<input wire:model.live.debounce.500ms="search"
 			name="search"

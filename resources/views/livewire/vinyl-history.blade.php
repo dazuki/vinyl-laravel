@@ -4,11 +4,13 @@
 	<div
 		class="custom-shadow min-h-screen border-b-4 border-l-4 border-r-4 border-t-4 border-slate-300 bg-white pt-4 max-xl:border-l-0 max-xl:border-r-0 sm:px-4 xl:rounded-xl">
 		<div class="flex items-center justify-center">
-			<div class="w-full text-center lg:w-1/2">
+			<div class="relative w-full text-center lg:w-1/2">
+				<x-fas-compact-disc class="absolute bottom-3 left-4 w-8 text-slate-500 max-sm:left-4 max-sm:w-6"
+					aria-labelledby="title desc" />
 				<input wire:model.live.debounce.500ms="qhistory"
 					name="qhistory"
 					type="text"
-					class="w-full border-b-4 border-t-4 border-slate-300 p-2 text-2xl outline-none max-sm:text-base sm:border-l-4 sm:border-r-4"
+					class="w-full border-b-4 border-t-4 border-slate-300 p-2 pl-14 text-2xl outline-none max-sm:text-base sm:border-l-4 sm:border-r-4"
 					placeholder="Sök Historik..."
 					autocomplete="off"
 					required="">
@@ -59,7 +61,7 @@
 					@if ($setDate != date("Y-m-d", strtotime($vinyl["created_at"])) || $sameDay == 1)
 						<div class="flex items-center justify-center">
 							<div
-								class="{{ $loop->first ? "mt-2 mb-4 " : "my-4 " }}w-full border-b-2 border-t-2 border-slate-300 bg-slate-100 py-1 text-center text-lg sm:border-l-2 sm:border-r-2 lg:w-1/2 lg:py-2 lg:text-xl">
+								class="gradient-3 {{ $loop->first ? "mt-2 mb-4 " : "my-4 " }}w-full border-b-2 border-t-2 border-slate-300 bg-slate-100 py-1 text-center text-lg sm:border-l-2 sm:border-r-2 lg:w-1/2 lg:py-2 lg:text-xl">
 								<p class="font-semibold">{{ date("j/n", strtotime($vinyl["created_at"])) }}</p>
 								<p class="text-xs font-semibold text-gray-500 lg:text-sm">
 									{{ date("Y", strtotime($vinyl["created_at"])) }}</p>
