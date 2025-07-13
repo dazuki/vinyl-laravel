@@ -11,7 +11,7 @@
   "require": {
     "php": "^8.2",
     "ext-pdo_sqlite": "*",
-    "blade-ui-kit/blade-icons": "^1.8",
+    "blade-ui-kit/blade-icons": "*",
     "guzzlehttp/guzzle": "^7.2",
     "itsgoingd/clockwork": "^5.1",
     "jantinnerezo/livewire-alert": "^3.0",
