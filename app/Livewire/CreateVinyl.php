@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Cache;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 
+// NTFY Service
+use Ntfy\Auth\User;
+use Ntfy\Client;
+use Ntfy\Server;
+use Ntfy\Message;
+use Ntfy\Exception\NtfyException;
+use Ntfy\Exception\EndpointException;
+
 class CreateVinyl extends Component
 {
     #[Url(history: true)]
@@ -36,7 +44,7 @@ class CreateVinyl extends Component
 
         session()->flash('status', 'Vinylen är tillagd!');
 
-        $this->redirect('/artist/'.$this->artist_id.'?msg=vinyl');
+        $this->redirect('/artist/' . $this->artist_id . '?msg=vinyl');
     }
 
     public function render()

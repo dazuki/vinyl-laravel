@@ -13,6 +13,14 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Maatwebsite\Excel\Facades\Excel;
 
+// NTFY Service
+use Ntfy\Auth\User;
+use Ntfy\Client;
+use Ntfy\Server;
+use Ntfy\Message;
+use Ntfy\Exception\NtfyException;
+use Ntfy\Exception\EndpointException;
+
 class VinylTable extends Component
 {
     use LivewireAlert, WithPagination;

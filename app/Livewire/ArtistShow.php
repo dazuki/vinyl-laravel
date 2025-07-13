@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Cache;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
+// NTFY Service
+use Ntfy\Auth\User;
+use Ntfy\Client;
+use Ntfy\Server;
+use Ntfy\Message;
+use Ntfy\Exception\NtfyException;
+use Ntfy\Exception\EndpointException;
+
 class ArtistShow extends Component
 {
     use LivewireAlert;

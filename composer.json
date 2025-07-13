@@ -23,7 +23,7 @@
     "owenvoke/blade-fontawesome": "^2.9",
     "phpoffice/phpspreadsheet": "^1.29",
     "predis/predis": "^2.0",
-    "verifiedjoseph/ntfy-php-library": "^4.5"
+    "verifiedjoseph/ntfy-php-library": "^4.7"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.9",
