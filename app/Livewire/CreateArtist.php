@@ -25,31 +25,36 @@ class CreateArtist extends Component
         $this->name = mb_strtoupper($this->name);
 
         $formFields = $this->validate(
-            ['name' => 'required|min:1']
+            ['name' => 'required|unique:artists|min:1']
         );
 
         $createRecord = Artist::create($formFields);
 
         Cache::flush();
 
-        // NTFY
+        //// NTFY
         if (!empty(config('ntfy.server'))) {
-            $server = new Server(config('ntfy.server'));
+            try {
+                $server = new Server(config('ntfy.server'));
 
-            $message = new Message();
-            $message->topic(config('ntfy.topic'));
-            $message->title('Ny Artist');
-            $message->body('Namn: ' . $this->name);
-            $message->priority(Message::PRIORITY_DEFAULT);
+                $message = new Message();
+                $message->topic(config('ntfy.topic'));
+                $message->icon('https://vinyl.bokbindaregatan.se/static/images/android-chrome-512x512.png');
+                $message->tags(['green_circle']);
+                $message->title('ARTIST');
+                $message->body('Ny Artist: ' . $this->name);
+                $message->priority(Message::PRIORITY_DEFAULT);
 
-            $auth = new User(config('ntfy.username'), config('ntfy.password'));
+                $auth = new User(config('ntfy.username'), config('ntfy.password'));
 
-            $client = new Client($server, $auth);
+                $client = new Client($server, $auth);
 
-            // Send message
-            $client->send($message);
-            //$response = $client->send($message);
+                $client->send($message);
+            } catch (EndpointException | NtfyException $err) {
+                echo $err->getMessage();
+            }
         }
+        ////
 
         $this->redirect('/artist/' . $createRecord->id . '?msg=artist');
     }

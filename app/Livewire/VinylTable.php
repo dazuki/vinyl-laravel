@@ -2,22 +2,23 @@
 
 namespace App\Livewire;
 
-use App\Exports\ArtistExport;
 use App\Models\Artist;
 use App\Models\Record;
-use Carbon\Carbon;
+use App\Exports\ArtistExport;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\Attributes\Url;
 use Livewire\WithPagination;
+use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 // NTFY Service
-use Ntfy\Auth\User;
 use Ntfy\Client;
 use Ntfy\Server;
 use Ntfy\Message;
+use Ntfy\Auth\User;
 use Ntfy\Exception\NtfyException;
 use Ntfy\Exception\EndpointException;
 
@@ -81,9 +82,37 @@ class VinylTable extends Component
         ]);
     }
 
-    public function export()
+    public function export(Request $request)
     {
         $dlDate = Carbon::now()->format('Y-m-d');
+        $ntfyDate = Carbon::now()->format('Y-m-d H:i');
+
+        //dd($request);
+
+        //// NTFY
+        if (!empty(config('ntfy.server'))) {
+            try {
+                $server = new Server(config('ntfy.server'));
+
+                $message = new Message();
+                $message->topic(config('ntfy.topic'));
+                $message->icon('https://vinyl.bokbindaregatan.se/static/images/android-chrome-512x512.png');
+                $message->tags(['information_source']);
+                $message->title('NERLADDNING (XLS)');
+                $message->body('Datum: ' . $ntfyDate . '
+IP: ' . $request->ip());
+                $message->priority(Message::PRIORITY_DEFAULT);
+
+                $auth = new User(config('ntfy.username'), config('ntfy.password'));
+
+                $client = new Client($server, $auth);
+
+                $client->send($message);
+            } catch (EndpointException | NtfyException $err) {
+                echo $err->getMessage();
+            }
+        }
+        ////
 
         return Excel::download(new ArtistExport, 'Vinylförteckning-' . $dlDate . '.xls', \Maatwebsite\Excel\Excel::XLS);
     }

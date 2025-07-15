@@ -21,3 +21,5 @@
 	content="512">
 <meta property="og:image:height"
 	content="512">
+<meta name="csrf-token"
+	content="{{ csrf_token() }}">

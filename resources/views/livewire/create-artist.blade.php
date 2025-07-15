@@ -18,7 +18,7 @@
 				placeholder="Namn på artist här..."
 				autocomplete="off">
 			@error("name")
-				<p class="px-2 pt-1 text-red-500">Tomt namn...</p>
+				<p class="px-2 pt-1 font-semibold text-red-500">{{ $errors->first("name") }}</p>
 			@enderror
 			<p>
 				<button type="submit"
