@@ -86,6 +86,7 @@ class VinylTable extends Component
     {
         $dlDate = Carbon::now()->format('Y-m-d');
         $ntfyDate = Carbon::now()->format('Y-m-d H:i');
+        $ip = $request->header('X-Forwarded-For') ?: $request->ip();
 
         //dd($request);
 
@@ -100,7 +101,7 @@ class VinylTable extends Component
                 $message->tags(['information_source']);
                 $message->title('NERLADDNING (XLS)');
                 $message->body('Datum: ' . $ntfyDate . '
-IP: ' . $request->ip());
+IP: ' . $ip);
                 $message->priority(Message::PRIORITY_DEFAULT);
 
                 $auth = new User(config('ntfy.username'), config('ntfy.password'));
