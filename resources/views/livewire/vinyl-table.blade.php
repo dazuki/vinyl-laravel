@@ -91,9 +91,10 @@
 								@endif
 								@php
 									$char = mb_substr($artist->name, 0, 1);
+									$vinyler = $artist->records->count();
 								@endphp
 								<tr wire:key="artist-{{ $artist->id }}"
-									class="transition-color border-b border-slate-300 bg-slate-50 duration-200 hover:bg-slate-200">
+									class="transition-color {{ !$vinyler ? "bg-red-50 hover:bg-red-100" : "bg-slate-50 hover:bg-slate-200" }} border-b border-slate-300 duration-200">
 									<td class="px-2 py-2 pb-0 align-top text-2xl text-gray-700 sm:px-6 sm:text-2xl lg:text-3xl">
 										<a href="/artist/{{ $artist->id }}"
 											class="rock-font block border-white py-2 antialiased hover:text-cyan-800"
@@ -113,22 +114,19 @@
 												{{ $artist->name }}
 											@endif
 										</a>
-										@php
-											$vinyler = $artist->records->count();
-										@endphp
 										@if ($vinyler == 0)
 											<p class="py-2 pb-4 text-sm text-red-400 lg:text-base">
 												<span class="font-semibold">&nbsp;&nbsp;{{ $vinyler }}</span>
-												VINYL{{ $vinyler == 1 ? "" : "ER" }}
+												Vinyl{{ $vinyler == 1 ? "" : "er" }}
 											</p>
 										@else
 											<p class="vinyler-text-color py-2 pb-4 text-sm lg:text-base">
 												<span class="font-semibold">&nbsp;&nbsp;{{ $vinyler }}</span>
-												VINYL{{ $vinyler == 1 ? "" : "ER" }}
+												Vinyl{{ $vinyler == 1 ? "" : "er" }}
 											</p>
 										@endif
 									</td>
-									<td class="border-l border-slate-300 bg-white align-top text-xs">
+									<td class="{{ !$vinyler ? "bg-red-50" : "bg-white" }} border-l border-slate-300 align-top text-xs">
 
 										{{-- <VINYLER> --}}
 										@if ($vinyler >= 1)
@@ -165,7 +163,7 @@
 												</p>
 											@endforeach
 										@else
-											<p class="uppercase italic text-gray-600">...</p>
+											<p class="p-2 uppercase italic text-red-600"></p>
 										@endif
 										{{-- </VINYLER> --}}
 
