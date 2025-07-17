@@ -70,11 +70,6 @@
 							</li>
 						@else
 							<li><a
-									class="menu-btn bg-white transition-colors duration-100 hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700"
-									href="/export/artist"><x-fas-cloud-arrow-down class="menu-btn-icon text-blue-800" />Excel
-									(.xls)
-								</a></li>
-							<li><a
 									class="menu-btn bg-white transition-colors duration-100 hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700"
 									href="/history"
 									wire:navigate.hover
@@ -120,10 +115,6 @@
 						<li><a class="menu-btn-dropdown bg-red-50 hover:border-red-700 hover:bg-red-50 hover:text-red-700 lg:hidden"
 								href="/logout"><x-fas-right-from-bracket class="menu-btn-dropdown-icon text-red-800" />LOGGA UT</a></li>
 					@else
-						<li><a class="menu-btn-dropdown hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700 lg:hidden"
-								href="/export/artist"><x-fas-cloud-arrow-down class="menu-btn-dropdown-icon text-blue-800" />EXCEL
-								(.xls)
-							</a></li>
 						<li><a class="menu-btn-dropdown hover:border-yellow-700 hover:bg-yellow-50 hover:text-yellow-700 lg:hidden"
 								href="/history"
 								wire:navigate

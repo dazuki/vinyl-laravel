@@ -16,8 +16,8 @@ Route::get('/history', VinylHistory::class);
 
 Route::get('/artist/{art_id}', ArtistShow::class)->name('artistshow');
 
-Route::get('/export/artist', [VinylTable::class, 'export']);
-Route::get('/export/view', [VinylTable::class, 'view']);
+Route::get('/export/artist', [VinylTable::class, 'export'])->middleware('auth.basic');
+Route::get('/export/view', [VinylTable::class, 'view'])->middleware('auth.basic');
 
 Route::get('/create/vinyl', CreateVinyl::class)->middleware('auth.basic');
 Route::get('/create/artist', CreateArtist::class)->middleware('auth.basic');
