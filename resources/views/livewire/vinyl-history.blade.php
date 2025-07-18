@@ -5,7 +5,7 @@
 		class="custom-shadow min-h-screen border-b-4 border-l-4 border-r-4 border-t-4 border-slate-300 bg-white pt-4 max-xl:border-l-0 max-xl:border-r-0 sm:px-4 xl:rounded-xl">
 		<div class="flex items-center justify-center">
 			<div class="relative w-full text-center max-sm:px-4 lg:w-1/2">
-				<x-fas-compact-disc class="absolute bottom-3 left-4 w-8 text-slate-500 max-sm:left-8 max-sm:w-7"
+				<x-fas-compact-disc class="absolute bottom-3 left-3 w-8 text-slate-500 max-sm:left-8 max-sm:w-7"
 					aria-labelledby="title desc" />
 				<input wire:model.live.debounce.500ms="qhistory"
 					name="qhistory"
