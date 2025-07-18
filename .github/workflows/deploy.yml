@@ -13,9 +13,6 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
-          allenvs: true
           script: |
-            cd /var/www/bokbindaregatan.se/vinyl-laravel
+            cd ${{ secrets.VPS_ROOT_FOLDER }}
             ./update.sh
-        env:
-          TERM: dumb
