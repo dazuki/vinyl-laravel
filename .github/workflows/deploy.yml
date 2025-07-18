@@ -1,24 +1,21 @@
 name: Deploy to VPS
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+on: [push]
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Set TERM environment variable
-        run: echo "TERM=xterm" >> $GITHUB_ENV
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1
+        env:
+          TERM: "xterm"
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
+          envs: TERM
           script: |
             cd /var/www/bokbindaregatan.se/vinyl-laravel
             ./update.sh
