@@ -1,21 +1,20 @@
-name: Deploy to VPS
+name: Deploy
 on:
   push:
     branches:
       - master
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Deploy to VPS
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
-          script: |
-            cd ${{ secrets.VPS_ROOT_FOLDER }}
-            ./update.sh
+          script: cd ${{ secrets.VPS_ROOT_FOLDER }} && ./update.sh
