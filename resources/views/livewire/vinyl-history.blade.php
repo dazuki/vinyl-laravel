@@ -58,11 +58,15 @@
 					@if ($setDate != date("Y-m-d", strtotime($vinyl["created_at"])) || $sameDay == 1)
 						<div class="flex items-center justify-center">
 							<div
-								class="gradient-3 {{ $loop->first ? "mt-2 mb-4 " : "my-4 " }}w-full border-b-2 border-t-2 border-slate-300 bg-slate-100 py-1 text-center text-lg sm:border-l-2 sm:border-r-2 lg:w-1/2 lg:py-2 lg:text-xl">
-								<p><span
-										class="font-semibold">{{ date("j/n", strtotime($vinyl["created_at"])) }}</span>&nbsp;&nbsp;<span>{{ $veckodagar[date("w", strtotime($vinyl["created_at"]))] }}</span>
-								</p>
-								<p class="text-sm text-gray-500">{{ date("Y", strtotime($vinyl["created_at"])) }}</p>
+								class="{{ $loop->first ? "mt-2 mb-4 " : "my-4 " }}w-full flex items-center justify-between border-b-2 border-t-2 border-slate-300 bg-slate-100 py-1 text-center text-lg sm:border-l-2 sm:border-r-2 lg:w-1/2 lg:py-2 lg:text-xl">
+								<div class="w-1/3 font-semibold text-gray-500"></div>
+								<div class="w-1/3 font-semibold">
+									<p>{{ date("j/n", strtotime($vinyl["created_at"])) }}</p>
+									<p class="text-gray-500">{{ $veckodagar[date("w", strtotime($vinyl["created_at"]))] }}</p>
+								</div>
+								<div class="w-1/3 text-sm text-gray-500">
+									{{ date("Y", strtotime($vinyl["created_at"])) }}
+								</div>
 							</div>
 						</div>
 						@php
@@ -70,7 +74,7 @@
 							$sameDay = 0;
 						@endphp
 					@endif
-					<p class="rock-font text-center text-sm font-semibold lg:text-lg">
+					<p class="rock-font text-center text-sm font-semibold lg:text-xl">
 						<a class="hover:text-blue-800"
 							href="/artist/{{ $vinyl["artist"]["id"] }}"
 							wire:navigate>
