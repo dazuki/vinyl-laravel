@@ -1,5 +1,4 @@
-<div wire:init="init"
-	class="mx-auto mt-4 max-w-screen-xl text-left">
+<div wire:init="init" class="mx-auto mt-4 max-w-screen-xl text-left">
 	@section("page-title", "Historik")
 	<div
 		class="custom-shadow min-h-screen border-b-4 border-l-4 border-r-4 border-t-4 border-slate-300 bg-white pt-4 max-xl:border-l-0 max-xl:border-r-0 sm:px-4 xl:rounded-xl">
@@ -17,14 +16,12 @@
 			</div>
 		</div>
 		<div class="flex items-center justify-center">
-			<div wire:loading
-				class="py-8">
+			<div wire:loading class="py-8">
 				<svg width="36"
 					height="36"
 					viewBox="0 0 24 24"
 					xmlns="http://www.w3.org/2000/svg">
-					<path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
-						opacity=".25" />
+					<path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity=".25" />
 					<path
 						d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z">
 						<animateTransform attributeName="transform"
@@ -62,9 +59,10 @@
 						<div class="flex items-center justify-center">
 							<div
 								class="gradient-3 {{ $loop->first ? "mt-2 mb-4 " : "my-4 " }}w-full border-b-2 border-t-2 border-slate-300 bg-slate-100 py-1 text-center text-lg sm:border-l-2 sm:border-r-2 lg:w-1/2 lg:py-2 lg:text-xl">
-								<p class="font-semibold">{{ date("j/n", strtotime($vinyl["created_at"])) }}</p>
-								<p class="text-xs font-semibold text-gray-500 lg:text-sm">
-									{{ date("Y", strtotime($vinyl["created_at"])) }}</p>
+								<p><span
+										class="font-semibold">{{ date("j/n", strtotime($vinyl["created_at"])) }}</span>&nbsp;&nbsp;<span>{{ $veckodagar[date("w", strtotime($vinyl["created_at"]))] }}</span>
+								</p>
+								<p class="text-sm text-gray-500">{{ date("Y", strtotime($vinyl["created_at"])) }}</p>
 							</div>
 						</div>
 						@php

@@ -74,6 +74,7 @@ class VinylHistory extends Component
             'vinyler_avg_year' => $this->loadData ? round($avgYear) : [],
             'vinyler_avg_month' => $this->loadData ? round($avgMonth) : [],
             'vinyler_old' => $this->loadData ? 827 : [], // 827 vinyler saknar datum
+            'veckodagar' => ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag', 'Söndag'],
         ]);
     }
 }
