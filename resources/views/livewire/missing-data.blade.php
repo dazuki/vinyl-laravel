@@ -22,7 +22,7 @@
 						<x-fas-xmark class="h-6 text-red-500 max-sm:h-4" />
 					@endif
 				</div>
-				<div class="flex items-center justify-start border-b border-b">
+				<div class="flex items-center justify-start border-b">
 					@if ($noid["discogs_image_url"])
 						<x-fas-check class="h-6 text-green-500 max-sm:h-4" />
 					@else
