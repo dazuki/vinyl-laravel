@@ -58,7 +58,7 @@ class DiscogsDataPopulate extends Command
             }
 
             $bar->advance();
-            sleep(1); // Rate limiting
+            usleep(1500000); // Rate limiting
         }
 
         $bar->finish();
