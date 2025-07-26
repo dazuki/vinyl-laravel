@@ -13,7 +13,7 @@
 					<td class="border"><a href="/artist/{{ $noid["id"] }}" target="_BLANK">{{ $noid["name"] }}</a></td>
 					<td class="border">{{ $noid["discogs_id"] }}</td>
 					<td class="border">{{ $noid["discogs_image_url"] }}</td>
-					<td class="border">{{ $noid["discogs_manual_id"] }}</td>
+					<td class="border">{{ $noid["discogs_id_manual"] }}</td>
 				</tr>
 			@endforeach
 		</table>
@@ -30,7 +30,7 @@
 					<td class="border"><a href="https://www.discogs.com/artist/{{ $noimage["discogs_id"] }}"
 							target="_BLANK">{{ $noimage["discogs_id"] }}</a></td>
 					<td class="border">{{ $noimage["discogs_image_url"] }}</td>
-					<td class="border">{{ $noimage["discogs_manual_id"] }}</td>
+					<td class="border">{{ $noimage["discogs_id_manual"] }}</td>
 				</tr>
 			@endforeach
 		</table>
