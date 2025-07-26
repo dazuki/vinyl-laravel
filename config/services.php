@@ -31,4 +31,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'discogs' => [
+        'key' => env('DISCOGS_KEY'),
+        'secret' => env('DISCOGS_SECRET'),
+        'user_agent' => env('DISCOGS_USER_AGENT'),
+    ],
+
 ];

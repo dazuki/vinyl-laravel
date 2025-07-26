@@ -4,7 +4,7 @@
 		class="custom-shadow border-b-4 border-l-4 border-r-4 border-t-4 border-slate-300 bg-white px-4 pt-4 max-xl:border-l-0 max-xl:border-r-0 xl:rounded-xl">
 		<div x-data="{ show: false }">
 			<h1 class="rock-font text-center text-2xl font-bold text-gray-700 sm:text-4xl">
-				{{ $artist["name"] }}
+				{{ $artist["name"] }} {{ $artist["discogs_id_manual"] }}
 				@auth
 					<p>
 						<button x-on:click="show = ! show"
@@ -78,8 +78,7 @@
 				<div x-cloak
 					x-show="show"
 					x-transition>
-					<form wire:submit="save"
-						id="edit_form">
+					<form wire:submit="save" id="edit_form">
 						<p class="text-center">
 							<input wire:model="name"
 								type="text"

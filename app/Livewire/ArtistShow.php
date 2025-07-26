@@ -21,22 +21,21 @@ class ArtistShow extends Component
 {
     use LivewireAlert;
 
-    public $art_id;
-
+    public Artist $artist;
     public $name = '';
 
-    public $getIdCache;
-
-    public function mount(Request $request)
+    public function mount(Artist $artist, Request $request)
     {
-        Cache::rememberForever('id.' . $this->art_id, function () {
-            return (string) Artist::with('records')->find($this->art_id);
+        $this->artist = $artist;
+
+        /*Cache::rememberForever('id.' . $this->artist, function () {
+            return $this->artist;
         });
 
-        $IdCache = Cache::get('id.' . $this->art_id);
-        $this->getIdCache = json_decode($IdCache, true);
+        $IdCache = Cache::get('id.' . $this->artist);
+        $this->artist = json_decode($IdCache, true);*/
 
-        $this->name = $this->getIdCache['name'];
+        $this->name = $this->artist["name"];
 
         if ($request->msg == 'artist') {
             $this->alert('success', 'Artist tillagd!', [
@@ -65,20 +64,20 @@ class ArtistShow extends Component
             'name' => 'required|min:1',
         ]);
 
-        Artist::where('id', $this->art_id)->update([
+        Artist::where('id', $this->artist)->update([
             'name' => mb_strtoupper($this->name),
         ]);
 
         Cache::flush();
 
-        Cache::rememberForever('id.' . $this->art_id, function () {
-            return (string) Artist::with('records')->find($this->art_id);
+        Cache::rememberForever('id.' . $this->artist, function () {
+            return (string) Artist::with('records')->find($this->artist);
         });
 
-        $IdCache = Cache::get('id.' . $this->art_id);
-        $this->getIdCache = json_decode($IdCache, true);
+        $IdCache = Cache::get('id.' . $this->artist);
+        $this->artist = json_decode($IdCache, true);
 
-        $this->name = $this->getIdCache['name'];
+        $this->name = $this->artist['name'];
     }
 
     public function delete(Artist $artist)
@@ -149,13 +148,24 @@ Artist: ' . $artist_name);
 
         session()->flash('status', 'Vinylen är borttagen!');
 
-        $this->redirect('/artist/' . $this->art_id);
+        $this->redirect('/artist/' . $this->artist);
     }
 
     public function render()
     {
+        // Check if we need to fetch Discogs data
+        if (!$this->artist->getEffectiveDiscogsId() && !$this->artist->discogs_fetch_attempted) {
+            try {
+                $this->artist->getDiscogsData();
+                // Mark that we've attempted to fetch (to avoid repeated API calls)
+                $this->artist->update(['discogs_fetch_attempted' => true]);
+            } catch (\Exception $e) {
+                \Log::error("Failed to fetch Discogs data for artist {$this->artist->id}: " . $e->getMessage());
+            }
+        }
+
         return view('livewire.artist-show', [
-            'artist' => $this->getIdCache,
+            'artist' => $this->artist,
         ]);
     }
 }
