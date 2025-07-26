@@ -6,7 +6,8 @@
 			<livewire:discogs-manager :artist="$artist" />
 		@endauth
 		<div x-data="{ show: false }">
-			<h1 class="rock-font text-center text-2xl font-bold text-gray-700 sm:text-4xl">{{ trim($artist["name"]) }}</h1>
+			<h1 class="artist-text-shadow rock-font text-center text-2xl font-bold text-gray-700 sm:text-4xl">
+				{{ trim($artist["name"]) }}</h1>
 			@auth
 				<p class="w-full py-2 text-center">
 					<button x-on:click="show = ! show"
@@ -38,7 +39,7 @@
 			@if ($artist->discogs_image_url)
 				<div class="mt-4 flex w-full justify-center">
 					<img src="{{ $artist->discogs_image_url }}"
-						class="h-64 rounded-lg object-cover"
+						class="artist-shadow h-64 rounded-lg object-cover"
 						alt="{{ $artist->name }}">
 				</div>
 			@endif
@@ -59,7 +60,15 @@
 				</p>
 			@endauth
 			<p class="flex items-center justify-center">
-				<a href="https://www.discogs.com/search/?q={{ urlencode($artist["name"]) }}&type=artist"
+				@php
+					$artistUrl = "";
+					if ($artist["discogs_url"]) {
+					    $artistUrl = $artist["discogs_url"];
+					} else {
+					    $artistUrl = "https://www.discogs.com/search/?q=" . urlencode($artist["name"]) . "&type=artist";
+					}
+				@endphp
+				<a href={{ $artistUrl }}
 					class="mr-4 opacity-70 hover:opacity-100"
 					target="_BLANK">
 					<img src="{{ asset("static/images/Discogs-01.svg") }}"

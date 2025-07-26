@@ -93,7 +93,11 @@
 			<span>Bild</span>
 		</div>
 		<div class="border-b-2 font-bold">mID</div>
-
+		@if ($hasnothing->count() === 0)
+			<div class="col-span-4p-2">
+				<x-fas-check class="h-8 text-green-500 max-sm:h-4" />
+			</div>
+		@endif
 		@foreach ($hasnothing as $nothing)
 			<div class="border-b"><a href="/artist/{{ $nothing["id"] }}" target="_BLANK">{{ $nothing["name"] }}</a></div>
 			<div class="flex items-center justify-start border-b">
