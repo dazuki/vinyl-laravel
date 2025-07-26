@@ -2,40 +2,46 @@
 	@section("page-title", $artist["name"])
 	<div
 		class="custom-shadow border-b-4 border-l-4 border-r-4 border-t-4 border-slate-300 bg-white px-4 pt-4 max-xl:border-l-0 max-xl:border-r-0 xl:rounded-xl">
+		@if (auth()->check() && auth()->user()->id === 2)
+			<livewire:discogs-manager :artist="$artist" />
+		@endauth
 		<div x-data="{ show: false }">
-			<h1 class="rock-font text-center text-2xl font-bold text-gray-700 sm:text-4xl">
-				{{ $artist["name"] }} {{ $artist["discogs_id_manual"] }}
-				@auth
-					<p>
-						<button x-on:click="show = ! show"
-							id="btnEdit"
-							class="rounded-lg border-2 border-slate-300 bg-slate-100 px-2 py-1 hover:bg-slate-300">
-							<svg xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 24 24"
-								fill="currentColor"
-								class="h-6 w-6">
-								<path
-									d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
-							</svg>
-						</button>
-						<button id="btnDel"
-							onclick="confirm('Vill du ta bort artist {{ $artist["name"] }} och ALLA Vinyler till denna artist? (ALLA Vinyler kommer också försvinna från databasen)') || event.stopImmediatePropagation()"
-							wire:click="delete({{ $artist["id"] }})"
-							class="rounded-lg border-2 border-red-300 bg-red-100 px-2 py-1 hover:bg-red-300">
-							<svg xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 24 24"
-								fill="currentColor"
-								class="h-6 w-6">
-								<path fill-rule="evenodd"
-									d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z"
-									clip-rule="evenodd" />
-							</svg>
-						</button>
-					</p>
-				@endauth
-			</h1>
-			{{-- <h2 class="text-lg font-semibold text-center">{{ $artist["records"]->count() }}
-                Vinyl{{ $artist["records"]->count() == 1 ? '' : 'er' }}</h2> --}}
+			<h1 class="rock-font text-center text-2xl font-bold text-gray-700 sm:text-4xl">{{ trim($artist["name"]) }}</h1>
+			@auth
+				<p class="w-full py-2 text-center">
+					<button x-on:click="show = ! show"
+						id="btnEdit"
+						class="rounded-lg border-2 border-slate-300 bg-slate-100 px-2 py-1 hover:bg-slate-300">
+						<svg xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							class="h-6 w-6">
+							<path
+								d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
+						</svg>
+					</button>
+					<button id="btnDel"
+						onclick="confirm('Vill du ta bort artist {{ $artist["name"] }} och ALLA Vinyler till denna artist? (ALLA Vinyler kommer också försvinna från databasen)') || event.stopImmediatePropagation()"
+						wire:click="delete({{ $artist["id"] }})"
+						class="rounded-lg border-2 border-red-300 bg-red-100 px-2 py-1 hover:bg-red-300">
+						<svg xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							class="h-6 w-6">
+							<path fill-rule="evenodd"
+								d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z"
+								clip-rule="evenodd" />
+						</svg>
+					</button>
+				</p>
+			@endauth
+			@if ($artist->discogs_image_url)
+				<div class="mt-4 flex w-full justify-center">
+					<img src="{{ $artist->discogs_image_url }}"
+						class="h-64 rounded-lg object-cover"
+						alt="{{ $artist->name }}">
+				</div>
+			@endif
 			@auth
 				<p class="mx-auto mb-2 mt-4 w-full text-center">
 					<a class="w-full rounded-lg border-2 border-green-600 bg-slate-100 p-2 text-gray-900 shadow-md hover:bg-green-100"
@@ -159,8 +165,8 @@
 				</svg>Startsidan
 			</a>
 		</p>
-	</div>
-	@livewireScripts
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<x-livewire-alert::scripts />
+</div>
+@livewireScripts
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<x-livewire-alert::scripts />
 </div>
