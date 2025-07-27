@@ -10,7 +10,7 @@
 	</div>
 	<div class="grid grid-cols-5 max-lg:grid-cols-4 max-md:grid-cols-3 max-sm:grid-cols-2">
 		@foreach ($artists as $artist)
-			<div class="mb-4 flex flex-col items-center">
+			<div wire:key="{{ $artist["id"] }}" class="mb-4 flex flex-col items-center">
 				<a href="/artist/{{ $artist["id"] }}" target="_BLANK">
 					<img src="{{ $artist["discogs_image_url"] }}"
 						class="mb-2 h-48 border-2 border-white shadow-md"

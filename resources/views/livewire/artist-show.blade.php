@@ -4,7 +4,7 @@
 		class="custom-shadow border-b-4 border-l-4 border-r-4 border-t-4 border-slate-300 bg-white px-4 pt-4 max-xl:border-l-0 max-xl:border-r-0 xl:rounded-xl">
 		@if (auth()->check() && auth()->user()->id === 2)
 			<livewire:discogs-manager :artist="$artist" />
-		@endauth
+		@endif
 		<div x-data="{ show: false }">
 			<h1 class="artist-text-shadow rock-font text-center text-2xl font-bold text-gray-700 sm:text-4xl">
 				{{ trim($artist["name"]) }}
@@ -176,8 +176,8 @@
 				</svg>Startsidan
 			</a>
 		</p>
-</div>
-@livewireScripts
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<x-livewire-alert::scripts />
+	</div>
+	@livewireScripts
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<x-livewire-alert::scripts />
 </div>
