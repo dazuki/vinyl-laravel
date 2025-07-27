@@ -16,7 +16,7 @@
 						class="mb-2 h-48 border-2 border-white shadow-md"
 						loading="lazy" />
 				</a>
-				<span class="text-xl">{{ $artist["name"] }}</span>
+				<span class="w-full text-center text-xl">{{ $artist["name"] }}</span>
 			</div>
 		@endforeach
 	</div>
