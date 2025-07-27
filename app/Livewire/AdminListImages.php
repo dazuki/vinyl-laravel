@@ -4,10 +4,13 @@ namespace App\Livewire;
 
 use App\Models\Artist;
 use Livewire\Component;
+use Livewire\Attributes\Url;
 
 class AdminListImages extends Component
 {
     public $artist;
+
+    #[Url(history: true)]
     public $search = '';
 
     public function mount()

@@ -8,8 +8,11 @@ use Livewire\Component;
 class DiscogsManager extends Component
 {
     public Artist $artist;
+
     public $manualId;
+
     public $message = '';
+
     public $messageType = '';
 
     public function mount(Artist $artist)

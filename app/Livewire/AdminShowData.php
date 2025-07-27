@@ -8,7 +8,9 @@ use Livewire\Component;
 class AdminShowData extends Component
 {
     public $noids;
+
     public $noimages;
+
     public $hasnothing;
 
     public function mount()

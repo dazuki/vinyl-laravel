@@ -22,6 +22,7 @@ class ArtistShow extends Component
     use LivewireAlert;
 
     public Artist $artist;
+
     public $name = '';
 
     public function mount(Artist $artist, Request $request)
