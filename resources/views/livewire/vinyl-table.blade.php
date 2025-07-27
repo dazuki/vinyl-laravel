@@ -125,7 +125,7 @@
 										{{-- <BILD> --}}
 										@if ($artist->discogs_image_url)
 											<img src="{{ $artist->discogs_image_url }}"
-												class="h-28 object-cover p-2"
+												class="m-2 h-36 border-2 border-slate-300 object-cover max-sm:h-28"
 												loading="lazy" />
 										@endif
 										{{-- </BILD> --}}

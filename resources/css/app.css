@@ -97,6 +97,12 @@ body {
   text-shadow: 2px 2px 3px #aaaaaa;
 }
 
+.artist-thumb-shadow {
+  box-shadow:
+    rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
 button:disabled {
   @apply bg-orange-300 border-orange-100;
 }
