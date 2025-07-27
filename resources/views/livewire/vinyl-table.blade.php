@@ -1,5 +1,4 @@
-<div wire:init="init"
-	class="mx-auto max-w-screen-xl text-left">
+<div wire:init="init" class="mx-auto max-w-screen-xl text-left">
 	@section("page-title", "Startsidan")
 	@php
 		$char = "";
@@ -21,14 +20,12 @@
 				class="custom-shadow w-full border-b-4 border-l-4 border-r-4 border-t-0 border-slate-300 text-left text-sm text-gray-500 max-xl:border-l-0 max-xl:border-r-0">
 				<thead class="border-b-0 border-l-0 border-r-0 border-t-0 border-slate-300 bg-white text-xs text-slate-900">
 					<tr>
-						<th scope="col"
-							class="w-1/2 whitespace-nowrap px-2 pb-2 pt-4 text-base antialiased sm:px-6 sm:text-xl">
+						<th scope="col" class="w-1/2 whitespace-nowrap px-2 pb-2 pt-4 text-base antialiased sm:px-6 sm:text-xl">
 							@if ($loadData == true)
 								Artister: <span class="text-base font-semibold text-green-800 sm:text-xl">{{ $art_count }}</span>
 							@endif
 						</th>
-						<th scope="col"
-							class="w-1/2 whitespace-nowrap px-2 pb-2 pl-0 pt-4 text-base antialiased sm:text-xl">
+						<th scope="col" class="w-1/2 whitespace-nowrap px-2 pb-2 pl-0 pt-4 text-base antialiased sm:text-xl">
 							@if ($loadData == true)
 								Vinyler: <span class="text-base font-semibold text-green-800 sm:text-xl">{{ $records }}</span>
 							@endif
@@ -37,16 +34,13 @@
 				</thead>
 				<tbody>
 					<tr class="border-slate-300 bg-white hover:bg-slate-50">
-						<td colspan="2"
-							class="bg-white text-center">
-							<div wire:loading
-								class="inline-block px-2 py-4 align-top text-base text-gray-900 sm:px-6 sm:text-lg">
+						<td colspan="2" class="bg-white text-center">
+							<div wire:loading class="inline-block px-2 py-4 align-top text-base text-gray-900 sm:px-6 sm:text-lg">
 								<svg width="36"
 									height="36"
 									viewBox="0 0 24 24"
 									xmlns="http://www.w3.org/2000/svg">
-									<path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
-										opacity=".25" />
+									<path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity=".25" />
 									<path
 										d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z">
 										<animateTransform attributeName="transform"
@@ -82,8 +76,7 @@
 						@if ($artists->count() >= 1)
 							@foreach ($artists as $artist)
 								@if (empty($char) || $char != mb_substr($artist->name, 0, 1))
-									<tr wire:key="char-{{ $char }}"
-										class="border-b-2 border-t-2 border-slate-300 bg-slate-200">
+									<tr wire:key="char-{{ $char }}" class="border-b-2 border-t-2 border-slate-300 bg-slate-200">
 										<td colspan="2"
 											class="rock-font p-2 py-0 text-left text-lg font-bold text-slate-500 sm:px-6 sm:text-xl lg:text-xl">
 											{{ mb_substr($artist->name, 0, 1) }}</td>
@@ -95,7 +88,7 @@
 								@endphp
 								<tr wire:key="artist-{{ $artist->id }}"
 									class="transition-color {{ !$vinyler ? "bg-red-50 hover:bg-red-100" : "bg-slate-50 hover:bg-slate-200" }} border-b border-slate-300 duration-200">
-									<td class="px-2 py-2 pb-0 align-top text-2xl text-gray-700 sm:px-6 sm:text-2xl lg:text-3xl">
+									<td class="align-top text-2xl text-gray-700 sm:px-6 sm:text-2xl lg:text-3xl">
 										<a href="/artist/{{ $artist->id }}"
 											class="rock-font block border-white py-2 antialiased hover:text-cyan-800"
 											wire:navigate>
@@ -127,8 +120,16 @@
 										@endif
 									</td>
 									<td class="{{ !$vinyler ? "bg-red-50" : "bg-white" }} border-l border-slate-300 align-top text-xs">
-
 										{{-- <VINYLER> --}}
+
+										{{-- <BILD> --}}
+										@if ($artist->discogs_image_url)
+											<img src="{{ $artist->discogs_image_url }}"
+												class="h-28 object-cover p-2"
+												loading="lazy" />
+										@endif
+										{{-- </BILD> --}}
+
 										@if ($vinyler >= 1)
 											@foreach ($artist->records as $record)
 												@php
@@ -173,8 +174,7 @@
 						@else
 							@if ($artists->count() <= 0)
 								<tr class="border-b border-slate-300 bg-white lg:border-l lg:border-r">
-									<td colspan="2"
-										class="px-2 py-4 text-center align-top text-base text-gray-900 sm:px-6 sm:text-lg">
+									<td colspan="2" class="px-2 py-4 text-center align-top text-base text-gray-900 sm:px-6 sm:text-lg">
 										<p>Sökord gav inga träffar...</p>
 										@auth
 											<div class="mt-4 flex items-center justify-center">
@@ -220,8 +220,7 @@
 				height="36"
 				viewBox="0 0 24 24"
 				xmlns="http://www.w3.org/2000/svg">
-				<path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
-					opacity=".25" />
+				<path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity=".25" />
 				<path
 					d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z">
 					<animateTransform attributeName="transform"
