@@ -1,6 +1,6 @@
 {{-- resources/views/livewire/discogs-manager.blade.php --}}
 <div class="flex w-full flex-col items-center p-2">
-	<h5>Discogs ID</h5>
+	<h5 class="text-2xl">Discogs ID Manager</h5>
 
 	<div class="mb-2 border-b">
 		<small class="text-xs">
@@ -17,7 +17,7 @@
 				wire:model="manualId"
 				id="manualId"
 				class="w-full border border-b-0 p-2"
-				placeholder="Enter Discogs artist ID">
+				placeholder="Enter Discogs Artist ID">
 		</div>
 
 		<button wire:click="updateManualId"
@@ -41,6 +41,15 @@
 			class="w-full border p-1">
 			<span>Refresh</span>
 		</button>
+
+		<div class="col-span-3 mt-4 flex flex-col">
+			<span>Clean URL For Discogs ID</span>
+			<input type="text"
+				wire:model.live="cleanUrl"
+				id="cleanUrl"
+				class="w-full border p-2"
+				placeholder="PASTE Full Artist URL">
+		</div>
 	</div>
 
 	@if ($message)

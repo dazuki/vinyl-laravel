@@ -11,6 +11,8 @@ class DiscogsManager extends Component
 
     public $manualId;
 
+    public $cleanUrl = '';
+
     public $message = '';
 
     public $messageType = '';
@@ -19,6 +21,16 @@ class DiscogsManager extends Component
     {
         $this->artist = $artist;
         $this->manualId = $artist->discogs_id_manual;
+    }
+
+    public function updatedCleanUrl($value)
+    {
+        if (!empty($value)) {
+            if (preg_match('/artist\/(\d+)\-/', $value, $matches)) {
+                $this->cleanUrl = $matches[1];
+                return;
+            }
+        }
     }
 
     public function updateManualId()
