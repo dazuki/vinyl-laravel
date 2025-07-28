@@ -90,7 +90,7 @@
 									class="transition-color {{ !$vinyler ? "bg-red-50 hover:bg-red-100" : "bg-slate-50 hover:bg-slate-200" }} border-b border-slate-300 duration-200">
 									<td class="align-top text-2xl text-gray-700 sm:px-6 sm:text-2xl lg:text-3xl">
 										<a href="/artist/{{ $artist->id }}"
-											class="rock-font block border-white py-2 antialiased hover:text-cyan-800"
+											class="rock-font block border-white py-2 pl-2 antialiased hover:text-cyan-800 max-sm:pl-0 max-sm:text-center"
 											wire:navigate>
 											@if (!empty($search))
 												@php
@@ -113,7 +113,7 @@
 												Vinyl{{ $vinyler == 1 ? "" : "er" }}
 											</p>
 										@else
-											<p class="vinyler-text-color py-2 pb-4 text-sm lg:text-base">
+											<p class="vinyler-text-color py-2 pb-4 text-sm max-sm:px-0 max-sm:text-center lg:text-base">
 												<span class="font-semibold">&nbsp;&nbsp;{{ $vinyler }}</span>
 												Vinyl{{ $vinyler == 1 ? "" : "er" }}
 											</p>
@@ -126,7 +126,7 @@
 										@if ($artist->discogs_image_url)
 											<a href="{{ $artist->discogs_url }}" target="_BLANK">
 												<img src="{{ $artist->discogs_image_url }}"
-													class="m-2 h-36 border-2 border-slate-300 object-cover max-sm:h-28"
+													class="m-2 h-36 border-2 border-slate-300 object-cover max-sm:max-w-[170px]"
 													loading="lazy" />
 											</a>
 										@endif
@@ -155,11 +155,14 @@
 																        "</span>";
 																}
 
-																echo str_replace($highlightVinyl, $replaceVinyl, mb_strtoupper($record->record_name), $count);
+																echo "<span class='font-semibold'>" .
+																    $loop->iteration .
+																    ".</span>&nbsp;" .
+																    str_replace($highlightVinyl, $replaceVinyl, mb_strtoupper($record->record_name), $count);
 															@endphp
 														@else
 															@php
-																echo $record->record_name;
+																echo "<span class='font-semibold'>" . $loop->iteration . ".</span>&nbsp;" . $record->record_name;
 															@endphp
 														@endif
 													</a>

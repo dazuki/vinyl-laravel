@@ -13,7 +13,7 @@
 			<div wire:key="{{ $artist["id"] }}" class="mb-4 flex flex-col items-center">
 				<a href="/artist/{{ $artist["id"] }}" target="_BLANK">
 					<img src="{{ $artist["discogs_image_url"] }}"
-						class="lazy-image mb-2 h-48 border-2 border-white shadow-md transition-opacity duration-300 ease-in-out"
+						class="lazy-image mb-2 h-48 border-2 border-white shadow-md"
 						loading="lazy" />
 				</a>
 				<span class="w-full text-center text-xl">{{ $artist["name"] }}</span>
