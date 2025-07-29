@@ -78,7 +78,7 @@
 								@if (empty($char) || $char != mb_substr($artist->name, 0, 1))
 									<tr wire:key="char-{{ $char }}" class="border-b-2 border-t-2 border-slate-300 bg-slate-200">
 										<td colspan="2"
-											class="rock-font p-2 py-0 text-left text-lg font-bold text-slate-500 sm:px-6 sm:text-xl lg:text-xl">
+											class="rock-font p-2 py-2 text-left text-xl font-bold text-slate-500 max-sm:text-center sm:px-6">
 											{{ mb_substr($artist->name, 0, 1) }}</td>
 									</tr>
 								@endif
@@ -90,7 +90,7 @@
 									class="transition-color {{ !$vinyler ? "bg-red-50 hover:bg-red-100" : "bg-slate-50 hover:bg-slate-200" }} border-b border-slate-300 duration-200">
 									<td class="align-top text-2xl text-gray-700 sm:px-6 sm:text-2xl lg:text-3xl">
 										<a href="/artist/{{ $artist->id }}"
-											class="rock-font block border-white py-2 pl-2 antialiased hover:text-cyan-800 max-sm:pl-0 max-sm:text-center"
+											class="rock-font block border-white py-2 antialiased hover:text-cyan-800 max-sm:pl-0 max-sm:text-center"
 											wire:navigate>
 											@if (!empty($search))
 												@php
@@ -108,12 +108,13 @@
 											@endif
 										</a>
 										@if ($vinyler == 0)
-											<p class="py-2 pb-4 text-sm text-red-400 lg:text-base">
+											<p class="py-2 pb-4 pl-2 text-sm max-sm:w-full max-sm:px-0 max-sm:text-center lg:text-base">
 												<span class="font-semibold">{{ $vinyler }}</span>
 												Vinyl{{ $vinyler == 1 ? "" : "er" }}
 											</p>
 										@else
-											<p class="vinyler-text-color py-2 pb-4 text-sm max-sm:px-0 max-sm:text-center lg:text-base">
+											<p
+												class="vinyler-text-color py-2 pb-4 pl-2 text-sm max-sm:w-full max-sm:px-0 max-sm:text-center lg:text-base">
 												<span class="font-semibold">{{ $vinyler }}</span>
 												Vinyl{{ $vinyler == 1 ? "" : "er" }}
 											</p>
