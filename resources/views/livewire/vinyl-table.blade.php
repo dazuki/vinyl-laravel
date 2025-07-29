@@ -109,12 +109,12 @@
 										</a>
 										@if ($vinyler == 0)
 											<p class="py-2 pb-4 text-sm text-red-400 lg:text-base">
-												<span class="font-semibold">&nbsp;&nbsp;{{ $vinyler }}</span>
+												<span class="font-semibold">{{ $vinyler }}</span>
 												Vinyl{{ $vinyler == 1 ? "" : "er" }}
 											</p>
 										@else
 											<p class="vinyler-text-color py-2 pb-4 text-sm max-sm:px-0 max-sm:text-center lg:text-base">
-												<span class="font-semibold">&nbsp;&nbsp;{{ $vinyler }}</span>
+												<span class="font-semibold">{{ $vinyler }}</span>
 												Vinyl{{ $vinyler == 1 ? "" : "er" }}
 											</p>
 										@endif
