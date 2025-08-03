@@ -11,9 +11,11 @@
 			</h1>
 			@if ($artist->discogs_image_url)
 				<div class="mt-4 flex w-full justify-center">
-					<img src="{{ $artist->discogs_image_url }}"
-						class="artist-shadow h-64 rounded-lg object-cover"
-						alt="{{ $artist->name }}">
+					<a href="{{ $artist->discogs_url }}" target="_BLANK">
+						<img src="{{ $artist->discogs_image_url }}"
+							class="artist-shadow h-64 rounded-lg object-cover"
+							alt="{{ $artist->name }}">
+					</a>
 				</div>
 			@endif
 			@auth
@@ -71,14 +73,14 @@
 					}
 				@endphp
 				<a href={{ $artistUrl }}
-					class="mr-4 opacity-70 hover:opacity-100"
+					class="mr-4 opacity-50 transition-opacity hover:opacity-100"
 					target="_BLANK">
 					<img src="{{ asset("static/images/Discogs-01.svg") }}"
 						class="h-16 sm:h-20"
 						alt="DG">
 				</a>
 				<a href="spotify:search:{{ urlencode($artist["name"]) }}"
-					class="opacity-70 hover:opacity-100"
+					class="opacity-50 transition-opacity hover:opacity-100"
 					target="_BLANK">
 					<img src="{{ asset("static/images/spotify_logo.svg") }}"
 						class="h-8 sm:h-10"
@@ -153,7 +155,7 @@
 					<a
 						href="https://www.discogs.com/search/?q={{ urlencode($artist["name"] . " " . $record["record_name"]) }}&type=release&format_exact=Vinyl"
 						target="_BLANK"
-						class="hover:text-green-700">{{ $record["record_name"] }}</a>
+						class="transition-colors hover:text-green-700">{{ $record["record_name"] }}</a>
 				</span>
 			</p>
 			@php

@@ -125,7 +125,7 @@
 
 										{{-- <BILD> --}}
 										@if ($artist->discogs_image_url)
-											<a href="{{ $artist->discogs_url }}" target="_BLANK">
+											<a href="/artist/{{ $artist->id }}" wire:navigate>
 												<img src="{{ $artist->discogs_image_url }}"
 													class="m-2 h-36 border-2 border-slate-300 object-cover max-sm:max-w-[170px]"
 													loading="lazy" />
