@@ -7442,16 +7442,16 @@
         },
         {
             "name": "laravel/boost",
-            "version": "v1.0.17",
+            "version": "v1.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/boost.git",
-                "reference": "3d1121561f793d027b76cb02b4ef9e654f8870fb"
+                "reference": "df2a62b5864759ea8cce8a4b7575b657e9c7d4ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/boost/zipball/3d1121561f793d027b76cb02b4ef9e654f8870fb",
-                "reference": "3d1121561f793d027b76cb02b4ef9e654f8870fb",
+                "url": "https://api.github.com/repos/laravel/boost/zipball/df2a62b5864759ea8cce8a4b7575b657e9c7d4ab",
+                "reference": "df2a62b5864759ea8cce8a4b7575b657e9c7d4ab",
                 "shasum": ""
             },
             "require": {
@@ -7503,20 +7503,20 @@
                 "issues": "https://github.com/laravel/boost/issues",
                 "source": "https://github.com/laravel/boost"
             },
-            "time": "2025-08-14T17:31:57+00:00"
+            "time": "2025-08-16T09:10:03+00:00"
         },
         {
             "name": "laravel/mcp",
-            "version": "v0.1.0",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/mcp.git",
-                "reference": "417890c0d8032af9a46a86d16651bbe13946cddf"
+                "reference": "6d6284a491f07c74d34f48dfd999ed52c567c713"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/mcp/zipball/417890c0d8032af9a46a86d16651bbe13946cddf",
-                "reference": "417890c0d8032af9a46a86d16651bbe13946cddf",
+                "url": "https://api.github.com/repos/laravel/mcp/zipball/6d6284a491f07c74d34f48dfd999ed52c567c713",
+                "reference": "6d6284a491f07c74d34f48dfd999ed52c567c713",
                 "shasum": ""
             },
             "require": {
@@ -7567,7 +7567,7 @@
                 "issues": "https://github.com/laravel/mcp/issues",
                 "source": "https://github.com/laravel/mcp"
             },
-            "time": "2025-08-12T07:09:39+00:00"
+            "time": "2025-08-16T09:50:43+00:00"
         },
         {
             "name": "laravel/pail",
@@ -8611,16 +8611,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.5.32",
+            "version": "11.5.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "101e132dcf9e74a1eb3a309b4f686114ae8f7f36"
+                "reference": "5965e9ff57546cb9137c0ff6aa78cb7442b05cf6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/101e132dcf9e74a1eb3a309b4f686114ae8f7f36",
-                "reference": "101e132dcf9e74a1eb3a309b4f686114ae8f7f36",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/5965e9ff57546cb9137c0ff6aa78cb7442b05cf6",
+                "reference": "5965e9ff57546cb9137c0ff6aa78cb7442b05cf6",
                 "shasum": ""
             },
             "require": {
@@ -8692,7 +8692,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.32"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.33"
             },
             "funding": [
                 {
@@ -8716,7 +8716,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-08-12T07:32:49+00:00"
+            "time": "2025-08-16T05:19:02+00:00"
         },
         {
             "name": "sebastian/cli-parser",
