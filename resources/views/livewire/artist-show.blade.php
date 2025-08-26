@@ -131,8 +131,9 @@
 			$count = 1;
 		@endphp
 		@foreach ($artist["records"] as $record)
-			<p wire:key="{{ $record["id"] }}"
-				class="{{ $loop->last ? "" : "border-b " }}hover:bg-slate-50 flex items-center px-2 py-2 text-left font-medium uppercase">
+			<div wire:key="{{ $record["id"] }}"
+				class="{{ $loop->last ? "" : "border-b " }}hover:bg-slate-50 flex items-center px-2 py-2 text-left font-medium uppercase"
+				x-data="{ edit: false }">
 				<span class="mr-2 w-6 font-bold text-slate-500 sm:w-8 lg:text-2xl">{{ $count }}.</span>
 				@auth
 					<button
@@ -157,7 +158,25 @@
 						target="_BLANK"
 						class="transition-colors hover:text-green-700">{{ $record["record_name"] }}</a>
 				</span>
-			</p>
+				@auth
+					<div class="ml-4 flex-1 text-right">
+						<div x-cloak x-show="edit">
+							<input type="text"
+								id="vinyl_edit"
+								class="w-full border border-slate-300 p-1 uppercase outline-none"
+								value="{{ $record["record_name"] }}"
+								autocomplete="off"
+								wire:dirty.class="border-orange-300">
+						</div>
+					</div>
+					<div class="text-right">
+						<button class="mx-2 inline-block px-2 text-xl text-green-500 hover:bg-green-300 lg:text-2xl"
+							@click="edit = ! edit">
+							<x-fas-pen-to-square class="h-8" />
+						</button>
+					</div>
+				@endauth
+			</div>
 			@php
 				$count++;
 			@endphp

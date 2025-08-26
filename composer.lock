@@ -7538,16 +7538,16 @@
         },
         {
             "name": "laradumps/laradumps-core",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laradumps/laradumps-core.git",
-                "reference": "0abde00a6627d90315c9bcf04fd73ac665960ff8"
+                "reference": "b5df14006570d16409f271db938a850f67ac78d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laradumps/laradumps-core/zipball/0abde00a6627d90315c9bcf04fd73ac665960ff8",
-                "reference": "0abde00a6627d90315c9bcf04fd73ac665960ff8",
+                "url": "https://api.github.com/repos/laradumps/laradumps-core/zipball/b5df14006570d16409f271db938a850f67ac78d7",
+                "reference": "b5df14006570d16409f271db938a850f67ac78d7",
                 "shasum": ""
             },
             "require": {
@@ -7595,7 +7595,7 @@
             "homepage": "https://github.com/laradumps/laradumps-core",
             "support": {
                 "issues": "https://github.com/laradumps/laradumps-core/issues",
-                "source": "https://github.com/laradumps/laradumps-core/tree/v3.2.5"
+                "source": "https://github.com/laradumps/laradumps-core/tree/v3.2.6"
             },
             "funding": [
                 {
@@ -7603,7 +7603,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-08-23T16:11:51+00:00"
+            "time": "2025-08-25T22:45:46+00:00"
         },
         {
             "name": "laravel/boost",
@@ -9859,16 +9859,16 @@
         },
         {
             "name": "spatie/backtrace",
-            "version": "1.7.4",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/backtrace.git",
-                "reference": "cd37a49fce7137359ac30ecc44ef3e16404cccbe"
+                "reference": "1607d8870bf597fc4ad79a6945cf0b2e584c2669"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/backtrace/zipball/cd37a49fce7137359ac30ecc44ef3e16404cccbe",
-                "reference": "cd37a49fce7137359ac30ecc44ef3e16404cccbe",
+                "url": "https://api.github.com/repos/spatie/backtrace/zipball/1607d8870bf597fc4ad79a6945cf0b2e584c2669",
+                "reference": "1607d8870bf597fc4ad79a6945cf0b2e584c2669",
                 "shasum": ""
             },
             "require": {
@@ -9906,7 +9906,8 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/backtrace/tree/1.7.4"
+                "issues": "https://github.com/spatie/backtrace/issues",
+                "source": "https://github.com/spatie/backtrace/tree/1.8.0"
             },
             "funding": [
                 {
@@ -9918,7 +9919,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2025-05-08T15:41:09+00:00"
+            "time": "2025-08-25T16:16:45+00:00"
         },
         {
             "name": "spatie/error-solutions",

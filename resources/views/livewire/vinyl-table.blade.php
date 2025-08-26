@@ -86,8 +86,7 @@
 									$char = mb_substr($artist->name, 0, 1);
 									$vinyler = $artist->records->count();
 								@endphp
-								<tr wire:key="artist-{{ $artist->id }}"
-									class="transition-color {{ !$vinyler ? "bg-red-50 hover:bg-red-100" : "bg-slate-50 hover:bg-slate-200" }} border-b border-slate-300 duration-200">
+								<tr wire:key="artist-{{ $artist->id }}" class="border-b border-slate-300 bg-slate-50 duration-200">
 									<td class="align-top text-2xl text-gray-700 sm:px-6 sm:text-2xl lg:text-3xl">
 										<a href="/artist/{{ $artist->id }}"
 											class="rock-font block border-white py-2 antialiased hover:text-cyan-800 max-sm:pl-0 max-sm:text-center"
