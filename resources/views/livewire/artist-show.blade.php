@@ -159,7 +159,7 @@
 						class="transition-colors hover:text-green-700">{{ $record["record_name"] }}</a>
 				</span>
 				@auth
-					<div class="ml-4 flex-1 text-right">
+					{{--  <div class="ml-4 flex-1 text-right">
 						<div x-cloak x-show="edit">
 							<input type="text"
 								id="vinyl_edit"
@@ -174,7 +174,7 @@
 							@click="edit = ! edit">
 							<x-fas-pen-to-square class="h-8" />
 						</button>
-					</div>
+					</div> --}}
 				@endauth
 			</div>
 			@php
