@@ -1,4 +1,4 @@
-<div class="max-h-screen overflow-auto overscroll-auto rounded-t-lg bg-gray-200 px-2 shadow-inner">
+<div class="rounded-t-lg bg-gray-200 px-2 shadow-inner">
 	<div class="flex flex-col items-center px-2 py-4">
 		<input wire:model.live.debounce.500ms="search"
 			name="search"
@@ -11,9 +11,11 @@
 	<div class="grid grid-cols-5 max-lg:grid-cols-4 max-md:grid-cols-3 max-sm:grid-cols-2">
 		@foreach ($artists as $artist)
 			<div wire:key="{{ $artist["id"] }}" class="mb-4 flex flex-col items-center">
-				<a href="/artist/{{ $artist["id"] }}" target="_BLANK">
+				<a href="/artist/{{ $artist["id"] }}"
+					class="mb-2 h-48 w-48 overflow-hidden border-2 border-white shadow-md"
+					target="_BLANK">
 					<img src="{{ $artist["discogs_image_url"] }}"
-						class="mb-2 h-48 border-2 border-white shadow-md"
+						class="h-48 w-48"
 						loading="lazy" />
 				</a>
 				<span class="w-full text-center text-xl">{{ $artist["name"] }}</span>

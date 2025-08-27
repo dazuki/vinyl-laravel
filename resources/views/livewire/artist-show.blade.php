@@ -158,24 +158,6 @@
 						target="_BLANK"
 						class="transition-colors hover:text-green-700">{{ $record["record_name"] }}</a>
 				</span>
-				@auth
-					{{--  <div class="ml-4 flex-1 text-right">
-						<div x-cloak x-show="edit">
-							<input type="text"
-								id="vinyl_edit"
-								class="w-full border border-slate-300 p-1 uppercase outline-none"
-								value="{{ $record["record_name"] }}"
-								autocomplete="off"
-								wire:dirty.class="border-orange-300">
-						</div>
-					</div>
-					<div class="text-right">
-						<button class="mx-2 inline-block px-2 text-xl text-green-500 hover:bg-green-300 lg:text-2xl"
-							@click="edit = ! edit">
-							<x-fas-pen-to-square class="h-8" />
-						</button>
-					</div> --}}
-				@endauth
 			</div>
 			@php
 				$count++;
