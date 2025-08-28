@@ -11,13 +11,15 @@ class AdminShowData extends Component
 
     public $noimages;
 
+    public $hasmid;
+
     public $hasnothing;
 
     public function mount()
     {
-        $this->noids = Artist::whereNull('discogs_id')->whereNotNull('discogs_id_manual')->get();
+        $this->noids = Artist::whereNull('discogs_id')->whereNull('discogs_id_manual')->get();
         $this->noimages = Artist::whereNull('discogs_image_url')->get();
-        $this->hasnothing = Artist::whereNull('discogs_id')->whereNull('discogs_image_url')->whereNull('discogs_id_manual')->get();
+        $this->hasmid = Artist::whereNotNull('discogs_id_manual')->get();
     }
 
     public function placeholder()
@@ -47,7 +49,7 @@ class AdminShowData extends Component
         return view('livewire.admin-show-data', [
             'noids' => $this->noids,
             'noimages' => $this->noimages,
-            'hasnothing' => $this->hasnothing,
+            'hasmid' => $this->hasmid,
         ]);
     }
 }
