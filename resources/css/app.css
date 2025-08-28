@@ -71,6 +71,16 @@ body {
   background-position: center;
 }
 
+.vinyl-table-bg {
+  background: #e6eaf2;
+  background: linear-gradient(
+    0deg,
+    rgba(230, 234, 242, 1) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(230, 234, 242, 1) 100%
+  );
+}
+
 .custom-shadow {
   box-shadow:
     rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,

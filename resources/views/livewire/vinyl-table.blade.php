@@ -9,7 +9,7 @@
 		<input wire:model.live.debounce.500ms="search"
 			name="search"
 			type="text"
-			class="gradient-3 z-1 custom-shadow w-full border-l-4 border-r-4 border-t-4 border-slate-300 p-2 pl-14 text-2xl outline-none max-xl:border-l-0 max-xl:border-r-0 max-sm:pl-12 max-sm:text-base xl:rounded-t-xl"
+			class="vinyl-table-bg z-1 custom-shadow w-full border-l-4 border-r-4 border-t-4 border-slate-300 p-2 pl-14 text-2xl outline-none max-xl:border-l-0 max-xl:border-r-0 max-sm:pl-12 max-sm:text-base xl:rounded-t-xl"
 			placeholder="Sök Artister/Vinyler..."
 			autocomplete="off"
 			required="">
@@ -76,7 +76,7 @@
 						@if ($artists->count() >= 1)
 							@foreach ($artists as $artist)
 								@if (empty($char) || $char != mb_substr($artist->name, 0, 1))
-									<tr wire:key="char-{{ $char }}" class="border-b-2 border-t-2 border-slate-300 bg-slate-200">
+									<tr wire:key="char-{{ $char }}" class="vinyl-table-bg border-b-2 border-t-2 border-slate-300">
 										<td colspan="2"
 											class="rock-font p-2 py-2 text-left text-xl font-bold text-slate-500 max-sm:text-center sm:px-6">
 											{{ mb_substr($artist->name, 0, 1) }}</td>
@@ -86,7 +86,7 @@
 									$char = mb_substr($artist->name, 0, 1);
 									$vinyler = $artist->records->count();
 								@endphp
-								<tr wire:key="artist-{{ $artist->id }}" class="border-b border-slate-300 bg-slate-50 duration-200">
+								<tr wire:key="artist-{{ $artist->id }}" class="border-b border-slate-300 bg-white duration-200">
 									<td class="align-top text-2xl text-gray-700 sm:px-6 sm:text-2xl lg:text-3xl">
 										<a href="/artist/{{ $artist->id }}"
 											class="rock-font block border-white py-2 antialiased hover:text-cyan-800 max-sm:pl-0 max-sm:text-center"
@@ -119,14 +119,14 @@
 											</p>
 										@endif
 									</td>
-									<td class="{{ !$vinyler ? "bg-red-50" : "bg-white" }} border-l border-slate-300 align-top text-xs">
+									<td class="{{ !$vinyler ? "bg-red-50" : "bg-white" }} border-slate-300 align-top text-xs">
 										{{-- <VINYLER> --}}
 
 										{{-- <BILD> --}}
 										@if ($artist->discogs_image_url)
 											<a href="/artist/{{ $artist->id }}" wire:navigate>
 												<img src="{{ $artist->discogs_image_url }}"
-													class="m-2 h-36 rounded-lg object-cover max-sm:max-w-[170px]"
+													class="m-2 h-36 rounded-3xl object-cover max-sm:max-w-[170px]"
 													loading="lazy" />
 											</a>
 										@endif
