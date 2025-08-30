@@ -11,8 +11,11 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - php - 8.4.11
 - laravel/framework (LARAVEL) - v11
 - laravel/prompts (PROMPTS) - v0
+- laravel/sanctum (SANCTUM) - v4
 - livewire/livewire (LIVEWIRE) - v3
 - laravel/pint (PINT) - v1
+- laravel/sail (SAIL) - v1
+- prettier (PRETTIER) - v3
 - tailwindcss (TAILWINDCSS) - v3
 
 

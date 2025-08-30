@@ -11,11 +11,9 @@
 					name="artist_id"
 					id="artist_id"
 					class="mb-4 mt-2 w-full border-2 border-slate-300 p-2 outline-none sm:w-2/6 sm:rounded-lg">
-					<option value="0"
-						selected> -- Välj en Artist -- </option>
+					<option value="0" selected> -- Välj en Artist -- </option>
 					@foreach ($artists as $artist)
-						<option wire:key="{{ $artist->id }}"
-							value="{{ $artist->id }}">
+						<option wire:key="{{ $artist->id }}" value="{{ $artist->id }}">
 							{{ $artist->name }}
 						</option>
 					@endforeach
@@ -25,8 +23,7 @@
 			@enderror
 			</p>
 			<p>
-				<label for="record_name"
-					class="px-2">Skriv namn på Vinyl:</label>
+				<label for="record_name" class="px-2">Skriv namn på Vinyl:</label>
 			</p>
 			<input wire:model="record_name"
 				type="text"
@@ -54,22 +51,7 @@
 					</svg>Lägg till Vinyl
 				</button>
 			</p>
-			<p class="mb-6 mt-6 text-center">
-				<a href="/"
-					class="rounded-lg border-2 border-slate-300 bg-slate-100 px-2 py-2 shadow-md hover:bg-slate-300"
-					wire:navigate>
-					<svg xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="-mt-2 mr-1 inline-block h-5 w-5">
-						<path stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
-					</svg>Startsidan
-				</a>
-			</p>
+			<x-button-group />
 		</form>
 	</div>
 </div>
