@@ -18,10 +18,9 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
-            export FNM_PATH="/home/dazuki/.local/share/fnm"
-            export PATH="/home/dazuki/.local/share/fnm:$PATH"
+            export FNM_PATH="/home/${{ secrets.VPS_USERNAME }}/.local/share/fnm"
+            export PATH="/home/${{ secrets.VPS_USERNAME }}/.local/share/fnm:$PATH"
             eval "`fnm env`"
-            echo $PATH
 
             cd ${{ secrets.VPS_ROOT_FOLDER }}
             git pull origin master
@@ -32,6 +31,7 @@ jobs:
 
             npm install
             composer install
+            npm run build
 
             php artisan optimize
             php artisan view:cache
