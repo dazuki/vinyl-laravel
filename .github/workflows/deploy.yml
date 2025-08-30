@@ -18,7 +18,11 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
+            export FNM_PATH="/home/dazuki/.local/share/fnm"
+            export PATH="/home/dazuki/.local/share/fnm:$PATH"
+            eval "`fnm env`"
             echo $PATH
+
             cd ${{ secrets.VPS_ROOT_FOLDER }}
             git pull origin master
 
