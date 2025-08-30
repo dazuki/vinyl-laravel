@@ -17,4 +17,20 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
-          script: cd ${{ secrets.VPS_ROOT_FOLDER }} && ./update.sh
+          script: |
+            echo $PATH
+            cd ${{ secrets.VPS_ROOT_FOLDER }}
+            git pull origin master
+
+            php artisan optimize:clear
+            php artisan view:clear
+            php artisan icons:clear
+
+            npm install
+            composer install
+
+            php artisan optimize
+            php artisan view:cache
+            php artisan icons:cache
+
+            php -r 'opcache_reset();'
