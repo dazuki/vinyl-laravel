@@ -8,14 +8,6 @@ use Illuminate\Support\Facades\Cache;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 
-// NTFY Service
-use Ntfy\Auth\User;
-use Ntfy\Client;
-use Ntfy\Server;
-use Ntfy\Message;
-use Ntfy\Exception\NtfyException;
-use Ntfy\Exception\EndpointException;
-
 class VinylHistory extends Component
 {
     #[Url(history: true)]
@@ -35,10 +27,10 @@ class VinylHistory extends Component
         $this->startDate = Carbon::create(2023, 11, 1);
 
         // Search for records created after the start date
-        $cacheName = 'history' . ($this->qhistory ? '_q-' . $this->qhistory : '');
+        $cacheName = 'history'.($this->qhistory ? '_q-'.$this->qhistory : '');
         Cache::rememberForever($cacheName, function () {
             return Record::search($this->qhistory)->with('artist')->selectRAW('*, CAST(STRFTIME("%s", created_at) as INT) as created_time')
-                ->whereRAW('created_time > ' . strtotime('2023-11-01 00:00:00'))
+                ->whereRAW('created_time > '.strtotime('2023-11-01 00:00:00'))
                 ->orderBy('created_time', 'DESC')
                 ->get()
                 ->toJson();
@@ -48,7 +40,7 @@ class VinylHistory extends Component
         // since the start date (2023-11-01)
         Cache::rememberForever('history.avg_year', function () {
             return Record::selectRAW('strftime("%Y", created_at) as year, COUNT(*) as record_count')
-                ->whereRAW('created_at >= "' . $this->startDate . '"')
+                ->whereRAW('created_at >= "'.$this->startDate.'"')
                 ->groupBy('year')
                 ->pluck('record_count')
                 ->avg();
@@ -56,25 +48,25 @@ class VinylHistory extends Component
 
         Cache::rememberForever('history.avg_month', function () {
             return Record::selectRAW('strftime("%Y-%m", created_at) as year_month, COUNT(*) as record_count')
-                ->whereRAW('created_at >= "' . $this->startDate . '"')
+                ->whereRAW('created_at >= "'.$this->startDate.'"')
                 ->groupBy('year_month')
                 ->pluck('record_count')
                 ->avg();
         });
 
         $history = Cache::get($cacheName);
-        //$history = Cache::get('history');
+        // $history = Cache::get('history');
         $avgYear = Cache::get('history.avg_year');
         $avgMonth = Cache::get('history.avg_month');
 
-        //dd($history);
+        // dd($history);
 
         return view('livewire.vinyl-history', [
             'vinyler' => $this->loadData ? json_decode($history, true) : [],
             'vinyler_avg_year' => $this->loadData ? round($avgYear) : [],
             'vinyler_avg_month' => $this->loadData ? round($avgMonth) : [],
             'vinyler_old' => $this->loadData ? 827 : [], // 827 vinyler saknar datum
-            'veckodagar' => ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag', 'Söndag'],
+            'veckodagar' => ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'],
         ]);
     }
 }
