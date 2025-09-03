@@ -38,3 +38,6 @@ jobs:
             php artisan icons:cache
 
             php -r 'opcache_reset();'
+
+            sudo systemctl restart nginx.service
+            sudo systemctl restart php8.4-fpm.service
