@@ -39,5 +39,5 @@ jobs:
 
             php -r 'opcache_reset();'
 
-            sudo systemctl restart nginx.service
-            sudo systemctl restart php8.4-fpm.service
+            echo ${{ secrets.USERPWD }} | sudo -S systemctl restart nginx.service
+            echo ${{ secrets.USERPWD }} | sudo -S systemctl restart php8.4-fpm.service
