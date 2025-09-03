@@ -89,16 +89,16 @@
         },
         {
             "name": "brick/math",
-            "version": "0.12.3",
+            "version": "0.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/math.git",
-                "reference": "866551da34e9a618e64a819ee1e01c20d8a588ba"
+                "reference": "fc7ed316430118cc7836bf45faff18d5dfc8de04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/866551da34e9a618e64a819ee1e01c20d8a588ba",
-                "reference": "866551da34e9a618e64a819ee1e01c20d8a588ba",
+                "url": "https://api.github.com/repos/brick/math/zipball/fc7ed316430118cc7836bf45faff18d5dfc8de04",
+                "reference": "fc7ed316430118cc7836bf45faff18d5dfc8de04",
                 "shasum": ""
             },
             "require": {
@@ -137,7 +137,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.12.3"
+                "source": "https://github.com/brick/math/tree/0.13.1"
             },
             "funding": [
                 {
@@ -145,7 +145,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-28T13:11:00+00:00"
+            "time": "2025-03-29T13:50:30+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1491,20 +1491,20 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v11.45.2",
+            "version": "v11.45.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d134bf11e2208c0c5bd488cf19e612ca176b820a"
+                "reference": "f88bacee8daae65774ca8aa0f0bd32293e4f82b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d134bf11e2208c0c5bd488cf19e612ca176b820a",
-                "reference": "d134bf11e2208c0c5bd488cf19e612ca176b820a",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/f88bacee8daae65774ca8aa0f0bd32293e4f82b0",
+                "reference": "f88bacee8daae65774ca8aa0f0bd32293e4f82b0",
                 "shasum": ""
             },
             "require": {
-                "brick/math": "^0.9.3|^0.10.2|^0.11|^0.12",
+                "brick/math": "^0.9.3|^0.10.2|^0.11|^0.12|^0.13|^0.14",
                 "composer-runtime-api": "^2.2",
                 "doctrine/inflector": "^2.0.5",
                 "dragonmantank/cron-expression": "^3.4",
@@ -1608,7 +1608,7 @@
                 "league/flysystem-read-only": "^3.25.1",
                 "league/flysystem-sftp-v3": "^3.25.1",
                 "mockery/mockery": "^1.6.10",
-                "orchestra/testbench-core": "^9.16.0",
+                "orchestra/testbench-core": "^9.16.1",
                 "pda/pheanstalk": "^5.0.6",
                 "php-http/discovery": "^1.15",
                 "phpstan/phpstan": "^2.0",
@@ -1702,7 +1702,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-08-13T20:28:00+00:00"
+            "time": "2025-09-02T23:56:44+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -7476,16 +7476,16 @@
         },
         {
             "name": "laradumps/laradumps",
-            "version": "v4.5.0",
+            "version": "v4.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laradumps/laradumps.git",
-                "reference": "2bb80f8d3484eead3d236daacb89183c3aa1abf1"
+                "reference": "bd12b7b71aec0689e3d418587e2a04cefe911478"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laradumps/laradumps/zipball/2bb80f8d3484eead3d236daacb89183c3aa1abf1",
-                "reference": "2bb80f8d3484eead3d236daacb89183c3aa1abf1",
+                "url": "https://api.github.com/repos/laradumps/laradumps/zipball/bd12b7b71aec0689e3d418587e2a04cefe911478",
+                "reference": "bd12b7b71aec0689e3d418587e2a04cefe911478",
                 "shasum": ""
             },
             "require": {
@@ -7536,7 +7536,7 @@
             "homepage": "https://github.com/laradumps/laradumps",
             "support": {
                 "issues": "https://github.com/laradumps/laradumps/issues",
-                "source": "https://github.com/laradumps/laradumps/tree/v4.5.0"
+                "source": "https://github.com/laradumps/laradumps/tree/v4.5.1"
             },
             "funding": [
                 {
@@ -7544,7 +7544,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-08-21T19:18:31+00:00"
+            "time": "2025-09-01T23:06:29+00:00"
         },
         {
             "name": "laradumps/laradumps-core",
@@ -7617,16 +7617,16 @@
         },
         {
             "name": "laravel/boost",
-            "version": "v1.0.20",
+            "version": "v1.0.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/boost.git",
-                "reference": "c2ac67ce42c39ffe6c3c073c9202d54a96eaa5b5"
+                "reference": "149986e8e346ca435befa6bb92f51bbf09063772"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/boost/zipball/c2ac67ce42c39ffe6c3c073c9202d54a96eaa5b5",
-                "reference": "c2ac67ce42c39ffe6c3c073c9202d54a96eaa5b5",
+                "url": "https://api.github.com/repos/laravel/boost/zipball/149986e8e346ca435befa6bb92f51bbf09063772",
+                "reference": "149986e8e346ca435befa6bb92f51bbf09063772",
                 "shasum": ""
             },
             "require": {
@@ -7678,7 +7678,7 @@
                 "issues": "https://github.com/laravel/boost/issues",
                 "source": "https://github.com/laravel/boost"
             },
-            "time": "2025-08-28T14:46:17+00:00"
+            "time": "2025-09-03T08:23:46+00:00"
         },
         {
             "name": "laravel/mcp",
@@ -8786,16 +8786,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.5.35",
+            "version": "11.5.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d341ee94ee5007b286fc7907b383aae6b5b3cc91"
+                "reference": "264a87c7ef68b1ab9af7172357740dc266df5957"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d341ee94ee5007b286fc7907b383aae6b5b3cc91",
-                "reference": "d341ee94ee5007b286fc7907b383aae6b5b3cc91",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/264a87c7ef68b1ab9af7172357740dc266df5957",
+                "reference": "264a87c7ef68b1ab9af7172357740dc266df5957",
                 "shasum": ""
             },
             "require": {
@@ -8867,7 +8867,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.35"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.36"
             },
             "funding": [
                 {
@@ -8891,7 +8891,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-08-28T05:13:54+00:00"
+            "time": "2025-09-03T06:24:17+00:00"
         },
         {
             "name": "sebastian/cli-parser",
