@@ -123,7 +123,7 @@ return [
      | Changing `ajax_handler_auto_show` to false will prevent the Debugbar from reloading.
      */
 
-    'capture_ajax' => true,
+    'capture_ajax' => false,
     'add_ajax_timing' => false,
     'ajax_handler_auto_show' => true,
     'ajax_handler_enable_tab' => true,

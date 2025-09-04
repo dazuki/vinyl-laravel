@@ -37,6 +37,7 @@
 	@auth
 		<div class="my-2" align="center"><span class="font-semibold"><a href="/admin">Admin</a></span></div>
 	@endauth
+	@stack("scripts")
 </body>
 
 </html>
