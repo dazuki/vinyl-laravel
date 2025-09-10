@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Vinyl Förteckning",
+    "short_name": "Vinyler",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,8 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
+    "start_url": ".",
+    "theme_color": "#000000",
     "background_color": "#ffffff",
     "display": "standalone"
 }
