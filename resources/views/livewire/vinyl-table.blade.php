@@ -76,9 +76,9 @@
 						@if ($artists->count() >= 1)
 							@foreach ($artists as $artist)
 								@if (empty($char) || $char != mb_substr($artist->name, 0, 1))
-									<tr wire:key="char-{{ $char }}" class="vinyl-table-bg border-b-2 border-t-2 border-slate-300">
+									<tr wire:key="char-{{ $char }}" class="border-b-2 border-t-2 border-slate-300 bg-slate-100">
 										<td colspan="2"
-											class="rock-font p-2 py-2 text-left text-xl font-bold text-slate-500 max-sm:text-center sm:px-6">
+											class="rock-font p-2 py-2 text-left text-2xl font-bold text-slate-500 max-sm:text-center sm:px-6">
 											{{ mb_substr($artist->name, 0, 1) }}</td>
 									</tr>
 								@endif
