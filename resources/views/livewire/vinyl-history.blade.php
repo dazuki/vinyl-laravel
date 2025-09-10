@@ -59,7 +59,7 @@
 					@if ($setDate != date("Y-m-d", strtotime($vinyl["created_at"])) || $sameDay == 1)
 						<div class="flex items-center justify-center">
 							<div
-								class="{{ $loop->first ? "mt-2 mb-4 " : "my-4 " }}w-full vinyl-table-bg flex items-center justify-between border-b-2 border-slate-300 py-1 text-center text-lg sm:rounded-xl lg:w-1/2 lg:py-2 lg:text-xl">
+								class="{{ $loop->first ? "mt-2 mb-4 " : "my-4 " }}w-full flex items-center justify-between border-b-2 border-t-2 border-slate-300 bg-slate-100 py-1 text-center text-sm sm:border-l-2 sm:border-r-2 sm:text-base lg:w-1/2 lg:py-2 lg:text-xl">
 								<div class="w-1/3 font-semibold text-gray-500"></div>
 								<div class="w-1/3 font-semibold">
 									<p>{{ date("j/n", strtotime($vinyl["created_at"])) }}</p>
@@ -75,7 +75,7 @@
 							$sameDay = 0;
 						@endphp
 					@endif
-					<p class="rock-font text-center text-sm font-semibold lg:text-xl">
+					<p class="rock-font text-center text-sm font-semibold sm:text-xl lg:text-2xl">
 						<a class="hover:text-blue-800"
 							href="/artist/{{ $vinyl["artist"]["id"] }}"
 							wire:navigate>
