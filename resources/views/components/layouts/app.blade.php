@@ -15,7 +15,7 @@
 		type="image/png"
 		sizes="16x16"
 		href="{{ asset("static/images/favicon-16x16.png") }}">
-	<link rel="manifest" href="{{ asset("static/images/site.webmanifest") }}">
+	<link rel="manifest" href="{{ asset("manifest.json") }}">
 	<link rel="preconnect"
 		href="https://fonts.gstatic.com/"
 		crossorigin>
