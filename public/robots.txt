@@ -86,4 +86,4 @@ Disallow: /*?*
 Crawl-delay: 10
 
 # Sitemap location
-Sitemap: https://yoursite.com/sitemap.xml
+Sitemap: https://vinyl.bokbindaregatan.se/sitemap.xml
