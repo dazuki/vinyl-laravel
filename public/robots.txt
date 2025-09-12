@@ -82,8 +82,5 @@ Disallow: /_ignition/
 # Block URLs with query parameters to avoid duplicate content
 Disallow: /*?*
 
-# Crawl delay for all other bots
-Crawl-delay: 10
-
 # Sitemap location
 Sitemap: https://vinyl.bokbindaregatan.se/sitemap.xml
