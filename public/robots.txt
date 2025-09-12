@@ -1,86 +1,36 @@
-# Allow major search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
-
-User-agent: YandexBot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
 # Block common unwanted crawlers
 User-agent: SemrushBot
 Disallow: /
-
 User-agent: AhrefsBot
 Disallow: /
-
 User-agent: MJ12bot
 Disallow: /
-
 User-agent: DotBot
 Disallow: /
-
 User-agent: BLEXBot
 Disallow: /
-
 User-agent: SiteAuditBot
 Disallow: /
-
 User-agent: MegaIndex.ru
 Disallow: /
-
 User-agent: PetalBot
 Disallow: /
-
 User-agent: DataForSeoBot
 Disallow: /
-
 User-agent: serpstatbot
 Disallow: /
-
 User-agent: LinkpadBot
 Disallow: /
-
 User-agent: spbot
 Disallow: /
 
-# Default rule for all other bots
 User-agent: *
 Allow: /
 
-# Block specific routes/paths you don't want indexed
-Disallow: /admin/
-Disallow: /dashboard/
+Disallow: /admin
 Disallow: /login
 Disallow: /logout
-Disallow: /register
-Disallow: /password/
-Disallow: /api/
 Disallow: /create/
 Disallow: /export/
-Disallow: /horizon/
-Disallow: /telescope/
-Disallow: /_debugbar/
-Disallow: /_ignition/
 
-# Block URLs with query parameters to avoid duplicate content
-Disallow: /*?*
-
-# Sitemap location
 Sitemap: https://vinyl.bokbindaregatan.se/sitemap.xml
