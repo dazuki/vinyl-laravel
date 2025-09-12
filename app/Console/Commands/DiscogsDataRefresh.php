@@ -7,7 +7,18 @@ use Illuminate\Console\Command;
 
 class DiscogsDataRefresh extends Command
 {
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
     protected $signature = 'discogs:refresh-manual';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
     protected $description = 'Refresh Discogs data for artists with manual IDs';
 
     public function handle()

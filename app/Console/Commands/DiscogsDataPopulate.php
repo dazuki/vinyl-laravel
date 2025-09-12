@@ -7,7 +7,18 @@ use Illuminate\Console\Command;
 
 class DiscogsDataPopulate extends Command
 {
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
     protected $signature = 'discogs:populate {--force : Force repopulate existing data}';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
     protected $description = 'Populate Discogs data for artists';
 
     public function handle()

@@ -23,6 +23,7 @@
     "owenvoke/blade-fontawesome": "^2.9",
     "phpoffice/phpspreadsheet": "^1.29",
     "predis/predis": "^2.0",
+    "spatie/laravel-sitemap": "^7.3",
     "verifiedjoseph/ntfy-php-library": "^4.7"
   },
   "require-dev": {
