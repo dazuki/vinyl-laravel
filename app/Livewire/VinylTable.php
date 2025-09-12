@@ -29,17 +29,17 @@ class VinylTable extends Component
     #[Url(history: true)]
     public $search = '';
 
-    public bool $loadData = false;
+    public bool $loadData = true;
 
     public function updatedSearch()
     {
         $this->resetPage();
     }
 
-    public function init()
+    /*public function init()
     {
         $this->loadData = true;
-    }
+    }*/
 
     public function render()
     {

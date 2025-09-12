@@ -13,14 +13,14 @@ class VinylHistory extends Component
     #[Url(history: true)]
     public $qhistory = '';
 
-    public bool $loadData = false;
+    public bool $loadData = true;
 
     public $startDate;
 
-    public function init()
+    /*public function init()
     {
         $this->loadData = true;
-    }
+    }*/
 
     public function render()
     {

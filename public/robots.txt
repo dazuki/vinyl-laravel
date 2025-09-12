@@ -73,6 +73,7 @@ Disallow: /register
 Disallow: /password/
 Disallow: /api/
 Disallow: /create/
+Disallow: /export/
 Disallow: /horizon/
 Disallow: /telescope/
 Disallow: /_debugbar/

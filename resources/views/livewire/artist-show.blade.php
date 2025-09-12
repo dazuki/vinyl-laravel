@@ -12,7 +12,9 @@
 			</h1>
 			@if ($artist->discogs_image_url)
 				<div class="mt-4 flex w-full justify-center">
-					<a href="{{ $artist->discogs_url }}" target="_BLANK">
+					<a href="{{ $artist->discogs_url }}"
+						aria-label="Discogs - {{ $artist->name }}"
+						target="_BLANK">
 						<img src="{{ $artist->discogs_image_url }}"
 							class="artist-shadow h-64 rounded-lg object-cover"
 							alt="{{ $artist->name }}">
@@ -23,6 +25,7 @@
 				<div>
 					<p class="mx-auto mb-2 mt-4 w-full text-center">
 						<a class="rounded-lg border-2 border-green-800 bg-slate-100 px-4 py-2 text-lg hover:bg-slate-300"
+							aria-label="Ny vinyl för {{ $artist->name }}"
 							href="/create/vinyl?artist_id={{ $artist->id }}"
 							wire:navigate>
 							<svg xmlns="http://www.w3.org/2000/svg"
@@ -71,6 +74,7 @@
 					    $artist->discogs_url ?: "https://www.discogs.com/search/?q=" . urlencode($artist->name) . "&type=artist";
 				@endphp
 				<a href="{{ $artistUrl }}"
+					aria-label="Discogs - {{ $artist->name }}"
 					class="mr-4 opacity-50 transition-opacity hover:opacity-100"
 					target="_BLANK">
 					<img src="{{ asset("static/images/Discogs-01.svg") }}"
@@ -78,6 +82,7 @@
 						alt="DG">
 				</a>
 				<a href="spotify:search:{{ urlencode($artist->name) }}"
+					aria-label="Spotify - {{ $artist->name }}"
 					class="opacity-50 transition-opacity hover:opacity-100"
 					target="_BLANK">
 					<img src="{{ asset("static/images/spotify_logo.svg") }}"
@@ -151,6 +156,7 @@
 				<span class="rock-font text-gray-700 lg:text-2xl">
 					<a
 						href="https://www.discogs.com/search/?q={{ urlencode($artist->name . " " . $record->record_name) }}&type=release&format_exact=Vinyl"
+						aria-label="Vinyl - {{ $record->record_name }}"
 						target="_BLANK"
 						class="transition-colors hover:text-green-700">{{ $record->record_name }}</a>
 				</span>

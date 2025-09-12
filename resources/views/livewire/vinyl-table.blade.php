@@ -1,4 +1,4 @@
-<div wire:init="init" class="mx-auto max-w-screen-xl text-left">
+<div class="mx-auto max-w-screen-xl text-left">
 	@section("page-title", "Startsidan")
 	@php
 		$char = "";
@@ -89,6 +89,7 @@
 								<tr wire:key="artist-{{ $artist->id }}" class="border-b border-slate-300 bg-white duration-200">
 									<td class="align-top text-2xl text-gray-700 sm:px-6 sm:text-2xl lg:text-3xl">
 										<a href="/artist/{{ $artist->id }}"
+											aria-label="Visa Artist - {{ $artist->name }}"
 											class="rock-font block border-white py-2 antialiased hover:text-cyan-800 max-sm:pl-0 max-sm:text-center"
 											wire:navigate>
 											@if (!empty($search))
@@ -145,6 +146,7 @@
 												@endphp
 												<p class="inter-font uppercase text-gray-700 antialiased sm:text-sm">
 													<a href={{ $discogsURL }}
+														aria-label="Discogs - {{ $artist->name }}"
 														target="_BLANK"
 														class="block border-slate-300 p-2 transition-all duration-100 hover:border-l-2 hover:bg-slate-200 hover:font-semibold">
 														@if (!empty($search))
@@ -188,6 +190,7 @@
 											<div class="mt-4 flex items-center justify-center">
 												<a
 													class="rounded-lg border-2 border-slate-300 bg-slate-100 p-2 text-center font-semibold text-gray-900 shadow-md hover:text-green-700 max-sm:w-full"
+													aria-label="Skapa Artist - {{ mb_strtoupper($search) }}"
 													href="/create/artist?name={{ mb_strtoupper($search) }}">
 													<p>
 														<svg xmlns="http://www.w3.org/2000/svg"
