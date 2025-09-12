@@ -4,6 +4,8 @@
 <head>
 	<x-seo-head />
 
+	<link rel="canonical" href="{{ url()->current() }}" />
+
 	<link rel="apple-touch-icon"
 		sizes="180x180"
 		href="{{ asset("static/images/apple-touch-icon.png") }}">

@@ -124,9 +124,12 @@
 
 										{{-- <BILD> --}}
 										@if ($artist->discogs_image_url)
-											<a href="/artist/{{ $artist->id }}" wire:navigate>
+											<a href="/artist/{{ $artist->id }}"
+												aria-label="Visa Artist - {{ $artist->name }}"
+												wire:navigate>
 												<img src="{{ $artist->discogs_image_url }}"
 													class="m-2 h-36 rounded-3xl object-cover max-sm:max-w-[170px]"
+													alt="{{ $artist->name }}"
 													loading="lazy" />
 											</a>
 										@endif
