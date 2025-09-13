@@ -5,7 +5,6 @@
 	<x-seo-head />
 
 	<link rel="canonical" href="{{ url()->current() }}" />
-
 	<link rel="apple-touch-icon"
 		sizes="180x180"
 		href="{{ asset("static/images/apple-touch-icon.png") }}">
@@ -18,9 +17,12 @@
 		sizes="16x16"
 		href="{{ asset("static/images/favicon-16x16.png") }}">
 	<link rel="manifest" href="{{ asset("manifest.json") }}">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect"
-		href="https://fonts.gstatic.com/"
+		href="https://fonts.gstatic.com"
 		crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&family=RocknRoll+One&display=swap"
+		rel="stylesheet">
 
 	<title>@yield("page-title") - Vinyl Förteckning</title>
 	@vite(["resources/css/app.css", "resources/js/app.js"])

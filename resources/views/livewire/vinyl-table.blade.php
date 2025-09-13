@@ -144,11 +144,11 @@
 													    urlencode($artist["name"] . " " . $record["record_name"]) .
 													    "&type=release&format_exact=Vinyl";
 												@endphp
-												<p class="inter-font uppercase text-gray-700 antialiased sm:text-sm">
+												<p class="uppercase text-gray-700 antialiased sm:text-sm">
 													<a href={{ $discogsURL }}
 														aria-label="Discogs - {{ $artist->name }}"
 														target="_BLANK"
-														class="block border-slate-300 p-2 transition-all duration-100 hover:border-l-2 hover:bg-slate-200 hover:font-semibold">
+														class="block border-slate-300 p-2 hover:bg-slate-200">
 														@if (!empty($search))
 															@php
 																$highlightVinyl = explode(" ", mb_strtoupper($search));
@@ -174,7 +174,7 @@
 												</p>
 											@endforeach
 										@else
-											<p class="p-2 uppercase italic text-red-600"></p>
+											{{-- <p class="p-2 uppercase text-red-600"></p> --}}
 										@endif
 										{{-- </VINYLER> --}}
 
