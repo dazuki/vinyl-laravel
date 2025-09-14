@@ -1,36 +1,17 @@
-# Block common unwanted crawlers
-User-agent: SemrushBot
-Disallow: /
-User-agent: AhrefsBot
-Disallow: /
-User-agent: MJ12bot
-Disallow: /
-User-agent: DotBot
-Disallow: /
-User-agent: BLEXBot
-Disallow: /
-User-agent: SiteAuditBot
-Disallow: /
-User-agent: MegaIndex.ru
-Disallow: /
-User-agent: PetalBot
-Disallow: /
-User-agent: DataForSeoBot
-Disallow: /
-User-agent: serpstatbot
-Disallow: /
-User-agent: LinkpadBot
-Disallow: /
-User-agent: spbot
-Disallow: /
-
 User-agent: *
-Allow: /
-
 Disallow: /admin
+Disallow: /admin/
 Disallow: /login
 Disallow: /logout
+Disallow: /create
 Disallow: /create/
+Disallow: /export
 Disallow: /export/
+Disallow: /*?search
+Disallow: /*?qhistory
+
+Allow: /
+Allow: /history
+Allow: /artist/
 
 Sitemap: https://vinyl.bokbindaregatan.se/sitemap.xml
