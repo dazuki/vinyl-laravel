@@ -37,6 +37,7 @@ class Record extends Model
     public function scopeSearch($query, $value)
     {
         $values = str_replace(' ', '%', $value);
-        return $query->whereRAW('record_name like ? COLLATE NOCASE', '%' . mb_strtolower($values) . '%');
+
+        return $query->whereRAW('record_name like ? COLLATE NOCASE', '%'.mb_strtolower($values).'%');
     }
 }
