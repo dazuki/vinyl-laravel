@@ -1,3 +1,149 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+Laravel 11 vinyl record collection app with Livewire 3.5, Tailwind CSS, and Discogs API integration. SQLite database with Redis caching/sessions. Deployed to VPS via GitHub Actions on master push.
+
+## Development Commands
+
+**Start dev environment:**
+```bash
+composer dev
+# Runs: php artisan serve + queue listener + npm dev (concurrently)
+```
+
+**Asset building:**
+```bash
+npm run dev              # Vite dev server
+npm run dev-ts           # Vite with specific IP binding (100.112.181.26)
+npm run build            # Production bundle
+```
+
+**Database:**
+```bash
+php artisan migrate      # Run migrations
+php artisan tinker       # REPL
+```
+
+**Discogs commands:**
+```bash
+php artisan discogs:populate         # Fetch Discogs data for artists (with 1.5s rate limit)
+php artisan discogs:refresh-manual   # Refresh artists with manual IDs
+php artisan discogs:reset            # Clear Discogs data
+```
+
+**Other:**
+```bash
+php artisan sitemap:generate         # Generate sitemap.xml
+php artisan test                     # Run PHPUnit tests
+```
+
+**Code formatting:**
+```bash
+./vendor/bin/pint                    # Format PHP files (Laravel Pint)
+npx blade-formatter --write <file>   # Format .blade.php files
+npx prettier --write <file>          # Format JS/CSS/JSON
+```
+
+## Architecture
+
+### Livewire-First Routing
+App uses **Livewire components as controllers** - no traditional controllers. Main routes defined in `routes/web.php`:
+- `/` → VinylTable (main table with search/pagination)
+- `/create` → CreateVinyl/CreateArtist
+- `/admin` → AdminPanel/AdminShowData
+- `/artist/{id}` → ArtistShow
+
+### Data Flow
+1. **VinylTable.php** (app/Livewire/VinylTable.php:44-83) - Main component:
+   - Heavy Redis caching strategy: `Cache::rememberForever()` for pages/counts
+   - Cache key pattern: `page-{n}.q-{search}`
+   - Pagination with `#[Url(history: true)]` for URL state
+   - Search across artist names AND record titles via `Artist::scopeSearch()`
+
+2. **Artist Model** (app/Models/Artist.php:65-151) - Discogs integration:
+   - `getDiscogsData()` fetches artist metadata from Discogs API
+   - Manual ID override via `discogs_id_manual` field (prioritized over auto-search)
+   - Rate limiting: 1.5s delay between API calls in populate command
+   - `discogs_fetch_attempted` flag prevents repeated failures
+   - Stores: discogs_id, discogs_url, discogs_image_url
+
+3. **Search Implementation** (app/Models/Artist.php:46-55):
+   - Searches artist name (case-insensitive upper) OR related record names (case-insensitive lower)
+   - Space replacement for fuzzy matching: `str_replace(' ', '%', $value)`
+   - Uses `orWhereHas('records')` for cross-table search
+
+### Redis Caching Pattern
+- Cache NEVER expires (`rememberForever`)
+- Manual cache clear required after data changes
+- Separate caches for filtered/unfiltered counts
+- Search-specific cache keys include query param
+
+### External Services
+**Discogs API** (config/services.php):
+- Artist metadata, images, URLs
+- Manual ID override when auto-search fails
+- Search → Artist ID → Detailed info (2 API calls per artist)
+
+**Ntfy notifications** (app/Livewire/VinylTable.php:94-115):
+- Push notification on XLS export
+- Logs download timestamp + IP address
+
+### Authentication
+- HTTP Basic Auth (`auth.basic` middleware)
+- Session-based with Redis storage (120min lifetime)
+- Protected routes: /create, /admin, /export
+
+### Excel Export
+- Maatwebsite Excel library (app/Exports/ArtistExport.php)
+- Downloads as `.xls` format
+- Includes Ntfy webhook for download tracking
+
+## Key Conventions
+
+### Database
+- SQLite (dev), Redis (cache/sessions/queue)
+- Timezone: Europe/Stockholm
+- Models use mass assignment (`Model::unguard()` in AppServiceProvider)
+
+### Frontend
+- Livewire alerts via `jantinnerezo/livewire-alert`
+- Alpine.js directives (x-cloak)
+- Custom Tailwind utilities in resources/css/app.css
+- Custom fonts: RocknRoll One (headings), Open Sans (body)
+- NProgress for loading states
+
+### Testing
+- PHPUnit configured (phpunit.xml)
+- Tests use array cache + sync queue
+- Feature tests: tests/Feature
+- Unit tests: tests/Unit
+
+### Deployment
+- GitHub Actions (.github/workflows/deploy.yml)
+- Triggers on master push
+- Runs: composer install, npm install, vite build, cache/view generation
+- PHP 8.5-fpm, Nginx, systemctl process management
+
+## Common Pitfalls
+
+1. **Cache invalidation**: Data changes don't auto-clear Redis cache - manually flush or restart Redis
+2. **Discogs rate limits**: Populate command has 1.5s delay - don't remove it
+3. **Search scope**: `Artist::scopeSearch()` searches BOTH artist names AND record titles - keep this cross-table behavior
+4. **Manual IDs**: `discogs_id_manual` overrides auto-search - check before modifying Discogs logic
+5. **Livewire state**: URL params sync via `#[Url(history: true)]` - pagination/search preserved in URL
+
+## Configuration Files
+- `.env` - App config, Discogs API keys, Ntfy settings
+- `config/services.php` - Discogs API credentials (key, secret, user_agent)
+- `config/database.php` - SQLite + Redis config
+- `tailwind.config.js` - Custom Tailwind theme
+- `vite.config.js` - Laravel Vite plugin + mkcert
+
+===
+
 <laravel-boost-guidelines>
 === foundation rules ===
 
@@ -8,7 +154,7 @@ The Laravel Boost guidelines are specifically curated by Laravel maintainers for
 ## Foundational Context
 This application is a Laravel application and its main Laravel ecosystems package & versions are below. You are an expert with them all. Ensure you abide by these specific packages & versions.
 
-- php - 8.4.15
+- php - 8.5.1
 - laravel/framework (LARAVEL) - v11
 - laravel/prompts (PROMPTS) - v0
 - laravel/sanctum (SANCTUM) - v4

@@ -1,8 +1,9 @@
 {
     "agents": [
-        "copilot"
+        "claude_code"
     ],
     "editors": [
+        "claude_code",
         "vscode"
     ],
     "guidelines": []
