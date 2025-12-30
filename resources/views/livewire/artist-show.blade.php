@@ -96,6 +96,9 @@
 			@error("name")
 				<p class="mb-4 px-2 pt-1 text-center text-lg font-semibold text-red-500">Namn kan inte vara tomt...</p>
 			@enderror
+			@error("editingRecordName")
+				<p class="mb-4 px-2 pt-1 text-center text-lg font-semibold text-red-500">Vinylnamn kan inte vara tomt...</p>
+			@enderror
 			@auth
 				<div x-cloak
 					x-show="show"
@@ -133,33 +136,85 @@
 		@php $count = 1; @endphp
 		@foreach ($artist->records as $record)
 			<div wire:key="{{ $record->id }}"
-				class="{{ $loop->last ? "" : "border-b " }}hover:bg-slate-50 flex items-center px-2 py-2 text-left font-medium uppercase"
-				x-data="{ edit: false }">
+				class="{{ $loop->last ? "" : "border-b " }}hover:bg-slate-50 flex items-center px-2 py-2 text-left font-medium uppercase">
 				<span class="mr-2 w-6 font-bold text-slate-500 sm:w-8 lg:text-2xl">{{ $count }}.</span>
 				@auth
-					<button
-						onclick="confirm('Vill du ta bort vinylen {{ $record->record_name }}?') || event.stopImmediatePropagation()"
-						wire:click="recordDelete({{ $record->id }})"
-						class="mr-2 inline-block px-2 text-xl text-red-500 hover:bg-red-300 lg:text-2xl">
-						<svg xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="h-8 w-8">
-							<path stroke-linecap="round"
-								stroke-linejoin="round"
-								d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-						</svg>
-					</button>
+					@if ($editingRecordId === $record->id)
+						<form wire:submit="updateRecordName" class="flex flex-1 items-center gap-2">
+							<button type="button"
+								wire:click="cancelEditingRecord"
+								class="mr-2 inline-block px-2 text-xl text-gray-500 hover:bg-gray-300 lg:text-2xl">
+								<svg xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke-width="1.5"
+									stroke="currentColor"
+									class="h-8 w-8">
+									<path stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M9.75 9.75 4.5 15m0 0 5.25 5.25M4.5 15h15" />
+								</svg>
+							</button>
+							<input wire:model="editingRecordName"
+								type="text"
+								class="rock-font flex-1 border-2 border-slate-300 p-2 text-gray-700 outline-none lg:text-2xl"
+								placeholder="Skriv nytt namn här..."
+								autocomplete="off"
+								wire:dirty.class="border-orange-300">
+							<button type="submit" class="rounded-lg border-2 border-green-300 bg-green-100 px-2 py-1 hover:bg-green-300">
+								<svg xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="currentColor"
+									class="h-8 w-8">
+									<path fill-rule="evenodd"
+										d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+										clip-rule="evenodd" />
+								</svg>
+							</button>
+						</form>
+					@else
+						<button wire:click="startEditingRecord({{ $record->id }})"
+							class="inline-block px-2 text-xl text-blue-500 hover:bg-blue-300 lg:text-2xl">
+							<svg xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+								class="h-6 w-6">
+								<path
+									d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
+							</svg>
+						</button>
+						<button
+							onclick="confirm('Vill du ta bort vinylen {{ $record->record_name }}?') || event.stopImmediatePropagation()"
+							wire:click="recordDelete({{ $record->id }})"
+							class="inline-block px-2 text-xl text-red-500 hover:bg-red-300 lg:text-2xl">
+							<svg xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="h-8 w-8">
+								<path stroke-linecap="round"
+									stroke-linejoin="round"
+									d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+							</svg>
+						</button>
+						<span class="rock-font text-gray-700 lg:text-2xl">
+							<a
+								href="https://www.discogs.com/search/?q={{ urlencode($artist->name . " " . $record->record_name) }}&type=release&format_exact=Vinyl"
+								aria-label="Vinyl - {{ $record->record_name }}"
+								target="_BLANK"
+								class="transition-colors hover:text-green-700">{{ $record->record_name }}</a>
+						</span>
+					@endif
+				@else
+					<span class="rock-font text-gray-700 lg:text-2xl">
+						<a
+							href="https://www.discogs.com/search/?q={{ urlencode($artist->name . " " . $record->record_name) }}&type=release&format_exact=Vinyl"
+							aria-label="Vinyl - {{ $record->record_name }}"
+							target="_BLANK"
+							class="transition-colors hover:text-green-700">{{ $record->record_name }}</a>
+					</span>
 				@endauth
-				<span class="rock-font text-gray-700 lg:text-2xl">
-					<a
-						href="https://www.discogs.com/search/?q={{ urlencode($artist->name . " " . $record->record_name) }}&type=release&format_exact=Vinyl"
-						aria-label="Vinyl - {{ $record->record_name }}"
-						target="_BLANK"
-						class="transition-colors hover:text-green-700">{{ $record->record_name }}</a>
-				</span>
 			</div>
 			@php $count++; @endphp
 		@endforeach
