@@ -37,7 +37,7 @@
 	</div>
 	<div id="copyright"
 		class="my-2 text-xs"
-		align="center">&copy; 2023-2025 Bokbindaregatan.se</div>
+		align="center">&copy; 2023-2026 Bokbindaregatan.se</div>
 	@auth
 		<div class="my-2" align="center"><span class="font-semibold"><a href="/admin">Admin</a></span></div>
 	@endauth
